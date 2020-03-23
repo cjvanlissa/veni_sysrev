@@ -1,0 +1,260 @@
+---
+title             : "Mapping the predictors of adolescent emotion dysregulation: A text-mining based systematic review"
+shorttitle        : "ADOLESCENT EMOTION DYSREGULATION"
+
+author: 
+  - name          : "Caspar J. van Lissa"
+    affiliation   : "1,2"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Padualaan 14, 3584CH Utrecht, The Netherlands"
+    email         : "c.j.vanlissa@uu.nl"
+
+affiliation:
+  - id            : "1"
+    institution   : "Utrecht University faculty of Social and Behavioral Sciences, department of Methodology & Statistics"
+  - id            : "2"
+    institution   : "Open Science Community Utrecht"
+
+authornote: |
+  Caspar van Lissa, Department of Methodology and Statistics, Utrecht
+  University, P.O. Box 80140, 3508 TC, Utrecht, The Netherlands. E-mail:
+  C.vanLissa@uu.nl. This work is supported by a NWO Veni grant (NWO
+  grant number VI.Veni.191G.090).
+
+abstract: |
+  
+
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+library(bibliometrix)
+library(revtools)
+library(bib2df)
+```
+<!-- Reviewer suggestions:
+Kristin Buss -->
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+A key developmental challenge in adolescence is acquiring mature emotion regulation skills [croneUnderstandingAdolescencePeriod2012; zimmermannEmotionRegulationEarly2014]. Emotion regulation is integral to mental health[aldaoEmotionregulationStrategiesPsychopathology2010; schaferEmotionRegulationStrategies2017; braetEmotionRegulationChildren2014] and social functioning [reindlSocializationEmotionRegulation2016]. There is mounting evidence, however, for a "maturity gap" in middle-adolescence [craccoEmotionRegulationChildhood2017; caseyBrakingAcceleratingAdolescent2011; croneUnderstandingAdolescencePeriod2012]: A developmental asymmetry between emotional and regulatory brain circuits, which motivates most youngsters to seek out challenges in life and love, but renders some of them vulnerable to emotion dysregulation. For as many as one in five adolescence, this stage marks the onset of mental illness, which can persist throughout the life course [see leeAdolescentMentalHealth2014]. Despite burgeoning empirical interest in adolescent emotion regulation, the literature is somewhat fragmented. There have been only few notable efforts to provide an encompassing framework of the risk factors and environmental hazards render adolescents susceptible to emotional difficulties [coe-odessEmergentEmotionsAdolescence2019; bussTheoriesEmotionalDevelopment2019; riedigerEmotionRegulationAdolescence2014]. These efforts at unifiaction have all been performed in a top-down, theory-driven manner. The present study instead takes an inductive approach to map the correlates of adolescents' emotion regulation. From this mapping, we proceed to classify correlates as potential risk factors, manifestations, and outcomes of adolescent emotion regulation. The results provide a conceptual overview of the existing literature, can help identify blind spots in existing theory, and might inspire new hypotheses to guide future deductive research.
+
+Unfortunately, there is little theory about which risk factors and environmental hazards render adolescents susceptible to emotional difficulties11
+
+Initially, much of the research on emotion regulation focused on either adulthood or early childhood. In recent years, however, a substantial body of research on emotion regulation in adolescence has accrued.
+
+What are the predictors of emotion regulation in adolescence?
+
+* Emotion regulation is important for mental health and social relationships
+* Adolescence is a key developmental period
+* 
+
+Emotion regulation can be defined as the ability to modulate emotional experience and expression through automatic or deliberate processes. 
+
+Substantial research has addressed issues related to emotion regulation, because it plays a central role in mental health and social functioning throughout the life course. Recent findings suggest that adolescence is a sensitive period for the development of mature emotion regulation skills. 
+
+
+
+
+Most of the literature has addressed emotion regulation in adult or infant samples. A smaller, but substantial, portion of the literature has examined emotion regulation in adolescents. 
+
+
+
+Wat is het vershcil dat het verschil maakt?
+
+
+
+
+
+
+on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30.
+
+
+<!-- NIET TEVEEL OVER THEORIE PRATEN; IK KIJK NIET NAAR THEORIE. IK KIJK NAAR FACTOREN DIE IN VERBAND GEBRACHT WORDEN MET EMOTIEREGULATIE. -->
+<!--The life phase of adolescence differs qualitatively from both childhood and adulthood. It is therefore not sufficient to extend -->
+
+Influences on emotion regulation (Riediger Klipker)
+* Neurophysiological development 
+* Familial context
+
+There are sufficient *relevant* theories, but few explicitly tailored to adolescence, and few explicit (define explicit).
+
+Despite widespread interest in emotion regulation in adolescence, there is a lack of explicit theories about which risk factors and environmental hazards render adolescents susceptible to emotional difficulties. Some theories can be considered relevant, but these theories are rarely explicit enough to generate specific predictions. 
+As many as one in five adolescents experiences severe emotional problems. A key question is therefore which factors render adolescents at-risk for difficulties in emotion regulation. 
+
+Unfortunately, relevant theory on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30.
+
+inductive approach, thereby facilitating a more complete understanding of developmental processes, and nourishing theory formation
+
+My work addresses this lacuna by taking an inductive approach to theory formation; paying special attention to between-person differences. This paves the way for a new wave of person-centered research
+
+
+MAKE SURE THAT DICTIONARY TERMS ARE SEQUENTIALLY IMPLEMENTED
+Key questions:
+Why focus on theory?
+Why focus on emotion regulation specifically, instead of other aspects of emotional development?
+
+* Biological determinants
+* Social determinants
+
+* Existing developmental theories do not focus on adolescence (rather, on adults, or development in infancy and childhood). However, many interesting emotion-related things happen in adolescence.
+
+Important:
+Buss: theories of emotion and emotional development
+Cracco: Evidence for a maladaptive shift in emotion regulation in adolescence
+Zimmermann & Iwanski: Dip in adolescence
+
+Sroufe 1995: Development of emotion regulation until preschool age
+"the key progression in emotional regulation is from caregiver-orchestrated
+regulation to dyadic regulation to self-regulation."
+* attachment - dyadic regulation of emotion (Sroufe 1996)
+* Caregiver-guided self-regulation 
+* Autonomous self-regulation
+***** HOWEVER: In adolescence, regulatory brain regions still developing!!!! So Sroufe stops too early
+
+Polyvagal theory Porges 1995
+
+
+## Theories of adolescent emotion dysregulation
+
+
+
+The present paper aims to develop a nomological network of the constructs related to adolescent emotion dysregulation. A nomological network is a diagrammatic representation of a phenomenon; it is a proto-theoretical device that describes relationships between constructs relevant to the theory (REF: Cronbach & Meehl 1955; McKenna, 2006; Alavi 2018). It can be useful as a precursor to a more explicit theory of the phenomenon. The present paper uses an inductive approach to develop this nomological network. First, we use a systematic search to elicit a corpus of relevant literature. Second, we extract constructs from the corpus. Third, we use a dictionary to pare down the extracted constructs to meaningful superordinate categories. Fourth, we map interrelations between these constructs. Fifth, we classify contstructs as potential predictors or outcomes, and we categorize predictors by level of analysis (CJ: Sameroff, which level of biopsychosocial).
+
+t, using text mining to map potential predictors of adolescent emotion dysregulation.
+
+identify relevant constructs  of adolescents’ emotion regulation development, and moderators of parents’ role therein. The resulting insights are consolidated into theory.
+
+
+The present study intends to map the extant literature 
+First, I will systematically review predictors currently considered relevant in the adolescent emotion regulation literature. 
+
+
+# Methods
+
+## Search strategy
+
+All searches were conducted on Web of Science. The search strategy was based on procedures described by Janneke Staaks on https://osf.io/49t8x/, DOI:10.17605/OSF.IO/49T8X, accessed on 27-01-2020. First, we manually constructed a reference set of 15 articles. Then we constructed a search string to retrieve these articles from Web of Science. The search was overly inclusive, returning 29 records, but these were all highly relevant, so we used all 29 results as reference set. Next, we tested our search string, which consisted of synonyms of emotion regulation and adolescence:
+```
+TS=("emotio* regulation" OR "anger regulation" OR "sadness regulation" OR "emotion* competence" OR "emotion* adjustment" OR "emotio* dysregulation" OR "anger dysregulation" OR "sadness dysregulation" OR "emotio* problem*" OR "emotion* maladjustment") AND TS=(adolescent* OR teen* OR pubert* OR youth)
+```
+This string returned 6653 results, and matched 25 of the 29 records in the reference set. Three search terms could be added to match all 29 reference set items. The terms `"emotio* socialization" OR "emotio* processes"`, as synonyms of emotion regulation, added 191 new hits. However, many of these hits were not directly relevant to emotion regulation. The term `"development*`, as synonym of adolescence, added 3628 new hits, many of which were not focused on the age range of adolescence. We thus deemed these terms to be overly inclusive, and proceeded with the original search string.
+```{r readrecs}
+filenam <- "recs_6653.RData"
+if(!file.exists(filenam)){
+  f <- list.files("./recs/18-3-2020/", full.names = TRUE)
+  f <- readFiles(f)
+  recs <- convert2df(f)
+  saveRDS(recs, filenam)
+} else {
+  recs <- readRDS(filenam)
+}
+```
+
+
+## Deduplication
+
+```{r removeduplicates}
+filenam <- "unique_recs.RData"
+if(!file.exists(filenam)){
+  recs$doi <- recs$DI
+  recs$doi[is.na(recs$doi)] <- paste0("fake", 1:sum(is.na(recs$doi)))
+  if(any(duplicated(recs$doi))){
+    recs$doi[duplicated(recs$doi)|duplicated(recs$doi, fromLast = T)]
+    dup_doi <- duplicated(recs$doi)
+    recs <- recs[!dup_doi, ]
+  }
+  recs$title <- recs$TI
+  # locate and extract unique references
+  potential_dups <- find_duplicates(recs, match_variable = "title", match_function = "stringdist", threshold = 5, to_lower = TRUE, remove_punctuation = TRUE)
+  unique_recs <- extract_unique_references(recs, matches = potential_dups)
+  saveRDS(unique_recs, filenam)
+  write.csv(data.frame(dup_doi = sum(dup_doi), dup_title = (nrow(recs)-nrow(unique_recs))-sum(dup_doi)), "dups.csv")
+} else {
+  unique_recs <- readRDS(filenam)
+  dups <- read.csv("dups.csv")
+}
+unique_recs$id_num <- 1:nrow(unique_recs)
+```
+Duplicates were detected based on exact DOI matches (`r dups[["dup_doi"]]` duplicates), and title similarity (`r dups[["dup_title"]]` duplicates). Manual screening in Rayyan resulted in the removal of an additional 13 duplicates.
+
+## Screening
+
+```{r}
+head(unique_recs$SN)
+df_screen <- unique_recs[, c("id_num", "TI", "AB")]
+names(df_screen) <- c("id_num", "title", "abstract")
+write.csv(df_screen, file = "asreview.csv", row.names = FALSE, fileEncoding = "UTF-8")
+df_screen <- unique_recs[, c("id_num", "TI", "AU", "SO", "SN", "VL", "IS", "BP", "PY", "PU", "DI", "AB")]
+names(df_screen) <- c("key", "title", "authors", "journal", "issn", "volume", "issue", "pages", "year", "publisher", "url", "abstract")
+write.csv(df_screen, file = "rayyan.csv", row.names = FALSE)
+
+```
+
+Unknown. In the initial screening, we will include all studies 1) returned by the specified search strategy 2) in the specified databases 3) for which abstracts are available. We will manually screen a maximum of 500 abstracts, and have the remainder scanned by ASReview.
+
+
+In the initial screening, we will include all studies 1) returned by the specified search strategy 2) in the specified databases 3) for which abstracts are available. We will manually screen a maximum of 500 abstracts, and have the remainder scanned by ASReview.
+
+
+
+
+
+
+### Reference set
+
+Our reference set is documented in `reference_set.bib`.
+
+```{r removeduplicates}
+filenam <- "title_sim.RData"
+if(!file.exists(filenam)){
+  recs$doi <- recs$DI
+  recs$doi[is.na(recs$doi)] <- paste0("fake", 1:sum(is.na(recs$doi)))
+  if(any(duplicated(recs$doi))){
+    recs <- recs[!duplicated(recs$doi), ]
+  }
+  recs$title <- recs$TI
+  # locate and extract unique references
+  potential_dups <- find_duplicates(recs, match_variable = "title", match_function = "stringdist", threshold = 5, to_lower = TRUE, remove_punctuation = TRUE)
+  unique_recs <- extract_unique_references(recs, matches = potential_dups)
+  saveRDS(unique_recs, filenam)
+} else {
+  unique_recs <- readRDS(filenam)
+}
+```
+
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup
