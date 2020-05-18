@@ -4,7 +4,7 @@
 
 ## Where do I start?
 
-You can load this project in Rstudio by opening the file called 'C:\Git_Repositories\veni_sysrev.Rproj'.'C:\Git_Repositories\veni_sysrev.Rproj'.
+You can load this project in Rstudio by opening the file called 'veni_sysrev.Rproj'.
 
 ## Project structure
 
