@@ -1,0 +1,14 @@
+*.csv
+*.sav
+*.sas7bdat
+*.xlsx
+*.xls
+*.pdf
+!checksums.csv
+.Rproj.user
+*.RData
+*.h5
+bunnies.R
+*.log
+*.zip
+*.html

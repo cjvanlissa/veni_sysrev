@@ -1,0 +1,146 @@
+list(
+ # Manifestations of emotion dysregulation
+ dysregulation = c("regulati.+difficult", "(emoti|affect|anger).+(regulation|proble|adjustm|compete)", "^dysregulation$", "^emotional.problems$"),
+ "neg.emo."= c("^psychological distress$", "^anger$", "^angr.*", "^mood$", "^irritability$", "^feelings$", "negative.+emotio", "negative.affect$", "^sadness$", "emotionality", "^intensity$", "affect.+intensity", "affect.+instab", "mood.+variab"),
+ shame = c("sham", "self.?consciou"),
+ emotion = c("^emotions?$", "^affect", "positive affect"),
+ 
+ reactivity = c("^(emotional|stress)?.?reactivity", "^reactivity$"),
+ 
+ # Demographic factors
+ sex = c("boys", "girls", "^male$", "^female$", "^gender$", "(sex|gender).+difference", "^sex$", "women"),
+ age = c("^age", "^age.differences$", "school.+age", "^age.+child", "^age.+\\d", "^age.+(of|related) ", "age.+(diff|depend)", "aged.+\\d", "early age", "gestational.+age"),
+ 
+ # Risk factors
+ "risk-factors" = "risk.factors",
+ "historic-events" = c("hurricane", "^war$", "^armed conflict$", "earthquake", "^refugee"),
+ violence = c("^violence$", "violence exposure"),
+ 
+ # Individual differences
+ "life-event" = c("^life event$", "childhood experiences$", "adverse experience"),
+ "sexual-orientation" = c("bisexual", "gay", "same.sex", "sex.+orient", "gender.dysph"),
+ 
+ 
+ adjustment = c("^adjustment$", "^(psychological|social|school|psychosocial).adjustment$", "^sdq$", "strengths.+difficulties.+questionnaire", "positive.youth.development"),
+ personality = c("temperament$", "^personality$", "^personality.+(trait|invento|questionn|dimensi|type|factor|character|assess|develop)", "5.(factor|personali)", "big.5"),
+ attachment = c("attachment", "^security$"), 
+ "self-esteem" = "^self.esteem$",
+ bisbas = c("bis.bas", "b[ia]s.scale", "^b[ia]s$"),
+ iq = c("^iq$", "^intelligence$"),
+ wellbeing = c("^quality.of.life$", "well.being", "life.sat"),
+ 
+ # Mental
+ "self-harm" = c("^mutilation$", "self.injur", "self.harm", "^harm$", "^nssi$"),
+ suicide = c("^attempt$", "^ideation$", "^suicid", "suicide"),
+ substance = c("binge drinking", "^addiction$", "dependence", "^use$", "drug.(ab)?use", "subst.+use", "alcohol", "cannabis", "^drug$", "marijuana", "tobacco", "smoking", "^misuse$", "^substance use disorders?$", "^use disorders?$"),
+ depression = c("depressi.*", "^mdd$", "mood disorders", "affective.disorders"),
+ anxiety = c("anxiety", "^panic", "^behaviou?ral.inhibition$", "phobia"),
+ fear = "fear",
+ adhd_cd = c("hyperactiv", "^callous.unemotional traits$", "^impulsivity$", "^attention$", "^antisocial.behaviou?r$", "^conduct disorder$", "hyperactivity disorder", "^adhd$", "^conduct problems$", "^conduct$", "^oppositional defiant disorder$"),
+ ptsd = c("ptsd", "trauma", "^survivors$"),
+ stress = c("^stress", "acute.+stress", "adolescent.(di)?stress", "anxiety stress", "(children|chronic|daily|interpersonal|social).+stress", "^distress$", "extreme stress", "life.stress"), 
+ mental_health = c("psych.+symptom", "comorbid.+(?!anxiety)", "^mental.disorder.+?$", "^disorder.*$", "mental.health", "^symptom.*$", "^psychop.*$", "^psychiatric.disorder.*$", "^bpd$", "borderline personality", "^(developmental|adolescent) psychopathology$", "^psychological symptoms$", "mental.disorders", "^somatoform*", "somatic symptom", "bipolar", "psychiatry", "psychosis"),
+ schizo = "schizo",
+ therapy = c("^inpatient$", "^in.patient$", "therapy"),
+ autism = c("^asd$", "^asperger.syndrome$", "autis", "pervasive developmental disorders", "^high.functioning children$", "spectrum disorders"),
+ schizophrenia = "^schizophrenia$", 
+ "eating.disorders" = c("nervosa", "^body.mass index$", "^weight", "eating.disord", "binge eating", "^eating$", "^body dissatisfaction$", "^body.image", "emotion.+eat"),
+ hope = "\\bhope",
+ 
+ # Strategies
+ strategies = c("exper.+avoidance", "(coping|regulation|behaviou?ral).strateg", "^strateg(y|ies)$", "support.+seeking", "\\bcop[ei]"),
+ rumination = c("ruminat", "^worry$"),
+ mindfulness = c("^acceptance$", "mindfulness"),
+ cognition = "cognition",
+ "cognitive-control" = "cognitive.+(contr|inh|regu|coping|function)",
+ "working-memory" = "working.+mem",
+ appraisal = c("apprais"), # "^reappraisal$",
+ suppression = "(^|expressive|thought|voluntary).?suppression$", 
+ "information-processing" = c("(emotion|social).+information", "^information$", "information.+proces"),
+ 
+ "self-regulation" = c("^self.regulation$", "^effortful control$", "^self.control$", "^executive function"),
+ 
+ # Social
+ peers = c("^peer(s| influences| interactions| relationships| relations| situations| stress| acceptance)$", "^peer$"),
+ "social-support" = c("(social|peer|teacher).+support"),
+ friend = c("friend"),
+ bullying = c("^victimization$", "^peer victimization$", "bull[yi]", "(?<!shooting |sexual |violence )victim", "^reject", "(personal|peer|social).+rejec"),
+ "help-seeking" = "(see.+help|help.+seek)",
+ status = c("(social|sociometric|peer).+status", "popular"),
+ "social skills" = c("social.skill", "social.(competenc|functioni)"),
+ 
+ # Family
+ support = c("(kin|parent).+support", "^support$"),
+ parents = c("^parents?$", "^famil(y|ies)$", "intergenerational transmission"),
+ mothers = c("mothe", "materna"),
+ fathers = c("fathe", "paterna"),
+ siblings = "^siblings?$",
+ "parenting" = c("^psychological control$", "^parenting$", "^socialization$", "emotion.socialization", "^parental involvement$", "parent.+style", "parent.+behav"),
+ "family-functioning"=  c("family.function", "parent.child.relationship"),
+ "par-conflict" = c("(marital|parental|family).+conflict", "household dysfunction", "^intimate partner violence$", "^(domestic|family) violence$"),
+ "child-conflict" = c("(adolescent|child).+conflict", "(?<!marital )conflict.+(resol|tactic|strateg|communica)", "^conflicts?$"),
+ divorce = c("divorce", "single.+parent"),
+ foster = c("foster", "adoption"),
+ conflict = "^conflict$", 
+ abuse = c("^abuse$", "maltreat", "(phys|sex|dat|child).+(abuse|maltreat)", "neglect", "corporal"),
+ 
+ # Sociological/ethnicity
+ discrimination = c("discrimination", "racism"),
+ ethnicity = c("^ethnic", "(ethnic|bicultur).+identity", "racial identity", "indigen", "^immigr", "race", "racial", "acculturati", "cultural.adaptation", "minority", "(an|in).american"),
+ urban = "^urban",
+ neighborhood = "neighbo",
+ 
+ environment = c("^environmental.influences$", "^community violence$", "^community$", "^school climate$"),
+ "display-rules" = "display.+rul",
+ 
+ loneliness = c("lonel", "isol", "social withdrawal"),
+ 
+ # Psychofysiological
+ polyvagal = c("^heart.rate.variability$", "^vagal", "^respiratory.sinus.arrhythmia$", "^autonomic reactivity$", "cardiac vagal", "parasympathetic", "hpa.axis", "pitui.+adre", "vag(al|us)", "hrv", "^rsa", "neuroendocrine stress reactivity"),
+ 
+ 
+ 
+ "internalizing" = c("internalizing"),
+ "externalizing" = c("externalizing", "(relational|physical|proactive).+aggression$", "^disruptive behaviou?r$", "^behaviou?r.+problems$", "^difficulties questionnaire$", "^youth self report$", "^ysr$", "^cbcl$", "^aggression$", "^aggressive.behaviou?r$", "^youth self.report$", "^reactive aggression$", "^problem.{0,2}behaviou?r", "^childrens behaviou?r problems$", "^externalizing (behaviou?r|problem)", "^school dropout$", "behaviou?r checklist$"),
+ delinquency = c("(?<!non)delinq", "^perpetration$", "justice"),
+ school = c("^education$", "^schools?$"),
+ 
+ "par.stress" = c("(matern|parent).+stress"),
+ empathy = c("^empathy$", "^sympathy$", "^empathic concern$", "^perspective taking$"),
+ sleep = c("sleep", "somn"),
+ alexithymia = "^alexithymia$",
+ "life-events" = c("life event"),
+ sports = c("physical.+(fitness|activity)", "sport"),
+ SES = c("socio.?economic", "economic", "poverty", "welfare", "low.income", "relative deprivation", "socioeconomic inequalities", "^social.inequality$", "economic.+stress"),
+ 
+ romantic = "romantic",
+ culture = c("cultur"),
+ "resilience" = c("^differential susceptibility$", "^resilienc[ey]$"),
+ identity = c("^identity$", "^identity distress$", "identity (develop|formation)", "emerging.+self", "representation.+self", "self.+awareness", "self.+?(concept|construal|development|identity|knowledge|representation|perception)"),
+ autonomy = c("self.?(determination|efficacy)", "autonomy"),
+ "device-use" = c("phone", "video game addiction", "technology use", "media\\b", "internet"), # device?
+ 
+ "risk-taking" = c("^risk.+(taking| behaviou?)", "high.risk", "sensation.+seeking", "reckless"),
+ "sexual-risk" = c("sex.+risk", "risk.+sex", "sex.+trans", "sex.+behaviou?", "hiv"),
+ reward = "reward",
+ academic = c("^academic"),
+
+ # Physical	
+ health = c("^health$", "^chronic illness$", "^pain$", "^disease$", "^illness$", "diabetes", "cancer", "disease", "physical.+(illness|disorder)", "epilep", "health.related"),
+ "birth-weight" = "birth.weight",
+ obesity = c("^overweight", "obes(e|ity)"),
+ disabled = c("handicap", "disabled", "disabilit"),
+ "nervous-system" = c("central.nervous.system", "^cns$", "autonomic", "nervous.system"),
+ menstruation = c("menstr", "^cycle$", "estrous.cycle", "reproductive.cycle"),
+ puberty = "pubert",
+ 
+ neural = c("^neural\\b.+$", "^neuroscience.+$", "\\bf?mri\\b", "diffusion.tensor.imag", "brain", "hippocamp", "cortex", "cortica", "cingulate", "amygdala", "gyrus", "thalam", "limbic", "(gr[ea]y|white).+matter", "synap", "neuroimag", "functional.magnetic", "fmri", "functional.connectivit"),
+ endocrine = c("cortisol", "adrenocor",  "cortico", "gonad", "hormon"), 
+ neurotransmitter = c("endocannabin", "glutam", "neurotrans"),
+ genes = c("gene(\\b|t)", "gene.+envi"),
+ 
+ # Outcomes
+ moral = "moral",
+ empathy = c("empath", "perspective.+taking", "sympathy", "emotional.intelligence", "theory.of.mind", "^tom$"),
+ "prosocial-behavior" = "pro.{0,2}social.{0,2}behav"
+ )

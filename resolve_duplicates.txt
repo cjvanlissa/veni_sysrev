@@ -1,0 +1,11 @@
+list(
+dysregulation = c("^internalizing problem behavior$"),
+anxiety = c("comorbid anxiety"),
+substance = c("alcohol-dependence"),
+externalizing = c("^externalizing problem behaviors?$"),
+friend = ("^boys friendships$"),
+depression = c("^comorbid major depression$", "^hypercortisolemic depression$"),
+attachment = c("^attachment brain$"),
+therapy = c("^mindfulness-based therapy$"),
+ptsd = c("disorder ptsd")
+)

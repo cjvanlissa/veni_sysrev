@@ -1,0 +1,357 @@
+^child$
+^children$
+^adolescents?$
+^adolescent.development$
+^youth$
+^students?$
+^adolescence$
+^young.children$
+^young.people$
+^early adolescence$
+^children and adolescents$
+^college students?$
+^young adults$
+^child.development$
+^early.childhood$
+^preschool$
+^pediatrics?$
+^study$
+^result$
+^year$
+^association$
+^sample$
+^cohort$
+^longitudinal
+meta.analysis
+^systematic.review$
+^psychometric
+^measurements?$
+factor.analysis$
+class analysis$
+^randomized control
+^review$
+^ecological momentary assessment$
+^evaluation$
+^individual.differences?$
+^qualitative$
+^qualitative research$
+^level$
+^analysis$
+^effect$
+^group$
+^control$
+^method$
+^treatment$
+intervention$
+^conclusion$
+^finding$
+^intervention$
+^scale$
+^relation$
+^model$
+^research$
+^score$
+^attitude$
+^frequency$
+^indicator$
+^literature$
+^number$
+^odd$
+^pathway$
+^size$
+^time$
+^outcome$
+^participant$
+^questionnaire$
+^difference$
+^measure$
+^variable$
+^datum$
+^report$
+^skill$
+^trait$
+^rate$
+^total$
+^influence$
+^rating$
+^variance$
+^component$
+^course$
+^hour$
+^index$
+^medium$
+^prevalence$
+^theory$
+^objective$
+^self-report$
+^change$
+^lifetime$
+^american$
+^behavior$
+^psychosocial$
+^psychology$
+^individual-differences$
+^associations$
+^responses$
+^fit indexes$
+^mediating role$
+^experience$
+^inventory$
+^outcomes$
+^reliability$
+^sensitivity$
+^united-states$
+^consequences$
+^initial validation$
+^lifetime prevalence$
+^trajectories$
+^college-students$
+^context$
+^experiences$
+^follow-up$
+^impact$
+^missing data$
+^students$
+^randomized controlled-trial$
+^psychometric properties$
+^validation$
+^risk-factors$
+^risk$
+^difficulties$
+^metaanalysis$
+^validity$
+^predictors$
+^behaviors$
+^middle childhood$
+^young-adults$
+^adults$
+^child$
+^community sample$
+^exposure$
+^clinic$
+^disaster$
+^dissociation$
+^distress$
+^involvement$
+^recognition$
+^life$
+^problem$
+^behavior$
+^age$
+^role$
+^development$
+^background$
+^patient$
+^childhood$
+^dimension$
+^predictor$
+^regression$
+^assessment$
+^process$
+^response$
+^severity$
+^functioning$
+^pattern$
+^data$
+^mechanism$
+^evidence$
+^program$
+^status$
+^checklist$
+^mediation$
+^onset$
+^order$
+^perspective$
+^subject$
+^design$
+^domain$
+^equation$
+^goal$
+^grade$
+^point$
+^need$
+^task$
+^trial$
+^interview$
+^mediator$
+^purpose$
+^approach$
+^body$
+^period$
+^practice$
+^quality $
+^activity$
+^deficit$
+^perception$
+^prevention$
+^form$
+^aim$
+^behaviour$
+^interaction$
+^type$
+^importance$
+^individual$
+^baseline$
+^month$
+^range$
+^syndrome$
+^ability$
+^awareness$
+^impairment$
+^modeling$
+^person$
+^condition$
+^population$
+^elsevier$
+^feature$
+^profile$
+^right$
+^style$
+^all$
+^improvement$
+^function$
+^ltd\\.$
+^history$
+^subscale$
+^transdiagnostic$
+^test$
+^service$
+^system$
+^value$
+^version$
+^addition$
+^implication$
+^adult$
+^teacher$
+^care$
+^correlation$
+^diagnosis$
+^der$
+^competence$
+^increase$
+^disturbance$
+^young adulthood$
+^longitudinal associations$
+^mechanisms$
+^strengths$
+^self$
+^quality$
+^within-person$
+^developmental pathways$
+^perceptions$
+^neutral faces$
+^network$
+^network model$
+^networking$
+^networks$
+^individuals$
+^young adolescents$
+^deficits$
+^communication$
+^vulnerability$
+^dissatisfaction$
+^distraction$
+^expression$
+^models$
+^neurovisceral integration$
+^patterns$
+^performance$
+^polyvagal theory$
+^process model$
+^styles$
+^young-people$
+^allostatic load$
+^biological sensitivity$
+^cognitive control$
+^cognitive vulnerability$
+^covariance structure-analysis$
+^decision-making$
+^determinants$
+^dimensions$
+^discipline$
+^discrepancies$
+^dsm-iv$
+^early-childhood$
+^early intervention$
+^efficacy$
+^facial expressions$
+^publication bias$
+^pupil$
+^questionnaire dis-q$
+^quick inventory$
+^quotient$
+^quotient aq$
+^r package$
+^interventions$
+^life-course-persistent$
+^life-span$
+^links$
+^management$
+^mind$
+^moderating role$
+^national epidemiologic survey$
+^national sample$
+^people$
+^regulation model$
+^reliability coefficient$
+^reported difficulties$
+^representation$
+^representations$
+^response styles theory$
+^voluntary$
+^stroop task$
+^subtypes$
+^summer treatment program$
+^structural equation models$
+^survival analysis$
+^time-series$
+^time-series analysis$
+^tone$
+^trade-offs$
+^traits$
+^transdiagnostic factors$
+^transdiagnostic treatment$
+^swedish version$
+^systems$
+^treating children$
+^treatment fidelity$
+^tripartite model$
+^understanding heterogeneity$
+^unified protocol$
+^university-students$
+^us children$
+^variants$
+^circumplex model$
+^confirmatory factor$
+^developmental trajectories$
+^dynamic-systems$
+^dynamics$
+^emerging adulthood$
+^environment scale$
+^external validity$
+^event-related potentials$
+^preschool-children$
+^middle school$
+^elementary-school$
+^school students$
+^school-age-children$
+^high-school-students$
+^preschoolers$
+^therapeutic schools$
+^school-aged children$
+^high-school association$
+^traumatic brain-injury$
+^traumatic brain injury$
+^agreement$
+^stability$
+^achievement$
+^pregnancy$
+^epidemiology$
+^infants$
+^protective factors$
+^diagnostic interview schedule$
+^ratings$
+^adulthood$
+^controlled-trial$
+intima-media
+otitis-media

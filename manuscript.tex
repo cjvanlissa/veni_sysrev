@@ -1,0 +1,311 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Mapping the predictors of adolescent emotion dysregulation: A text-mining based systematic review},
+  pdfkeywords={keywords},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\makeatother
+\shorttitle{ADOLESCENT EMOTION DYSREGULATION}
+\author{Caspar J. van Lissa\textsuperscript{1,2}}
+\affiliation{
+\vspace{0.5cm}
+\textsuperscript{1} Utrecht University faculty of Social and Behavioral Sciences, department of Methodology \& Statistics\\\textsuperscript{2} Open Science Community Utrecht}
+\authornote{Caspar van Lissa, Department of Methodology and Statistics, Utrecht
+University, P.O. Box 80140, 3508 TC, Utrecht, The Netherlands. E-mail:
+C.vanLissa@uu.nl. This work is supported by a NWO Veni grant (NWO
+grant number VI.Veni.191G.090).
+
+
+Correspondence concerning this article should be addressed to Caspar J. van Lissa, Padualaan 14, 3584CH Utrecht, The Netherlands. E-mail: c.j.vanlissa@uu.nl}
+\keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+
+\title{Mapping the predictors of adolescent emotion dysregulation: A text-mining based systematic review}
+
+\date{}
+
+\abstract{
+Test me
+}
+
+\begin{document}
+\maketitle
+
+A key developmental challenge in adolescence is acquiring mature emotion regulation skills (Crone \& Dahl, 2012; Zimmermann \& Iwanski, 2014). Emotion regulation is integral to mental health(Aldao, Nolen-Hoeksema, \& Schweizer, 2010; Braet et al., 2014; Schäfer, Naumann, Holmes, Tuschen-Caffier, \& Samson, 2017) and social functioning (Reindl, Gniewosz, \& Reinders, 2016). For as many as one in five adolescents, this phase marks the onset of emotion regulation-related mental illness, which can persist throughout the life course (see Lee et al., 2014). It is therefore crucial to identify which risk factors and environmental hazards render some adolescents more susceptible to emotional difficulties than others. Although there is an abundance of empirical work on factors associated with adolescents' emotion regulation, the literature is somewhat fragmented, as the topic has been investigated from different (sub)disciplines. This study seeks to address this limitation by mapping all factors currently thought to be relevant to adolescent emotion regulation, based on a systematic review of the literature. Similarly, although there are several \emph{relevant} theories, there is no specific theoretical framework to guide research on adolescents' emotion regulation. Although theory development is beyond the scope of this paper, we set out to generate a proto-theoretical nomological network of the potential risk factors, manifestations, and outcomes of emotion regulation in adolescence. We discuss how this nomological network relates to existing relevant theory, and conclude with recommendations for future theory-generating efforts.
+
+There have been only few notable efforts to provide an encompassing framework (Buss, Cole, \& Zhou, 2019; Coe-Odess, Narr, \& Allen, 2019; Riediger \& Klipker, 2014). Yet several limitations remain.
+
+instead takes an inductive approach to map the correlates of adolescents' emotion regulation based on all available literature.
+
+The present study instead takes an inductive approach to map the correlates of adolescents' emotion regulation based on all available literature. From this mapping, we proceed to classify correlates as potential risk factors, manifestations, and outcomes of adolescent emotion regulation. The results provide a conceptual overview of the existing literature, can help identify blind spots in existing theory, and might inspire new hypotheses to guide future deductive research.
+
+Several limitations emerge from prior efforts to provide an encompassing framework of this literature
+
+These efforts at unification have, thusfar, been conducted in a top-down, theory-driven manner.
+
+\hypertarget{existing-relevant-theory}{%
+\subsection{Existing relevant theory}\label{existing-relevant-theory}}
+
+Several recent publications have undertaken the monumental task of providing a comprehensive overview of theories of emotional development (e.g., Buss et al., 2019; {\textbf{???}}; Riediger \& Klipker, 2014), and of the empirical work pertaining to emotions in adolescence (Coe-Odess et al., 2019). We provide a summary review of the theoretical landscape as context for our empirical contribution.
+
+Two of the most frequently cited theories in research on development, including emotional development, are biopsychosocial models. One is Bronfenbrenner's bioecological model, which describes how the environment shapes individual development. The individual is imbued with certain biological predispositions, and changes over the course of developmental time. Moreover, this individual development takes place in interaction with contextual influences. These range from the microsystem, composed of other people in close interaction with the individual, to the macrosystem, consisting of indirect political and economic influences, to the exosystem, consisting of cultural norms and values. Sameroff's transactional model is another bioecological theory, which focuses heavily on social influences (the microsystem in Bronfenbrenner's model). Its main contribution is that it conceptualized development as a product of reciprocal influences between child and parent (or another individual).
+
+With regard to theories specifically addressing emotion regulation in adolescence, Hall's notion of \enquote{storm and stress} is one of the oldest. It describes how hormonal changes diminish self-control and increase reactivity, leading to difficulties in emotion regulation, conflict with parents, and risky behavior. Recent work provides a more nuanced perspective on this theory. For example, although the notion of diminished self-control and increased emotional reactivity has been upheld, it has been recast as a necessary change that facilitates emotional maturation (Crone \& Dahl, 2012), at the risk of emotional disturbance (Arnett, 1999; Lee et al., 2014). This again highlights the importance of identifying factors that predict or explain between-adolescent differences in emotional dysregulation.
+
+Another theory of emotion regulation development was proposed by Sroufe (1995). This theory focuses on normative emotional development in early childhood. It argues that children's self-regulatory abilities increase with age, which drives a transition from external emotion regulation by primary caregivers towards autonomous emotion regulation. This work describes social and cognitive influences. Social influences mainly occur through parents' co-regulation, parenting behaviors, and parent-child attachment. Cognitive influences occur through the development of the central nervous system (CNS), cognition, and self-regulation. This emphasis on neorocognitive development is mirrored in polyvagal theory (Porges, 1995), which closely links emotional experience - and regulation - to autonomous nervous system functioning.
+
+A more recent neorocognitive theory, with greater relevance to adolescents' emotion regulation development, is Crone and Dahl's model of social-affective engagement and goal flexibility (Crone \& Dahl, 2012). This theory is based on the notion of a \enquote{maturity gap} in middle-adolescence, arising from a developmental asymmetry between motivational and inhibitory brain circuits ({\textbf{???}}; Cracco, Goossens, \& Braet, 2017). However, it explicitly sets out to explain adolescents' diverging destinies - the observation that some youngsters flourish while others languish. Crone and Dahl argue that adolescents' cognitive engagement is dynamically responsive to social and motivational goal salience. This flexibility, on the one hand, prepares adolescents to effectively engage cognitive systems in novel challenging situations in a way that facilitates developing mature regulatory abilities. On the other hand, it places them at risk to act impulsively in pursuit of peer approval. This theory focuses primarily on cognitive factors and the role of peers, with little reference to parenting or other factors.
+
+A theory focused specifically on parents' role in emotion regulation development is Morris' tripartite model (2007). It describes three pathways through which parents shape emotion regulation development: Through observation and modeling, parenting practices, and the emotional family climate, which in turn involves attachment and marital relationship quality. Morris and colleagues also emphasize the relevance of fathers and siblings, and others have adapted the tripartite model to describe the role of peers in adolescents' emotion regulation development (Reindl et al., 2016).
+
+Holodynski and Friedlmeier's ({\textbf{???}}) internalization theory applies Vygotsky's theory of development to the domain of emotion. Like Sroufe's work, it captures the transition from interpersonal to intrapersonal emotion regulation. Unique features of this work include, most notably, the integrative view of emotion and emotion regulation, the interplay between emotion and communication, and the role of culture in emotion regulation development.
+
+Aside from theories of emotional development, theories of the phenomenon of emotion regulation are also somewhat relevant. One influential theory is Gross' (2013) process model, which describes the process of emotion regulation, from eliciting cue to ultimate response. Individuals modulate the different stages of this process using strategies, consciously or otherwise. The effectiveness, desireability, and consequences of different strategies depend on the cultural context (see Bariola, Gullone, \& Hughes, 2011). Similar to Gross' theory, the social information processing theory of emotion also describe the role of intrapsychic processes and strategies in emotion experience and reulation (Lemerise \& Arsenio, 2000). Such theories are particularly relevant to a fine-grained understanding of the process of emotion regulation, but their developmental relevance has unfortunately not yet been considered (REF Buss).
+
+Parents are widely considered to be the primary proximal influence driving emotion regulation development.
+
+\hypertarget{shortcomings}{%
+\subsection{Shortcomings}\label{shortcomings}}
+
+Extant theoretical models have several noteable shortcomings. The most notable shortcoming is the lack of explicit attention to the life phase of adolescence. This is unfortunate, as empirical research consistently indicates that adolescence is a crucial life phase for emotion regulation development. As this life phase differs qualitatively from infancy, childhood, and adulthood, it is insufficient to simply extrapolate from theories focused on these ages. Other theories do focus on adolescence specifically, but only address emotion regulation in passing. A second, related, shortcoming is that some relevant theories lack a developmental component, or are based on a near-exclusively cross-sectional body of research (see Buss et al., 2019; Crone \& Dahl, 2012). A third shortcoming is that theories vary widely in scope: On the macro-level, there are theories such as the biopsychosocial models of Bronfenbrenner and Sameroff, which are all-encompassing but non-specific. On the micro-level, there are theories such as Morriss' tripartite model, Crone and Dahl's model, and polyvagal theory, which originated in subdisciplines and describe one facet of the issue in great detail, but have not been placed within a unifying framework (Buss et al., 2019). To conclude, one limitation echoed across many publications in this field is that more theory formation is required to provide a unified framework that could guide future empirical work. A systematic conceptual review of the field could address this shortcoming.
+
+\hypertarget{relevant-factors}{%
+\subsection{Relevant factors}\label{relevant-factors}}
+
+As there are few theories specifically relevant to the field of adolescent emotion regulation development, it is perhaps unsurprising that some literature has proceeded in a somewhat less theoretical manner. Such studies do often focus on specific factors that are considered relevant for emotion regulation development.
+
+These include neurological (Fox 1994;
+Porges et al.~1994; Quirk 2007; Stansbury and Gunnar
+1994), genetic (Goldsmith et al.~1997; Hariri and Forbes
+2007), and temperamental inﬂuences (Calkins 2004)
+A range of social factors have been proposed to be linked to
+ER development, including interactions with parents,
+teachers, and peers, as well as more distal societal inﬂu-
+ences such as culture and the media (Eisenberg and Morris
+2002; Klimes-Dougan et al.~2007; Morris et al.~2007;
+Thompson 1994).
+
+on adolescent emotion regulation development is limited27--29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30.
+
+\hypertarget{the-present-study}{%
+\subsection{The present study}\label{the-present-study}}
+
+The present paper aims to develop a nomological network of the constructs related to adolescent emotion dysregulation by mapping the available literature. A nomological network is a diagrammatic representation of a phenomenon; a proto-theoretical device that describes relationships between constructs relevant to the theory (REF: Cronbach \& Meehl 1955; McKenna, 2006; Alavi 2018). It can be useful as a precursor to a more explicit theory of the phenomenon. The present paper uses an inductive approach to develop this nomological network. First, we conduct a systematic search to elicit a corpus of relevant literature. Second, we extract constructs from the corpus. Third, we use a dictionary to pare down the extracted constructs to meaningful superordinate categories. Fourth, we map interrelations between these constructs. Fifth, we classify contstructs as potential predictors or outcomes, and we categorize predictors by level of analysis (CJ: Sameroff, which level of biopsychosocial).
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+\hypertarget{search-strategy}{%
+\subsection{Search strategy}\label{search-strategy}}
+
+All searches were conducted on Web of Science. The search strategy was based on procedures described by Staaks (Staaks, n.d.). First, we manually constructed a reference set of 15 articles. Then we constructed a search string to retrieve these articles from Web of Science. The search was overly inclusive, returning 29 records. As these were all highly relevant, we updated the reference set to include all 29 results. Next, we tested our search string, which consisted of synonyms of emotion regulation and adolescence:
+
+\begin{verbatim}
+TS=("emotio* regulation" OR "anger regulation" OR "sadness regulation" OR "emotion* competence" OR "emotion* adjustment" OR "emotio* dysregulation" OR "anger dysregulation" OR "sadness dysregulation" OR "emotio* problem*" OR "emotion* maladjustment") AND TS=(adolescent* OR teen* OR pubert* OR youth)
+\end{verbatim}
+
+This string returned 6653 results, and matched 25 of the 29 records in the reference set. Three search terms could be added to match all 29 reference set items. The terms \texttt{"emotio*\ socialization"\ OR\ "emotio*\ processes"}, as synonyms of emotion regulation, added 191 new hits. However, many of these hits were not directly relevant to emotion regulation. The term \texttt{"development*}, as synonym of adolescence, added 3628 new hits, many of which were not focused on the age range of adolescence. We thus deemed these terms to be overly inclusive, and proceeded with the original search string above.
+
+\hypertarget{deduplication}{%
+\subsection{Deduplication}\label{deduplication}}
+
+Duplicates were detected based on exact DOI matches (2 duplicates), and title similarity (54 duplicates). Manual screening in Rayyan resulted in the removal of an additional 13 duplicates.
+
+\hypertarget{screening}{%
+\subsection{Screening}\label{screening}}
+
+\begin{verbatim}
+## [1] "2000-8198" "1540-2002" "2152-0828" "2152-0828" "0021-5368" "0021-9630"
+\end{verbatim}
+
+We manually screened 500 abstracts for suitability in Rayyan. Then, we used ASReview to rank the predicted relevance of all papers based on the manually included and excluded articles. We screened the lowest-ranked articles to find an inflection point below which most articles were irrelevant, and excluded those from analysis.
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-aldaoEmotionregulationStrategiesPsychopathology2010}{}%
+Aldao, A., Nolen-Hoeksema, S., \& Schweizer, S. (2010). Emotion-regulation strategies across psychopathology: A meta-analytic review. \emph{Clinical Psychology Review}, \emph{30}(2), 217--237.
+
+\leavevmode\hypertarget{ref-arnettAdolescentStormStress1999}{}%
+Arnett, J. J. (1999). Adolescent storm and stress, reconsidered. \emph{American Psychologist}, \emph{54}(5), 317--326. \url{https://doi.org/10.1037/0003-066X.54.5.317}
+
+\leavevmode\hypertarget{ref-bariolaChildAdolescentEmotion2011}{}%
+Bariola, E., Gullone, E., \& Hughes, E. K. (2011). Child and adolescent emotion regulation: The role of parental emotion regulation and expression. \emph{Clinical Child and Family Psychology Review}, \emph{14}(2), 198. \url{https://doi.org/10.1007/s10567-011-0092-5}
+
+\leavevmode\hypertarget{ref-braetEmotionRegulationChildren2014}{}%
+Braet, C., Theuwis, L., Durme, K. V., Vandewalle, J., Vandevivere, E., Wante, L., \ldots{} Goossens, L. (2014). Emotion regulation in children with emotional problems. \emph{Cognitive Therapy and Research}, \emph{38}(5), 493--504. \url{https://doi.org/10.1007/s10608-014-9616-x}
+
+\leavevmode\hypertarget{ref-bussTheoriesEmotionalDevelopment2019}{}%
+Buss, K. A., Cole, P. M., \& Zhou, A. M. (2019). Theories of Emotional Development: Where Have We Been and Where Are We Now? In V. LoBue, K. Pérez-Edgar, \& K. A. Buss (Eds.), \emph{Handbook of Emotional Development} (pp. 7--25). Cham: Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-17332-6_2}
+
+\leavevmode\hypertarget{ref-coe-odessEmergentEmotionsAdolescence2019}{}%
+Coe-Odess, S. J., Narr, R. K., \& Allen, J. P. (2019). Emergent Emotions in Adolescence. In V. LoBue, K. Pérez-Edgar, \& K. A. Buss (Eds.), \emph{Handbook of Emotional Development} (pp. 595--625). Cham: Springer International Publishing. \url{https://doi.org/10.1007/978-3-030-17332-6_23}
+
+\leavevmode\hypertarget{ref-craccoEmotionRegulationChildhood2017}{}%
+Cracco, E., Goossens, L., \& Braet, C. (2017). Emotion regulation across childhood and adolescence: Evidence for a maladaptive shift in adolescence. \emph{European Child \& Adolescent Psychiatry}, \emph{26}(8), 909--921. \url{https://doi.org/10.1007/s00787-017-0952-8}
+
+\leavevmode\hypertarget{ref-croneUnderstandingAdolescencePeriod2012}{}%
+Crone, E. A., \& Dahl, R. E. (2012). Understanding adolescence as a period of social--affective engagement and goal flexibility. \emph{Nature Reviews Neuroscience}, \emph{13}(9), 636--650. \url{https://doi.org/10.1038/nrn3313}
+
+\leavevmode\hypertarget{ref-grossHandbookEmotionRegulation2013}{}%
+Gross, J. J. (2013). \emph{Handbook of emotion regulation}. Guilford publications.
+
+\leavevmode\hypertarget{ref-leeAdolescentMentalHealth2014}{}%
+Lee, F. S., Heimer, H., Giedd, J. N., Lein, E. S., Šestan, N., Weinberger, D. R., \& Casey, B. J. (2014). Adolescent mental health---Opportunity and obligation. \emph{Science}, \emph{346}(6209), 547--549. \url{https://doi.org/10.1126/science.1260497}
+
+\leavevmode\hypertarget{ref-lemeriseIntegratedModelEmotion2000}{}%
+Lemerise, E. A., \& Arsenio, W. F. (2000). An Integrated Model of Emotion Processes and Cognition in Social Information Processing. \emph{Child Development}, \emph{71}(1), 107--118. \url{https://doi.org/10.1111/1467-8624.00124}
+
+\leavevmode\hypertarget{ref-morrisRoleFamilyContext2007}{}%
+Morris, A. S., Silk, J. S., Steinberg, L., Myers, S. S., \& Robinson, L. R. (2007). The role of the family context in the development of emotion regulation. \emph{Social Development}, \emph{16}(2), 361--388.
+
+\leavevmode\hypertarget{ref-porgesOrientingDefensiveWorld1995}{}%
+Porges, S. W. (1995). Orienting in a defensive world: Mammalian modifications of our evolutionary heritage. A Polyvagal Theory. \emph{Psychophysiology}, \emph{32}(4), 301--318. \url{https://doi.org/10.1111/j.1469-8986.1995.tb01213.x}
+
+\leavevmode\hypertarget{ref-reindlSocializationEmotionRegulation2016}{}%
+Reindl, M., Gniewosz, B., \& Reinders, H. (2016). Socialization of emotion regulation strategies through friends. \emph{Journal of Adolescence}, \emph{49}, 146--157. \url{https://doi.org/10.1016/j.adolescence.2016.03.008}
+
+\leavevmode\hypertarget{ref-riedigerEmotionRegulationAdolescence2014}{}%
+Riediger, M., \& Klipker, K. (2014). Emotion regulation in adolescence. In \emph{Handbook of emotion regulation} (Vols. 1--Book, Section, pp. 187--202). Guilford Press.
+
+\leavevmode\hypertarget{ref-schaferEmotionRegulationStrategies2017}{}%
+Schäfer, J. Ö., Naumann, E., Holmes, E. A., Tuschen-Caffier, B., \& Samson, A. C. (2017). Emotion Regulation Strategies in Depressive and Anxiety Symptoms in Youth: A Meta-Analytic Review. \emph{Journal of Youth and Adolescence}, \emph{46}(2), 261--276. \url{https://doi.org/10.1007/s10964-016-0585-0}
+
+\leavevmode\hypertarget{ref-sroufeEmotionalDevelopmentOrganization1995}{}%
+Sroufe, L. A. (1995). \emph{Emotional Development: The Organization of Emotional Life in the Early Years}. Cambridge: Cambridge University Press. \url{https://doi.org/10.1017/CBO9780511527661}
+
+\leavevmode\hypertarget{ref-staaksSystematicReviewSearch}{}%
+Staaks, J. (n.d.). Systematic Review Search Support. Retrieved March 23, 2020, from \url{https://osf.io/49t8x/}
+
+\leavevmode\hypertarget{ref-zimmermannEmotionRegulationEarly2014}{}%
+Zimmermann, P., \& Iwanski, A. (2014). Emotion regulation from early adolescence to emerging adulthood and middle adulthood: Age differences, gender differences, and emotion-specific developmental variations. \emph{International Journal of Behavioral Development}, \emph{38}(2), 182--194.
+
+\endgroup
+
+\end{document}
