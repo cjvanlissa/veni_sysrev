@@ -1,4 +1,3 @@
-*.csv
 *.sav
 *.sas7bdat
 *.xlsx
@@ -13,7 +12,6 @@ bunnies.R
 *.zip
 *.html.Rhistory
 .Rprofile
-*.csv
 *.sav
 *.sas7bdat
 *.xlsx
