@@ -1,11 +1,15 @@
 library(data.table)
 library(bibliometrix)
+library(yaml)
 source("word_functions.R")
 exclude_terms <- readLines("exclude_terms.txt")
-dict_synon <- dget("dictionary_synonyms.txt")
+dict_synon <- read_yaml("yaml_dict.txt")
 #recs <- convert2df(bibliometrix::readFiles("savedrecs_full.txt"))
 #saveRDS(recs, "savedrecs.RData")
 recs <- readRDS("recs_6653.RData")
+recs <- readRDS("unique_recs.RData")
+
+hea
 #recs <- unique_recs
 df <- lapply(recs$DE, function(x){strsplit(x, split = "; ")[[1]]})
 df <- data.table(word = tolower(unlist(df)), doc = rep(1:length(df), times = sapply(df, length)))
@@ -14,8 +18,9 @@ df <- data.table(word = tolower(unlist(df)), doc = rep(1:length(df), times = sap
 exclude_these <- unique(unlist(lapply(exclude_terms, grep, x = df$word)))
 
 df <- df[!exclude_these, ]
-
+head(df)
 res_cat <- cat_words(df$word, dict_synon)
+head(res_cat$unmatched)
 # head(sort(table(res_cat$words), decreasing = T), 20)
 # res_cat$dup
 # head(res_cat$unmatched)

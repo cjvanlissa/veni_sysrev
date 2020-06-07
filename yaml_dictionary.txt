@@ -1,0 +1,39 @@
+dysregulation:
+- regulati.+difficult
+- (emoti|affect|anger).+(regulation|proble|adjustm|compete)
+- ^dysregulation$
+- ^emotional.problems$
+neg.emo.:
+- ^psychological distress$
+- ^anger$
+- ^angr.*
+- ^mood$
+- ^irritability$
+- ^feelings$
+- negative.+emotio
+- negative.affect$
+- ^sadness$
+- emotionality
+- ^intensity$
+- affect.+intensity
+- affect.+instab
+- mood.+variab
+shame:
+- sham
+- self.?consciou
+emotion:
+- ^emotions?$
+- ^affect
+- positive affect
+reactivity:
+- ^(emotional|stress)?.?reactivity
+- ^reactivity$
+sex:
+- boys
+- girls
+- ^male$
+- ^female$
+- ^gender$
+- (sex|gender).+difference
+- ^sex$
+- women

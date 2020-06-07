@@ -158,7 +158,24 @@ dict <- list(a = "a", b = "b")
 # tmp <- cat_words(words, dict)
 # cbind(words, tmp$words)
 # words <- df$word[56:(56+10)]
-cat_words <- function(words, dict){
+
+cat_words <- function(x, dict, handle_dups = c("first", "all", "random"), ...){
+  UseMethod("cat_words", x)
+}
+
+cat_words.data.frame <- function(x, dict, handle_dups = c("first", "all", "random"), column = "word", ...){
+  Args <- as.list(match.call()[-1])
+  Args$x <- x[[column]]
+  categorized <- do.call(cat_words, Args)
+  if(is.list(out)){
+    
+  } else {
+    
+    return()
+  }
+}
+
+cat_words.character <- function(x, dict, handle_dups = c("first", "all", "random"), ...){
   rexes <- unlist(dict)
   
   #new_name <- rep(names(dict), times = reps)
@@ -173,25 +190,28 @@ cat_words <- function(words, dict){
   num_matches <- rowSums(matches)
   has_matches <- !num_matches == 0
   which_matches <- which(has_matches)
-  outwords <- words
-  outwords[has_matches] <- names(dict)[apply(matches[which_matches, ], 1, function(lv){min(which(lv))})]
-  #cbind(words, outwords)
+  outwords <- switch(handle_dups[1],
+                     first = apply(matches[which_matches, ], 1, function(lv){names(dict)[min(which(lv))]}),
+                     random = apply(matches[which_matches, ], 1, function(lv){names(dict)[sample(which(lv), 1)]}),
+                     apply(matches[which_matches, ], 1, function(lv){names(dict)[which(lv)]})
+                     )
+  
   out <- list(
     words = outwords
   )
   multimatch <- num_matches > 1
   if(any(multimatch)){
-    warning("Duplicate matches found; see the '$dup' element of the output.", call. = FALSE)
+    message("Duplicate matches found; see the '$dup' element of the output.")
     dups <- unique(words[multimatch])
-    out_dups <- lapply(dups, function(x){
-      tmp <- which(words == x & multimatch)[1]
-      unname(rexes[dict_matches[tmp, ]])
+    out_dups <- lapply(dups, function(this_dup){
+      these_matches <- which(words == this_dup & multimatch)[1]
+      unname(rexes[dict_matches[these_matches, ]])
     })
     names(out_dups) <- dups
     out$dup <- out_dups
   }
   if(any(!has_matches)){
-    warning("Unmatched words found; see the '$unmatched' element of the output.", call. = FALSE)
+    message("Unmatched words found; see the '$unmatched' element of the output.")
     nomatch <- which(!has_matches)
     tab <- table(words[nomatch])
     out$unmatched <- sort(tab, decreasing = TRUE)

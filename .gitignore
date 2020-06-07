@@ -20,3 +20,4 @@ bunnies.R
 *.fff
 *.log
 *.tex
+.Rhistory
