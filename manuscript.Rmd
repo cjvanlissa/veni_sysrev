@@ -4,7 +4,7 @@ shorttitle        : "ADOLESCENT EMOTION DYSREGULATION"
 
 author: 
   - name          : "Caspar J. van Lissa"
-    affiliation   : "1,2"
+    affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
     address       : "Padualaan 14, 3584CH Utrecht, The Netherlands"
     email         : "c.j.vanlissa@uu.nl"
@@ -12,14 +12,12 @@ author:
 affiliation:
   - id            : "1"
     institution   : "Utrecht University faculty of Social and Behavioral Sciences, department of Methodology & Statistics"
-  - id            : "2"
-    institution   : "Open Science Community Utrecht"
 
 authornote: |
-  Caspar van Lissa, Department of Methodology and Statistics, Utrecht
-  University, P.O. Box 80140, 3508 TC, Utrecht, The Netherlands. E-mail:
-  C.vanLissa@uu.nl. This work is supported by a NWO Veni grant (NWO
-  grant number VI.Veni.191G.090).
+  This work is supported by a NWO Veni grant (NWO
+  grant number VI.Veni.191G.090). Acknowledgement: Lukas Beinhauer contributed
+  substantially to the screening of articles.
+  
 
 abstract: |
   Test me
@@ -489,9 +487,7 @@ The present paper aims to develop a nomological network of the constructs
 related to adolescent emotion dysregulation, based on a systematic review of
 the literature. A nomological network is a diagrammatic representation of a
 phenomenon; a proto-theoretical device that describes relationships between
-constructs relevant to the theory [see @alaviAligningTheoryMethodology2018;
-@@cronbachConstructValidityPsychological1955;
-@@mastersonNomologicalNetworkResearch2009]. It is a precursor to a more
+constructs relevant to the theory [see @alaviAligningTheoryMethodology2018]. It is a precursor to a more
 explicit theory of the phenomenon. The present paper uses an inductive approach
 to develop this nomological network. First, we conduct a systematic search to
 elicit a corpus of relevant literature. Second, we use text mining techniques
@@ -597,52 +593,80 @@ screen$drop_these[which(screen$included == 1 | screen$rayyan == "False")] <- TRU
 
 if(!file.exists("recs_final.csv")){
   recs_final <- unique_recs[screen$key[!screen$drop_these], ]
-write.csv(recs_final, "recs_final.csv", row.names = FALSE)
+  write.csv(recs_final, "recs_final.csv", row.names = FALSE)
 } else {
   recs_final <- read.csv("recs_final.csv")
 }
 ```
-Papers were screened based on two main criteria: First, papers had to address emotion regulation, emotional problems, or similar. Second, the target population must overlap (at least in part) with adolescence, defined as the age range from 10-25. Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant. Screening was initially conducted in Rayyan QRCI [@Ouzzani2016]. Papers were sorted using Rayyan's ranking algorithm. To train the algorithm on exclusion criteria, screening focused on abstracts most likely to be excluded. After coding `r sum(screen$rayyan == "True")+sum(screen$rayyan == "False")` papers, screening continued in ASReview - a free, open source alternative to Rayyan QRCI [@van_de_schoot_rens_2020_3828293]. This program uses text mining and active learning to build a customizable machine learning model for article inclusion. We used a naive Bayes model, and focused on exclusion of irrelevant papers. In ASReview, an additional `r sum(table(screen$included, screen$rayyan)[, 1])` papers were screened. Screening again focused on articles most likely to be excluded, and continued until, among the most recently screened 100 papers, only 6 were excluded. The screening procedure is detailed in Figure \@ref(prismachart). In total, `r nrow(recs_final)` papers were retained for analysis.
+Papers were screened based on two main criteria:
+First, papers had to address emotion regulation, emotional problems, or similar.
+Second, the target population must overlap (at least in part) with adolescence, defined as the age range from 10-25.
+Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant.
+Screening was initially conducted in Rayyan QRCI [@Ouzzani2016].
+Papers were sorted using Rayyan's ranking algorithm.
+To train the algorithm on exclusion criteria, screening focused on abstracts most likely to be excluded.
+After coding `r sum(screen$rayyan == "True")+sum(screen$rayyan == "False")` papers, screening continued in ASReview - a free, open source alternative to Rayyan QRCI [@van_de_schoot_rens_2020_3828293].
+This program uses text mining and active learning to build a customizable machine learning model for article inclusion.
+We used a naive Bayes model, and focused on exclusion of irrelevant papers.
+In ASReview, an additional `r sum(table(screen$included, screen$rayyan)[, 1])` papers were screened.
+Screening again focused on articles most likely to be excluded, and continued until, among the most recently screened 100 papers, only 6 were excluded.
+The screening procedure is detailed in Figure \@ref(prismachart).
+In total, `r nrow(recs_final)` papers were retained for analysis.
 
 ```{r prismachart, fig.cap="Record screening flowchart"}
 library(tidySEM)
 
 lo <- matrix(c("start", "dedup", "rayyan", "asreview", "included",
                "", "dedup2", "excluded", "", ""), nrow = 5, ncol = 2)
+
 nodes <- data.frame(
   name = c("start", "dedup", "dedup2", "rayyan", "asreview", "included", "excluded"), 
   label = c(
     paste0("Records identified through\nWeb of Science (n = ", nrow(recs), ")"), 
-    paste0("Records after duplicates removed\n(n = ", nrow(unique_recs), ")"), 
-    paste0("Duplicates removed\n(n = ", nrow(recs)-nrow(screen), ")"), 
+    paste0("After duplicates removed\n(n = ", nrow(unique_recs), ")"), 
+    paste0("Duplicates\n(n = ", nrow(recs)-nrow(screen), ")"), 
     paste0("Articles screened for eligibility\nusing Rayyan (n = ", nrow(screen), ")"), 
     paste0("Articles screened for eligibility\nusing ASReview (n = ", nrow(screen), ")"), 
     paste0("Studies included in\nqualitative synthesis (n = ", nrow(recs_final), ")"),
     paste0("Excluded studies (n = ", nrow(screen)-nrow(recs_final), ")"))
 )
+
 edges <- data.frame(
   from = c("start", "dedup", "rayyan", "asreview",
-           "dedup", "rayyan", "rayyan", "asreview"),
+           "start", "rayyan", "rayyan", "asreview"),
   to = c("dedup", "rayyan", "asreview", "included",
          "dedup2", "dedup2", "excluded", "excluded"),
-  label = c("",   "", sum(screen$rayyan == "True"), "",
+  label = c("",   "", paste0("n = ", sum(screen$rayyan == "True")), paste0("n = ", sum(screen$included == 0, na.rm = TRUE)-sum(screen$rayyan == "True")),
             paste0("n = ", sum(dups)), 
             paste0("n = ", rayyan_dups),
             paste0("n = ", sum(screen$rayyan == "False")),
             paste0("n = ", sum(screen$included == 1, na.rm = TRUE)-sum(screen$rayyan == "False"))
   )
 )
+
 p <- graph_sem(layout = lo, nodes = nodes, edges = edges, angle = 1, rect_height = 1.2, rect_width = 1.3)
 ggsave("prismachart.png", p, device = "png")
 ggsave("prismachart.svg", p, device = "svg")
-knitr::include_graphics("prismachart.svg")
+knitr::include_graphics("prismachart.png")
 ```
+
+## Corpus description
+
+
+```{r, eval = FALSE}
+# Plot papers per year
+df_plot <- as.data.frame(table(recs_final$PY), stringsAsFactors = FALSE)
+df_plot$Year = as.numeric(df_plot$Var1)
+ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
+  theme_bw() + scale_y_log10()
+```
+
 
 # Analysis 1: Keyword mapping
 
-For this first analysis, we relied on author-provided keywords.
+The corpus for this first analysis consisted of the author-provided keywords for the selected articles.
 We extracted keywords by document, and used a dictionary approach
-to classify closely related terms.
+to classify related terms.
 The dictionary was created specifically for this study.
 The lead author composed a first draft of the dictionary based on prior knowledge of the field.
 This draft was subsequently updated in two ways:
@@ -650,8 +674,17 @@ First, while writing the introduction for this paper, key terms from the theoret
 Second, by including commonly occurring uncategorized words during preliminary analyses of the data.
 An exclusion list of methodological terms and other non-substantive words was generated using the same procedure.
 
+## Structural topic modeling
 
-
+```{r}
+if(run_everything) source("LDA_analysis.R")
+```
+To assess the homogeneity of the corpus, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003]. 
+A range of 2-20 topics was considered.
+Fit was evaluated based on the BIC, and interpretability was evaluated on the entropy of the posterior probabilities of documents to be assigned to the different topics.
+The BICs followed a near-perfect linearly increasing trend, indicating that no subcorpora could be identified.
+Congruently, all entropies were near-zero, which means that the posterior probabilities of documents to be assigned to the different topics were uniformly distributed.
+Thus, no interpretable subcorpora could be identified, and we proceed with an analysis of the whole sample. <!-- Probably because each set of keywords has only a few indicators. -->
 
 # Analysis 2: Abstract text mining
 
@@ -695,3 +728,6 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
+

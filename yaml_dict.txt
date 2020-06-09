@@ -1,9 +1,9 @@
 dysregulation:
 - regulati.+difficult
-- (emoti|affect|anger).+(regulation|proble|adjustm|compete)
+- (emoti|affect|anger|mood).+(regulat|proble|adjustm|compete)
 - ^dysregulation$
 - ^emotional.problems$
-neg.emo.:
+negative_emotionality:
 - ^psychological distress$
 - ^anger$
 - ^angr.*
@@ -23,16 +23,16 @@ shame:
 - self.?consciou
 emotion:
 - ^emotions?$
-- ^affect
+- ^affect$
 - positive affect
 reactivity:
 - ^(emotional|stress)?.?reactivity
 - ^reactivity$
 sex:
-- boys
-- girls
-- ^male$
-- ^female$
+- boys?
+- girls?
+- ^males?$
+- ^females?$
 - ^gender$
 - (sex|gender).+difference
 - ^sex$
@@ -62,12 +62,13 @@ life-event:
 - ^life event$
 - childhood experiences$
 - adverse experience
-sexual-orientation:
+sexual-diversity:
 - bisexual
 - gay
 - same.sex
 - sex.+orient
 - gender.dysph
+- hormone.+therapy
 adjustment:
 - ^adjustment$
 - ^(psychological|social|school|psychosocial).adjustment$
@@ -81,7 +82,7 @@ personality:
 - 5.(factor|personali)
 - big.5
 attachment:
-- attachment
+- (?<!cultural )attachment
 - ^security$
 self-esteem: ^self.esteem$
 bisbas:
@@ -108,10 +109,10 @@ suicide:
 - suicide
 substance:
 - binge drinking
-- ^addiction$
-- dependence
-- ^use$
-- drug.(ab)?use
+- \baddiction\b
+- \bdependence\b
+- ^(ab)?use$
+- (drug|subst|alc).+(ab)?use
 - subst.+use
 - alcohol
 - cannabis
@@ -132,7 +133,7 @@ anxiety:
 - ^panic
 - ^behaviou?ral.inhibition$
 - phobia
-fear: fear
+fear: fear(?!ful attachment)
 adhd_cd:
 - hyperactiv
 - ^callous.unemotional traits$
@@ -159,8 +160,8 @@ stress:
 - extreme stress
 - life.stress
 mental_health:
-- psych.+symptom
-- comorbid.+(?!anxiety)
+- psych.+(symptom|problem)
+- comorbid
 - ^mental.disorder.+?$
 - ^disorder.*$
 - mental.health
@@ -181,7 +182,8 @@ schizo: schizo
 therapy:
 - ^inpatient$
 - ^in.patient$
-- therapy
+- (?<!hormone )\btherapy
+- psychotherapy
 autism:
 - ^asd$
 - ^asperger.syndrome$
@@ -190,7 +192,8 @@ autism:
 - ^high.functioning children$
 - spectrum disorders
 schizophrenia: ^schizophrenia$
-eating.disorders:
+eating_disorders:
+- \beat
 - nervosa
 - ^body.mass index$
 - ^weight
@@ -199,7 +202,7 @@ eating.disorders:
 - ^eating$
 - ^body dissatisfaction$
 - ^body.image
-- emotion.+eat
+- emotion.+\beat
 hope: \bhope
 strategies:
 - exper.+avoidance
@@ -213,8 +216,10 @@ rumination:
 mindfulness:
 - ^acceptance$
 - mindfulness
-cognition: cognition
-cognitive-control: cognitive.+(contr|inh|regu|coping|function)
+- self.compassion
+cognitive:
+- cognitive.+(contr|inh|regu|coping|function)
+- \bcognition
 working-memory: working.+mem
 appraisal: apprais
 suppression: (^|expressive|thought|voluntary).?suppression$
@@ -255,8 +260,8 @@ parents:
 - ^famil(y|ies)$
 - intergenerational transmission
 mothers:
-- mothe
-- materna
+- \bmothe
+- \bmaterna
 fathers:
 - fathe
 - paterna
@@ -287,7 +292,6 @@ divorce:
 foster:
 - foster
 - adoption
-conflict: ^conflict$
 abuse:
 - ^abuse$
 - maltreat
@@ -297,7 +301,7 @@ abuse:
 discrimination:
 - discrimination
 - racism
-ethnicity:
+minority_status:
 - ^ethnic
 - (ethnic|bicultur).+identity
 - racial identity
@@ -307,8 +311,11 @@ ethnicity:
 - racial
 - acculturati
 - cultural.adaptation
+- cultur
 - minority
 - (an|in).american
+- black
+- latino
 urban: ^urban
 neighborhood: neighbo
 environment:
@@ -319,7 +326,7 @@ environment:
 display-rules: display.+rul
 loneliness:
 - lonel
-- isol
+- \bisol
 - social withdrawal
 polyvagal:
 - ^heart.rate.variability$
@@ -332,7 +339,7 @@ polyvagal:
 - pitui.+adre
 - vag(al|us)
 - hrv
-- ^rsa
+- \brsa\b
 - neuroendocrine stress reactivity
 internalizing: internalizing
 externalizing:
@@ -362,13 +369,14 @@ school:
 - ^schools?$
 par.stress: (matern|parent).+stress
 sleep:
-- sleep
-- somn
+- \bsleep
+- \bsomn
+- \bpsqi\b
 alexithymia: ^alexithymia$
 life-events: life event
 sports:
 - physical.+(fitness|activity)
-- sport
+- \bsport
 SES:
 - socio.?economic
 - economic
@@ -380,12 +388,12 @@ SES:
 - ^social.inequality$
 - economic.+stress
 romantic: romantic
-culture: cultur
 resilience:
 - ^differential susceptibility$
 - ^resilienc[ey]$
+- distress tolerance
 identity:
-- ^identity$
+- \bidentity\b
 - ^identity distress$
 - identity (develop|formation)
 - emerging.+self
@@ -396,8 +404,8 @@ autonomy:
 - self.?(determination|efficacy)
 - autonomy
 device-use:
+- \bgames?\b
 - phone
-- video game addiction
 - technology use
 - media\b
 - internet
@@ -415,6 +423,7 @@ sexual-risk:
 reward: reward
 academic: ^academic
 health:
+- asthma
 - ^health$
 - ^chronic illness$
 - ^pain$
@@ -422,7 +431,7 @@ health:
 - ^illness$
 - diabetes
 - cancer
-- disease
+- (?<!sexually transmitted |hiv )disease
 - physical.+(illness|disorder)
 - epilep
 - health.related
@@ -444,7 +453,7 @@ nervous-system:
 - central.nervous.system
 - ^cns$
 - autonomic
-- nervous.system
+- (?<!parasympathetic )nervous.system
 neural:
 - ^neural\b.+$
 - ^neuroscience.+$
@@ -452,12 +461,11 @@ neural:
 - diffusion.tensor.imag
 - brain
 - hippocamp
-- cortex
-- cort.[cx]
+- cort.(ca|x)
 - cingulate
 - amygdala
 - gyrus
-- thalam
+- \bthalam
 - limbic
 - (gr[ea]y|white).+matter
 - synap
@@ -467,8 +475,9 @@ neural:
 - functional.connectivit
 endocrine:
 - cortisol
+- corticoster
 - adrenocor
-- cortico
+- glucocortico
 - gonad
 - hormon
 neurotransmitter:
@@ -480,6 +489,7 @@ genes:
 - gene.+envi
 moral: moral
 empathy:
+- mehtali.ing
 - empath
 - perspective.+taking
 - sympathy
@@ -490,4 +500,6 @@ empathy:
 - ^sympathy$
 - ^empathic concern$
 - ^perspective taking$
+- (emotio|affect).+?recognition
 prosocial-behavior: pro.{0,2}social.{0,2}behav
+music: music

@@ -177,23 +177,26 @@ cat_words.data.frame <- function(x, dict, handle_dups = c("first", "all", "rando
 
 cat_words.character <- function(x, dict, handle_dups = c("first", "all", "random"), ...){
   rexes <- unlist(dict)
-  
+  words <- x
   #new_name <- rep(names(dict), times = reps)
   dict_matches <- sapply(rexes, function(this_reg){
     grepl(this_reg, words, perl = TRUE)})
+  if(is.null(dim(dict_matches))) dict_matches <- t(dict_matches)
   matches <- matrix(FALSE, nrow = length(words), ncol = length(dict))
   reps <- c(0, sapply(dict, length))
-  for(this_word in 1:length(dict)){
-    sum_cols <- (sum(reps[1:this_word])+1):sum(reps[1:(this_word+1)])
-    matches[, this_word] <- apply(dict_matches[, sum_cols, drop = FALSE], 1, any)
+  for(dict_item in 1:length(dict)){
+    sum_cols <- (sum(reps[1:dict_item])+1):sum(reps[1:(dict_item+1)])
+    matches[, dict_item] <- apply(dict_matches[, sum_cols, drop = FALSE], 1, any)
   }
+  
   num_matches <- rowSums(matches)
   has_matches <- !num_matches == 0
   which_matches <- which(has_matches)
-  outwords <- switch(handle_dups[1],
-                     first = apply(matches[which_matches, ], 1, function(lv){names(dict)[min(which(lv))]}),
-                     random = apply(matches[which_matches, ], 1, function(lv){names(dict)[sample(which(lv), 1)]}),
-                     apply(matches[which_matches, ], 1, function(lv){names(dict)[which(lv)]})
+  outwords <- words
+  outwords[has_matches] <- switch(handle_dups[1],
+                                  first = apply(matches[which_matches, ], 1, function(lv){names(dict)[min(which(lv))]}),
+                                  random = apply(matches[which_matches, ], 1, function(lv){names(dict)[sample(which(lv), 1)]}),
+                                  apply(matches[which_matches, ], 1, function(lv){names(dict)[which(lv)]})
                      )
   
   out <- list(
@@ -218,4 +221,17 @@ cat_words.character <- function(x, dict, handle_dups = c("first", "all", "random
   }
   class(out) <- c("word_matches", class(out))
   out
+}
+
+# x <- list(v1 = letters[1:3],
+#           v2 = LETTERS[1:3],
+#           v3 = list(c("a", "A"), c("b"), c("c", "C")),
+#           v4 = list(c("a"), c("b", "1"), c("c", "1")))
+merge_df <- function(df, words, col_name = "word_coded", ...){
+  if(!is.data.table(df)) df <- data.table(df)
+  if(!nrow(df) == length(words)) stop("Length of 'df' must be identical to that of 'words'.")
+  reps <- sapply(words, length)
+  out <- df[rep(1:nrow(df), times = reps), ]
+  out[, (col_name) := unlist(words)]
+  return(out)
 }
