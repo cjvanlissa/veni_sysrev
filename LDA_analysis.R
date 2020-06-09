@@ -20,16 +20,15 @@ entropy <- function(post_prob){
 
 # Preprocessing -----------------------------------------------------------
 
-nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word_coded)]
-df_lda <- nounbydoc[nounbydoc$term %in% names(dict), ]
+#nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word_coded)]
+df_lda <- nounbydoc #[nounbydoc$term %in% names(dict), ]
 df_lda <- df_lda %>%
   bind_tf_idf(term, doc_id, freq)
-summary(df_lda$idf)
-df_lda[order(df_lda$idf),]
+summary(df_lda$tf_idf)
+df_lda <- df_lda[order(df_lda$tf_idf),]
 
 select_words <- df_lda[!duplicated(df_lda$term), ]
-select_words <- select_words$term[select_words$idf >= median(select_words$idf)]
-select_words <- names(dict)
+select_words <- select_words$term[select_words$tf_idf >= median(select_words$tf_idf)]
 df_lda <- df_lda[df_lda$term %in% select_words, ]
 
 dtm <- udpipe::document_term_matrix(document_term_frequencies(df_lda))
@@ -40,9 +39,7 @@ dtm <- udpipe::document_term_matrix(document_term_frequencies(df_lda))
 # term_tfidf <- tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) * log2(dim(dtm)[1]/col_sums(dtm > 0))
 # summary(term_tfidf)
 
-
-summary(col_sums(dtm))
-dim(dtm)
+yaml::write_yaml(dim(dtm), file = "Study1_lda_dims.txt")
 
 # Build topic models
 
@@ -63,7 +60,6 @@ res_lda <- lapply(seqk, function(k) {
     )
   )
 })
-
 
 ll <- sapply(res_lda, function(x){harmonicMean(x@logLiks[-c(1:(burnin/keep))])})
 

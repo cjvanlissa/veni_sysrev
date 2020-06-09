@@ -664,27 +664,56 @@ ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
 
 # Analysis 1: Keyword mapping
 
+```{r}
+source("study1.R")
+if(run_everything | !file.exists("Study1_lda_dims.txt")) source("LDA_analysis.R")
+lda_dims <- read_yaml("Study1_lda_dims.txt")
+```
 The corpus for this first analysis consisted of the author-provided keywords for the selected articles.
-We extracted keywords by document, and used a dictionary approach
+We extracted keywords by document, and used a dictionary,
+created specifically for this study,
 to classify related terms.
-The dictionary was created specifically for this study.
+The dictionary describes `r length(dict)` terms using `r length(unlist(dict))`
+regular expression queries.
 The lead author composed a first draft of the dictionary based on prior knowledge of the field.
 This draft was subsequently updated in two ways:
 First, while writing the introduction for this paper, key terms from the theoretical and empirical literature were added to the dictionary.
 Second, by including commonly occurring uncategorized words during preliminary analyses of the data.
 An exclusion list of methodological terms and other non-substantive words was generated using the same procedure.
+After applying the dictionary and exclusion filter,
+and removing records with no (remaining) keywords,
+the resulting corpus consisted of `r number_docs_words["docs"]` documents with `r number_docs_words["words"]` unique words.
+As term-document frequency is irrelevant in the context of keywords (i.e., keywords should not occur twice within the same document, except when two synonyms have been recoded using the dictionary),
+the term-document matrix was dichotomized.
 
 ## Structural topic modeling
 
-```{r}
-if(run_everything) source("LDA_analysis.R")
-```
-To assess the homogeneity of the corpus, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003]. 
-A range of 2-20 topics was considered.
-Fit was evaluated based on the BIC, and interpretability was evaluated on the entropy of the posterior probabilities of documents to be assigned to the different topics.
+To assess the homogeneity of the corpus, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
+For this analysis, we used the term frequency/inverse document frequency (TF-IDF) to select terms
+not used frequently in the corpus,
+which could therefore be more diagnostic of subgroup membership.
+Selection terms with an TF-IDF greater than the median resulted in a corpus of `r lda_dims[1]` documents and `r lda_dims[2]` terms.
+We considered a range from 2-20 topics, evaluating fit based on the BIC, and interpretability based on the entropy of the posterior document/topic probabilities.
 The BICs followed a near-perfect linearly increasing trend, indicating that no subcorpora could be identified.
-Congruently, all entropies were near-zero, which means that the posterior probabilities of documents to be assigned to the different topics were uniformly distributed.
-Thus, no interpretable subcorpora could be identified, and we proceed with an analysis of the whole sample. <!-- Probably because each set of keywords has only a few indicators. -->
+Congruently, all entropies were near-zero, which means that the posterior document/topic probabilities were effectively uniformly distributed.
+Thus, no interpretable subcorpora could be identified,
+and we proceed with an analysis of the whole sample. <!-- Probably because each set of keywords has only a few indicators. -->
+
+## Mapping the literature
+
+To map the cooccurrence of terms within documents,
+it is pertinent to select the most common terms, instead of using IDF.
+As a cutoff, we required terms to occur in at least $0.5%$ of documents.
+This selection criterion resulted in a corpus of `r dim(dtm_top)[1]` documents and `r dim(dtm_top)[2]` terms.
+The marginal occurrence of the selected terms is displayed in Figure \@ref(study1wordcloud).
+To determine the frequency with which terms were addressed in documents,
+we constructed a term-document matrix
+
+```{r study1wordcloud, fig.cap="Wordcloud of terms selected for Study 1 co-occurrence analysis. More common words are centered and printed in larger font."}
+knitr::include_graphics("study1_wordcloud.png")
+```
+
+
 
 # Analysis 2: Abstract text mining
 

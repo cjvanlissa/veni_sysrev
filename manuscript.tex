@@ -449,20 +449,42 @@ Manual screening in Rayyan resulted in the removal of an additional 13 duplicate
 \hypertarget{screening}{%
 \subsection{Screening}\label{screening}}
 
-Papers were screened based on two main criteria: First, papers had to address emotion regulation, emotional problems, or similar. Second, the target population must overlap (at least in part) with adolescence, defined as the age range from 10-25. Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant. Screening was initially conducted in Rayyan QRCI ({\textbf{???}}). Papers were sorted using Rayyan's ranking algorithm. To train the algorithm on exclusion criteria, screening focused on abstracts most likely to be excluded. After coding 559 papers, screening continued in ASReview - a free, open source alternative to Rayyan QRCI ({\textbf{???}}). This program uses text mining and active learning to build a customizable machine learning model for article inclusion. We used a naive Bayes model, and focused on exclusion of irrelevant papers. In ASReview, an additional 541 papers were screened. Screening again focused on articles most likely to be excluded, and continued until, among the most recently screened 100 papers, only 6 were excluded. The screening procedure is detailed in Figure \ref{prismachart}. In total, 6305 papers were retained for analysis.
+Papers were screened based on two main criteria:
+First, papers had to address emotion regulation, emotional problems, or similar.
+Second, the target population must overlap (at least in part) with adolescence, defined as the age range from 10-25.
+Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant.
+Screening was initially conducted in Rayyan QRCI (Ouzzani, Hammady, Fedorowicz, \& Elmagarmid, 2016).
+Papers were sorted using Rayyan's ranking algorithm.
+To train the algorithm on exclusion criteria, screening focused on abstracts most likely to be excluded.
+After coding 559 papers, screening continued in ASReview - a free, open source alternative to Rayyan QRCI (Van de Schoot et al., 2020).
+This program uses text mining and active learning to build a customizable machine learning model for article inclusion.
+We used a naive Bayes model, and focused on exclusion of irrelevant papers.
+In ASReview, an additional 541 papers were screened.
+Screening again focused on articles most likely to be excluded, and continued until, among the most recently screened 100 papers, only 6 were excluded.
+The screening procedure is detailed in Figure \ref{prismachart}.
+In total, 6305 papers were retained for analysis.
 
 \begin{figure}
-\centering
-\includegraphics{manuscript_files/figure-latex/prismachart-1.pdf}
-\caption{\label{fig:prismachart}Record screening flowchart}
+\includegraphics[width=6.5in]{prismachart} \caption{Record screening flowchart}\label{fig:prismachart}
 \end{figure}
 
 \hypertarget{analysis-1-keyword-mapping}{%
 \section{Analysis 1: Keyword mapping}\label{analysis-1-keyword-mapping}}
 
-For this first analysis, we relied on author-provided keywords.
+The corpus for this first analysis consisted of the author-provided keywords for the selected articles.
 We extracted keywords by document, and used a dictionary approach
-to classify closely related terms.
+to classify related terms.
+The dictionary was created specifically for this study.
+The lead author composed a first draft of the dictionary based on prior knowledge of the field.
+This draft was subsequently updated in two ways:
+First, while writing the introduction for this paper, key terms from the theoretical and empirical literature were added to the dictionary.
+Second, by including commonly occurring uncategorized words during preliminary analyses of the data.
+An exclusion list of methodological terms and other non-substantive words was generated using the same procedure.
+
+\hypertarget{structural-topic-modeling}{%
+\subsection{Structural topic modeling}\label{structural-topic-modeling}}
+
+To determine whether the corpus could
 
 \hypertarget{analysis-2-abstract-text-mining}{%
 \section{Analysis 2: Abstract text mining}\label{analysis-2-abstract-text-mining}}
@@ -555,6 +577,9 @@ Martin, F., \& Johnson, M. (2015). More Efficient Topic Modelling Through a Noun
 \leavevmode\hypertarget{ref-morrisRoleFamilyContext2007}{}%
 Morris, A. S., Silk, J. S., Steinberg, L., Myers, S. S., \& Robinson, L. R. (2007). The role of the family context in the development of emotion regulation. \emph{Social Development}, \emph{16}(2), 361--388.
 
+\leavevmode\hypertarget{ref-Ouzzani2016}{}%
+Ouzzani, M., Hammady, H., Fedorowicz, Z., \& Elmagarmid, A. (2016). Rayyana web and mobile app for systematic reviews. \emph{Systematic Reviews}, \emph{5}(1), 210. \url{https://doi.org/10.1186/s13643-016-0384-4}
+
 \leavevmode\hypertarget{ref-porgesOrientingDefensiveWorld1995}{}%
 Porges, S. W. (1995). Orienting in a defensive world: Mammalian modifications of our evolutionary heritage. A Polyvagal Theory. \emph{Psychophysiology}, \emph{32}(4), 301--318. \url{https://doi.org/10.1111/j.1469-8986.1995.tb01213.x}
 
@@ -581,6 +606,9 @@ Staaks, J. (n.d.). Systematic Review Search Support. https://osf.io/49t8x/.
 
 \leavevmode\hypertarget{ref-steinbergAgeOpportunityLessons2014}{}%
 Steinberg, L. (2014). \emph{Age of Opportunity: Lessons from the New Science of Adolescence}. Houghton Mifflin Harcourt.
+
+\leavevmode\hypertarget{ref-van_de_schoot_rens_2020_3828293}{}%
+Van de Schoot, R., De Bruin, J., Schram, R., Zahedi, P., De Boer, J., Weijdema, F., \ldots{} Oberski, D. (2020). ASReview: Active learning for systematic reviews (Version v0.9.5). Zenodo.
 
 \leavevmode\hypertarget{ref-vanlissaLongitudinalInterplayAffective2014}{}%
 Van Lissa, C. J., Hawk, S. T., de Wied, M., Koot, H. M., van Lier, P., \& Meeus, W. (2014). The longitudinal interplay of affective and cognitive empathy within and between adolescents and mothers. \emph{Developmental Psychology}, \emph{50}(4), 1219--1225. \url{https://doi.org/10.1037/a0035050}
