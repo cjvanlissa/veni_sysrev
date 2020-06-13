@@ -1,41 +1,72 @@
-"name","category","why"
-"dysregulation","Indicator","Core construct"
-"mental_health","Outcome","Aldao"
-"depression","Outcome","Aldao"
-"externalizing","Outcome",""
-"anxiety","Outcome","Aldao"
-"adhd_cd","Cause","Developmental disorder"
-"neural","Cause","Crone"
-"substance","Cause",""
-"strategies","Protective",""
-"parenting","Cause",""
-"attachment","Cause",""
-"health","Cause","Probably bidirectional"
-"self-harm","Outcome",""
-"bullying","Cause","Outside of child's control"
-"emotion","Indicator",""
-"stress","Cause","Probably bidirectional"
-"minority_status","Cause","Outside of child's control"
-"eating_disorders","Outcome",""
-"ptsd","Cause","Outside of child's control"
-"wellbeing","Outcome",""
-"sex","Cause","Cannot be anything else"
-"autism","Cause","Developmental disorder"
-"abuse","Cause","Outside of child's control"
-"therapy","Outcome",""
-"adjustment","Outcome",""
-"negative_emotionality","Indicator",""
-"internalizing","Outcome",""
-"mindfulness","Protective",""
-"self-regulation","Protective",""
-"empathy","Cause",""
-"mothers","Cause",""
-"suicide","Outcome",""
-"cognitive","Protective",""
-"personality","Cause",""
-"resilience","Protective",""
-"device-use","Cause",""
-"polyvagal","Cause",""
-"rumination","Cause",""
-"appraisal","Protective",""
-"suppression","Cause",""
+name,category,why
+dysregulation,Indicator,Core construct
+mental_health,Outcome,Aldao
+depression,Outcome,Aldao
+externalizing,Outcome,
+anxiety,Outcome,Aldao
+adhd_cd,Cause,Developmental disorder
+neural,Cause,Crone
+substance,Cause,
+strategies,Protective,
+parenting,Cause,
+attachment,Cause,
+health,Cause,Probably bidirectional
+self-harm,Outcome,
+bullying,Cause,Outside of child's control
+emotion,Indicator,
+stress,Cause,Probably bidirectional
+minority_status,Cause,Outside of child's control
+eating_disorders,Outcome,
+ptsd,Cause,Outside of child's control
+wellbeing,Outcome,
+sex,Cause,Cannot be anything else
+autism,Cause,Developmental disorder
+abuse,Cause,Outside of child's control
+therapy,Outcome,
+adjustment,Outcome,
+negative_emotionality,Indicator,
+internalizing,Outcome,
+mindfulness,Protective,
+self-regulation,Protective,
+empathy,Outcome,Eisenberg
+mothers,Cause,
+suicide,Outcome,
+cognitive,Protective,
+personality,Cause,
+resilience,Protective,
+device-use,Cause,
+polyvagal,Cause,
+rumination,Cause,
+appraisal,Protective,
+suppression,Cause,
+parents,Cause,
+social skills,Outcome,
+sleep,Cause,
+disabled,Cause,
+identity,Cause,
+academic,Outcome,
+SES,Cause,
+peers,Cause,
+school,Cause,
+obesity,Outcome,
+endocrine,Cause,
+self-esteem,Outcome,
+risk-factors,Cause,
+social-support,Protective,
+family-functioning,Cause,
+autonomy,Cause,
+foster,Cause,
+genes,Cause,
+delinquency,Outcome,
+friend,Protective,
+sexual-risk,Outcome,
+risk-taking,Outcome,
+alexithymia,Cause,
+age,Cause,
+par-conflict,Cause,
+loneliness,Outcome,
+violence,Cause,
+life-events,Cause,
+nervous-system,Cause,
+fathers,Cause,
+sports,Protective,

@@ -8,53 +8,55 @@ library(udpipe)
 library(igraph)
 library(wordcloud)
 library(Matrix)
+library(ggplot2)
+library(yaml)
 source("word_functions.R")
+run_everything = FALSE
+study1_details <- read_yaml("study1_details.yml")
 ## Look at POS tags?
+if(run_everything){
+  recs <- data.table(read.csv("recs_final.csv"))
+  recs[, "doc" := 1:nrow(recs)]
+  study1details <- list(dim_recs = dim(recs))
+  
+  # Extract individual words
+  df <- lapply(recs$DE, function(x){strsplit(x, split = "; ")[[1]]})
+  df <- merge_df(recs, df, "word")
+  
+  df[, word := tolower(word)]
+  
+  # Clean
+  df <- na.omit(df, cols = "word")
+  number_docs_words <- c(docs = length(unique(df$doc)), words = length(unique(df$word)))
+  
+  # Exclude words
+  exclude_terms <- readLines("exclude_terms.txt")
+  exclude_these <- unique(unlist(lapply(exclude_terms, grep, x = df$word)))
+  
+  df <- df[!exclude_these, ]
+  
+  # Categorize words
+  dict <- read_yaml("yaml_dict.txt")
+  res_cat <- cat_words(df$word, dict, handle_dups = "all")
+  # Check coding issues
+  #res_cat$dup
+  #head(res_cat$unmatched)
+  df <- merge_df(df, res_cat$words, "word_coded")
+  saveRDS(df, "study1_df.RData")
+} else {
+  df <- readRDS("study1_df.RData")
+}
 
-recs <- data.table(read.csv("recs_final.csv"))
-recs[, "doc" := 1:nrow(recs)]
-
-# Try quanteda
-#library(quanteda)
-#corp <- corpus(recs, text_field = "DE")  # build a new corpus from the texts
-# Try kwic
-#kwic(corp, pattern = "drug")
-
-# Extract individual words
-df <- lapply(recs$DE, function(x){strsplit(x, split = "; ")[[1]]})
-df <- merge_df(recs, df, "word")
-
-df[, word := tolower(word)]
-
-# Clean
-df <- na.omit(df, cols = "word")
-number_docs_words <- c(docs = length(unique(df$doc)), words = length(unique(df$word)))
-
-# Exclude words
-exclude_terms <- readLines("exclude_terms.txt")
-exclude_these <- unique(unlist(lapply(exclude_terms, grep, x = df$word)))
-
-df <- df[!exclude_these, ]
-
-# Categorize words
-dict <- read_yaml("yaml_dict.txt")
-res_cat <- cat_words(df$word, dict, handle_dups = "all")
-# Check coding issues
-#res_cat$dup
-#head(res_cat$unmatched)
-df <- merge_df(df, res_cat$words, "word_coded")
-length(unique(df$word))
-length(unique(df$doc))
 # Create plot data --------------------------------------------------------
-nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word)]
-nounbydoc$freq <- 1
-dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
-tt <- as.data.frame(table(col_sums(dtm)), stringsAsFactors = FALSE)
-tt$Frequency <- as.numeric(tt$Var1)
-tt$Words <- tt$Freq
-tt$Dictionary <- "Original"
-df_plot <- tt[, c("Frequency", "Words", "Dictionary")]
-rm(nounbydoc, dtm, tt)
+# nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word)]
+# nounbydoc$freq <- 1
+# dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
+# tt <- as.data.frame(table(colSums(dtm)), stringsAsFactors = FALSE)
+# tt$Frequency <- as.numeric(tt$Var1)
+# tt$Words <- tt$Freq
+# tt$Dictionary <- "Original"
+# df_plot <- tt[, c("Frequency", "Words", "Dictionary")]
+# rm(nounbydoc, dtm, tt)
 # End plot data -----------------------------------------------------------
 
 
@@ -73,45 +75,56 @@ nounbydoc$freq <- 1
 # summary(tmp$tf_idf)
 
 dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
-topterms <- col_sums(dtm)
-topterms <- sort(topterms, decreasing = TRUE)
+# topterms <- colSums(dtm)
+# topterms <- sort(topterms, decreasing = TRUE)
 
 
 # Continue plotting word frequency ----------------------------------------
 
-tt <- as.data.frame(table(topterms), stringsAsFactors = FALSE)
-tt$Frequency <- as.numeric(tt$topterms)
-tt$Words <- tt$Freq
-tt$Dictionary <- "Recoded"
-df_plot <- rbind(df_plot, tt[, c("Frequency", "Words", "Dictionary")])
-p <- ggplot(df_plot, aes(x=Frequency, y = Words, linetype = Dictionary))+geom_point() + geom_path()+
-         theme_bw() + scale_y_log10()+scale_x_log10()
-
-ggsave("study1_word_frequency.png", p, device = "png")
+# tt <- as.data.frame(table(topterms), stringsAsFactors = FALSE)
+# tt$Frequency <- as.numeric(tt$topterms)
+# tt$Words <- tt$Freq
+# tt$Dictionary <- "Recoded"
+# df_plot <- rbind(df_plot, tt[, c("Frequency", "Words", "Dictionary")])
+# p <- ggplot(df_plot, aes(x=Frequency, y = Words, linetype = Dictionary))+geom_point() + geom_path()+
+#          theme_bw() + scale_y_log10()+scale_x_log10()
+# 
+# ggsave("study1_word_frequency.png", p, device = "png")
 
 
 # Select most common terms ------------------------------------------------
 
-topterms <- topterms[topterms > .005*nrow(recs)]
+# tmp <- as.data.frame.table(table(topterms), stringsAsFactors = FALSE)
+# tmp$Var1 <- as.numeric(tmp$topterms)
+# plot(tmp$Var1, tmp$Freq, type = "b")
 
-which_topterms <- head(topterms, 250)
-which_topterms <- names(which_topterms)
-dtm_top <- dtm[, which_topterms]
-dtm_top <- dtm_top[row_sums(dtm_top) > 0, ]
+#interesting_terms <- select_words(dtm, q = .975)
+#sum(interesting_terms)
+
+#topterms <- topterms[topterms > .005*nrow(recs)]
+#topterms <- colSums(dtm)[select_words(dtm)]
+#topterms <- sort(topterms, decreasing = TRUE)
+#topterms <- topterms[topterms > 13]
+#which_topterms <- head(topterms, 250)
+#which_topterms <- names(which_topterms)
+set.seed(5348)
+dtm_top <- dtm[, select_words(dtm, .975)]
+dtm_top <- dtm_top[rowSums(dtm_top) > 0, ]
 dim(dtm_top)
 
 # Wordcloud ---------------------------------------------------------------
 
 ## Word frequencies
-
+topterms <- colSums(dtm_top)
 word_freq <- data.frame(Word = names(topterms), Frequency = topterms, row.names = NULL)
+write.csv(word_freq, "study1_word_freq.csv", row.names = FALSE)
 df_plot <- word_freq
-df_plot$Word <- str_to_sentence(gsub("[_-]", " ", df_plot$Word))
-
+df_plot$Word <- pretty_words(df_plot$Word)
+df_plot$Frequency <- sqrt(df_plot$Frequency)
 ## Visualise them with wordclouds
 p <- quote({
   set.seed(46)
-  wordcloud(words = df_plot$Word, freq = df_plot$Frequency, scale = c(5,1), max.words = 150, rot.per = 0,  random.order = FALSE, colors = brewer.pal(8, "Dark2"))
+  wordcloud(words = df_plot$Word, freq = df_plot$Frequency, scale = c(2,.4), max.words = 150, rot.per = 0,  random.order = FALSE, colors = brewer.pal(8, "Dark2"))
 })
 svg("study1_wordcloud.svg")
 eval(p)
@@ -124,24 +137,39 @@ dev.off()
 # Co-occurrence -----------------------------------------------------------
 
 #word_cooccurences <- pair_count(df_nouns, group="article.id", value="word.lemma", sort = TRUE)
-create_cooc <- function(dtm){
-  dtm_binary <- dtm > 0
-  Matrix::t(dtm_binary) %*% dtm
-}
+# create_cooc <- function(dtm){
+#   dtm_binary <- dtm > 0
+#   Matrix::t(dtm_binary) %*% dtm
+# }
+# permute <- function(dtm){
+#   dtm_perm <- apply(dtm, 2, function(j){ sample(j, length(j))})
+#   create_cooc(dtm_perm)
+# }
+# set.seed(68483)
+# perm <- replicate(100, permute(dtm_top))
+# q95 <- median(apply(perm, 3, function(k){quantile(k[lower.tri(k)], .95)}))
 
-cooc <- create_cooc(dtm_top)
+#cooc <- select_fixed_margin(dtm_top, confidence_boundary = .975, iterations = 100)
 
-word_cooccurences <- as_cooccurrence(cooc)
-word_cooccurences <- word_cooccurences[!word_cooccurences$term1 == word_cooccurences$term2, ]
-word_cooccurences <- word_cooccurences[order(word_cooccurences$cooc, decreasing = TRUE), ]
+cooc <- select_cooc(create_cooc(dtm_top), q = .975)
 
-plot(1:length(word_cooccurences$cooc), word_cooccurences$cooc)
+df_plot <- as_cooccurrence(cooc)
+df_plot <- df_plot[!df_plot$term1 == df_plot$term2, ]
+df_plot <- df_plot[order(df_plot$cooc, decreasing = TRUE), ]
 
-df_plot <- word_cooccurences[word_cooccurences$cooc > .005*nrow(recs), ] #.01*nrow(recs), ]
+# tt <- as.data.frame(table(word_cooccurences$cooc), stringsAsFactors = FALSE)
+# tt$Frequency <- as.numeric(tt$Var1)
+# tt$Cooc <- tt$Freq
+# ggplot(tt, aes(x=Frequency, y = Cooc))+geom_point() + geom_path()+ geom_text(aes(label= Frequency))+
+#   theme_bw() + scale_y_log10()+scale_x_log10()
+
+#df_plot <- word_cooccurences[word_cooccurences$cooc > q95, ] #.01*nrow(recs), ]
+#df_plot <- word_cooccurences[word_cooccurences$cooc > 22, ] #.01*nrow(recs), ]
+
+df_plot$id <- apply(df_plot[, c("term1", "term2")], 1, function(x)paste0(sort(x), collapse = ""))
+df_plot <- df_plot[!duplicated(df_plot$id), ]
 
 #df_plot <- df_plot[!(df_plot$term1 == "youth" | df_plot$term2 == "youth"),]
-# df_plot$id <- apply(df_plot[, c("term1", "term2")], 1, function(x)paste0(sort(x), collapse = ""))
-# df_plot <- df_plot[!duplicated(df_plot$id), c("term1", "term2", "cooc")]
 # #word_cooccurences$cooc <- (word_cooccurences$cooc-min(word_cooccurences$cooc))+.1
 # set.seed(123456789)
 # df_plot %>%
@@ -154,16 +182,51 @@ df_plot <- word_cooccurences[word_cooccurences$cooc > .005*nrow(recs), ] #.01*nr
 #   theme_void()
 
 
+# Write study details -----------------------------------------------------
+
+write_yaml(study1details, "study1_details.yml")
+
+
 # Create network ----------------------------------------------------------
 
+# Use EBICglasso
+# cor_mat <- dtm_cor(dtm_top)
+# cor_mat <- (cor_mat+1)/2
+# cor_mat <- cooc
+# 
+# cor_mat[1:5, 1:5]
+# cor_mat[45:50, 45:50]
+# m <- EBICglasso(cor_mat, n = dim(dtm_top)[1], gamma = 0.5, threshold = T, returnAllResults = T)
+# df_plot <- as.data.frame.table(m$optnet, stringsAsFactors = FALSE)
+# names(df_plot) <- c("term1", "term2", "cooc")
+# df_plot <- df_plot[!df_plot$cooc == 0, ]
+# df_plot$id <- apply(df_plot[, c("term1", "term2")], 1, function(x)paste0(sort(x), collapse = ""))
+# df_plot <- df_plot[!duplicated(df_plot$id), ]
+
+
 edg <- df_plot
+# edge_cols <- read.csv("edge_cols.csv", stringsAsFactors = FALSE)
+# if(any(!edg$id %in% edge_cols$id)){
+#   stop("Please classify missing edges.")
+# }
+# edge_cols$color <- "gray70"
+# edge_cols$color[which(edge_cols$association)] <- "navy"
+# edge_cols$color[which(!edge_cols$association)] <- "darkred"
+# edg$color <- edge_cols$color[match(edg$id, edge_cols$id)]
+#edg$col <- sapply(edg$color, function(i){
+#  do.call(rgb, c(as.list(col2rgb(i)), list(alpha = 178, maxColorValue = 255)))
+#})  
+  
 edg$width = edg$cooc
 
-vert <- data.frame(name = names(topterms), label = str_to_sentence(gsub("[_-]", " ", names(topterms))), size = topterms)
+vert <- data.frame(name = names(topterms), label = pretty_words(names(topterms)), size = topterms)
 vert <- vert[vert$name %in% unique(c(edg$term1, edg$term2)), ]
 
 categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
-if(any(!vert$name %in% categ$name)) stop("Please re-categorize missing vertices.")
+if(any(!vert$name %in% categ$name)){
+  write.table(vert$name[!vert$name %in% categ$name], "clipboard", sep = "\n", row.names = FALSE, col.names= FALSE)
+  stop("Please re-categorize missing vertices.")
+} 
 vert$Category <- categ$category[match(vert$name, categ$name)]
 
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
@@ -174,50 +237,27 @@ vert$color <- cat_cols[vert$Category]
 vert$size <- scales::rescale(log(vert$size), c(4, 12))
 g <- graph_from_data_frame(edg, vertices = vert,
                            directed = FALSE)
-
+#g <- Rsenal::pruneEdg
 #min_size <- (strwidth(vert$label[max(nchar(vert$label))]) + strwidth("oo"))*100
 
 # edge thickness
 E(g)$width <- scales::rescale(sqrt(E(g)$width), to = c(2, 8))
 
 
+dysreg_vertex = which(names(V(g)) == "dysregulation")
+
 edge.start <- ends(g, es=E(g), names = FALSE)[,1]
-# Color edges based on origin:
-#E(g)$color <- V(g)$color[edge.start]
-E(g)$lty <- c(1, 5)[(!edge.start == 1)+1]
+edge.end <- ends(g, es=E(g), names = FALSE)[,2]
+E(g)$lty <- c(1, 5)[(!(edge.start == dysreg_vertex|edge.end == dysreg_vertex))+1]
+
 # Other layouts:
 #l <- layout_with_lgl(g, root = which(V(g)$name == "dysregulation"))
 #l <- layout_with_fr(g)
 #l <- layout_(g,with_dh(weight.edge.lengths = edge_density(g)/1000))
-set.seed(12) #4 #2 #3
+set.seed(2) #4 #2 #3
 l1 <- l <- layout_with_fr(g)
 set.seed(64)
 l2 <- layout_in_circle(g)
-# lay <- data.frame(name = V(g)$name, l)
-# p <- quote({
-#   # Set margins to 0
-#   par(mar=c(0,0,0,0))
-#   plot(g, edge.curved = 0, layout=l,
-#        vertex.label.family = "sans",
-#        vertex.label.cex = 0.8,
-#        vertex.shape = "circle",
-#        vertex.frame.color = 'gray40',
-#        vertex.label.color = 'black',      # Color of node names
-#        vertex.label.font = 1,         # Font of node names
-#   )
-#   legend(x=-1.1, y=1.1, names(cat_cols), pch=21, col="#777777", pt.bg=cat_cols, pt.cex=2, cex=.8, bty="n", ncol=1)
-# })
-# png("study1_network1.png")
-# eval(p)
-# dev.off()
-# 
-# svg("study1_network1.svg")
-# eval(p)
-# dev.off()
-
-
-
-#V(g)$size <- scales::rescale(V(g)$size, c(4, 12))
 
 p <- quote({
   # Set margins to 0
@@ -241,50 +281,12 @@ p <- quote({
        vertex.label.font = 1,         # Font of node names
   )
 })
+
+# Save files
 png("study1_network1.png", width = 960)
 eval(p)
 dev.off()
 
-svg("study1_network1.svg")
+svg("study1_network1.svg", width = 14)
 eval(p)
 dev.off()
-
-# 
-# library(qgraph)
-# 
-# igraph::
-# library(Matrix)
-# library(qgraph)
-# terms <- predict(topics, type = "terms", min_posterior = 0.08)
-# terms <- unique(unlist(sapply(terms, names)))
-# out <- dtm_top
-# out <- cor(as.matrix(out))
-# out <- nearPD(x=out, corr = TRUE)$mat
-# out <- as.matrix(out)
-# 
-# cor_mat <- dtm_cor(dtm_top)
-# m <- EBICglasso(cor_mat, n = 429, threshold = TRUE, returnAllResults = T)
-# m$optnet
-# tmp <- as.data.frame.table(m$optnet)
-# tmp[!tmp$Freq == 0, ]
-# qgraph(tmp, layout="spring", labels = colnames(out), label.scale=FALSE,
-#        label.cex=1, node.width=.5)
-# 
-# 
-# df <- readRDS("savedrecs.RData")
-# bibliometrix::biblioNetwork(recs, analysis = "co-occurrences", network = "author_keywords")
-# 
-# tmp <- cocMatrix(recs, Field = "DE")
-# 
-# tmp %>%
-#   as_cooccurrence() %>%
-#   graph_from_data_frame() %>%
-#   ggraph(layout = "fr") +
-#   geom_edge_link(mapping = aes(edge_colour = cooc)) +
-#   geom_node_point(color = "lightblue", size = 5) +
-#   geom_node_text(aes(label = name), vjust = 1.8, col = "darkgreen") +
-#   ggtitle(sprintf("\n%s", "CETA treaty\nCo-occurrence of nouns")) +
-#   theme_void()
-# 
-# gD <- igraph::simplify(igraph::graph.data.frame(allgenes, directed=FALSE))
-# lou <- cluster_louvain(gD)

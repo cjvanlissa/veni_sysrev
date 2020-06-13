@@ -21,3 +21,7 @@ bunnies.R
 *.log
 *.tex
 .Rhistory
+*.udpipe
+*.tex
+*.ttt
+r-references.bib

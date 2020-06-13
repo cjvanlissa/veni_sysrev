@@ -43,6 +43,9 @@ library("papaja")
 library(bibliometrix)
 library(revtools)
 library(bib2df)
+library(knitr)
+library(kableExtra)
+run_everything = FALSE
 ```
 <!-- Reviewer suggestions:
 Kristin Buss -->
@@ -610,7 +613,7 @@ This program uses text mining and active learning to build a customizable machin
 We used a naive Bayes model, and focused on exclusion of irrelevant papers.
 In ASReview, an additional `r sum(table(screen$included, screen$rayyan)[, 1])` papers were screened.
 Screening again focused on articles most likely to be excluded, and continued until, among the most recently screened 100 papers, only 6 were excluded.
-The screening procedure is detailed in Figure \@ref(prismachart).
+The screening procedure is detailed in Figure \@ref(fig:prismachart).
 In total, `r nrow(recs_final)` papers were retained for analysis.
 
 ```{r prismachart, fig.cap="Record screening flowchart"}
@@ -650,17 +653,17 @@ ggsave("prismachart.svg", p, device = "svg")
 knitr::include_graphics("prismachart.png")
 ```
 
+<!--
 ## Corpus description
 
 
-```{r, eval = FALSE}
+{r, eval = FALSE}
 # Plot papers per year
 df_plot <- as.data.frame(table(recs_final$PY), stringsAsFactors = FALSE)
 df_plot$Year = as.numeric(df_plot$Var1)
 ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
   theme_bw() + scale_y_log10()
-```
-
+-->
 
 # Analysis 1: Keyword mapping
 
@@ -701,19 +704,68 @@ and we proceed with an analysis of the whole sample. <!-- Probably because each 
 
 ## Mapping the literature
 
-To map the cooccurrence of terms within documents,
-it is pertinent to select the most common terms, instead of using IDF.
-As a cutoff, we required terms to occur in at least $0.5%$ of documents.
-This selection criterion resulted in a corpus of `r dim(dtm_top)[1]` documents and `r dim(dtm_top)[2]` terms.
-The marginal occurrence of the selected terms is displayed in Figure \@ref(study1wordcloud).
-To determine the frequency with which terms were addressed in documents,
-we constructed a term-document matrix
+Next, we mapped the cooccurrence of terms within documents as an undirected graph.
+When examining cooccurrence,
+it is pertinent to select the most common terms, instead of using TF-IDF.
+We retained terms present in at least $0.5%$ of the entire corpus,
+resulting in a selection of `r dim(dtm_top)[1]` documents and `r dim(dtm_top)[2]` terms.
+The marginal occurrence of the selected terms is displayed in Figure \@ref(fig:study1wordcloud).
+This indicates how frequently each term occurred in the corpus, and illustrates what this body of literature is about.
 
-```{r study1wordcloud, fig.cap="Wordcloud of terms selected for Study 1 co-occurrence analysis. More common words are centered and printed in larger font."}
-knitr::include_graphics("study1_wordcloud.png")
+```{r study1wordcloud, out.width = "100%", fig.cap="Wordcloud of terms selected for Study 1 co-occurrence analysis. More common words are centered and printed in larger font."}
+knitr::include_graphics("study1_wordcloud.svg")
 ```
 
+Based on our theoretical review, each of the selected terms was coded as being either a putative 'Cause', 'Outcome', 'Protective factor', or 'Indicator' (a closely related construct) of emotion dysregulation.
+We stress that this is a simplification; many of these associations are likely to be bidirectional [e.g., emotion dysregulation is known to be both cause and consequence of conflict with parents, @vanlissaCostEmpathyParentadolescent2017]. Figure \@ref(fig:study1network) displays the term cooccurrence matrix as a force directed graph.
+<!--The classification is presented in Table \@ref(tab:study1table1).
 
+r study1table1, results = "asis"}
+df <- tapply(pretty_words(categ$name), categ$category, function(i){paste(strwrap(paste(i, collapse = ", "), width = 90), collapse = "\\\\")})
+df <- data.frame(Category = names(df), Terms = df, row.names = NULL)
+apa_table(df, escape = F)
+-->
+
+```{r study1network, out.width = "100%", fig.cap="Force directed graph for Study 1 co-occurrence analysis. Vertex size represents term frequency; dashed lines for co-occurrences not involving dysregulation. Two different layouts are presented to aid interpretation."}
+#knitr::include_graphics("study1_network1.svg")
+library(cowplot)
+fig_svg <- cowplot::ggdraw()+cowplot::draw_image("study1_network1.svg")
+plot(fig_svg)
+```
+
+## Results
+
+```{r}
+notingraph <- names(topterms)[!names(topterms) %in% unique(c(edg$term1, edg$term2))]
+notingraph <- categ[categ$name %in% notingraph, ]
+notingraph <- tapply(tolower(pretty_words(notingraph$name)), notingraph$category, function(i){paste0(paste(paste0("*", i[-length(i)], "*"), collapse = ", "), ", and ", i[length(i)])})
+```
+
+Inspecting the co-occurrence graph for the keyword data,
+it is evident that there are relatively few interconnections between elements,
+with a matrix sparsity 
+it becomes evident that emotion dysregulation is the most common and central construct,
+as could be expected based on the search terms.
+Most of the other constructs in the corpus are directly linked to emotion dysregulation,
+which suggests that our search was successful in identifying factors considered to be relevant
+for adolescents' emotion dysregulation.
+The fact that only few of the constructs were interrelated substantiates our impression that this literature is somewhat fragmented.
+One emergent cluster of interrelated constructs pertains to the mental health-related outcomes of emotion dysregulation, most notably anxiety, depression, and externalizing symptoms.  
+
+A more surprising finding is that some of the most prevalent terms were not connected to emotion dysregulation -
+for example, *Rumination*, only showed a direct link with *Depression*.
+Other prevalent terms are entirely absent from Figure \@ref(fig:study1network), as they were not related
+to any other terms in the main network. 
+These terms, which are displayed in Figure \@ref(fig:study1wordcloud), include the potential causes `r notingraph["Cause"]`, the potential outcomes `r notingraph["Outcome"]`, and the potential protective factors `r notingraph["Protective"]`. 
+
+
+## Discussion
+
+Several of these constructs represent active ongoing areas of research - such as the role of fathers in adolescents' emotional development [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@bukowskiPopularityFriendshipEmotional1993], *autonomy* [@vrolijkLongitudinalLinkagesFatherunderreview; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *Loneliness* [@spithovenItAllTheir2017].
+The absence of these terms from the graph thus does not reflect so much a lack of importance.
+Rather, these constructs - being important, but not yet well-integrated in the literature,
+are prime candidates for future research;
+particularly in conjunction with more well-established constructs.
 
 # Analysis 2: Abstract text mining
 
@@ -757,6 +809,12 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
+
+
+
+
 
 
 

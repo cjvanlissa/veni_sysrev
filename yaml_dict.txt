@@ -18,6 +18,7 @@ negative_emotionality:
 - affect.+intensity
 - affect.+instab
 - mood.+variab
+- unpleasant.feeling
 shame:
 - sham
 - self.?consciou
@@ -72,7 +73,7 @@ sexual-diversity:
 adjustment:
 - ^adjustment$
 - ^(psychological|social|school|psychosocial).adjustment$
-- ^sdq$
+- \bsdq\b
 - strengths.+difficulties.+questionnaire
 - positive.youth.development
 personality:
@@ -119,7 +120,8 @@ substance:
 - ^drug$
 - marijuana
 - tobacco
-- smoking
+- \bsmok(ing|e)\b
+- \bcigaret
 - ^misuse$
 - ^substance use disorders?$
 - ^use disorders?$
@@ -129,7 +131,7 @@ depression:
 - mood disorders
 - affective.disorders
 anxiety:
-- anxiety
+- \banxi(et|o)
 - ^panic
 - ^behaviou?ral.inhibition$
 - phobia
@@ -160,13 +162,15 @@ stress:
 - extreme stress
 - life.stress
 mental_health:
+- \bdsm\b
+- \bdiagnost.+statistic.+man\b
 - psych.+(symptom|problem)
 - comorbid
 - ^mental.disorder.+?$
 - ^disorder.*$
 - mental.health
 - ^symptom.*$
-- ^psychop.*$
+- \bpsychop.*\b
 - ^psychiatric.disorder.*$
 - ^bpd$
 - borderline personality
@@ -215,6 +219,7 @@ rumination:
 - ^worry$
 mindfulness:
 - ^acceptance$
+- \bafq.?y\b
 - mindfulness
 - self.compassion
 cognitive:
@@ -473,6 +478,8 @@ neural:
 - functional.magnetic
 - fmri
 - functional.connectivit
+- \berp\b
+- event.related.pot
 endocrine:
 - cortisol
 - corticoster

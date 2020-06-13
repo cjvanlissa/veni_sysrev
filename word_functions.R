@@ -1,3 +1,86 @@
+boot_dtm_old <- function(dtm, iterations = 1000, confidence_boundary = .95){
+  bt <- replicate(iterations, {
+    b <- dtm[sample.int(nrow(dtm), replace = TRUE), ]
+    colSums(b)
+  })
+  interesting <- rowSums(bt > 0)
+  cb <- confidence_boundary * iterations
+  interesting > cb
+}
+
+boot_dtm <- function(dtm, iterations = 100, confidence_boundary = .95){
+  cb <- confidence_boundary * iterations
+  m_logical <- dtm > 0
+  interesting <- vector(length = ncol(dtm))
+  len <- nrow(dtm)
+  for(j in 1:ncol(dtm)){
+    interesting[j] <- sum(replicate(iterations, {
+        any(sample(m_logical[, j], len, replace = TRUE))
+      })) > cb
+  }
+  
+}
+
+library(fitdistrplus)
+select_words <- function(dtm, q = .95){
+  d <- colSums(dtm)
+  fit <- fitdist(d, "nbinom")
+  thres <- qnbinom(q, size=fit$estimate["size"], mu=fit$estimate["mu"])
+  return(d > thres)
+}
+
+select_cooc <- function(cooc, q = .95){
+  mat.summ   <- summary(cooc)
+  mat.summ <- mat.summ[!mat.summ$i == mat.summ$j, ]
+  lower.summ <- subset(mat.summ, i >= j)
+  fit <- fitdist(lower.summ$x, "nbinom")
+  thres <- qnbinom(q, size=fit$estimate["size"], mu=fit$estimate["mu"])
+  lower.summ <- lower.summ[!lower.summ$x < thres, ]
+  out <- sparseMatrix(i = lower.summ$i,
+               j = lower.summ$j,
+               x = lower.summ$x,
+               dims = dim(cooc), symmetric = TRUE)
+  rownames(out) <- rownames(cooc)
+  colnames(out) <- colnames(cooc)
+  return(out)
+}
+
+create_cooc <- function(dtm){
+  dtm_binary <- dtm > 0
+  Matrix::t(dtm_binary) %*% dtm
+}
+
+net_dens <- function(cooc){
+  potential_connections <- dim(cooc)[1]*(dim(cooc)[2]-1)/2
+  sum(cooc[lower.tri(cooc)] > 0) / potential_connections
+}
+
+library(RaschSampler)
+library(abind)
+select_fixed_margin <- function(dtm, confidence_boundary = .95, iterations = 100){
+  out <- create_cooc(dtm)
+  diag(out) <- 0
+  if(!exists(".Random.seed")) set.seed(NULL)
+  rand_seed <- .Random.seed[1]
+  ctr <- rsctrl(burn_in=10, n_eff=iterations, step=10, seed=rand_seed, tfixed=FALSE)
+  mat <- RaschSampler::rsampler(as.matrix(dtm), ctr)
+  mat <- lapply(1:mat$n_eff, function(i) rsextrmat(mat, i))
+  
+  coocs <- lapply(mat, function(x){ 
+    g <- create_cooc(x)
+    diag(g) <- 0
+    g
+  })
+  coocs <- do.call(abind,c(coocs,list(along=3)))
+  
+  bounds <- apply(coocs, c(1,2), function(k){quantile(k, confidence_boundary)})
+  
+  out[!out > bounds] <- 0
+  out
+}
+
+pretty_words <- function(x){ str_to_sentence(gsub("[_-]", " ", x)) }
+
 conflicting_matches <- function(words, dict){
   dict_matches <- lapply(unlist(dict), function(this_reg){
     grep(this_reg, words)

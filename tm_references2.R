@@ -7,7 +7,7 @@ df <- read.table("c:/tmp/savedrecs.txt", sep = "\t", header = TRUE, quote = "", 
 ## Natural Language Processing: POS tagging
 library(pattern.nlp)
 #df <- df[1:33, ]
-if(!file.exists("df_tagged.RData")){
+if(!file.exists("study2_tagged.RData")){
   df_tagged <- lapply(1:nrow(df), function(thisrow){
     tryCatch(cbind(pattern_pos(x = df$ID[thisrow], language = "english", core = TRUE), thisrow), error = function(e){NULL})
   })  
