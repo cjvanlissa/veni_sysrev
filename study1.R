@@ -12,7 +12,8 @@ library(ggplot2)
 library(yaml)
 source("word_functions.R")
 run_everything = FALSE
-study1_details <- read_yaml("study1_details.yml")
+study1details <- read_yaml("study1_details.yml")
+dict <- read_yaml("yaml_dict.txt")
 ## Look at POS tags?
 if(run_everything){
   recs <- data.table(read.csv("recs_final.csv"))
@@ -28,7 +29,7 @@ if(run_everything){
   # Clean
   df <- na.omit(df, cols = "word")
   number_docs_words <- c(docs = length(unique(df$doc)), words = length(unique(df$word)))
-  
+  yaml::write_yaml(number_docs_words, "study1_number_docs_words.txt")
   # Exclude words
   exclude_terms <- readLines("exclude_terms.txt")
   exclude_these <- unique(unlist(lapply(exclude_terms, grep, x = df$word)))
@@ -36,7 +37,6 @@ if(run_everything){
   df <- df[!exclude_these, ]
   
   # Categorize words
-  dict <- read_yaml("yaml_dict.txt")
   res_cat <- cat_words(df$word, dict, handle_dups = "all")
   # Check coding issues
   #res_cat$dup
@@ -45,6 +45,7 @@ if(run_everything){
   saveRDS(df, "study1_df.RData")
 } else {
   df <- readRDS("study1_df.RData")
+  number_docs_words <- yaml::read_yaml("study1_number_docs_words.txt")
 }
 
 # Create plot data --------------------------------------------------------
@@ -119,7 +120,55 @@ topterms <- colSums(dtm_top)
 word_freq <- data.frame(Word = names(topterms), Frequency = topterms, row.names = NULL)
 write.csv(word_freq, "study1_word_freq.csv", row.names = FALSE)
 df_plot <- word_freq
+categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
+df_plot$cat <- categ$category[match(df_plot$Word, categ$name)]
 df_plot$Word <- pretty_words(df_plot$Word)
+
+df_plot <- df_plot[order(df_plot$Frequency, decreasing = TRUE), ]
+df_plot$Word <- ordered(df_plot$Word, levels = df_plot$Word[order(df_plot$Frequency)])
+
+cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
+df_plot$cat <- ordered(df_plot$cat, levels = c("Outcome", "Indicator", "Cause", "Protective"))
+# p <- ggplot(df_plot, aes(y = Word, x = Frequency)) + 
+#   geom_segment(aes(x = 0, xend = Frequency, 
+#                           y = Word, yend = Word), colour = "grey50", 
+#                linetype = 2) + geom_vline(xintercept = 0, colour = "grey50", 
+#                                           linetype = 1) + xlab("Word frequency") + 
+#   geom_point(aes(fill = cat), shape = 21, size = 2) +
+#   geom_text(aes(label = Word), x = -850, hjust=0, vjust= 0, size = 2) +
+#   scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
+#   scale_x_continuous(limits = c(-850, (max(df_plot$Frequency)+1)))+
+#   scale_y_discrete(expand = c(.015,.01))+
+#   theme_bw() + theme(panel.grid.major.x = element_blank(), 
+#                      panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
+#                      legend.position = c(.70,.125),
+#                      legend.title = element_blank(),
+#                      axis.text.y = element_blank(),
+#                      axis.ticks.y = element_blank())
+
+write_yaml(df_plot$Word, "s1_words.yml")
+
+p <- ggplot(df_plot, aes(y = Word, x = Frequency)) +
+  geom_segment(aes(x = 0, xend = Frequency,
+                   y = Word, yend = Word), colour = "grey50",
+               linetype = 2) + geom_vline(xintercept = 0, colour = "grey50",
+                                          linetype = 1) + xlab("Word frequency") +
+  geom_point(aes(fill = cat), shape = 21, size = 2) +
+  scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
+  scale_x_log10() +
+  theme_bw() + theme(panel.grid.major.x = element_blank(),
+                     panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
+                     legend.position = c(.70,.125),
+                     legend.title = element_blank(),
+                     axis.text.y = element_text(hjust=0, vjust = 0, size = 6))
+
+
+svg("s1_varimp.svg", width = 7/2.54, height = 14/2.54)
+eval(p)
+dev.off()
+
+ggsave("s1_varimp.png", p, device = "png", width = 7, height = 14, units = "cm")
+
 df_plot$Frequency <- sqrt(df_plot$Frequency)
 ## Visualise them with wordclouds
 p <- quote({

@@ -1,5 +1,5 @@
 ---
-title             : "Mapping factors associated with adolescents' emotion dysregulation: A text-mining based systematic review"
+title             : "Mapping correlates of adolescent emotion dysregulation: A text-mining based systematic review"
 shorttitle        : "ADOLESCENT EMOTION DYSREGULATION"
 
 author: 
@@ -16,24 +16,24 @@ affiliation:
 authornote: |
   This work is supported by a NWO Veni grant (NWO
   grant number VI.Veni.191G.090). Acknowledgement: Lukas Beinhauer contributed
-  substantially to the screening of articles.
+  substantially to the screening of articles. Conflicts of Interest: None.
   
 
 abstract: |
-  Test me
+  For many, adolescence marks the onset of emotion dysregulation and related mental health problems. It is therefore essential to have a solid grasp of relevant risk factors. Despite an abundance of empirical research, the literature is somewhat fragmented, as the topic has been investigated from different perspectives across subdisciplines. This systematic review uses text mining to map factors related to adolescent emotion dysregulation. A systematic search for publications that addressed emotion regulation in participants between the ages of 10-25 yielded 6305 suitable papers. One analysis focused on author-provided keywords, and a second extracted sequences of adjectives and nouns from the abstracts. Terms were classified with a dictionary describing 105 terms using 434 regular expressions. Terms were coded as putative “Causes”, “Outcomes”, “Protective factors”, or “Indicators” of emotion dysregulation. We reported term/document frequency, and force-directed graphs of term co-occurrence. These results reﬂected constructs commonly featured in theory and narrative reviews, but also identified underrepresented terms. This illustrates how text mining review may complement narrative reviews. Importantly, most constructs were directly related to emotion dysregulation, with few interconnections between constructs – reflecting the fragmented literature. This research constitutes a first step towards integrating the literature, and may inspire future empirical and theoretical work.
 
-keywords          : "keywords"
-wordcount         : "X"
+keywords          : "emotion regulation, adolescence, systematic review, text mining, machine learning"
+wordcount         : "5400"
 bibliography      : ["veni_sysrev.bib"]
 floatsintext      : no
 figurelist        : no
 tablelist         : no
 footnotelist      : no
-linenumbers       : yes
+linenumbers       : no
 mask              : no
 draft             : no
 documentclass     : "apa6"
-classoption       : "man"
+classoption       : "man,noextraspace"
 output            : papaja::apa6_pdf
 knit              : worcs:::cite_essential
 ---
@@ -45,6 +45,7 @@ library(revtools)
 library(bib2df)
 library(knitr)
 library(kableExtra)
+library(cowplot)
 run_everything = FALSE
 ```
 <!-- Reviewer suggestions:
@@ -79,9 +80,9 @@ risk factors and environmental hazards render some adolescents more susceptible
 to emotional difficulties than others. Although there is an abundance of
 empirical work on adolescents' emotion regulation, the literature is somewhat
 fragmented, as the topic has been investigated from different (sub)disciplines.
-This study seeks to overcome this limitation by mapping all factors currently
-thought to be relevant to adolescent emotion regulation, based on a systematic
-review and bibliographic analysis. <!-- Ergens anders: Similarly, although
+This systematic review seeks to overcome this limitation by using
+bibliographic analysis to map all factors currently
+considered to be relevant to adolescent emotion regulation. <!-- Ergens anders: Similarly, although
 there are several *relevant* theories, there is no specific theoretical
 framework to guide research on adolescents' emotion regulation. Although theory
 development is beyond the scope of this paper, we set out to generate a
@@ -93,8 +94,9 @@ with recommendations for future theory-generating efforts.-->
 ## Why adolescence is an important life phase for emotion regulation
 
 Adolescence is defined as a life phase ranging from pubertal onset to
-adult-like independence [@steinbergAgeOpportunityLessons2014]. This definition
-invokes both biological- and socio-cultural factors. It has been argued that,
+adult-like independence [@steinbergAgeOpportunityLessons2014].
+It is thus demarcated by both biological- and socio-cultural factors.
+It has been argued that,
 due to accellerated pubertal onset and delayed transitions to adult roles,
 adolescence now ranges from 10-24 years in the modern Western world
 [@sawyerAgeAdolescence2018].
@@ -119,7 +121,8 @@ experiences, and tax existing regulatory abilities
 development of motivational-emotional and regulatory brain circuits gives rise
 to a maturity gap, where youngsters pursue new experiences in life and love,
 without being fully prepared to cope with the emotional outcomes
-[@croneUnderstandingAdolescencePeriod2012]. Due to these coalescing changes,
+[@croneUnderstandingAdolescencePeriod2012].
+Due to these coalescing changes,
 adolescents display a restricted repertoire of emotion regulation strategies
 compared to younger or older individuals
 [@zimmermannEmotionRegulationEarly2014]. Consequently, adolescents experience
@@ -132,7 +135,7 @@ render adolescents temporarily vulnerable to emotional dysregulation, but
 ultimately serve a functional role in acquiring mature emotion regulation
 skills. Eventually, most adolescents emerge ready to take on the challenges of
 early adulthood. Unfortunately, a sizeable proportion of adolescents instead
-manifests enduring emotional difficulties.
+manifests enduring emotional difficulties [@leeAdolescentMentalHealth2014].
 
 <!--
 * intense negative emotions in daily life (Silk, Steinberg, & Morris, 2003) 
@@ -148,18 +151,19 @@ manifests enduring emotional difficulties.
 <!--Acquiring mature emotion regulation abilities is important, because t-->The
 consequences of difficulties in emotion regulation are extensive,
 well-documented, and persist throughout the life course. Meta-analyses indicate
-that such difficulties are associated with externalizing, and more strongly,
-with internalizing psychopathology
+that such difficulties are associated with internalizing, and to a lesser extent, externalizing, psychopathology
 [@aldaoEmotionregulationStrategiesPsychopathology2010;
-@schaferEmotionRegulationStrategies2017]. Individuals who engage in maladaptive
+@schaferEmotionRegulationStrategies2017]. 
+Individuals who engage in maladaptive
 emotion regulation strategies also experience more negative emotions,
 diminished well-being, and greater strain in interpersonal relationships
 [@grossIndividualDifferencesTwo2003a; @bellRelationshipsInputsOutputs2000].
 <!--Adolescence also appears to be a key period for developing mature emotion
 regulation skills - but not all adolescents do so successfully. As many as one
-in five adolescents instead develop severe emotional difficulties.--> Given the
-prevalence of emotional difficulties and their extensive implications for
-individual mental health, wellbeing, and social functioning, and downstream
+in five adolescents instead develop severe emotional difficulties.--> 
+Given the
+prevalence of emotional difficulties and their implications for
+individual mental health, wellbeing, and social functioning, and their downstream
 cost to society as a whole [@leeAdolescentMentalHealth2014], it is essential to
 have a solid understanding of the risk factors associated with adolescents'
 emotion regulation difficulties.
@@ -172,7 +176,7 @@ addressed emotion regulation development in adolescence. Several recent
 publications have undertaken the monumental task of comprehensively reviewing
 theory relevant to emotional development
 [@bussTheoriesEmotionalDevelopment2019;
-@riedigerEmotionRegulationAdolescence2014]. Thanks, in part, to their efforts,
+@riedigerEmotionRegulationAdolescence2014]. Thanks, in part, to these efforts,
 we can provide a summary review of the theoretical landscape as context for our
 empirical contribution.<!--Several recent publications have undertaken the
 monumental task of providing a comprehensive overview of theories of emotional
@@ -181,6 +185,7 @@ development [e.g., @bussTheoriesEmotionalDevelopment2019;
 @riedigerEmotionRegulationAdolescence2014], and of the empirical work
 pertaining to emotions in adolescence
 [@coe-odessEmergentEmotionsAdolescence2019].  -->
+
 Two theories widely invoked to frame research on development, including
 emotional development, are Bronfenbrenner's bioecological model, and Sameroff's
 transactional model. Bronfenbrenner's model
@@ -216,14 +221,14 @@ argues that, as children grow older, their increasing self-regulatory abilities
 drive a transition from external emotion regulation by primary caregivers
 towards autonomous emotion regulation. This theory focuses on two drivers of
 development: social and cognitive influences. Social influences mainly occur
-through parents' co-regulation, parenting behaviors, and parent-child
+through parental co-regulation, parenting behaviors, and parent-child
 attachment. Cognitive influences occur through the development of the central
 nervous system (CNS), cognition, and self-regulation. Several other theories,
 introduced below, have extemporized on these sources of influence.
 
-The emphasis on neorocognitive development as a driver of emotional
-development, including emotion regulation development, is echoed in several
-other models. For example, polyvagal theory closely links emotional experience
+Several other models echo this emphasis on neorocognitive development as a driver of emotional
+development, including emotion regulation development.
+For example, polyvagal theory closely links emotional experience
 - and regulation - to autonomous nervous system functioning
 [@porgesOrientingDefensiveWorld1995]. A more recent neorocognitive theory, with
 substantial relevance to adolescents' emotion regulation development, is Crone
@@ -232,15 +237,17 @@ and Dahl's model of social-affective engagement and goal flexibility
 of a "maturity gap" in middle-adolescence, arising from a developmental
 asymmetry between motivational and inhibitory brain circuits
 [@craccoEmotionRegulationChildhood2017;
-@caseyBrakingAcceleratingAdolescent2011]. However, it sets out to explain - to
-a greater extent than other writings - adolescents' diverging destinies; the
+@caseyBrakingAcceleratingAdolescent2011]. To
+a greater extent than related writings, however, @croneUnderstandingAdolescencePeriod2012
+set out to explain adolescents' diverging destinies; the
 question why some youngsters flourish while others languish. Crone and Dahl
 argue that adolescents' cognitive engagement is dynamically responsive to
 social and motivational goal salience. This flexibility, on the one hand,
 prepares adolescents to effectively engage cognitive systems in novel
 challenging situations in a way that facilitates developing mature regulatory
 abilities. On the other hand, it places them at risk to act impulsively in
-pursuit of peer approval. This theory focuses primarily on cognitive factors
+pursuit of peer approval. In terms of explanans,
+this theory focuses primarily on cognitive factors
 and the role of peers, with less attention to factors such as parenting.
 
 A theory focused specifically on parents' role in emotion regulation
@@ -253,7 +260,8 @@ fathers and siblings, and others have adapted the tripartite model to describe
 the role of peers in adolescents' emotion regulation development
 [@reindlSocializationEmotionRegulation2016].
 
-Aside from theories of emotional development, theories of the phenomenon of
+Whereas our primary interest is in theories of emotional development,
+theories of the phenomenon of
 emotion regulation are also somewhat relevant. One influential theory is Gross'
 [-@grossHandbookEmotionRegulation2013] process model, which describes the
 process of emotion regulation, from eliciting cue to ultimate response.
@@ -302,30 +310,40 @@ theory-driven manner.
 which motivates most youngsters to seek out challenges in life and love, but
 renders some of them vulnerable to emotion dysregulation.  -->
 
-## Shortcomings of the theory
+## Shortcomings of existing theory
 
-Existing theoretical models have several limitations. One crucial shortcoming
+Despite the abundance of relevant theory,
+the existing literature has several limitations when the goals is to
+identify which
+risk factors render some adolescents more susceptible
+to maladaptive emotional development than others.
+One crucial shortcoming
 is the lack of explicit attention to the life phase of adolescence. This is
 unfortunate, as empirical research consistently indicates that adolescence is a
 crucial life phase for emotion regulation development. Adolescence differs
 qualitatively from infancy, childhood, and adulthood. It is therefore
-insufficient to simply extrapolate theories focused on these ages. Other
-theories do focus on adolescence specifically [e.g.,
+questionable whether theories focused on different ages can be generalized to adolescents.
+By contrast, some theories focus on adolescence specifically [e.g.,
 @croneUnderstandingAdolescencePeriod2012], but only address emotion regulation
-in passing. A second, related, shortcoming is that some relevant theories lack
+in passing.
+A second, related, shortcoming is that some relevant theories lack
 a developmental component <!--, and thus lack a well-substantiated
 understanding of developmental processes--> [see
 @bussTheoriesEmotionalDevelopment2019;
-@croneUnderstandingAdolescencePeriod2012]. A third shortcoming is that theories
+@croneUnderstandingAdolescencePeriod2012]. 
+A third shortcoming is that theories
 vary widely in scope: Some are very broad and all-encompassing, but somewhat
 non-specific, such as the biopsychosocial models of Bronfenbrenner and
 Sameroff. Others describe a specific phenomenon in great detail, but are not
 embedded in a larger unifying framework. Examples include Morris' tripartite
 model, Crone and Dahl's model, and polyvagal theory. It would be beneficial to
-bridge these two levels of theory. One limitation echoed across many
+bridge these levels of analysis.
+One limitation echoed across many
 publications in this field is that more theory formation is required to provide
-a unified framework that could guide future empirical work. The present study
-seeks to aid such theory development, by providing an inductive conceptual
+a unified framework that could guide future empirical work.
+The present study
+seeks to lay the groundwork for such theory development,
+by providing an inductive conceptual
 review of the field.
 
 <!--
@@ -385,14 +403,14 @@ emotional development)." Buss et al 2019:20
 
 ## Bottom-up insights from narrative reviews
 
-While theory provides a top-down understanding of an area of research,
+Whereas theory provides a top-down understanding of an area of research,
 literature reviews can provide a bottom-up, inductive understanding. Given the
 noted absence of a single overarching theory, reviews might provide additional
 insight into factors considered relevant in the etiology of adolescents'
 emotion regulation competencies. For example, a review by
 @bariolaChildAdolescentEmotion2011 addresses individual psychological factors
 such as temperament, and biological factors like neurocognitive development and
-genetic predispositions. Furthermore, they address proximal social influences,
+genetic predispositions. Furthermore, the authors address proximal social influences,
 including parents, teachers, and peers, and specific mechanisms through which
 these individuals exert their influence, including parenting and modeling.
 Finally, they address distal factors, including the role of culture and the
@@ -436,7 +454,7 @@ attention in theoretical work. This highlights the value of both top-down and
 bottom-up approaches to understanding the phenomenon of adolescents' emotion
 regulation. One remaining limitation is that, to date, all reviews in this
 field have been unstructured narrative reviews. The present publication seeks
-to further complement preceding work by conducting a comprehensive empirical
+to complement preceding work by conducting a comprehensive empirical
 literature review, and mapping the factors associated with adolescent emotion
 regulation.
 
@@ -497,8 +515,10 @@ elicit a corpus of relevant literature. Second, we use text mining techniques
 to extract relevant constructs from the corpus. Third, we use a dictionary to
 pare down the extracted constructs to meaningful superordinate categories.
 Fourth, we map interrelations between these constructs. Fifth, we classify
-contstructs as potential predictors or outcomes, and we categorize predictors
-by level of analysis<!-- (CJ: Sameroff, which level of biopsychosocial)-->.
+contstructs as potential predictors or outcomes.
+<!--, and we categorize predictors
+by level of analysis-->
+<!-- (CJ: Sameroff, which level of biopsychosocial)-->.
 <!-- t, using text mining to map potential predictors of adolescent emotion
 dysregulation.
 identify relevant constructs of adolescents’ emotion regulation development,
@@ -603,7 +623,7 @@ if(!file.exists("recs_final.csv")){
 ```
 Papers were screened based on two main criteria:
 First, papers had to address emotion regulation, emotional problems, or similar.
-Second, the target population must overlap (at least in part) with adolescence, defined as the age range from 10-25.
+Second, the target population must overlap with the life phase of adolescence, defined as the age range from 10-25.
 Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant.
 Screening was initially conducted in Rayyan QRCI [@Ouzzani2016].
 Papers were sorted using Rayyan's ranking algorithm.
@@ -665,35 +685,35 @@ ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
   theme_bw() + scale_y_log10()
 -->
 
-# Analysis 1: Keyword mapping
+# Analysis 1: Author keyword mapping
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 source("study1.R")
 if(run_everything | !file.exists("Study1_lda_dims.txt")) source("LDA_analysis.R")
 lda_dims <- read_yaml("Study1_lda_dims.txt")
 ```
 The corpus for this first analysis consisted of the author-provided keywords for the selected articles.
-We extracted keywords by document, and used a dictionary,
-created specifically for this study,
-to classify related terms.
+We extracted keywords by document, and used a dictionary
+created specifically for this study to classify related terms.
 The dictionary describes `r length(dict)` terms using `r length(unlist(dict))`
 regular expression queries.
-The lead author composed a first draft of the dictionary based on prior knowledge of the field.
+The lead author composed a first draft of the dictionary.
 This draft was subsequently updated in two ways:
-First, while writing the introduction for this paper, key terms from the theoretical and empirical literature were added to the dictionary.
-Second, by including commonly occurring uncategorized words during preliminary analyses of the data.
+First, while writing the introduction for this paper,
+key terms from the literature were added to the dictionary.
+Second, by including frequently occurring uncategorized words during preliminary analyses of the data until no more frequently occurring uncategorized words were found.
 An exclusion list of methodological terms and other non-substantive words was generated using the same procedure.
 After applying the dictionary and exclusion filter,
 and removing records with no (remaining) keywords,
-the resulting corpus consisted of `r number_docs_words["docs"]` documents with `r number_docs_words["words"]` unique words.
-As term-document frequency is irrelevant in the context of keywords (i.e., keywords should not occur twice within the same document, except when two synonyms have been recoded using the dictionary),
-the term-document matrix was dichotomized.
+the resulting corpus consisted of `r number_docs_words[1]` documents with `r number_docs_words[2]` unique words.
+<!--As term-document frequency is irrelevant in the context of keywords (i.e., keywords should not occur twice within the same document, except when two synonyms have been recoded using the dictionary),
+the term-document matrix was dichotomized.-->
 
 ## Structural topic modeling
 
 To assess the homogeneity of the corpus, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
 For this analysis, we used the term frequency/inverse document frequency (TF-IDF) to select terms
-not used frequently in the corpus,
+used frequently in a document, but not used frequently in the corpus,
 which could therefore be more diagnostic of subgroup membership.
 Selection terms with an TF-IDF greater than the median resulted in a corpus of `r lda_dims[1]` documents and `r lda_dims[2]` terms.
 We considered a range from 2-20 topics, evaluating fit based on the BIC, and interpretability based on the entropy of the posterior document/topic probabilities.
@@ -702,22 +722,36 @@ Congruently, all entropies were near-zero, which means that the posterior docume
 Thus, no interpretable subcorpora could be identified,
 and we proceed with an analysis of the whole sample. <!-- Probably because each set of keywords has only a few indicators. -->
 
-## Mapping the literature
+## Identifying common terms
 
-Next, we mapped the cooccurrence of terms within documents as an undirected graph.
-When examining cooccurrence,
-it is pertinent to select the most common terms, instead of using TF-IDF.
-We retained terms present in at least $0.5%$ of the entire corpus,
-resulting in a selection of `r dim(dtm_top)[1]` documents and `r dim(dtm_top)[2]` terms.
-The marginal occurrence of the selected terms is displayed in Figure \@ref(fig:study1wordcloud).
-This indicates how frequently each term occurred in the corpus, and illustrates what this body of literature is about.
+To identify what issues are covered in this corpus,
+we examined the terms occurring in the largest number of texts.
+We modeled word frequency using a negative binomial distribution,
+and retained those exceeding the $97.5^{th}$ percentile.
+This resulted in `r dim(dtm_top)[2]` terms, which occurred in `r dim(dtm_top)[1]` documents.
+To illustrates what issues are covered in this body of literature, the selected terms are displayed in Figure \@ref(fig:study1varimp), on a logarithmic scale to reduce the skew of the negative binomial distribution.<!--;
+word size represents frequency of occurrence (squared to reduce the skew of the negative binomial distribution).-->
 
-```{r study1wordcloud, out.width = "100%", fig.cap="Wordcloud of terms selected for Study 1 co-occurrence analysis. More common words are centered and printed in larger font."}
+```{r study1wordcloud, warning=FALSE, eval = FALSE, out.width = "100%", fig.cap="Wordcloud of terms selected for Study 1. More common words are centered and printed in larger font."}
 knitr::include_graphics("study1_wordcloud.svg")
 ```
 
+```{r study1varimp, warning=FALSE, eval = TRUE, out.width = "100%", fig.cap="Document frequency of terms selected for Study 1."}
+knitr::include_graphics("s1_varimp.png") 
+#fig_svg <- cowplot::ggdraw()+cowplot::draw_image("s1_varimp.svg")
+#plot(fig_svg)
+```
+
+## Mapping the literature
+
 Based on our theoretical review, each of the selected terms was coded as being either a putative 'Cause', 'Outcome', 'Protective factor', or 'Indicator' (a closely related construct) of emotion dysregulation.
-We stress that this is a simplification; many of these associations are likely to be bidirectional [e.g., emotion dysregulation is known to be both cause and consequence of conflict with parents, @vanlissaCostEmpathyParentadolescent2017]. Figure \@ref(fig:study1network) displays the term cooccurrence matrix as a force directed graph.
+We stress that this is a rudimentary and simplistic classification; many of these associations are likely to be bidirectional [e.g., emotion dysregulation is known to be both a cause and consequence of conflict with parents, @vanlissaCostEmpathyParentadolescent2017].
+Next, we computed a term co-occurrence matrix,
+which represents how frequently words occurred within the same document.
+To aid interpretability, we again pruned small coefficients by
+modeling co-occurrence using a negative binomial distribution,
+and retaining co-occurrences exceeding the $97.5^{th}$ percentile.
+Figure \@ref(fig:study1network) displays the pruned term cooccurrence matrix as a force directed graph.
 <!--The classification is presented in Table \@ref(tab:study1table1).
 
 r study1table1, results = "asis"}
@@ -726,7 +760,7 @@ df <- data.frame(Category = names(df), Terms = df, row.names = NULL)
 apa_table(df, escape = F)
 -->
 
-```{r study1network, out.width = "100%", fig.cap="Force directed graph for Study 1 co-occurrence analysis. Vertex size represents term frequency; dashed lines for co-occurrences not involving dysregulation. Two different layouts are presented to aid interpretation."}
+```{r study1network, warning=FALSE, out.width = "100%", fig.cap="Force directed graph for Study 1 co-occurrence analysis. Vertex size represents term frequency; dashed lines for co-occurrences not involving dysregulation. Two different layouts are presented to aid interpretation."}
 #knitr::include_graphics("study1_network1.svg")
 library(cowplot)
 fig_svg <- cowplot::ggdraw()+cowplot::draw_image("study1_network1.svg")
@@ -738,63 +772,244 @@ plot(fig_svg)
 ```{r}
 notingraph <- names(topterms)[!names(topterms) %in% unique(c(edg$term1, edg$term2))]
 notingraph <- categ[categ$name %in% notingraph, ]
-notingraph <- tapply(tolower(pretty_words(notingraph$name)), notingraph$category, function(i){paste0(paste(paste0("*", i[-length(i)], "*"), collapse = ", "), ", and ", i[length(i)])})
+notingraph <- tapply(tolower(pretty_words(notingraph$name)), notingraph$category, function(i){paste0(paste(paste0("*", i[-length(i)], "*"), collapse = ", "), ", and *", i[length(i)], "*")})
 ```
 
-Inspecting the co-occurrence graph for the keyword data,
-it is evident that there are relatively few interconnections between elements,
-with a matrix sparsity 
-it becomes evident that emotion dysregulation is the most common and central construct,
-as could be expected based on the search terms.
-Most of the other constructs in the corpus are directly linked to emotion dysregulation,
+Based on term document frequency (Figure \@ref(fig:study1varimp)), it is clear that emotion dysregulation and its mental health-related outcomes are foremost among the common terms in the corpus. 
+Other frequent terms reflect important themes discussed in the theoretical review of the literature;
+for instance, the term *neural*, *parenting*, and *stress* correspond to major themes discussed by  @coe-odessEmergentEmotionsAdolescence2019:
+Neurocognitive development, the role of the parents, and adolescents' increased stress response.
+Importantly, the most common terms also include several concepts not featured prominently in the theoretical review.
+For example, *ADHD/CD* [cf. @braetEmotionRegulationChildren2014], *substance* use [cf. @coe-odessEmergentEmotionsAdolescence2019; @pierrehumbertStrategiesEmotionRegulation2002], and *minority status* [cf. @myersEthnicitySocioeconomicStatusrelated2009; @myersEthnicitySocioeconomicStatusrelated2009] are common in the corpus,
+but featured less prominently in the theoretical review.
+
+Based on the co-occurrence graph (Figure \@ref(fig:study1network)),
+it is evident that 
+emotion dysregulation is a central construct,
+and that most of the other constructs are linked directly to emotion dysregulation,
 which suggests that our search was successful in identifying factors considered to be relevant
 for adolescents' emotion dysregulation.
-The fact that only few of the constructs were interrelated substantiates our impression that this literature is somewhat fragmented.
-One emergent cluster of interrelated constructs pertains to the mental health-related outcomes of emotion dysregulation, most notably anxiety, depression, and externalizing symptoms.  
-
-A more surprising finding is that some of the most prevalent terms were not connected to emotion dysregulation -
-for example, *Rumination*, only showed a direct link with *Depression*.
-Other prevalent terms are entirely absent from Figure \@ref(fig:study1network), as they were not related
-to any other terms in the main network. 
-These terms, which are displayed in Figure \@ref(fig:study1wordcloud), include the potential causes `r notingraph["Cause"]`, the potential outcomes `r notingraph["Outcome"]`, and the potential protective factors `r notingraph["Protective"]`. 
-
+Otherwise, the graph is relatively sparse, with few interconnections between terms.
 
 ## Discussion
 
-Several of these constructs represent active ongoing areas of research - such as the role of fathers in adolescents' emotional development [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@bukowskiPopularityFriendshipEmotional1993], *autonomy* [@vrolijkLongitudinalLinkagesFatherunderreview; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *Loneliness* [@spithovenItAllTheir2017].
-The absence of these terms from the graph thus does not reflect so much a lack of importance.
-Rather, these constructs - being important, but not yet well-integrated in the literature,
-are prime candidates for future research;
-particularly in conjunction with more well-established constructs.
+This first analysis used author keywords to map common topics in the literature pertaining to adolescents' emotion dysregulation.
+The results reflected some of the constructs commonly accepted as relevant in theoretical literature and empirical reviews.
+However, the analysis also revealed important areas less prominently featured in narrative reviews. 
+This illustrates how inductive reviews may complement existing theory and narrative reviews, and can reveal blindspots.
+
+It was found that connections among topics were relatively sparse: Many constructs were only related to emotion regulation,
+and there were relatively few interconnections between elements.
+This observation substantiates the prior claim that this literature is somewhat fragmented [@bussTheoriesEmotionalDevelopment2019].
+<!--One exception is an emergent cluster of interrelated constructs pertaining to mental health, anxiety, depression, and externalizing symptoms - the frequently occurring mental health-related outcomes.-->
+
+This sparse property of the network explains, in part,
+why some of the most prevalent terms based on term document frequency
+(see Figure \@ref(fig:study1varimp)) are absent from the co-occurrence graph.
+These terms were not strongly related to any other terms in the main network. 
+Amongst the terms culled from the co-occurrence graph are the potential causes `r notingraph["Cause"]`, the potential outcomes `r notingraph["Outcome"]`, and the potential protective factors `r notingraph["Protective"]`.
+
+Many of these excluded constructs represent active ongoing areas of research - such as the role of *fathers* [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@bukowskiPopularityFriendshipEmotional1993], *autonomy* [@vrolijkLongitudinalLinkagesFatherunderreview; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *loneliness* [@spithovenItAllTheir2017] in adolescents' emotional development.
+The fact that these constructs are absent from the graph does not suggest that they are unimportant.
+Rather, it indicates that they are not yet well-integrated in the literature,
+and are therefore prime candidates for future research.
+One recommendation for future research might be to study such important but unembedded constructs
+in conjunction with other more well-established constructs,
+as such an approach might help fill gaps in existing knowledge.
 
 # Analysis 2: Abstract text mining
 
-This second analysis focused on the abstracts of our corpus. Keywords are
-carefully chosen to capture the core tenets of a study. However, as authors are
+```{r, warning=FALSE, message=FALSE}
+source("study2.R")
+if(run_everything | !file.exists("Study2_lda_dims.txt")) source("LDA_analysis.R")
+lda_dims_2 <- read_yaml("Study2_lda_dims.txt")
+```
+The corpus for this second analysis consisted of the abstracts of the selected articles.
+Author keywords, as examined in Analysis 1, are carefully chosen to capture the core tenets of a study,
+and thus convey high-quality information directly relevant to the topic of a text.
+However, as authors are
 typically limited to 5 keywords, some of a study's nuance may be lost.
-Abstracts offer greater freedom of expression, which is a challenge when it
-comes to extracting relevant information. We took a two-pronged approach to
-extract relevant topic terms from the abstracts. First, we used the natural
-language processing technique part-of-speech tagging (POS-tagging) to identify
-nouns in the abstract. Using nouns only in text mining can lead to more
-interpretable models [@martinMoreEfficientTopic2015]. Secondly, we used
-stemming to reduce these nouns to their root form. Finally, we applied a
-dictionary approach as before.
+Abstracts, by contrast, offer greater freedom of expression,
+but present a greater challenge when it
+comes to extracting relevant information.
+To perform feature extraction,
+we first applied the natural language processing technique "part-of-speech tagging" (POS-tagging), which identifies a word's grammatical function within the sentence context.
+Then, we used POS-tagging to retain only nouns and adjectives,
+which helps derive more interpretable text mining models [@martinMoreEfficientTopic2015].
+Finally, we used stemming to reduce the retained terms to their root form.
 
-offer an incomplete understanding of a study topic due to the limite
-authors are typically limited to provide a maximum of 
-abstracts offer a little more 
+## Structural topic modeling
 
-used part-of-speech tagging, a natural language processing technique 
+To assess the homogeneity of the corpus of abstracts,
+we again conducted topic modeling [@bleiLatentDirichletAllocation2003],
+with features selected based on TF-IDF.
+This in a dataset consisting of `r lda_dims_2[1]` documents and `r lda_dims_2[2]` terms.
+We considered a range from 2-20 topics, evaluating fit based on the BIC, and interpretability based on the entropy of the posterior document/topic probabilities.
+As before, the BICs followed a near-perfect linearly increasing trend, and all entropies were near-zero.
+Thus, no interpretable subcorpora could be identified,
+and we proceed with an analysis of the whole sample.
 
-to identify nouns in the abstracts.
-, we relied on author-provided keywords. We extracted keywords by document, and used a dictionary approach to classify closely related terms.
+## Identifying keywords
 
+When conducting text mining analysis on unstructured text data (as opposed to author key words), focusing on individual words out of context can reduce interpretability.
+For instance, our core construct "emotion dysregulation" is already a bigram.
+To identify more meaningful units of analysis,
+we applied the `textrank` algorithm [@wijffelsTextrankSummarizeText2019], an extention of Google's PageRank [@pageMethodNodeRanking2006], to identify relevant $n$-grams (with $n \leq 3$).
+The resulting $n$-grams were merged with the original data.
+After applying the dictionary and exclusion filter as explained in Analysis 1,
+the resulting corpus consisted of `r number_docs_words2[1]` documents with `r number_docs_words2[2]` unique words.
+Terms exceeding the $97.5^{th}$ percentile of a negative binomial distribution were retained for analysis.
+The identified important keywords are displayed in Figure \@ref(fig:study2varimp).
 
-# Discussion
+```{r study2wordcloud, eval = FALSE, out.width = "100%", fig.cap="Wordcloud of terms selected for Study 2. More common words are centered and printed in larger font."}
+knitr::include_graphics("study2_wordcloud.svg")
+```
+
+```{r study2varimp, eval = TRUE, out.width = "100%", fig.cap="Document frequency of terms selected for Study 2."}
+knitr::include_graphics("s2_varimp.png") 
+# fig_svg <- cowplot::ggdraw()+cowplot::draw_image("s1_varimp.svg")
+# plot(fig_svg)
+```
+
+## Mapping the literature
+
+A term co-occurrence matrix was constructed following the procedure described in Analysis 1.
+Figure \@ref(fig:study2network) displays the resulting matrix as a force directed graph.
+<!--The classification is presented in Table \@ref(tab:study1table1).
+
+r study1table1, results = "asis"}
+df <- tapply(pretty_words(categ$name), categ$category, function(i){paste(strwrap(paste(i, collapse = ", "), width = 90), collapse = "\\\\")})
+df <- data.frame(Category = names(df), Terms = df, row.names = NULL)
+apa_table(df, escape = F)
+-->
+
+```{r study2network, out.width = "100%", fig.cap="Force directed graph for Study 2 co-occurrence analysis. Vertex size represents term frequency; dashed lines for co-occurrences not involving dysregulation. Two different layouts are presented to aid interpretation."}
+#knitr::include_graphics("study2_network1.svg")
+library(cowplot)
+fig_svg <- cowplot::ggdraw()+cowplot::draw_image("study2_network1.svg")
+plot(fig_svg)
+```
+
+## Results
+
+```{r}
+tt <- sort(topterms, decreasing = TRUE)
+notingraph <- names(tt)[!names(tt) %in% unique(c(edg$term1, edg$term2))]
+notingraph <- categ[categ$name %in% notingraph, ]
+notingraph <- tapply(tolower(pretty_words(notingraph$name)), notingraph$category, function(i){paste0(paste(paste0("*", i[-length(i)], "*"), collapse = ", "), ", and *", i[length(i)], "*")})
+```
+
+Based on term document frequency, it is clear that emotion dysregulation and mental health-related outcomes of emotion dysregulation are among the most common terms in the corpus of abstracts. The term "neural", again, occurred frequently, but other top terms were somewhat less predictable than those emerging in Analysis 1. The term "sex" is more frequent, and instead of "parenting", we now see "mothers" on top of the list. We see that "minority status", "substance use", "attachment","ptsd", and "bullying" are once more among the most frequent words.
+
+Inspecting the co-occurrence graph for the keyword data,
+we see a much sparser network than in Analysis 1, with a different structure.
+We now see that dysregulation and mental health-related terms form a central axis,
+and that many related terms are connected to this axis, but not always directly to
+dysregulation. Only the terms "neural", "mothers", "attachment" and "ptsd" are 
+connected directly to dysregulation.
+
+Again, some prevalent terms are entirely absent from Figure \@ref(fig:study2network), as they were not strongly related
+to any other terms in the main network. 
+These terms, which are displayed in Figure \@ref(fig:study2varimp),\include the potential causes `r notingraph["Cause"]`, the potential outcomes `r notingraph["Outcome"]`, and the potential protective factors `r notingraph["Protective"]`. 
+
+```{r}
+s1 <- read_yaml("s1_words.yml")
+s2 <- read_yaml("s2_words.yml")
+
+#length(unique(c(s1, s2)))
+
+oneintwo <- round(length(s1[s1 %in% s2])/length(s1)*100)
+twoinone <- round(length(s2[s2 %in% s1])/length(s2)*100)
+
+```
+There was substantial agreement between the findings of Analysis 1 and 2;
+$`r oneintwo`%$ of the most frequent terms identified in the author keywords (Analysis 1)
+were also present in the frequent terms extracted from the abstracts using `textrank` (Analysis 2),
+and conversely, $`r twoinone`%$ of the most frequent terms from Analysis 2 were present in Analysis 1.
+
+## Discussion
+
+This second analysis focused on the abstracts of the reviewed articles.
+We observed a sparser network, with fewer selected terms.
+This might be explained by the unstructured format of abstracts,
+which likely introduces greater noise in the analysis.
+Thus, fewer terms will exceed the detection threshold.
+Nonetheless, the selected terms displayed substantial consistency with the
+analysis of author keywords.
+This supports the validity of the findings,
+suggesting that automatic keyword extraction from abstracts can identify relevant constructs,
+and may constitute a suitable alternative to author-provided keywords.
+
+The emergence of a "central axis" of dysregulation and mental health-related outcomes suggest that these phenomena are consistently studied together.
+By contrast, the lack of interconnectivity among other related constructs
+again suggests that the literature is somewhat fragmented.
+This impression is reinforced by the absence of many frequently occurring terms
+from the term co-occurrence graph.
+Finally, the substitution of "parenting" with "mothers" amonst the top-ranking terms 
+might suggest that parenting is commonly operationalized in terms of mothering [@pleckPaternalInvolvementRevised2004].
+
+# General discussion
 
 <!--it is worth noting that many different theories of *emotion* exist, and yet there is relatively little attention for the subtleties of 
 distinct from theories of emotional development, and that there is no one-to-one relationship between theories of emotion (regulation) development and theories of emotion. This issue is beyond the scope of the present study -->
+The present study conducted a systematic review of the literature,
+and performed bibliographic analysis to map factors currently
+considered to be relevant to adolescent emotion regulation in a nomological network.
+The results of this inductive approach echoed many of the constructs considered
+relevant in the theoretical literature.
+It also revealed several constructs that have been underrepresented in theory,
+but nonetheless occur frequently in the empirical literature.
+The structure of the term co-occurrence networks revealed that most of the relevant constructs are connected
+directly with emotion dysregulation or its mental health correlates,
+with relatively few interconnections amongst constructs.
+This echoes the sentiment by @bussTheoriesEmotionalDevelopment2019 that this
+literature is somewhat fragmented.
+The present systematic review takes a first step towards integrating this diffuse field.
+
+Our work represents one of the first efforts to map the literature on adolescents' emotion dysregulation [cf. @bariolaChildAdolescentEmotion2011; @coe-odessEmergentEmotionsAdolescence2019].
+Moreover, it is one of the first applications of inductive text mining methods in a systematic review.
+Traditional narrative literature reviews have been shown to be marred by reliance on (small) convenience samples of the literature, confirmation bias, and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008]. 
+Text mining, by contrast, is uniquely suited to provide a comprehensive overview of the literature.
+It can cover vastly greater corpora than a human reader,
+and the process by which text mining gleans insights from the literature is less subjective, and more transparant and reproducible.
+The inherent "fairness" of text mining gives emerging themes in the literature a chance to come to the fore,
+where human readers might be inclined to structure their reading of the literature around established ideas.
+
+Of course, the present study also has limitations.
+One such limitation is the fact that the text mining techniques used
+are not able to extract *meaning* from the literature in the way a human reader would.
+This limitation is best addressed by using the output of our text mining analysis as a starting point for further inductive thought,
+or a more in-depth reading of a subset of the reviewed literature.
+Relatedly, our methods do not capture the nature of the relationship between co-occurring terms.
+Instead, we manually classified terms as potential causes, outcomes, protective factors, or indicators based on domain knowledge.
+It is worth noting that efforts are underway to develop unsupervised algorithms capable of distilling causal links from bodies of scientific abstracts [@anExtractingCausalRelations2019].
+Applying such methods to the present corpus might substantially advance theory formation.
+<!--For example, a human reader would understand that the influence of mothers and fathers both
+falls under the header of "parenting". 
+Furthermore, a human reader would swiftly learn that the term "parenting" has historically been used primarily to represent maternal influences,
+and has increasingly come to represent paternal influence as well. -->
+
+One final limitation of the present study is that our analysis was limited to keywords and abstracts.
+Analysis of full-text papers would undoubtedly yield additional insights.
+Regrettably, paywalls and the lack of a unified API currently prevent such analysis.
+This highlights the importance of open science: 
+With comprehensive open access publishing, we may one day be able to mine the entire published literature for insights.
+A proof of concept for this approach was recently provided by the release of 50k+ full-text papers on topics related to COVID-19 for text mining analysis [@wangCORD19Covid19Open2020].
+
+To conclude, this paper set out to map the factors associated with adolescents' emotion dysregulation, based on a systematic review of the literature, and text mining analysis of author keywords and abstracts.
+We provided a map of the literature on adolescents' emotion dysregulation,
+covering both familiar ground, and charting unknown territories.
+Our results suggested that several key constructs are currently underrepresented in theory,
+and that the empirical literature is somewhat fragmented by sub-topic.
+These inductive insights are relevant for the design of new deductive studies which,
+even though grounded in theory,
+might benefit from incorporating additional relevant factors
+to better elucidate the nature of their association with adolescents' emotion dysregulation.
+Our analysis also identified several factors currently on the fringes of the literature,
+which might represent emerging themes that would benefit from further research [including, for example, the role of fathers @vanlissaMothersFathersQuantitative2020].
+Most importantly, given the lack of an overarching theory tailored specifically to adolescent emotion dysregulation,
+our nomological networks might serve as a starting point for theory development,
+with the aim of integrating the present inductive insights within the framework of existing relevant theory.
 
 \newpage
 
@@ -809,6 +1024,16 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
+
+
+
+
+
+
+
+
 
 
 

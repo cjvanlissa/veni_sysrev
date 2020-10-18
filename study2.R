@@ -36,7 +36,7 @@ if(!file.exists("english-ewt-ud-2.4-190531.udpipe")) {
   ud_model <- udpipe_download_model(language = "english")
 } else {
   ud_model <- udpipe_load_model("english-ewt-ud-2.4-190531.udpipe")
-  ud_model <- udpipe_load_model(ud_model$file_model)
+  ud_model <- udpipe_load_model(ud_model$file)
 }
 
 
@@ -81,7 +81,7 @@ if(run_everything){
   df_lda <- df_lda[df_lda$term %in% select_words, ]
   
   dtm <- udpipe::document_term_matrix(document_term_frequencies(df_lda))
-  
+  yaml::write_yaml(dim(dtm), file = "Study2_lda_dims.txt")
   
   # Build topic models
   seqk <- seq(2, 20, 1)
@@ -191,6 +191,8 @@ if(run_everything){
 
 # Frequency of word by doc
 nounbydoc <- df_analyze[, list(freq = .N), by = list(doc_id = doc_id, term = word_coded)]
+number_docs_words2 <- c(docs = length(unique(nounbydoc$doc_id)), words = length(unique(nounbydoc$term)))
+
 nounbydoc$freq <- 1
 dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
 topterms <- colSums(dtm)
@@ -233,6 +235,44 @@ dev.off()
 png("study2_wordcloud.png")
 eval(p)
 dev.off()
+
+
+# Feature importance ------------------------------------------------------
+topterms <- colSums(dtm_top)
+word_freq <- data.frame(Word = names(topterms), Frequency = topterms, row.names = NULL)
+df_plot <- word_freq
+categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
+df_plot$cat <- categ$category[match(df_plot$Word, categ$name)]
+df_plot$Word <- pretty_words(df_plot$Word)
+
+df_plot <- df_plot[order(df_plot$Frequency, decreasing = TRUE), ]
+df_plot$Word <- ordered(df_plot$Word, levels = df_plot$Word[order(df_plot$Frequency)])
+
+cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
+df_plot$cat <- ordered(df_plot$cat, levels = c("Outcome", "Indicator", "Cause", "Protective"))
+
+write_yaml(df_plot$Word, "s2_words.yml")
+
+p <- ggplot(df_plot, aes(y = Word, x = Frequency)) +
+  geom_segment(aes(x = 0, xend = Frequency,
+                   y = Word, yend = Word), colour = "grey50",
+               linetype = 2) + geom_vline(xintercept = 0, colour = "grey50",
+                                          linetype = 1) + xlab("Word frequency") +
+  geom_point(aes(fill = cat), shape = 21, size = 2) +
+  scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
+  scale_x_log10() +
+  theme_bw() + theme(panel.grid.major.x = element_blank(),
+                     panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
+                     legend.position = c(.70,.125),
+                     legend.title = element_blank(),
+                     axis.text.y = element_text(hjust=0, vjust = 0, size = 6))
+
+
+svg("s2_varimp.svg", width = 7/2.54, height = 14/2.54)
+eval(p)
+dev.off()
+
+ggsave("s2_varimp.png", p, device = "png", width = 7, height = 14, units = "cm")
 
 
 # Co-occurrence -----------------------------------------------------------
