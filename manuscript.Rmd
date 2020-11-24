@@ -20,7 +20,8 @@ authornote: |
   
 
 abstract: |
-  For many, adolescence marks the onset of emotion dysregulation and related mental health problems. It is therefore essential to have a solid grasp of relevant risk factors. Despite an abundance of empirical research, the literature is somewhat fragmented, as the topic has been investigated from different perspectives across subdisciplines. This systematic review uses text mining to map factors related to adolescent emotion dysregulation. A systematic search for publications that addressed emotion regulation in participants between the ages of 10-25 yielded 6305 suitable papers. One analysis focused on author-provided keywords, and a second extracted sequences of adjectives and nouns from the abstracts. Terms were classified with a dictionary describing 105 terms using 434 regular expressions. Terms were coded as putative “Causes”, “Outcomes”, “Protective factors”, or “Indicators” of emotion dysregulation. We reported term/document frequency, and force-directed graphs of term co-occurrence. These results reﬂected constructs commonly featured in theory and narrative reviews, but also identified underrepresented terms. This illustrates how text mining review may complement narrative reviews. Importantly, most constructs were directly related to emotion dysregulation, with few interconnections between constructs – reflecting the fragmented literature. This research constitutes a first step towards integrating the literature, and may inspire future empirical and theoretical work.
+  Adolesence is a developmentally sensititve period for emotion dysregulation. Although substantial empirical research has addressed relevant risk factors, an integrating framework is lacking. This systematic review of 6305 papers uses text mining to map correlates of adolescents’ (ages 10-25) emotion dysregulation. One analysis focused on author-provided keywords; a second analysis parsed the abstracts. Terms were coded as putative “Causes”, “Outcomes”, “Protective factors”, or “Indicators”. We reported term/document frequency, and force-directed graphs of term co-occurrence. These results reﬂected constructs commonly featured in theory and narrative reviews, but also identified underrepresented terms. This research constitutes a first step towards integrating the literature, and may inspire future empirical and theoretical work.
+It also illustrates how text mining reviews may complement narrative reviews. <!--SH I would end with a more memorable take-home about how text-mining can be useful to researchers (e.g., when topics are of multi-disciplinary interest but each field has their own preferred methods and/or terminology)-->
 
 keywords          : "emotion regulation, adolescence, systematic review, text mining, machine learning"
 wordcount         : "5400"
@@ -34,7 +35,7 @@ mask              : no
 draft             : no
 documentclass     : "apa6"
 classoption       : "man,noextraspace"
-output            : papaja::apa6_pdf
+output            : papaja::apa6_word
 knit              : worcs:::cite_essential
 ---
 
@@ -70,19 +71,27 @@ on adolescent emotion regulation development is limited27–29. The field is the
 A key developmental challenge in adolescence is acquiring mature emotion
 regulation skills [@croneUnderstandingAdolescencePeriod2012;
 @zimmermannEmotionRegulationEarly2014]. Emotion regulation is integral to
-mental health[@aldaoEmotionregulationStrategiesPsychopathology2010;
+mental health [@aldaoEmotionregulationStrategiesPsychopathology2010;
 @schaferEmotionRegulationStrategies2017; @braetEmotionRegulationChildren2014]
 and social functioning [@reindlSocializationEmotionRegulation2016]. For as many
 as one in five people, adolescence marks the onset of emotion
 regulation-related mental illness, which can persist throughout the life course
-[see @leeAdolescentMentalHealth2014]. It is therefore crucial to identify which
+[see @leeAdolescentMentalHealth2014]. 
+It is therefore crucial to identify which
 risk factors and environmental hazards render some adolescents more susceptible
-to emotional difficulties than others. Although there is an abundance of
-empirical work on adolescents' emotion regulation, the literature is somewhat
-fragmented, as the topic has been investigated from different (sub)disciplines.
-This systematic review seeks to overcome this limitation by using
-bibliographic analysis to map all factors currently
-considered to be relevant to adolescent emotion regulation. <!-- Ergens anders: Similarly, although
+to emotional difficulties than others. <!--SH: Main goal of paper -->
+The present review set out to address this question.
+Although there is an abundance of empirical work on adolescents' emotion regulation, the literature is somewhat fragmented, as the topic has been investigated from different (sub)disciplines.
+This systematic review seeks to overcome this limitation by adopting a novel method -
+text mining based bibliographic analysis - to map all factors currently
+considered to be relevant to adolescent emotion regulation.
+Text mining can reveal important topics in a body of literature,
+and reveal which constructs are often studied together.
+It is therefore uniquely suited to comprehensively review a prolific but fragmented field,
+potentially revealing topics and connections missed by narrative reviewers,
+and laying the groundwork for future empirical and theoretical work.
+<!-- SH: this implies that the main contribution of the paper is predominantly methodological is that the case? Is there some primary thesis/argument that will be advanced? It is really important to take a top-down approach to that messaging, beginning here in the first paragraph-->
+<!-- Ergens anders: Similarly, although
 there are several *relevant* theories, there is no specific theoretical
 framework to guide research on adolescents' emotion regulation. Although theory
 development is beyond the scope of this paper, we set out to generate a
@@ -91,11 +100,11 @@ manifestations, and outcomes of emotion regulation in adolescence. We discuss
 how this nomological network relates to existing relevant theory, and conclude
 with recommendations for future theory-generating efforts.-->
 
-## Why adolescence is an important life phase for emotion regulation
+## Why adolescence is an important life stage for emotion regulation
 
-Adolescence is defined as a life phase ranging from pubertal onset to
+Adolescence is defined as a life stage ranging from pubertal onset to
 adult-like independence [@steinbergAgeOpportunityLessons2014].
-It is thus demarcated by both biological- and socio-cultural factors.
+It is thus demarcated by both biological and socio-cultural factors.
 It has been argued that,
 due to accellerated pubertal onset and delayed transitions to adult roles,
 adolescence now ranges from 10-24 years in the modern Western world
@@ -168,17 +177,29 @@ cost to society as a whole [@leeAdolescentMentalHealth2014], it is essential to
 have a solid understanding of the risk factors associated with adolescents'
 emotion regulation difficulties.
 
-## Existing relevant theory
+## Existing theoretical landscape
 
-Theory is of paramount importance when seeking to understand or explain a
-phenomenon. Although there are many relevant theories, none have specifically
-addressed emotion regulation development in adolescence. Several recent
-publications have undertaken the monumental task of comprehensively reviewing
-theory relevant to emotional development
-[@bussTheoriesEmotionalDevelopment2019;
-@riedigerEmotionRegulationAdolescence2014]. Thanks, in part, to these efforts,
-we can provide a summary review of the theoretical landscape as context for our
-empirical contribution.<!--Several recent publications have undertaken the
+The structure of the empirical literature on adolescents' emotion regulation is best understood against the backdrop of the existing theoretical landscape.
+This allows us to see in what respects 
+phenomenon.
+We therefore provide a summary review of the theoretical landscape as context for our
+empirical contribution.
+Several recent publications provide more detailed reviews of theories of emotional development [@bussTheoriesEmotionalDevelopment2019] and emotion regulation in adolescence [@riedigerEmotionRegulationAdolescence2014].
+It is apparent from these reviews that, although many theories are *relevant* for emotion regulation development in adolescence, few have addressed this topic directly.
+Fewer theories still have comprehensively addressed important predictors of development in this life stage,
+and none directly guide contemporary research in the field [see @bussTheoriesEmotionalDevelopment2019].
+There is thus a need for more integrative theory formation [see @riedigerEmotionRegulationAdolescence2014].
+
+Hall's notion of "storm and stress" is one of the oldest relevant theories of adolescents' emotional development [see
+@arnettAdolescentStormStress1999]. It describes how hormonal changes diminish
+self-control and increase reactivity, leading to difficulties in emotion
+regulation, conflict with parents, and risky behavior.
+In modern theories, this notion of diminished self-control and increased emotional reactivity has been - although it is now considered to be a normative change that facilitates emotional maturation
+[@croneUnderstandingAdolescencePeriod2012], at the risk of emotional
+disturbance [@arnettAdolescentStormStress1999; @leeAdolescentMentalHealth2014].
+
+<!--SH I am still not sure what the empirical contribution is - can you be more specific with it in this sentence? -->
+<!--Several recent publications have undertaken the
 monumental task of providing a comprehensive overview of theories of emotional
 development [e.g., @bussTheoriesEmotionalDevelopment2019;
 @holodynskiDevelopmentEmotionsEmotion2006;
@@ -204,44 +225,35 @@ parents (the microsystem in Bronfenbrenner's model), and distal influences;
 structural factors indirectly shaping development, like socio-economic status,
 schools, and the community (macro- and exosystem). With increasing age, distal
 influences gradually gain ground on proximal influences.
+<!--SH I am not sure what contribution this paragraph ultimately makes - you should consider condensing it substantially to just note that these theories have something to say about emotional development but are not adolescent-specific-->
 
-Turning now towards theories specifically addressing emotion regulation in
-adolescence, Hall's notion of "storm and stress" is one of the oldest [see
-@arnettAdolescentStormStress1999]. It describes how hormonal changes diminish
-self-control and increase reactivity, leading to difficulties in emotion
-regulation, conflict with parents, and risky behavior. Recent work provides a
-more nuanced perspective on this theory. For example, although the notion of
-diminished self-control and increased emotional reactivity has been upheld, it
-has been recast as a necessary change that facilitates emotional maturation
-[@croneUnderstandingAdolescencePeriod2012], at the risk of emotional
-disturbance [@arnettAdolescentStormStress1999; @leeAdolescentMentalHealth2014].
-More recently, Sroufe [-@sroufeEmotionalDevelopmentOrganization1995] presented
-a theory focused on normative emotional development in early childhood. It
-argues that, as children grow older, their increasing self-regulatory abilities
+One example of a normative theory of emotional development in early childhood is presented by Sroufe [-@sroufeEmotionalDevelopmentOrganization1995].
+Sroufe argues that, as children grow older,
+their increasing self-regulatory abilities
 drive a transition from external emotion regulation by primary caregivers
 towards autonomous emotion regulation. This theory focuses on two drivers of
 development: social and cognitive influences. Social influences mainly occur
 through parental co-regulation, parenting behaviors, and parent-child
 attachment. Cognitive influences occur through the development of the central
-nervous system (CNS), cognition, and self-regulation. Several other theories,
-introduced below, have extemporized on these sources of influence.
+nervous system (CNS), cognition, and self-regulation.
 
-Several other models echo this emphasis on neorocognitive development as a driver of emotional
-development, including emotion regulation development.
+This emphasis on social influences and neurocognitive development is reflected in many theories.
+Some of these focus primarily on neurocognitive development.
 For example, polyvagal theory closely links emotional experience
 - and regulation - to autonomous nervous system functioning
-[@porgesOrientingDefensiveWorld1995]. A more recent neorocognitive theory, with
+[@porgesOrientingDefensiveWorld1995].
+A more recent neurocognitive theory, with
 substantial relevance to adolescents' emotion regulation development, is Crone
 and Dahl's model of social-affective engagement and goal flexibility
-[@croneUnderstandingAdolescencePeriod2012]. This theory is based on the notion
-of a "maturity gap" in middle-adolescence, arising from a developmental
-asymmetry between motivational and inhibitory brain circuits
-[@craccoEmotionRegulationChildhood2017;
-@caseyBrakingAcceleratingAdolescent2011]. To
-a greater extent than related writings, however, @croneUnderstandingAdolescencePeriod2012
-set out to explain adolescents' diverging destinies; the
-question why some youngsters flourish while others languish. Crone and Dahl
-argue that adolescents' cognitive engagement is dynamically responsive to
+[@croneUnderstandingAdolescencePeriod2012]. Like other authors 
+[e.g., @caseyBrakingAcceleratingAdolescent2011; @craccoEmotionRegulationChildhood2017],
+Crone and Dahl argue that the developmental
+asymmetry between motivational and inhibitory brain circuits gives rise to a
+"maturity gap" in middle adolescence. 
+What sets Crone and Dahl apart from related writings, however, 
+is the greater attention to adolescents' diverging destinies:
+the question why some youngsters flourish while others languish.
+They argue that adolescents' cognitive engagement is dynamically responsive to
 social and motivational goal salience. This flexibility, on the one hand,
 prepares adolescents to effectively engage cognitive systems in novel
 challenging situations in a way that facilitates developing mature regulatory
@@ -250,38 +262,37 @@ pursuit of peer approval. In terms of explanans,
 this theory focuses primarily on cognitive factors
 and the role of peers, with less attention to factors such as parenting.
 
-A theory focused specifically on parents' role in emotion regulation
-development is Morris' tripartite model [-@morrisRoleFamilyContext2007]. It
-describes three pathways through which parents shape emotion regulation
+Other theories emphasize socialization to a greater extent.
+One such theory is Morris' tripartite model, which focuses specifically on parents' role in emotion regulation development [-@morrisRoleFamilyContext2007].
+It describes three pathways through which parents shape emotion regulation
 development: Through observation and modeling, parenting practices, and the
 emotional family climate, which in turn involves attachment and marital
 relationship quality. Morris and colleagues also emphasize the relevance of
 fathers and siblings, and others have adapted the tripartite model to describe
 the role of peers in adolescents' emotion regulation development
 [@reindlSocializationEmotionRegulation2016].
+A more abstract take on socialization is found in @holodynskiDevelopmentEmotionsEmotion2006's
+internalization model of emotional development. 
+Unique aspects emphasized in this theory are the interplay between emotion and communication,
+and the internalization of the cultural symbolic function of emotion.
+<!--Like Sroufe, Holodynski describes an age graded transition from
+interpersonal to intrapersonal emotion regulation.
+In doing so, Holodynski applies Vygotsky's theory of development to the domain of
+emotion, and presents a detailed integrated model of emotional experience and
+regulation.-->
 
-Whereas our primary interest is in theories of emotional development,
-theories of the phenomenon of
-emotion regulation are also somewhat relevant. One influential theory is Gross'
+Finally, theories of the phenomenon of emotion regulation offer a unique perspective on potential proximal drivers of emotion regulation development.
+One influential theory is Gross'
 [-@grossHandbookEmotionRegulation2013] process model, which describes the
 process of emotion regulation, from eliciting cue to ultimate response.
-Individuals modulate the different stages of this process using strategies,
-consciously or otherwise. The effectiveness, desireability, and consequences of
-different strategies depend on the cultural context [see
+According to Gross, individuals use strategies to modulate the different stages of this process,
+consciously or otherwise. Culture plays a role too, as the effectiveness, desireability, and consequences of different strategies depend on the social context [see
 @bariolaChildAdolescentEmotion2011]. Similar to Gross' theory, the social
-information processing theory of emotion also describe the role of intrapsychic
-processes and strategies in emotion experience and reulation
+information processing theory of emotion also describe the role of cognitive
+processes and strategies in emotion experience and regulation
 [@lemeriseIntegratedModelEmotion2000].
 
-Another theory worth mentioning in this context is
-@holodynskiDevelopmentEmotionsEmotion2006's internalization model of emotional
-development. It applies Vygotsky's theory of development to the domain of
-emotion, and presents a detailed integrated model of emotional experience and
-regulation. Like Sroufe's work, this work describes a transition from
-interpersonal to intrapersonal emotion regulation. Other important features of
-this work include the interplay between emotion and communication, and the
-internalization of the socio-cultural symbolic function of emotion throughout
-development. <!--Theories like this are particularly relevant to a fine-grained
+<!--Theories like this are particularly relevant to a fine-grained
 understanding of the process of emotion regulation, but their developmental
 relevance has unfortunately not yet been considered (REF Buss). -->
 
@@ -318,9 +329,9 @@ identify which
 risk factors render some adolescents more susceptible
 to maladaptive emotional development than others.
 One crucial shortcoming
-is the lack of explicit attention to the life phase of adolescence. This is
+is the lack of explicit attention to the life stage of adolescence. This is
 unfortunate, as empirical research consistently indicates that adolescence is a
-crucial life phase for emotion regulation development. Adolescence differs
+crucial life stage for emotion regulation development. Adolescence differs
 qualitatively from infancy, childhood, and adulthood. It is therefore
 questionable whether theories focused on different ages can be generalized to adolescents.
 By contrast, some theories focus on adolescence specifically [e.g.,
@@ -392,7 +403,7 @@ Several authors of comprehensive reviews have noted that developmental theories
 of emotion are still in their infancy [@bussTheoriesEmotionalDevelopment2019].
 Several specific limitations of the theoretical landscapes precipitate the
 present study. First, although there are many *relevant* theories, few are
-focused specifically on emotion regulation. Second, the phase of adolescence is
+focused specifically on emotion regulation. Second, the stage of adolescence is
 rarely addressed, although empirical research has indicated that this is a
 crucial period of emotion regulation development.
 "emotion theory has largely focused on adults, and emotional development theory
@@ -459,7 +470,7 @@ literature review, and mapping the factors associated with adolescent emotion
 regulation.
 
 <!-- NIET TEVEEL OVER THEORIE PRATEN; IK KIJK NIET NAAR THEORIE. IK KIJK NAAR FACTOREN DIE IN VERBAND GEBRACHT WORDEN MET EMOTIEREGULATIE. -->
-<!--The life phase of adolescence differs qualitatively from both childhood and adulthood. It is therefore not sufficient to extend -->
+<!--The life stage of adolescence differs qualitatively from both childhood and adulthood. It is therefore not sufficient to extend -->
 
 <!--
 Influences on emotion regulation (Riediger Klipker)
@@ -623,7 +634,7 @@ if(!file.exists("recs_final.csv")){
 ```
 Papers were screened based on two main criteria:
 First, papers had to address emotion regulation, emotional problems, or similar.
-Second, the target population must overlap with the life phase of adolescence, defined as the age range from 10-25.
+Second, the target population must overlap with the life stage of adolescence, defined as the age range from 10-25.
 Thus, for example, an article reviewing the role of hormonal changes in emotional adjustment throughout the entire life course, including adolescence, would be deemed relevant.
 Screening was initially conducted in Rayyan QRCI [@Ouzzani2016].
 Papers were sorted using Rayyan's ranking algorithm.
@@ -691,6 +702,7 @@ ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
 source("study1.R")
 if(run_everything | !file.exists("Study1_lda_dims.txt")) source("LDA_analysis.R")
 lda_dims <- read_yaml("Study1_lda_dims.txt")
+dtm_top <- read_yaml("study1_dtm_top.yml")
 ```
 The corpus for this first analysis consisted of the author-provided keywords for the selected articles.
 We extracted keywords by document, and used a dictionary
@@ -1024,6 +1036,8 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
 
 
 
