@@ -15,20 +15,33 @@ run_everything = TRUE
 dict <- read_yaml("yaml_dict.txt")
 ## Look at POS tags?
 if(run_everything){
-  recs <- readLines("concepts_review.txt")
-  df <- data.frame(word = trimws(tolower(recs)))
-  
+  bl_theory <- readLines("baseline_theory.txt")
+  bl_review <- readLines("baseline_reviews.txt")
+  df <- data.frame(word = trimws(tolower(bl_theory)), source = "theory")
+  df <- rbind(df, data.frame(word = trimws(tolower(bl_review)), source = "reviews"))
   # Categorize words
   res_cat <- cat_words(df$word, dict, handle_dups = "all")
-  baseline <- c("dysregulation", unique(res_cat$words))
+  df$cat <- res_cat$words
+  if(!is.null(res_cat[["unmatched"]])){
+    df <- df[!df$cat %in% names(res_cat$unmatched), ]
+  }
+  
+  baseline_cat <- df
+  baseline <- c("dysregulation", unique(df$words[df$source == "theory"]))
+  
   saveRDS(baseline, "baseline.RData")
+  saveRDS(baseline_cat, "baseline_cat.RData")
 } else {
   baseline <- readRDS("baseline.RData")
+  baseline_cat <- readRDS("baseline_cat.RData")
 }
 
+in_theory <- df$word[df$source == "theory"]
+in_rev <- df$word[!df$source == "theory"]
+in_rev[!in_rev %in% in_theory]
 
 df_plot <- data.frame(term1 = baseline, term2 = "dysregulation")
-
+df_plot <- df_plot[!df_plot$term1 == df_plot$term2, ]
 edg <- df_plot
 
 edg$width = 1
@@ -59,9 +72,9 @@ g <- graph_from_data_frame(edg, vertices = vert,
 
 
 
-set.seed(2) #4 #2 #3
+set.seed(3) #4 #2 #3
 l1 <- l <- layout_with_fr(g)
-set.seed(64)
+set.seed(33)
 l2 <- layout_in_circle(g)
 
 p <- quote({

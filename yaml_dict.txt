@@ -311,6 +311,9 @@ abuse:
 discrimination:
 - discrimination
 - racism
+culture:
+- ^culture$
+- ^society$
 minority_status:
 - ^ethnic
 - (ethnic|bicultur).+identity
@@ -321,7 +324,6 @@ minority_status:
 - racial
 - acculturati
 - cultural.adaptation
-- cultur
 - minority
 - (an|in).american
 - black
@@ -416,6 +418,8 @@ autonomy:
 - self.?(determination|efficacy)
 - autonomy
 - individuation
+- goals?
+- motivation
 device-use:
 - \bgames?\b
 - phone
@@ -435,6 +439,9 @@ sexual-risk:
 - sex.+trans
 - sex.+behaviou?
 - hiv
+sexuality:
+- ^sexuality$
+- ^sexual.behaviou?r$
 reward: reward
 academic: ^academic
 health:
@@ -503,7 +510,7 @@ neurotransmitter:
 - glutam
 - neurotrans
 genes:
-- gene(\b|t)
+- gene(\b|t|s)
 - gene.+envi
 - biology
 - (neuro|psycho)biolog

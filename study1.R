@@ -11,6 +11,7 @@ library(Matrix)
 library(ggplot2)
 library(yaml)
 source("word_functions.R")
+
 run_everything = FALSE
 study1details <- read_yaml("study1_details.yml")
 dict <- read_yaml("yaml_dict.txt")
@@ -48,67 +49,19 @@ if(run_everything){
   number_docs_words <- yaml::read_yaml("study1_number_docs_words.txt")
 }
 
-# Create plot data --------------------------------------------------------
-# nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word)]
-# nounbydoc$freq <- 1
-# dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
-# tt <- as.data.frame(table(colSums(dtm)), stringsAsFactors = FALSE)
-# tt$Frequency <- as.numeric(tt$Var1)
-# tt$Words <- tt$Freq
-# tt$Dictionary <- "Original"
-# df_plot <- tt[, c("Frequency", "Words", "Dictionary")]
-# rm(nounbydoc, dtm, tt)
-# End plot data -----------------------------------------------------------
-
-
-# Remove duplicate words per doc
-#df[, id := paste0(word_coded, doc)]
-#df <- df[!duplicated(id), ]
-#df[, id := NULL]
-#head(df)
 
 if(run_everything){
   # Frequency of word by doc
   nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word_coded)]
   # Set frequency to 1; we're not interpreting word frequency, only occurrence
   nounbydoc$freq <- 1
-  # tmp <- nounbydoc %>%
-  #   bind_tf_idf(term, doc_id, freq)
-  # summary(tmp$tf_idf)
   
   dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
-  # topterms <- colSums(dtm)
-  # topterms <- sort(topterms, decreasing = TRUE)
-  
-  
+ 
   # Continue plotting word frequency ----------------------------------------
   
-  # tt <- as.data.frame(table(topterms), stringsAsFactors = FALSE)
-  # tt$Frequency <- as.numeric(tt$topterms)
-  # tt$Words <- tt$Freq
-  # tt$Dictionary <- "Recoded"
-  # df_plot <- rbind(df_plot, tt[, c("Frequency", "Words", "Dictionary")])
-  # p <- ggplot(df_plot, aes(x=Frequency, y = Words, linetype = Dictionary))+geom_point() + geom_path()+
-  #          theme_bw() + scale_y_log10()+scale_x_log10()
-  # 
-  # ggsave("study1_word_frequency.png", p, device = "png")
+ 
   
-  
-  # Select most common terms ------------------------------------------------
-  
-  # tmp <- as.data.frame.table(table(topterms), stringsAsFactors = FALSE)
-  # tmp$Var1 <- as.numeric(tmp$topterms)
-  # plot(tmp$Var1, tmp$Freq, type = "b")
-  
-  #interesting_terms <- select_words(dtm, q = .975)
-  #sum(interesting_terms)
-  
-  #topterms <- topterms[topterms > .005*nrow(recs)]
-  #topterms <- colSums(dtm)[select_words(dtm)]
-  #topterms <- sort(topterms, decreasing = TRUE)
-  #topterms <- topterms[topterms > 13]
-  #which_topterms <- head(topterms, 250)
-  #which_topterms <- names(which_topterms)
   set.seed(5348)
   dtm_top <- dtm[, select_words(dtm, .975)]
   dtm_top <- dtm_top[rowSums(dtm_top) > 0, ]
@@ -119,9 +72,6 @@ if(run_everything){
   ## Word frequencies
   topterms <- colSums(dtm_top)
   baseline <- readRDS("baseline.RData")
-  # s1terms <- names(topterms)
-  # s1terms[!s1terms %in% baseline]
-  # s1terms[s1terms %in% baseline]
   
   word_freq <- data.frame(Word = names(topterms), Frequency = topterms, row.names = NULL)
   write.csv(word_freq, "study1_word_freq.csv", row.names = FALSE)
@@ -136,47 +86,18 @@ if(run_everything){
   
   cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
   df_plot$cat <- ordered(df_plot$cat, levels = c("Outcome", "Indicator", "Cause", "Protective"))
-  # p <- ggplot(df_plot, aes(y = Word, x = Frequency)) + 
-  #   geom_segment(aes(x = 0, xend = Frequency, 
-  #                           y = Word, yend = Word), colour = "grey50", 
-  #                linetype = 2) + geom_vline(xintercept = 0, colour = "grey50", 
-  #                                           linetype = 1) + xlab("Word frequency") + 
-  #   geom_point(aes(fill = cat), shape = 21, size = 2) +
-  #   geom_text(aes(label = Word), x = -850, hjust=0, vjust= 0, size = 2) +
-  #   scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
-  #   scale_x_continuous(limits = c(-850, (max(df_plot$Frequency)+1)))+
-  #   scale_y_discrete(expand = c(.015,.01))+
-  #   theme_bw() + theme(panel.grid.major.x = element_blank(), 
-  #                      panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
-  #                      legend.position = c(.70,.125),
-  #                      legend.title = element_blank(),
-  #                      axis.text.y = element_blank(),
-  #                      axis.ticks.y = element_blank())
   
   write_yaml(df_plot$Word, "s1_words.yml")
-  
-  ggplot(df_plot, aes(y = Word, x = Frequency)) +
-    geom_segment(aes(x = 0, xend = Frequency,
-                     y = Word, yend = Word), colour = "grey50",
-                 linetype = 2) + geom_vline(xintercept = 0, colour = "grey50",
-                                            linetype = 1) + xlab("Word frequency") +
-    geom_point(aes(fill = cat, colour = baseline), shape = 21, size = 2) +
-    scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
-    scale_color_manual(values = c("FALSE" = "black", "TRUE" = "white"), guide = NULL) +
-    scale_x_log10() +
-    theme_bw() + theme(panel.grid.major.x = element_blank(),
-                       panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
-                       legend.position = c(.70,.125),
-                       legend.title = element_blank(),
-                       axis.text.y = element_text(hjust=0, vjust = 0, size = 6))
   
   
   p <- ggplot(df_plot, aes(y = Word, x = Frequency)) +
     geom_segment(aes(x = 0, xend = Frequency,
-                     y = Word, yend = Word), colour = "grey50",
+                     y = Word, yend = Word,
+                     colour = baseline),
                  linetype = 2) + geom_vline(xintercept = 0, colour = "grey50",
                                             linetype = 1) + xlab("Word frequency") +
     geom_point(aes(fill = cat), shape = 21, size = 2) +
+    scale_colour_manual(values = c("TRUE" = "gray70", "FALSE" = "gray30"))+
     scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
     scale_x_log10() +
     theme_bw() + theme(panel.grid.major.x = element_blank(),
