@@ -1,3 +1,7 @@
+shifter <- function(x, n = 1) {
+  if (n == 0) x else c(tail(x, -n), head(x, n))
+}
+
 boot_dtm_old <- function(dtm, iterations = 1000, confidence_boundary = .95){
   bt <- replicate(iterations, {
     b <- dtm[sample.int(nrow(dtm), replace = TRUE), ]
@@ -42,7 +46,8 @@ select_cooc <- function(cooc, q = .95){
                dims = dim(cooc), symmetric = TRUE)
   rownames(out) <- rownames(cooc)
   colnames(out) <- colnames(cooc)
-  return(out)
+  is_zero <- rowSums(out) == 0
+  return(out[!is_zero, !is_zero])
 }
 
 create_cooc <- function(dtm){
@@ -79,7 +84,16 @@ select_fixed_margin <- function(dtm, confidence_boundary = .95, iterations = 100
   out
 }
 
-pretty_words <- function(x){ str_to_sentence(gsub("[_-]", " ", x)) }
+pretty_words <- function(x){ 
+  out <- str_to_sentence(gsub("[_-]", " ", x))
+  out[out == "Adhd cd"] <- "ADHD/CD"
+  out[out == "Ses"] <- "SES"
+  out[out == "Ptsd"] <- "PTSD"
+  out[out == "Schizo"] <- "Schizophrenia"
+  out <- gsub("^Par\\.", "Parenting ", out)
+  out
+}
+
 
 conflicting_matches <- function(words, dict){
   dict_matches <- lapply(unlist(dict), function(this_reg){

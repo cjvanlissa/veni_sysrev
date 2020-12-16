@@ -1,3 +1,4 @@
+# ---- study1chunk ----
 library(data.table)
 #library(bibliometrix)
 #library(yaml)
@@ -11,8 +12,9 @@ library(Matrix)
 library(ggplot2)
 library(yaml)
 source("word_functions.R")
+source("circle2.R")
 
-run_everything = FALSE
+#run_everything = FALSE
 study1details <- read_yaml("study1_details.yml")
 dict <- read_yaml("yaml_dict.txt")
 ## Look at POS tags?
@@ -79,7 +81,9 @@ if(run_everything){
   categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
   df_plot$cat <- categ$category[match(df_plot$Word, categ$name)]
   df_plot$baseline <- as.character(df_plot$Word %in% baseline)
+  df_plot$faded <- df_plot$Word %in% baseline
   df_plot$Word <- pretty_words(df_plot$Word)
+  
   
   df_plot <- df_plot[order(df_plot$Frequency, decreasing = TRUE), ]
   df_plot$Word <- ordered(df_plot$Word, levels = df_plot$Word[order(df_plot$Frequency)])
@@ -89,23 +93,22 @@ if(run_everything){
   
   write_yaml(df_plot$Word, "s1_words.yml")
   
-  
   p <- ggplot(df_plot, aes(y = Word, x = Frequency)) +
     geom_segment(aes(x = 0, xend = Frequency,
-                     y = Word, yend = Word,
-                     colour = baseline),
-                 linetype = 2) + geom_vline(xintercept = 0, colour = "grey50",
-                                            linetype = 1) + xlab("Word frequency") +
-    geom_point(aes(fill = cat), shape = 21, size = 2) +
-    scale_colour_manual(values = c("TRUE" = "gray70", "FALSE" = "gray30"))+
+                     y = Word, yend = Word, linetype = faded), colour = "grey50"
+    ) + 
+    geom_vline(xintercept = 0, colour = "grey50", linetype = 1) + xlab("Word frequency") +
+    geom_point(data = df_plot[df_plot$faded, ], aes(colour = cat), fill = "white", shape = 21, size = 1.5) +
+    geom_point(data = df_plot[!df_plot$faded, ], aes(colour = cat, fill = cat), shape = 21, size = 1.5) +
+    scale_colour_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen"), guide = NULL)+
     scale_fill_manual(values = c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")) +
     scale_x_log10() +
+    scale_linetype_manual(values = c("TRUE" = 2, "FALSE" = 1), guide = NULL) +
     theme_bw() + theme(panel.grid.major.x = element_blank(),
                        panel.grid.minor.x = element_blank(), axis.title.y = element_blank(),
                        legend.position = c(.70,.125),
                        legend.title = element_blank(),
                        axis.text.y = element_text(hjust=0, vjust = 0, size = 6))
-  
   
   svg("s1_varimp.svg", width = 7/2.54, height = 14/2.54)
   eval(p)
@@ -128,54 +131,124 @@ if(run_everything){
   dev.off()
 }
 
+
+# LDA analysis ------------------------------------------------------------
+
+if(run_everything | !file.exists("Study1_lda_dims.txt")){
+  library(Rmpfr)
+  library(topicmodels)
+  library(udpipe)
+  library(slam)
+  library(tidytext)
+  # Functions:
+  harmonicMean <- function(logLikelihoods, precision = 2000L) {
+    llMed <- median(logLikelihoods)
+    as.double(llMed - log(mean(exp(-mpfr(logLikelihoods,
+                                         prec = precision) + llMed))))
+  }
+  BIC <- function(ll, p, n){
+    -2 * ll + p * log(n)
+  }
+  entropy <- function(post_prob){
+    1 + (1/(nrow(post_prob) * 
+              log(ncol(post_prob)))) * (sum(rowSums(post_prob * 
+                                                      log(post_prob + 1e-12))))
+  }
+  
+  # Preprocessing -----------------------------------------------------------
+  
+  #nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word_coded)]
+  df_lda <- nounbydoc #[nounbydoc$term %in% names(dict), ]
+  df_lda <- df_lda %>%
+    bind_tf_idf(term, doc_id, freq)
+  summary(df_lda$tf_idf)
+  df_lda <- df_lda[order(df_lda$tf_idf),]
+  
+  select_words <- df_lda[!duplicated(df_lda$term), ]
+  select_words <- select_words$term[select_words$tf_idf >= median(select_words$tf_idf)]
+  df_lda <- df_lda[df_lda$term %in% select_words, ]
+  
+  dtm <- udpipe::document_term_matrix(document_term_frequencies(df_lda))
+  
+  # dtm <- as.simple_triplet_matrix(dtm)
+  # dim(dtm)
+  # summary(col_sums(dtm))
+  # term_tfidf <- tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) * log2(dim(dtm)[1]/col_sums(dtm > 0))
+  # summary(term_tfidf)
+  
+  yaml::write_yaml(dim(dtm), file = "Study1_lda_dims.txt")
+  
+  # Build topic models
+  
+  seqk <- seq(2, 20, 1)
+  burnin <- 1000
+  iter <- 1000
+  keep <- 50
+  set.seed(44773)
+  res_lda <- lapply(seqk, function(k) {
+    topicmodels::LDA(
+      dtm,
+      k = k,
+      method = "Gibbs",
+      control = list(
+        burnin = burnin,
+        iter = iter,
+        keep = keep
+      )
+    )
+  })
+  
+  ll <- sapply(res_lda, function(x){harmonicMean(x@logLiks[-c(1:(burnin/keep))])})
+  
+  K = seqk
+  N = nrow(dtm)
+  M = ncol(dtm)
+  
+  parameters <- K*(M-1)+N*(K-1)
+  N <- nrow(dtm)
+  bics <- BIC(ll, parameters, N)
+  
+  entropies <- sapply(res_lda, function(x){entropy(x@gamma)})
+  
+  p <- ggplot(data.frame(K = seqk, Entropy = entropies), aes(x = K, y = Entropy)) + geom_path() +
+    xlab('Number of topics') +
+    scale_y_continuous(limits = c(0,1)) +
+    theme_bw()
+  
+  ggsave("study1_entropies.png", p, device = "png")
+  ggsave("study1_entropies.svg", p, device = "svg")
+  
+  p <- ggplot(data.frame(K = seqk, ll = ll), aes(x = K, y = ll)) + geom_path() +
+    geom_vline(xintercept = (which.max(ll)+1), linetype = 2) +
+    xlab('Number of topics') +
+    geom_smooth(method = "lm", formula = y~log(x), se = FALSE)+
+    theme_bw()
+  
+  ggsave("study1_ll.png", p, device = "png")
+  ggsave("study1_ll.svg", p, device = "svg")
+  
+  p <- ggplot(data.frame(K = seqk, BIC = bics), aes(x = K, y = BIC)) + geom_path() +
+    geom_vline(xintercept = (which.min(bics)+1), linetype = 2) +
+    xlab('Number of topics') +
+    geom_smooth(method = "lm", formula = y~x, se = FALSE)+
+    theme_bw()
+  
+  ggsave("study1_BIC.png", p, device = "png")
+  ggsave("study1_BIC.svg", p, device = "svg")
+}
+
 # Co-occurrence -----------------------------------------------------------
 
-#word_cooccurences <- pair_count(df_nouns, group="article.id", value="word.lemma", sort = TRUE)
-# create_cooc <- function(dtm){
-#   dtm_binary <- dtm > 0
-#   Matrix::t(dtm_binary) %*% dtm
-# }
-# permute <- function(dtm){
-#   dtm_perm <- apply(dtm, 2, function(j){ sample(j, length(j))})
-#   create_cooc(dtm_perm)
-# }
-# set.seed(68483)
-# perm <- replicate(100, permute(dtm_top))
-# q95 <- median(apply(perm, 3, function(k){quantile(k[lower.tri(k)], .95)}))
-
-#cooc <- select_fixed_margin(dtm_top, confidence_boundary = .975, iterations = 100)
-
 if(run_everything){
+  set.seed(52)
   cooc <- select_cooc(create_cooc(dtm_top), q = .975)
-  
+  write.csv(as.matrix(cooc), "s1_cooc.csv")
   df_plot <- as_cooccurrence(cooc)
   df_plot <- df_plot[!df_plot$term1 == df_plot$term2, ]
   df_plot <- df_plot[order(df_plot$cooc, decreasing = TRUE), ]
   
-  # tt <- as.data.frame(table(word_cooccurences$cooc), stringsAsFactors = FALSE)
-  # tt$Frequency <- as.numeric(tt$Var1)
-  # tt$Cooc <- tt$Freq
-  # ggplot(tt, aes(x=Frequency, y = Cooc))+geom_point() + geom_path()+ geom_text(aes(label= Frequency))+
-  #   theme_bw() + scale_y_log10()+scale_x_log10()
-  
-  #df_plot <- word_cooccurences[word_cooccurences$cooc > q95, ] #.01*nrow(recs), ]
-  #df_plot <- word_cooccurences[word_cooccurences$cooc > 22, ] #.01*nrow(recs), ]
-  
   df_plot$id <- apply(df_plot[, c("term1", "term2")], 1, function(x)paste0(sort(x), collapse = ""))
   df_plot <- df_plot[!duplicated(df_plot$id), ]
-  
-  #df_plot <- df_plot[!(df_plot$term1 == "youth" | df_plot$term2 == "youth"),]
-  # #word_cooccurences$cooc <- (word_cooccurences$cooc-min(word_cooccurences$cooc))+.1
-  # set.seed(123456789)
-  # df_plot %>%
-  #   graph_from_data_frame() %>%
-  #   ggraph(layout = "circle") +
-  #   geom_edge_link(mapping = aes(edge_colour = cooc, edge_width = cooc)) +
-  #   #geom_node_text(color = "lightblue", size = 5) +
-  #   geom_node_label(aes(label = name), col = "darkgreen") +
-  #   ggtitle(sprintf("\n%s", "CETA treaty\nCo-occurrence of nouns")) +
-  #   theme_void()
-  
   
   # Write study details -----------------------------------------------------
   
@@ -184,34 +257,7 @@ if(run_everything){
   
   # Create network ----------------------------------------------------------
   
-  # Use EBICglasso
-  # cor_mat <- dtm_cor(dtm_top)
-  # cor_mat <- (cor_mat+1)/2
-  # cor_mat <- cooc
-  # 
-  # cor_mat[1:5, 1:5]
-  # cor_mat[45:50, 45:50]
-  # m <- EBICglasso(cor_mat, n = dim(dtm_top)[1], gamma = 0.5, threshold = T, returnAllResults = T)
-  # df_plot <- as.data.frame.table(m$optnet, stringsAsFactors = FALSE)
-  # names(df_plot) <- c("term1", "term2", "cooc")
-  # df_plot <- df_plot[!df_plot$cooc == 0, ]
-  # df_plot$id <- apply(df_plot[, c("term1", "term2")], 1, function(x)paste0(sort(x), collapse = ""))
-  # df_plot <- df_plot[!duplicated(df_plot$id), ]
-  
-  
   edg <- df_plot
-  # edge_cols <- read.csv("edge_cols.csv", stringsAsFactors = FALSE)
-  # if(any(!edg$id %in% edge_cols$id)){
-  #   stop("Please classify missing edges.")
-  # }
-  # edge_cols$color <- "gray70"
-  # edge_cols$color[which(edge_cols$association)] <- "navy"
-  # edge_cols$color[which(!edge_cols$association)] <- "darkred"
-  # edg$color <- edge_cols$color[match(edg$id, edge_cols$id)]
-  #edg$col <- sapply(edg$color, function(i){
-  #  do.call(rgb, c(as.list(col2rgb(i)), list(alpha = 178, maxColorValue = 255)))
-  #})  
-  
   edg$width = edg$cooc
   
   vert <- data.frame(name = names(topterms), label = pretty_words(names(topterms)), size = topterms)
@@ -223,17 +269,16 @@ if(run_everything){
     stop("Please re-categorize missing vertices.")
   } 
   vert$Category <- categ$category[match(vert$name, categ$name)]
+  vert$faded <- vert$name %in% baseline
   
-  cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
   cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")
   vert$color <- cat_cols[vert$Category]
+  vert$frame.color <- cat_cols[vert$Category]
+  vert$color[vert$faded] <- "#FFFFFF"
   
-  #min_size <- (strwidth(vert$name[max(nchar(vert$name))]) + strwidth("oo")) * 100
   vert$size <- scales::rescale(log(vert$size), c(4, 12))
   g <- graph_from_data_frame(edg, vertices = vert,
                              directed = FALSE)
-  #g <- Rsenal::pruneEdg
-  #min_size <- (strwidth(vert$label[max(nchar(vert$label))]) + strwidth("oo"))*100
   
   # edge thickness
   E(g)$width <- scales::rescale(sqrt(E(g)$width), to = c(2, 8))
@@ -245,14 +290,12 @@ if(run_everything){
   edge.end <- ends(g, es=E(g), names = FALSE)[,2]
   E(g)$lty <- c(1, 5)[(!(edge.start == dysreg_vertex|edge.end == dysreg_vertex))+1]
   
-  # Other layouts:
-  #l <- layout_with_lgl(g, root = which(V(g)$name == "dysregulation"))
-  #l <- layout_with_fr(g)
-  #l <- layout_(g,with_dh(weight.edge.lengths = edge_density(g)/1000))
-  set.seed(2) #4 #2 #3
+  # Layout
+  set.seed(6) #4
   l1 <- l <- layout_with_fr(g)
+  l1[,1] <- -1*l1[,1]
   set.seed(64)
-  l2 <- layout_in_circle(g)
+  l2 <- layout_in_circle(g, order = shifter(V(g), -3))
   
   p <- quote({
     # Set margins to 0
@@ -261,19 +304,21 @@ if(run_everything){
     plot(g, edge.curved = 0, layout=l1,
          vertex.label.family = "sans",
          vertex.label.cex = 0.8,
-         vertex.shape = "circle",
-         vertex.frame.color = 'gray40',
+         vertex.shape = "circle2",
+         #vertex.frame.color = 'gray40',
          vertex.label.color = 'black',      # Color of node names
          vertex.label.font = 1,         # Font of node names
+         vertex.frame.width = 2
     )
     legend(x=-1.1, y=1.1, names(cat_cols), pch=21, col="#777777", pt.bg=cat_cols, pt.cex=2, cex=.8, bty="n", ncol=1)
     plot(g, edge.curved = 0, layout=l2,
          vertex.label.family = "sans",
          vertex.label.cex = 0.8,
-         vertex.shape = "circle",
-         vertex.frame.color = 'gray40',
+         vertex.shape = "circle2",
+         #vertex.frame.color = 'gray40',
          vertex.label.color = 'black',      # Color of node names
          vertex.label.font = 1,         # Font of node names
+         vertex.frame.width = 2
     )
   })
   
@@ -286,3 +331,18 @@ if(run_everything){
   eval(p)
   dev.off()
 }
+categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
+word_freq <- read.csv("study1_word_freq.csv", stringsAsFactors = FALSE)
+word_graph <- read.csv("s1_cooc.csv", row.names = 1)
+notingraph <- word_freq$Word[!word_freq$Word %in% row.names(word_graph)]
+notingraph <- categ[categ$name %in% notingraph, ]
+cats <- unique(notingraph$category)
+notingraph <- lapply(cats, function(x){ 
+  out <- notingraph$name[notingraph$category == x]
+  out <- pretty_words(out)
+  paste0(paste0("*", out[-length(out)], "*", collapse = ", "), ", and *", tail(out, 1), "*")
+  })
+names(notingraph) <- cats
+
+lda_dims <- read_yaml("Study1_lda_dims.txt")
+dtm_top <- read_yaml("study1_dtm_top.yml")

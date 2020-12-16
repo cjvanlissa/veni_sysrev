@@ -8,6 +8,7 @@ parents
 socialization
 cognitive development
 parental co-regulation
+autonomy
 parenting behaviors
 attachment
 central nervous system
@@ -19,6 +20,7 @@ emotional experience
 goal pursuit
 motivation
 brain
+reward sensitivity
 goal salience
 peer relationships
 peers
@@ -28,6 +30,7 @@ parenting practices
 family climate
 attachment
 marital relationship
+mothers
 fathers
 siblings
 communication
