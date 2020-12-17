@@ -12,10 +12,10 @@ library(ggplot2)
 library(yaml)
 source("word_functions.R")
 source("circle2.R")
-run_everything = FALSE
+#run_everything = FALSE
 dict <- read_yaml("yaml_dict.txt")
 ## Look at POS tags?
-if(run_everything){
+if(TRUE){
   bl_theory <- readLines("baseline_theory.txt")
   bl_review <- readLines("baseline_reviews.txt")
   df <- data.frame(word = trimws(tolower(bl_theory)), source = "theory")

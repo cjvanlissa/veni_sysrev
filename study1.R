@@ -18,8 +18,11 @@ source("circle2.R")
 study1details <- read_yaml("study1_details.yml")
 dict <- read_yaml("yaml_dict.txt")
 ## Look at POS tags?
-if(run_everything){
+if(!isTRUE(tools::md5sum("study1_df.RData") == "042c7d894929b0351f804c1a4b5c5002")){
   recs <- data.table(read.csv("recs_final.csv"))
+  if(!is.data.table(recs)){
+    browser()
+  }
   recs[, "doc" := 1:nrow(recs)]
   study1details <- list(dim_recs = dim(recs))
   
@@ -134,7 +137,7 @@ if(run_everything){
 
 # LDA analysis ------------------------------------------------------------
 
-if(run_everything | !file.exists("Study1_lda_dims.txt")){
+if(!isTRUE(tools::md5sum("Study1_lda_dims.txt") == "4e2493d4d618020d4acde61dd7864425")){
   library(Rmpfr)
   library(topicmodels)
   library(udpipe)

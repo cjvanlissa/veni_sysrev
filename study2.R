@@ -1,9 +1,6 @@
+## ---- study2chunk ----
 library(data.table)
-#library(bibliometrix)
-#library(yaml)
 library(stringr)
-#library(lattice)
-#library(topicmodels)
 library(udpipe)
 library(igraph)
 library(wordcloud)
@@ -18,21 +15,21 @@ library(ggplot2)
 library(textrank)
 source("word_functions.R")
 source("circle2.R")
-run_everything <- FALSE
+#run_everything <- FALSE
 
 ## Look at POS tags?
-
-recs <- data.table(read.csv("recs_final.csv"))
-recs[, "doc" := 1:nrow(recs)]
-recs$AB <- tolower(recs$AB)
-
-# Detect languages not necessary; only one abstract is (partly) in Spanish.
-#library(cld3)
-#languages <- cld3::detect_language(recs$AB)
-#table(languages)
-#recs$AB[languages == "es"]
-
-if(run_everything){
+browser()
+if(isTRUE(tools::md5sum("study2_df.RData") == "21abb2622dfd94d8bd3473ed56697f9e")){
+  df <- readRDS("study2_df.RData")
+} else {
+  stop("Note: Study 2 file is out of date. Please run this code manually.")
+  recs <- data.table(read.csv("recs_final.csv"))
+  if(!is.data.table(recs)){
+    browser()
+  }
+  recs[, "doc" := 1:nrow(recs)]
+  
+  recs$AB <- tolower(recs$AB)
   if(!file.exists("english-ewt-ud-2.4-190531.udpipe")) {
     ud_model <- udpipe_download_model(language = "english")
   } else {
@@ -42,14 +39,12 @@ if(run_everything){
   udp_res <- udpipe_annotate(ud_model, x = recs$AB, doc_id = recs$doc)
   df <- as.data.table(udp_res)
   saveRDS(df, "study2_df.RData")
-} else {
-  df <- readRDS("study2_df.RData")
 }
 
 
 # LDA analysis ------------------------------------------------------------
 
-if(run_everything){
+if(!isTRUE(tools::md5sum("Study2_lda_dims.txt") == "2d00a24d8b54ac898eec6cd104086a0f")){
   # Functions:
   harmonicMean <- function(logLikelihoods, precision = 2000L) {
     llMed <- median(logLikelihoods)
@@ -143,30 +138,32 @@ if(run_everything){
 # Keyword extraction ------------------------------------------------------
 
 # Exclude words
-if(run_everything){
+if(isTRUE(tools::md5sum("study2_df_kw.RData") == "8c9b3d61fa7e9bb6a3b31962b11face1")){
+  df_kw <- readRDS("study2_df_kw.RData")
+} else {
   df_kw <- df[upos %in% c("NOUN", "ADJ"), ]
   df_kw <- df_kw[grepl("^[a-zA-Z].", df_kw$lemma), ]
   exclude_terms <- readLines("exclude_terms.txt")
   exclude_these <- unique(unlist(lapply(exclude_terms, grep, x = df_kw$lemma)))
   df_kw <- df_kw[-exclude_these, ]
   saveRDS(df_kw, "study2_df_kw.RData")
-} else {
-  df_kw <- readRDS("study2_df_kw.RData")
 }
 
 # No numeric values
 # all(is.na(as.numeric(df_kw$lemma)))
 #df_kw$lemma[nchar(df_kw$lemma) == 3]
 
-if(run_everything){
+if(isTRUE(tools::md5sum("study2_textrank.RData") == "dcaf7c9bab7a4abd86d19d4868fad780")){
+  kw_tr <- readRDS("study2_textrank.RData")
+} else {
   kw_tr <- textrank_keywords(x = df_kw$lemma[df_kw$upos %in% c("NOUN", "ADJ")], 
                              ngram_max = 3, sep = " ")
   saveRDS(kw_tr, "study2_textrank.RData")
-} else {
-  kw_tr <- readRDS("study2_textrank.RData")
 }
 
-if(run_everything){
+if(isTRUE(tools::md5sum("study2_df_analyze.RData") == "e50ee4984e0872947342d868e3bc9144")){
+  df_analyze <- readRDS("study2_df_analyze.RData")
+} else {
   # Merge back with original data
   df_kw$keyword <- txt_recode_ngram(df_kw$lemma, compound = kw_tr$keywords$keyword, ngram = kw_tr$keywords$ngram, sep = " ")
   df_kw$keyword[!df_kw$keyword %in% kw_tr$keywords$keyword] <- NA
@@ -179,8 +176,6 @@ if(run_everything){
   #head(res_cat$unmatched)
   df_analyze <- merge_df(df_analyze, res_cat$words, "word_coded")
   saveRDS(df_analyze, "study2_df_analyze.RData")
-} else {
-  df_analyze <- readRDS("study2_df_analyze.RData")
 }
 
 
@@ -373,3 +368,4 @@ notingraph <- lapply(cats, function(x){
   paste0(paste0("*", out[-length(out)], "*", collapse = ", "), ", and *", tail(out, 1), "*")
 })
 names(notingraph) <- cats
+lda_dims_2 <- read_yaml("Study2_lda_dims.txt")
