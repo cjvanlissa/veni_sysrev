@@ -19,6 +19,7 @@ negative_emotionality:
 - affect.+instab
 - mood.+variab
 - unpleasant.feeling
+- emotion.+exp(ress|erie)
 shame:
 - sham
 - self.?consciou
@@ -223,8 +224,9 @@ mindfulness:
 - mindfulness
 - self.compassion
 cognitive:
-- cognitive.+(contr|inh|regu|coping|function)
+- cognitive.+(contr|inh|regu|coping|function|reap|strate)
 - \bcognition
+- abstract.(though|think)
 working-memory: working.+mem
 appraisal: apprais
 suppression: (^|expressive|thought|voluntary).?suppression$
@@ -233,13 +235,13 @@ information-processing:
 - ^information$
 - information.+proces
 self-regulation:
-- ^self.regulation$
+- self.regulat
 - ^effortful control$
 - ^self.control$
 - ^executive function
 peers:
 - ^peer(s| influences| interactions| relationships| relations| situations| stress|
-  acceptance)$
+  acceptance| pressure| approval)$
 - ^peer$
 social-support: (social|peer|teacher).+support
 friend: friend
@@ -264,6 +266,7 @@ parents:
 - ^parents?$
 - ^famil(y|ies)$
 - intergenerational transmission
+- primary.caregiv
 mothers:
 - \bmothe
 - \bmaterna
@@ -272,18 +275,20 @@ fathers:
 - paterna
 siblings: ^siblings?$
 parenting:
+- parent.+practices
 - ^psychological control$
+- conditional.regard
 - ^parenting$
 - ^socialization$
+- \bmodeling\b
 - emotion.socialization
 - ^parental involvement$
 - parent.+style
 - parent.+behav
 family-functioning:
-- family.function
+- family.(function|climat)
 - parent.child.relationship
-par-conflict:
-- (marital|parental|family).+conflict
+- (marital|parental|family).+(conflict|relation)
 - household dysfunction
 - ^intimate partner violence$
 - ^(domestic|family) violence$
@@ -306,6 +311,9 @@ abuse:
 discrimination:
 - discrimination
 - racism
+culture:
+- ^culture$
+- ^society$
 minority_status:
 - ^ethnic
 - (ethnic|bicultur).+identity
@@ -316,7 +324,6 @@ minority_status:
 - racial
 - acculturati
 - cultural.adaptation
-- cultur
 - minority
 - (an|in).american
 - black
@@ -328,6 +335,7 @@ environment:
 - ^community violence$
 - ^community$
 - ^school climate$
+- environment(al)?\b
 display-rules: display.+rul
 loneliness:
 - lonel
@@ -372,6 +380,7 @@ delinquency:
 school:
 - ^education$
 - ^schools?$
+- ^teachers?$
 par.stress: (matern|parent).+stress
 sleep:
 - \bsleep
@@ -408,12 +417,17 @@ identity:
 autonomy:
 - self.?(determination|efficacy)
 - autonomy
+- individuation
+- goals?
+- motivation
 device-use:
 - \bgames?\b
 - phone
 - technology use
 - media\b
 - internet
+- \bonline\b
+- \bcomputer\b
 risk-taking:
 - ^risk.+(taking| behaviou?)
 - high.risk
@@ -425,6 +439,9 @@ sexual-risk:
 - sex.+trans
 - sex.+behaviou?
 - hiv
+sexuality:
+- ^sexuality$
+- ^sexual.behaviou?r$
 reward: reward
 academic: ^academic
 health:
@@ -480,6 +497,7 @@ neural:
 - functional.connectivit
 - \berp\b
 - event.related.pot
+- neurocognitive
 endocrine:
 - cortisol
 - corticoster
@@ -492,8 +510,11 @@ neurotransmitter:
 - glutam
 - neurotrans
 genes:
-- gene(\b|t)
+- gene(\b|t|s)
 - gene.+envi
+- biology
+- (neuro|psycho)biolog
+- biological.(marker|sensitiv|process)
 moral: moral
 empathy:
 - mehtali.ing
@@ -508,5 +529,15 @@ empathy:
 - ^empathic concern$
 - ^perspective taking$
 - (emotio|affect).+?recognition
+- emotion.+understanding
 prosocial-behavior: pro.{0,2}social.{0,2}behav
 music: music
+values:
+- \bnorms?\b
+- \bvalues?\b
+- \bnormative.belief
+- \bgroup norm\b
+political:
+- \bpolitic(s|al)\b
+- \bcivic\b
+communication: \bcommunica(tion|tive)\b

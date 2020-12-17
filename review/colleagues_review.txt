@@ -1,0 +1,26 @@
+# Skyler Hawk
+
+## R1C1
+
+By the end of the paper, the contributions that it makes are clear -- but it took quite a while for me to get there. The paper is currently rather lopsided, with an overly-long introduction that is not matched in length or parallel content by the Discussion. The Introduction spends a lot of space and attention on things that ultimately do not matter a great deal for the paper (such as general theories of development), and seems in large part of contribute a narrative literature review of theories fo ER development This becomes problematic because this is ultimately a paper that makes  methodological contribution while also using that methodology to contribute insights into issues that might be under-studied (if you feel I am incorrect about that, you should at least be aware that that was how I read your discussion), but attention to the methodology really only appears in the last page or so of the introduction. Until taht point, the reader is left to go through a summary of a lot of different theories without a clear direction as to where this is all headed. I think there needs ot be a stronger top-down effort, from the very first paragraph, to frame the purpose and aims of the paper, and to explain how the methods you are using make new contributions to researchers' efforts to make new connections in the literature. 
+
+
+## R1C2
+
+I will say that the paper's writing is very clear, and your theoretical summaries are both accurate and well-written. However, in places it begins to read like the short summary paragraphs that you find in the first chapter or two of a developmental psych textbook - kind of a "laundry list" of theories that are not bound together in the manuscript by a central theme/argument. 
+
+
+## R1C3 
+
+You seem to take for granted that the reader will recognize the contributions/importance of the methods you are employing and do not do enough up-front work to explain why we need this approach (this is more clearly explained in the Discussion). So, ultimately I would encourage you to spend a bit less time in the Intro on the theoretical summaries (which ultimately do not relate directly to the analyses you conduct other than the keywords used in the search) and more time from the very beginning explaining the novelty of your approach and how it differs from past lit reviews, so the reader understands why the paper is being written and is motivated, going into the results section, to learn what kinds of new/unexpected patterns emerge from this method.
+
+
+## Wim Meeus
+
+# R2C1
+
+Ik heb je MS globaal doorgelezen en vond vooral deze zin relevant: 
+Our results suggested that several key constructs are currently underrepresented in theory, and that the empirical literature is somewhat fragmented bysub-topic. 
+Ik vroeg me af wat dat betekent voor theorievorming en empirisch onderzoek. Leidt tot een systematische inclusie van underepresented constructs in toekomstig onderzoek?
+Ik ben dus benieuwd naar de theoretische en empirische vervolgstudies die je gaat doen.
+

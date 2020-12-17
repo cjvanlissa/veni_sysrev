@@ -1,0 +1,10 @@
+conda create -n veni_sysrev python=3.7.3
+conda activate veni_sysrev
+pip install git+https://github.com/asreview/asreview.git
+
+
+
+
+asreview oracle C:\Git_Repositories\veni_sysrev\asreview.csv --state_file C:\Git_Repositories\veni_sysrev\asreview_veni.h5 --new
+
+asreview oracle example_ptsd --state_file myreview.h5 --new
