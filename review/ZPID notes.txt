@@ -1,0 +1,11 @@
+psycharchives:
+* long-term repository for digital artifacts and get DOi
+* Is backend for other services, including preregstration
+psycharchives submission assistant
+* Metadata
+* Embargo
+* Licensing (CC)
+* Staging area - staff reviews
+
+psychnotebook
+

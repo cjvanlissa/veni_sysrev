@@ -1,0 +1,83 @@
+Reviewer #1:
+
+## R1C1 The abstract is lacking in two regards:
+
+### R1C1a The actual findings are not reported
+
+### R1C1b it is not clear how the findings integrate te  literature.
+
+## R1C2 Key words are not provided.
+
+Response: We apologize; the keywords were not retained when converting the manuscript to the required format for ADRR. We have reinstated them.
+
+## R1C3 The title is about dysregulation but the first paragraph is all about regulation. The manuscript would be more effective if it were more consistent.
+
+Response: We agree that greater consistency would improve the clarity of the writing, and have changed the manuscript to use the more general term "emotion regulation" throughout.
+
+## R1C4 The first paragraph [promises] that the results will help unify theory and address limitations of research areas that the author deems in silos. This is a heavy burden to carry.
+
+Response: 
+
+## R1C5 The entire section on page 3: it is not clear why this is presented. It could be presented in a brief sentence and likely should because it does not really relate to what is reviewed. If it is kept, it should be edited so it relates to the actual review.
+
+Reponse: This is part of the justification for performing this review
+
+## R1C6 The paragraph on page 4 may be relevant, but it is not clear how it eventually relates to the study.
+
+Reponse: This is part of the justification for performing this review. Make that clear
+
+## R1C7 The existing theoretical landscape is presented in a way that is unclear how it really relates to the review.
+
+Response: Make it clear that the theoretical landscape is presented to provide context for the review
+
+## R1C8 Figure 1 on page 5: it is not clear why it is there. It should come after the introduction. And, in fact, it should appear after the references and the text should simply have a placeholder for the Figure.  It should be referred to at the end of the introduction (before the current study section).
+
+Response: Just do this
+
+## R1C9 The figure nicely points to outcomes, indicators, causes and protective factors. That is not clear from the introductory materials.
+
+Response: INtroduce the categorization first
+
+## R1C10a The section on theory is not presented in a way that would have it appear as authoritative. It reads more like a hodgpode of theories. 
+
+Response: This is the state of the theoretical landscape: A hodgpodge. Others have pointed out that there is an absence of authoritative theories to guide research. It would be misleading to give readers the impression that there is a clear, authoritative theoretical framework. 
+
+## R1C10b The section would be stronger if it also gave readers a sense of which theories are deemed important/influential and worth using. There needs to be a sense that the important theories are being examined.
+
+Response: Point out how often these theories are cited, perhaps?
+
+## R1C11 The first paragraph on page 9 needs to be edited. It appears too haphazard. (Why use "Finally," as uo were not enumerating.) The problem, just as with the literature review, is that the studies appear presented randomly. One study did this, one did that, and so forth.
+
+## R1C12 The fundamental problem with the "The present paper" section is that it really does not do what is needed. It is a plan of analysis. This section should note the research questions and hypotheses.
+
+Response: Inductive research is hypothesis-generating, not hypothesis testing. Make this explicit (cite a source for inductive research).
+
+## R1C13 By the time I get to eh methods section, including the beginning of this section, I still see a focus on emotion regulation, not emotion dysregulation that appears in the title.
+
+As I read the materials on pages 11 and 12, I see a heavy reliance on the computerized analytical system to do the research and coding. I think it would be helpful to know what decisions are made by the authors and, if there are any, we should know about reliability checks and, if there are none, that still should be noted.
+
+## R1C14 At the bottom of page 12, it is clear that a decision is made in terms of retaining within a percentile. How do we know if that is the right decision?  There appear to be decisions like this made throughout. Given the reliance on the program, we need to know more.
+
+## R1C15 Page 13, there is again pruning. Justifications for the cutoff should be noted. There is a manual classification and we are left with no sense of its reliability/validity.
+
+## R1C16 I really think the presentation would be more effective if it did not have results/discussions and then more results/discussions, and then a general discussion. We are not really dealing with different studies.
+
+## R1C17 Page 20, the first full paragraph is a good example of text that is meant to show a contribution when it actually does not. Being the first or one of the first is not a contribution. What is more important is the actual finding. I realize that the focus here is on the method. But, being the first to use a method is not a contribution. What is important to highlight is the findings that come from the method, from the study.
+
+## R1C18 Page 21, the political push for open science is not really a point that is relevant. If the authors wanted to review the actual papers, they could. They just need to identify the papers, download them, and search. Right? At any rate, I would avoid making political statements that, essentially, make the point that others should make their data available so that authors who use this method could use their method. Much of what is said here is not really reading well.
+
+We understand that the Reviewer had interpreted this point as a political push for open science. It was not intended as such, and we have attempted to address this comment by rewriting this section. We have also attempted to clarify the important methodological implications of (lack of) open access for text mining analysis of scientific publications.
+Availability of large datasets is crucial for machine learning approaches. As such, one of the major bottlenecks for more widespread / more in-depth application of text mining to scientific publication is the limited access to full text papers.
+
+1) According to Archambault and colleagues (https://www.science-metrix.com/pdf/SM_EC_OA_Availability_2004-2011.pdf), only 36% of papers in the general social sciences are published in open access journals. In the present corpus, the proportion of papers published in directory of open access journals (DOAJ) was even lower, 10%. The remainder of publications is behind paywalls, thus requiring additional financial resources and manpower to access.
+2) Even for papers that are available under open access licenses, there is no unified API for accessing the text. The reviewer's suggestion that authors can "just [...] identify the papers, download them, and search. Right?" is not scalable. Assuming that it would take only 10 minutes to find, download, and archive the full text, it would have taken 131.35 working days to assemble the corpus for the present study (6305 papers * 10 minutes)/(60 minutes * 8 hours per day). To manually curate a larger dataset, such as CORD-19 (publications about the coronavirus), would take 8333.33 days (400.000+ papers * 10 minutes)/(60 minutes * 8 hours per day).
+
+## R1C19 in the end, it ends up looking like the authors are "hiding the ball". The real issue is what is actually being added to theory? What are the important findings here? What are the practical findings that emerge from this process that are worth making this type of analysis.  I just end up not convinced here.
+
+## R1C20 The conclusion note that the method charts "unknown territories". Sure that is not the case because the study relies on the published studies. 
+
+This is based on a misunderstanding about the level of analysis. We are not charting "unknown territories" with regard to predictors of emotion dysregulation, but with regard to which of those predictors are acknowledged as being relevant in the theoretical / review literature.
+
+## R1C21 I really get a sense of over-selling. The authors should, again, focus on what is actually found that is useful about the topic. There is an example made of emerging themes and fringes, with the example given the little focus on fathers. That may be true, but there was not really a study needed to show that point, as it is well known that the field focuses on primary caretakers (mothers/women).  The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory.
+
+Our argument is precisely that the method used here identifies themes that 
