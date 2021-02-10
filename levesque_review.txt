@@ -4,7 +4,7 @@ Reviewer #1:
 
 ### R1C1a The actual findings are not reported
 
-### R1C1b it is not clear how the findings integrate te  literature.
+### R1C1b it is not clear how the findings integrate te literature.
 
 ## R1C2 Key words are not provided.
 
@@ -16,27 +16,87 @@ Response: We agree that greater consistency would improve the clarity of the wri
 
 ## R1C4 The first paragraph [promises] that the results will help unify theory and address limitations of research areas that the author deems in silos. This is a heavy burden to carry.
 
-Response: 
+Response: We have interpreted this point as an indirect request that we further clarify the intended contribution of the present study. We will address that point below - but first we must clarify that it was not our intention to "promise that our results will help unify theory and address limitations of research areas that the author deams in silos". We have attempted to address this misunderstanding by clarifying that these are not our original claims; these are oft-repeated limitations of the existing literature, and our work is a response to these perceived limitations. We have included three references to support this point. The revision now reads:
+
+> Despite the abundance of empirical work on this issue,
+several authors have pointed out that the literature is somewhat fragmented,
+because different (sub)disciplines have approached the issue in disparate ways,
+in the absence of consistent terminology and unifying theory 
+[@bussTheoriesEmotionalDevelopment2019; @bariolaChildAdolescentEmotion2011; @stifterEmotionRegulation2019].
+
+Now, to the main point.
+In the revision, we have attempted to clarify the intended contribution of the present study
+as follows:
+
+> There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
+the first step in this endeavor is to identify the relevant *empirical phenomena*,
+defined as stable and general features of the world [@bogenSavingPhenomena1988].
+We propose that systematic reviews are a suitable method for taking this first step,
+based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature. [...] The present paper aims to map the empirical phenomena relevant to adolescent emotion regulation, using text mining systematic review.
 
 ## R1C5 The entire section on page 3: it is not clear why this is presented. It could be presented in a brief sentence and likely should because it does not really relate to what is reviewed. If it is kept, it should be edited so it relates to the actual review.
+The paragraph on page 4 may be relevant, but it is not clear how it eventually relates to the study.
 
-Reponse: This is part of the justification for performing this review
+Response: These two paragraphs were intended to substantiate the relevance and scope of the present study.
+Based on the Reviewer's comment, we now see that this was perhaps redundant with the opening paragraphs, which already provided rudimentary justification of the relevance and scope.
+We have thus attempted to address the Reviewer's comment by cutting these paragraphs on pages 3 and 4,
+merging the core arguments with the opening paragraphs.
 
-## R1C6 The paragraph on page 4 may be relevant, but it is not clear how it eventually relates to the study.
+The opening paragraphs now read:
 
-Reponse: This is part of the justification for performing this review. Make that clear
+> Adolescence is a life stage ranging from pubertal onset to adult-like independence [@steinbergAgeOpportunityLessons2014; @sawyerAgeAdolescence2018].
+A key developmental challenge in this stage is acquiring mature emotion
+regulation skills [@croneUnderstandingAdolescencePeriod2012;
+@zimmermannEmotionRegulationEarly2014]. 
+Adolescents experience biological, cognitive, and social changes that prompt new emotional
+experiences and tax regulatory abilities [@steinbergAgeOpportunityLessons2014].
+These coalescing changes temporarily restrict adolescents' capacity for emotion regulation 
+[@zimmermannEmotionRegulationEarly2014],
+resulting in more frequent and intense (negative) emotions [see @silkAdolescentsEmotionRegulation2003].
+Although most adolescents eventually develop mature emotion regulation abilities,
+for as many as one in five [@leeAdolescentMentalHealth2014],
+adolescence marks the onset of
+life course persistent emotion regulation-related psychopathology
+[see also @aldaoEmotionregulationStrategiesPsychopathology2010;
+@schaferEmotionRegulationStrategies2017].
+Given the prevalence of emotion regulation difficulties in adolescence,
+their implications for mental health
+and downstream cost to society,
+it is important to have a comprehensive understanding of the risk factors that render some adolescents more susceptible to emotional difficulties than others.
 
-## R1C7 The existing theoretical landscape is presented in a way that is unclear how it really relates to the review.
+## R1C6 The existing theoretical landscape is presented in a way that is unclear how it really relates to the review.
 
-Response: Make it clear that the theoretical landscape is presented to provide context for the review
+Response: We understand that it is essential to clarify why we present this brief theoretical review before diving into the results of the present study.
+In order to address this comment, we now explicitly state why a review of the existing theoretical landscape is relevant to the present systematic review. The revised manuscript reads:
+
+> Although there is a paucity of theories *specific to* adolescent emotion regulation,
+several relevant theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
+In order to contextualize the results of our systematic review,
+and assess to what extent the identified phenomena through text mining mirror or complement existing theory,
+we provide a summary review of the existing theoretical landscape.
+
 
 ## R1C8 Figure 1 on page 5: it is not clear why it is there. It should come after the introduction. And, in fact, it should appear after the references and the text should simply have a placeholder for the Figure.  It should be referred to at the end of the introduction (before the current study section).
 
-Response: Just do this
+Response: As requested by the Reviewer, we have placed the Figure after the References section, retaining only a placeholder in-text. We also refer to the Figure at the end of the Introduction:
+
+> As can be seen in Figure 1, 
+there are notable parallels between correlates of emotion regulation identified in these
+narrative reviews, and in the preceding theoretical literature.
 
 ## R1C9 The figure nicely points to outcomes, indicators, causes and protective factors. That is not clear from the introductory materials.
 
-Response: INtroduce the categorization first
+Response: In the previous manuscript, we had merged the two Figures from the theoretical Introduction with the two Figures from the Results section in order to facilitate comparisons between the two.
+We see now that this caused some confusion.
+In order to address this comment, we have separated the Figures from these two sections,
+and we have added the following information about the classification of phenomena:
+
+> In reading the theoretical literature,
+we recorded relevant phenomena,
+and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
+The left panel of Figure \@ref(fig:figbaseline) visually summarizes the phenomena so identified in the theoretical literature in a style similar to our subsequent systematic review,
+in order to facilitate contextualizing our original findings.
 
 ## R1C10a The section on theory is not presented in a way that would have it appear as authoritative. It reads more like a hodgpode of theories. 
 
@@ -50,7 +110,19 @@ Response: Point out how often these theories are cited, perhaps?
 
 ## R1C12 The fundamental problem with the "The present paper" section is that it really does not do what is needed. It is a plan of analysis. This section should note the research questions and hypotheses.
 
-Response: Inductive research is hypothesis-generating, not hypothesis testing. Make this explicit (cite a source for inductive research).
+Response: We agree with the Reviewer that "The present paper" section was basically a plan of analysis. In the Revision, we have rewritten this section to summarize the study design, link it to the study aims, and state the intended outcomes. Note that, 
+
+Inductive research is hypothesis-generating, not hypothesis testing. Make this explicit (cite a source for inductive research).
+
+> The present paper set out to map the phenomena relevant to adolescent emotion regulation
+using a text mining systematic review (TMSR) of the literature.
+This approach considers the frequency with which a phenomenon is covered in the literature to be indicative of its relevance,
+and the frequency with which phenomena are investigated together within publications to be indicative of a relationship between these constructs.
+The expected outcomes consist of term frequency metrics,
+which can be rank ordered to identify the most relevant phenomena,
+and term co-occurrence metrics.
+These metrics can be jointly visualized as a network graph,
+thereby "mapping" phenomena relevant to adolescent emotion regulation.
 
 ## R1C13 By the time I get to eh methods section, including the beginning of this section, I still see a focus on emotion regulation, not emotion dysregulation that appears in the title.
 
@@ -73,6 +145,8 @@ Availability of large datasets is crucial for machine learning approaches. As su
 2) Even for papers that are available under open access licenses, there is no unified API for accessing the text. The reviewer's suggestion that authors can "just [...] identify the papers, download them, and search. Right?" is not scalable. Assuming that it would take only 10 minutes to find, download, and archive the full text, it would have taken 131.35 working days to assemble the corpus for the present study (6305 papers * 10 minutes)/(60 minutes * 8 hours per day). To manually curate a larger dataset, such as CORD-19 (publications about the coronavirus), would take 8333.33 days (400.000+ papers * 10 minutes)/(60 minutes * 8 hours per day).
 
 ## R1C19 in the end, it ends up looking like the authors are "hiding the ball". The real issue is what is actually being added to theory? What are the important findings here? What are the practical findings that emerge from this process that are worth making this type of analysis.  I just end up not convinced here.
+
+Response: (hiding the ball = hiding evidence)
 
 ## R1C20 The conclusion note that the method charts "unknown territories". Sure that is not the case because the study relies on the published studies. 
 

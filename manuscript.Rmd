@@ -30,7 +30,7 @@ abstract: |
   term/document frequency and co-occurrence in author-provided keywords and abstracts. Results 
   reﬂected constructs commonly featured in theory and narrative reviews, but also identified 
   underrepresented themes. This research constitutes a first step towards integrating the 
-  literature, and illustrates how text mining reviews may complement narrative reviews.
+  literature, and illustrates how text mining systematic reviews (TMSR) may complement narrative reviews.
 keywords          : "emotion regulation, adolescence, systematic review, text mining, machine
 learning"
 wordcount         : "6311"
@@ -71,36 +71,77 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo = FALSE, message = FALSE, warning = FALSE, results="hide")
 ```
 
-A key developmental challenge in adolescence is acquiring mature emotion
+Adolescence is a life stage ranging from pubertal onset to adult-like independence [@steinbergAgeOpportunityLessons2014; @sawyerAgeAdolescence2018].
+A key developmental challenge in this stage is acquiring mature emotion
 regulation skills [@croneUnderstandingAdolescencePeriod2012;
-@zimmermannEmotionRegulationEarly2014]. Emotion regulation is integral to
-mental health [@aldaoEmotionregulationStrategiesPsychopathology2010;
-@schaferEmotionRegulationStrategies2017; @braetEmotionRegulationChildren2014]
-and social functioning [@reindlSocializationEmotionRegulation2016]. For as many
-as one in five individuals, adolescence marks the onset of
-emotion regulation difficulties and associated mental health problems,
-which can persist throughout the life course
-[see @leeAdolescentMentalHealth2014]. 
-It is therefore crucial to identify which
-risk factors and environmental hazards render some adolescents more susceptible
-to emotional difficulties than others. <!--SH: Main goal of paper -->
-Although there is an abundance of empirical work on adolescents' emotion regulation, the literature is somewhat fragmented, because the topic has been investigated from different (sub)disciplines.
-As a result, there is a lack of unifying theory,
-and intrinsic limitations of narrative reviews prohibit comprehensive coverage of the vast but diffuse literature [@bussTheoriesEmotionalDevelopment2019].
+@zimmermannEmotionRegulationEarly2014]. 
+Adolescents experience biological, cognitive, and social changes that prompt new emotional
+experiences and tax regulatory abilities [@steinbergAgeOpportunityLessons2014].
+These coalescing changes temporarily restrict adolescents' capacity for emotion regulation 
+[@zimmermannEmotionRegulationEarly2014],
+resulting in more frequent and intense (negative) emotions [see @silkAdolescentsEmotionRegulation2003].
 
-The present systematic review addressed these limitations by adopting a novel method:
-the text mining based systematic review.
-We set out to map the constructs associated with adolescent emotion regulation based on a systematic review of the empirical literature.
-Traditional narrative literature reviews have been shown to be marred by reliance on small convenience samples of the literature, confirmation bias,
-and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008]. 
-Text mining, by contrast, is uniquely suited to provide a comprehensive overview of the literature.
-It can cover vastly greater corpora than a human reader,
-and the process by which text mining gleans insights from the literature is more objective, transparant, and reproducible.
-Where human readers might be inclined to structure their reading of the literature around established ideas,
-the inherent "fairness" of text mining gives emerging themes in the literature a chance to come to the fore.
-Text mining identifies important topics in a body of literature and reveals which constructs are often studied together.
-This potentially reveals topics and connections missed by narrative reviewers,
-thereby laying the groundwork for future empirical and theoretical work. <!-- CJ To fill out gaps, following up on promising constructs and unify heretofore disparate regions of the lit -->
+Although most adolescents eventually develop mature emotion regulation abilities,
+for as many as one in five [@leeAdolescentMentalHealth2014],
+adolescence marks the onset of
+life course persistent emotion regulation-related psychopathology
+[see also @aldaoEmotionregulationStrategiesPsychopathology2010;
+@schaferEmotionRegulationStrategies2017].
+Given the prevalence of emotion regulation difficulties in adolescence,
+their implications for mental health<!--and social functioning [@braetEmotionRegulationChildren2014]; @reindlSocializationEmotionRegulation2016]-->
+and downstream cost to society,
+it is important to have a comprehensive understanding of the risk factors that render some adolescents more susceptible to emotional difficulties than others.
+Despite the abundance of empirical work on this issue,
+several authors have pointed out that the literature is somewhat fragmented,
+because different (sub)disciplines have approached the issue in disparate ways,
+in the absence of consistent terminology and unifying theory 
+[@bussTheoriesEmotionalDevelopment2019; @bariolaChildAdolescentEmotion2011; @stifterEmotionRegulation2019].
+
+There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
+the first step in this endeavor is to identify the relevant *empirical phenomena*,
+defined as stable and general features of the world [@bogenSavingPhenomena1988].
+We propose that systematic reviews are a suitable method for taking this first step,
+based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature.<!-- the frequency with which phenomena occur in the literature is indicative of their relevance.-->
+However, traditional narrative reviews have been shown to be marred by reliance on small convenience samples of the literature, confirmation bias,
+and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008].
+We intend to overcome these limitations by adopting a novel method:
+the text mining systematic review (TMSR).
+Relative to narrative reviews, text mining can cover arbitrarily greater corpora,
+and gleans insights from the literature by means of a more transparent and reproducible process.
+<!--Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
+the inherent "fairness" of text mining gives emerging themes a chance to come to the fore.-->
+
+The present paper aims to map the empirical phenomena relevant to adolescent emotion regulation, using text mining systematic review.
+This approach considers the frequency with which phenomena occur in the literature to be indicative of their relevance.
+If we additionally assume that the frequency with which phenomena are studied together is indicative of the extent to which researchers believe them to be associated,
+then the co-occurrence of phenomena within publications can be interpreted as a nomological network: a mapping of relationships between phenomena of theoretical relevance [see @alaviAligningTheoryMethodology2018].
+This can serve as a starting point for the formulation of a proto-theory,
+which would additionally involve specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodologya].
+By mapping the phenomena relevant to adolescent emotion regulation,
+the present work thus lays the groundwork for future theory development.
+
+
+<!--
+Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
+This potentially reveals phenomena and associations missed by narrative reviewers,
+thereby laying the groundwork for future empirical and theoretical work.
+
+
+we set out to map these relevant empirical phenomena using a systematic review.
+
+
+generate a proto-theoretical nomological network of the relevant empirical phenomena.
+We discuss how this nomological network relates to existing relevant theory, and conclude
+with recommendations for future theory-generating efforts.
+There have been calls for the  consolidation of these disparate insights into overarching theory would be an important step forward.
+An important first step 
+and intrinsic limitations of narrative reviews prohibit comprehensive coverage of the vast but diffuse literature .-->
+
+Recent years have seen the publication of several excellent systematic reviews,
+but these have all been narrative reviews.
+
+ <!-- CJ To fill out gaps, following up on promising constructs and unify heretofore disparate regions of the lit -->
 <!-- SH: this implies that the main contribution of the paper is predominantly methodological is that the case? Is there some primary thesis/argument that will be advanced? It is really important to take a top-down approach to that messaging, beginning here in the first paragraph-->
 <!-- Ergens anders: Similarly, although
 there are several *relevant* theories, there is no specific theoretical
@@ -110,31 +151,16 @@ proto-theoretical nomological network of the potential risk factors,
 manifestations, and outcomes of emotion regulation in adolescence. We discuss
 how this nomological network relates to existing relevant theory, and conclude
 with recommendations for future theory-generating efforts.-->
-
-## Relevance and scope
-
-Adolescence is a life stage defined by biological and socio-cultural factors,
-ranging from pubertal onset to adult-like independence [approximately 10-24 years of age, @steinbergAgeOpportunityLessons2014; @sawyerAgeAdolescence2018].
-It constitutes a developmentally sensitive period for
-mature emotion regulation skills, during which children experience
-biological, cognitive, and social changes that prompt new emotional
-experiences and tax regulatory abilities [@steinbergAgeOpportunityLessons2014].
 <!-- At the same time, the staggered development of motivational-emotional and regulatory brain circuits gives rise
 to a maturity gap [@croneUnderstandingAdolescencePeriod2012]. 
 This leads youngsters to pursue new experiences in life and love,
 without being fully prepared to cope with the emotional outcomes. --> 
-Due to these coalescing changes,
-adolescents display a restricted repertoire of emotion regulation strategies
-compared to younger or older individuals
-[@zimmermannEmotionRegulationEarly2014].
-Consequently, adolescents experience more frequent and intense (negative) emotions than children or adults [see @silkAdolescentsEmotionRegulation2003].
+
 <!--The literature thus paints a picture of
 adolescence as a chrysalis for emotional development: Children enter this stage
 with emotion regulation skills adapted to the challenges of childhood. During
 adolescence, emotional systems are rearranged substantially.-->
-Eventually, most adolescents emerge ready to take on the challenges of
-early adulthood. Unfortunately, a sizable proportion of adolescents instead
-manifests enduring emotional difficulties [@leeAdolescentMentalHealth2014].
+
 <!--
 * intense negative emotions in daily life (Silk, Steinberg, & Morris, 2003) 
 * unstable peer or romantic relationships (Furman & Collins, 2009)
@@ -143,23 +169,6 @@ manifests enduring emotional difficulties [@leeAdolescentMentalHealth2014].
 * higher variability of negative emotions compared to late adolescence (Larson, Moneta, Richards, & Wilson, 2002).
 * relative to other developmental stages, adolescence involves a particularly large number of transitions, novel situations, and new stimuli, physical, cognitive, emotional, and social development—particularly in early and mid-adolescence (Seiffge-Krenke, 2000)
 -->
-According to meta-analyses, such difficulties in emotion regulation are associated with
-extensive and persist internalizing, and to a lesser extent, externalizing, psychopathology
-[@aldaoEmotionregulationStrategiesPsychopathology2010;
-@schaferEmotionRegulationStrategies2017]. 
-Individuals who engage in maladaptive
-emotion regulation strategies also experience more negative emotions,
-diminished well-being, and greater strain in interpersonal relationships
-[@grossIndividualDifferencesTwo2003a; @bellRelationshipsInputsOutputs2000].
-<!--Adolescence also appears to be a key period for developing mature emotion
-regulation skills - but not all adolescents do so successfully. As many as one
-in five adolescents instead develop severe emotional difficulties.--> 
-Given the
-prevalence of emotional difficulties and their implications for
-individual mental health, wellbeing, and social functioning, and their downstream
-cost to society as a whole [@leeAdolescentMentalHealth2014], it is essential to
-have a solid understanding of the risk factors associated with adolescents'
-emotion regulation difficulties.
 
 ## Existing theoretical landscape
 
@@ -318,9 +327,20 @@ knitr::include_graphics("baseline_network.png")
 knitr::include_graphics("networks.png") 
 ```
 
-Our text mining analysis of the empirical literature is best understood against a backdrop of the existing theoretical landscape.
-We therefore provide a summary theoretical review.
-Other recent publications offer more detailed reviews of theories of emotional development [@bussTheoriesEmotionalDevelopment2019] and emotion regulation in adolescence [@riedigerEmotionRegulationAdolescence2014].
+Although there is a paucity of theories *specific to* adolescent emotion regulation,
+several relevant theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
+In order to contextualize the results of our systematic review,
+and assess to what extent the identified phenomena through text mining mirror or complement existing theory,
+we provide a brief review of the existing theoretical landscape.
+Others have published more detailed reviews of theories of emotional development [@bussTheoriesEmotionalDevelopment2019] and emotion regulation in adolescence [@riedigerEmotionRegulationAdolescence2014].
+In reading the theoretical literature,
+we recorded relevant phenomena,
+and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
+The left panel of Figure \@ref(fig:figbaseline) visually summarizes the phenomena so identified in the theoretical literature in a style similar to our subsequent systematic review,
+in order to facilitate contextualizing our original findings.
+<!-- 
+Our text mining analysis of the phenomena empirical literature is best understood against a backdrop of -->
+
 
 Among the oldest relevant theories of adolescents' emotional development is Hall's notion of "storm and stress" [see
 @arnettAdolescentStormStress1999]. It describes how `r keyw("hormonal")` changes diminish
@@ -403,7 +423,11 @@ intra-individual drivers of emotion regulation development.
 Gross' [-@grossHandbookEmotionRegulation2013] influential process model describes the
 phenomenon of emotion regulation, from eliciting cue to ultimate response.
 According to Gross, individuals use `r keyw("strategies")` to modulate the different stages of this process,
-consciously or otherwise. The effectiveness, desireability, and consequences of some strategies vary across `r keyw("culture")`s [see
+consciously or otherwise. 
+Individuals who engage in maladaptive emotion regulation strategies tend to experience more negative emotions,
+diminished well-being, and greater strain in interpersonal relationships
+[@grossIndividualDifferencesTwo2003a; @bellRelationshipsInputsOutputs2000].
+However, comparative studies indicate that the adaptive versus maladaptive psychosocial consequences of specific strategies appear to be partly contingent on the `r keyw("cultural context")` [see
 @bariolaChildAdolescentEmotion2011].
 Similar to Gross' theory, the "social
 information processing" theory also describes the role of cognitive
@@ -550,16 +574,15 @@ emotional development)." Buss et al 2019:20
 ## Prior narrative reviews
 
 Whereas theory provides a top-down frame of reference,
-literature reviews can provide a bottom-up, inductive understanding of a phenomenon.
-Given the noted absence of a single overarching theory, reviews might provide additional
-insight into factors considered relevant in the etiology of adolescents'
-emotion regulation competencies. 
-Innovative text mining methods are promising in this respect, because they can comprehensively review the available literature.
-Narrative reviews, however, constitute the status quo.
-We will therefore examine how two excellent narrative reviews on emotion regulation in adolescence complement the aforementioned theoretical literature [@coe-odessEmergentEmotionsAdolescence2019; @bariolaChildAdolescentEmotion2011].
+literature reviews provide a bottom-up understanding of a phenomenon by aggregating empirical evidence.
+Given the noted absence of a single overarching theory [see @bussTheoriesEmotionalDevelopment2019],
+reviews are especially important,
+as they provide additional
+insight into relevant phenomena in the etiology of adolescents'
+emotion regulation competencies.
+Two recent narrative reviews in particular complement the aforementioned theoretical literature [@coe-odessEmergentEmotionsAdolescence2019; @bariolaChildAdolescentEmotion2011].
 Figure \@ref(fig:allnetworks) visualizes constructs uniquely covered by these narrative reviews,
 relative to the theoretical literature.
-
 <!--
 Note that the left panel of Figure \@ref(fig:allnetworks) visually summarizes the correlates of emotion regulation difficulties (labeled: *Dysregulation*) according to our theoretical review.
 The left panel of Figure \@ref(fig:allnetworks) summarizes key constructs covered by the theories reviewed above. 
@@ -567,7 +590,7 @@ In the subsequent text mining analysis, we will distinguish the topics covered i
 This allows us to see in what respects the text mining analysis reflects existing theory,
 and in what respects it complements it.-->
 
-A seminal review by
+The seminal review by
 @bariolaChildAdolescentEmotion2011 addressed intra-individual factors
 such as temperament, and biological factors like neurocognitive development and
 genes.
@@ -616,9 +639,14 @@ attention in theoretical work.
 Further introduced are proximal influences, including the role of media, norms, and social status.-->
 This illustrates that reviews of the empirical literature can contribute additional insight into key factors in adolescents' emotion regulation development.
 An important limitation is that all reviews in this field have been unstructured narrative reviews, which are known to be limited in scope and biased [@littellEvidencebasedBiasedQuality2008].
-We seek to complement preceding work by using text mining to conduct a more comprehensive empirical
+We seek to complement preceding work by using text mining to conduct a more comprehensive and objective empirical
 literature review, and map the factors associated with adolescent emotion
 regulation.
+
+<!--Where sentient readers tend to structure their reading of the literature around established ideas,
+text mining has the potential to reveal phenomena and associations missed by narrative reviewers,
+thereby laying the groundwork for future empirical and theoretical work.-->
+
 
 <!-- NIET TEVEEL OVER THEORIE PRATEN; IK KIJK NIET NAAR THEORIE. IK KIJK NAAR FACTOREN DIE IN VERBAND GEBRACHT WORDEN MET EMOTIEREGULATIE. -->
 <!--The life stage of adolescence differs qualitatively from both childhood and adulthood. It is therefore not sufficient to extend -->
@@ -668,19 +696,23 @@ Polyvagal theory Porges 1995 -->
 
 ## The present paper
 
-The present paper aims to map the constructs
-related to adolescent emotion regulation, based on a systematic review of
-the literature. <!-- CJ Consider removing the following if the purpose is sufficiently clarified in the introduction -->
-First, we conducted a systematic search to
-elicit a corpus of relevant literature. Second, we used text mining techniques
-to extract relevant constructs from the corpus. Third, we used a dictionary to
-pare down the extracted constructs to meaningful superordinate categories.
-Fourth, we mapped interrelations between these constructs. Fifth, we classified
-contstructs as potential predictors or outcomes.
-We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
-to ensure transparency and  reproducibility. All code and data are available online at [masked]. 
+The present paper set out to map the phenomena relevant to adolescent emotion regulation
+using a text mining systematic review (TMSR) of the literature.
+This approach considers the frequency with which a phenomenon is covered in the literature to be indicative of its relevance,
+and the frequency with which phenomena are investigated together within publications to be indicative of a relationship between these constructs.
+The expected outcomes consist of term frequency metrics,
+which can be rank ordered to identify the most relevant phenomena,
+and term co-occurrence metrics.
+These metrics can be jointly visualized as a network graph,
+thereby "mapping" phenomena relevant to adolescent emotion regulation.
+Note that this study is inductive, or exploratory, and as such does not test any hypotheses [].
 
 # Methods
+
+We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
+to ensure transparency and  reproducibility.
+All analyses are strictly reproducible,
+and the code, data, and historical record of this project are available online at [masked]. 
 
 ## Search strategy
 
@@ -765,7 +797,7 @@ Starting with all `r nrow(recs)` records identified through Web of Science,
 we removed duplicates based on DOI matches (n = 2) and title similarity (n = 54).
 Rayyan QRCI [@Ouzzani2016] identified an additional 13 duplicates.
 We then screened papers based on two main criteria:
-They had to address emotion regulation or a synonymous construct, and the target population must overlap with the age range of adolescence (10-24).
+They had to address emotion regulation or a synonymous construct, and the target population must overlap with the age range of adolescence (10-24) [as defined by @steinbergAgeOpportunityLessons2014; @sawyerAgeAdolescence2018].
 Preliminary screening was conducted in Rayyan.
 After coding `r sum(screen$rayyan == "True")+sum(screen$rayyan == "False")` papers (`r sum(screen$rayyan == "False")` excluded),
 we continued screening in ASReview [@van_de_schoot_rens_2020_3828293].
@@ -1245,7 +1277,8 @@ To aid interpretability, we again pruned small coefficients using a negative bin
 retaining co-occurrences exceeding the $97.5^{th}$ percentile.
 To stimulate further reflection on the role of each construct,
 we manually classified each of the selected terms as either a putative 'Cause', 'Outcome', 'Protective factor', or 'Indicator' of emotion regulation.
-We stress that this classification is subjective and acknowledge that many of these associations are likely to be bidirectional [e.g., emotion regulation is known to both predict and be predicted by conflict with parents, @vanlissaCostEmpathyParentadolescent2017].
+We stress that this classification is based on our subjective reading of the literature,
+and acknowledge that many of these associations are likely to be bidirectional [e.g., emotion regulation is known to both predict and be predicted by conflict with parents, @vanlissaCostEmpathyParentadolescent2017].
 
 ```{r study1network, eval = FALSE, warning=FALSE, out.width = "100%", fig.cap="Study 1 term co-occurrence. Two layouts are presented to aid interpretation. Size of lines and circles represents frequency. Dashed lines represent links not involving dysregulation. Transparent circles indicate constructs also represented in the theory (cf Figure 1)."}
 #knitr::include_graphics("study1_network1.svg")
