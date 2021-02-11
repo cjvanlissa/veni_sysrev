@@ -3,14 +3,14 @@ title: "Topic models"
 author: "Caspar J. van Lissa"
 date: "2/10/2021"
 output:
-  bookdown::html_document2:
+  bookdown::github_document2:
     number_sections: false
 bibliography      : ["veni_sysrev.bib"]
 ---
 
 ```{r setup, include=FALSE}
 library(yaml)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 lda_dims <- read_yaml("Study1_lda_dims.txt")
 dtm_top <- read_yaml("study1_dtm_top.yml")
 df <- readRDS("study1_df.RData")
