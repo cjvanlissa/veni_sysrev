@@ -78,6 +78,7 @@ adjustment:
 - strengths.+difficulties.+questionnaire
 - positive.youth.development
 personality:
+- ^neuroticism$
 - temperament$
 - ^personality$
 - ^personality.+(trait|invento|questionn|dimensi|type|factor|character|assess|develop)
@@ -88,6 +89,7 @@ attachment:
 - ^security$
 self-esteem: ^self.esteem$
 bisbas:
+- ^reward$
 - bis.bas
 - b[ia]s.scale
 - ^b[ia]s$
@@ -138,6 +140,7 @@ anxiety:
 - phobia
 fear: fear(?!ful attachment)
 adhd_cd:
+- attention.deficit
 - hyperactiv
 - ^callous.unemotional traits$
 - ^impulsivity$
@@ -155,12 +158,11 @@ ptsd:
 - ^survivors$
 stress:
 - ^stress
-- acute.+stress
+- (acute|perceived|extreme).+stress
 - adolescent.(di)?stress
 - anxiety stress
 - (children|chronic|daily|interpersonal|social).+stress
 - ^distress$
-- extreme stress
 - life.stress
 mental_health:
 - \bdsm\b
@@ -442,7 +444,6 @@ sexual-risk:
 sexuality:
 - ^sexuality$
 - ^sexual.behaviou?r$
-reward: reward
 academic: ^academic
 health:
 - asthma

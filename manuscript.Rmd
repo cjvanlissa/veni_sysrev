@@ -705,7 +705,9 @@ which can be rank ordered to identify the most relevant phenomena,
 and term co-occurrence metrics.
 These metrics can be jointly visualized as a network graph,
 thereby "mapping" phenomena relevant to adolescent emotion regulation.
-Note that this study is inductive, or exploratory, and as such does not test any hypotheses [].
+Note that this study is inductive or exploratory,
+as opposed to deductive or confirmatory research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. Injunction pertains to inferences based purely on statistical data, whereas abduction additionally involves the attribution of observations to explanatory principles.].
+<!--The distinction between inductive and deductive research has recently been recast as a "creativity-verification" cycle [@wagenmakersCreativityVerificationCyclePsychological2018].-->
 
 # Methods
 
@@ -1227,14 +1229,15 @@ dtm_top <- read_yaml("study1_dtm_top.yml")
 
 The corpus for this first analysis consisted of author-provided keywords.
 We extracted keywords by document, and applied an exclusion filter of methodological terms and similar non-substantive words.
-Then, we used a dictionary to classify related terms.
-The dictionary describes `r length(dict)` terms using `r length(unlist(dict))`
-regular expression queries.
-The resulting term-document matrix consisted of `r number_docs_words[1]` documents with `r number_docs_words[2]` unique terms.
+The resulting corpus consisted of `r number_docs_words[1]` documents with `r number_docs_words[2]` unique terms.
+One important step in reviewing the literature is to examine heterogeneity of the corpus;
+to analyze empirically whether there is, for example, a clear divide between psychiatric and developmental texts.
+To this end, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
+However, as no subcorpora could be identified (see [online supplemental material]()), we proceed with an analysis of the whole sample.
 
-## Structural topic modeling
 
-<!-- it might be useful to insert a sentence or two when you are using a method many readers are not familiar with, just to explain the utility of the chose method (what it does/doesn't do potentially as compared to other options)-->
+<!--## Structural topic modeling
+
 One important step before reviewing the literature is to examine heterogeneity in the corpus;
 for example, whether there is a clear divide between psychiatric and developmental texts.
 To test for heterogeneity, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
@@ -1247,7 +1250,7 @@ We considered a range from 2-20 topics, evaluating fit based on the BIC, and int
 The BICs followed a near-perfect linearly increasing trend, indicating that no subcorpora could be identified.
 Congruently, all entropies were near-zero, which means that the posterior document/topic probabilities were effectively uniformly distributed.
 Thus, no subcorpora could be identified,
-and we proceed with an analysis of the whole sample. <!-- Probably because each set of keywords has only a few indicators. -->
+and we proceed with an analysis of the whole sample.-->
 
 ## Identifying common terms
 
@@ -1260,8 +1263,16 @@ dev.off()
 ```
 To identify what issues are covered in this corpus,
 we examined the terms occurring in the largest number of texts.
+
+Then, we used a dictionary to classify related terms.
+The dictionary describes `r length(dict)` terms using `r length(unlist(dict))`
+regular expression queries.
+After classification, 
+
+The total number of unique terms after dictionary encoding was 
 We modeled word frequency using a negative binomial distribution,
 and retained those exceeding the $97.5^{th}$ percentile.
+This cut-off criterion is arbitrary, but necessary to reduce the number of terms considered from 5299.
 This resulted in `r dtm_top[2]` terms, which occurred in `r dtm_top[1]` documents.
 The issues covered in this body of literature are visualized in Figure \@ref(fig:varimps).
 
@@ -1729,19 +1740,11 @@ but present a greater challenge when it
 comes to extracting relevant information.
 To perform feature extraction,
 we first applied the natural language processing technique "part-of-speech tagging" (POS-tagging), which identifies a word's grammatical function within the sentence context.
-Then, we used POS-tagging to retain only nouns and adjectives,
-which helps derive more interpretable text mining models [@martinMoreEfficientTopic2015].
+Because our analysis sought to identify phenomena,
+we retained only nouns (to capture terms like "emotion") and adjectives (to capture the "mental" in "mental health").
+Retaining nouns and adjectives generally helps derive more interpretable text mining models [@martinMoreEfficientTopic2015].
 Finally, we used stemming to reduce the retained terms to their root form.
-
-## Structural topic modeling
-
-To assess the homogeneity of the corpus of abstracts,
-we again conducted topic modeling,
-following the procedure described in Analysis 1.
-The data comprised `r lda_dims_2[2]` terms in `r lda_dims_2[1]` documents.
-As before, the BICs followed a linearly increasing trend, and entropies were near-zero.
-Thus, no subcorpora were identified,
-and we proceed with a whole sample analysis.
+As in Analysis 1, we tested for heterogeneity using latent dirichlet allocation - but no subcorpora were identified ([see online supplement]()).
 
 ## Identifying keywords
 
