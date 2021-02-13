@@ -1,4 +1,11 @@
-Reviewer #1:
+---
+title: "Action letter"
+author: "Caspar J. van Lissa"
+date: "2/11/2021"
+output: html_document
+---
+
+# Reviewer #1:
 
 ## R1C1 The abstract is lacking in two regards:
 
@@ -137,20 +144,78 @@ Response: We have addressed this comment as requested; see the response to R1C3.
 
 ## R1C13 As I read the materials on pages 11 and 12, I see a heavy reliance on the computerized analytical system to do the research and coding. I think it would be helpful to know what decisions are made by the authors and, if there are any, we should know about reliability checks and, if there are none, that still should be noted.
 
-Response: We agree with the Reviewer that it is important to be clear about what decisions are made by us.
-To this end, we have documented the methods in detail and mentioned specifically what decisions were made.
+Response: This is a crucial comment with far-reaching implications.
+The Reviewer asks what decisions are made by the authors.
+Simply put: All decisions are made by us.
+There are infinitely many ways to conduct exploratory analysis on a single data set,
+and the present paper represents just one possible way.
+The "computerized analytical system", as referred to by the Reviewer,
+is nothing more than an explicit representation of our subjective decisions in analyzing the data,
+represented as code.
 
+The Reviewer asks for reliability checks, also known as a sensitivity analysis or multiverse analysis [@steegenIncreasingTransparencyMultiverse2016].
+Such reliability checks are only defined, however, in the context of deductive (confirmatory) analysis,
+where they are used to ensure that hypothesis tests / statistical inferences are robust to permutations of the data processing strategy.
+As the present study is inductive (exploratory),
+no hypotheses are tested nor inferences are drawn,
+and the number of alternative possible analyses is infinite - thus reliability checks are undefined.
 
-, and we have provided all analysis code and data publically in an open access repository.
-What's more, the entire historical development of this project is available in that repository,
-so readers can see that we proceeded in a straightforward way.
-We have now emphasized this in the Revision.
+We do emphatically agree with the Reviewer that it is important to be clear about what decisions are made by us.
+
+To address this comment, we have taken the following steps:
+
+1) We have documented the methods in detail in the manuscript, and added online supplemental analyses for more complex analyses that we could not describe in sufficient detail.
+2) We have made all analysis code and data publicly available in an open access repository.
+This repository also contains the entire historical development of this study,
+so readers can see that our analysis proceeded in a straightforward way. We mention this explicitly in the revised paper.
+3) The revised Methods section now explicitly mentions that these are inductive (exploratory) analyses, and as such, depend on subjective decisions:
+
+> As the purpose of inductive research is to inform hypothesis generation,
+this approach affords the researcher with substantial creativity [@wagenmakersCreativityVerificationCyclePsychological2018].
+This means that subjective decisions are made throughout the analysis process.
+To ensure that all such decisions are properly documented,
+we have made all code, data, and the historical record of this project publicly available in an online research repository at [https://github.com/cjvanlissa/veni_sysrev](https://github.com/cjvanlissa/veni_sysrev). 
+We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
+to make the analyses strictly reproducible.
+We encourage reuse of the analysis code,
+and secondary analysis of the data.
 
 ## R1C14 At the bottom of page 12, it is clear that a decision is made in terms of retaining within a percentile. How do we know if that is the right decision?  There appear to be decisions like this made throughout. Given the reliance on the program, we need to know more.
 
+Response: This is indeed a good example of a subjective decision.
+In our response to the previous comment, we explain that we now explicitly acknowledge each such subjective decision in the revised manuscript.
+In addition to the blanket statement we have added to the Methods section, 
+we now also acknowledge the subjectivity of each decision like this one explicitly in the revised manuscript.
+
+With regard to the Reviewer's question - "How do we know if that is the right decision?" - there is no straightforward answer.
+We had thoroughly scoured the literature for established practice for pruning terms in text mining when preparing the initial submission, and did so again during revision,
+but most published analyses appear to either retain a fixed number of terms, or drop terms that occur less than a fixed number of times.
+Our selection method has the advantage of taking the distribution of word frequencies into account.
+It is thus more flexible than a fixed cutoff, and still successful in pruning terms that occur only a few times in the corpus.
+We now mention this explicitly in the paper:
+
+> This is a subjective criterion,
+but compared to the common practices of either retaining a fixed number of terms or pruning terms below a fixed frequency [see @benoitQuantedaPackageQuantitative2018],
+it has the advantage of being responsive to the empirical distribution of term frequencies.
+
 ## R1C15 Page 13, there is again pruning. Justifications for the cutoff should be noted. There is a manual classification and we are left with no sense of its reliability/validity.
 
+Please see our response to the previous comment.
+Additionally, note that nearly all pruned terms occurred in only one document,
+as can be seen in the plot below.
+Even if the pruning criterion is subjective, it is hard to argue that we should interpret every word that occurred in the corpus.
+Thus, we would argue, some pruning is necessary - and if a better method is available, we would be happy to use that instead.
+
+```{r}
+df_plot <- as.data.frame(term_freq)
+df_plot <- df_plot[!df_plot$pruned, ]
+ggplot(df_plot, aes(x = topterms, y = Freq)) + geom_bar(stat = "identity") + theme_bw() + labs(x = "Frequency of term", y = "Number of terms")
+```
+
+
 ## R1C16 I really think the presentation would be more effective if it did not have results/discussions and then more results/discussions, and then a general discussion. We are not really dealing with different studies.
+
+
 
 ## R1C17 Page 20, the first full paragraph is a good example of text that is meant to show a contribution when it actually does not. Being the first or one of the first is not a contribution. What is more important is the actual finding. I realize that the focus here is on the method. But, being the first to use a method is not a contribution. What is important to highlight is the findings that come from the method, from the study.
 

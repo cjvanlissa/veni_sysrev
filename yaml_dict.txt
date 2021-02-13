@@ -54,7 +54,8 @@ risk-factors: risk.factors
 historic-events:
 - hurricane
 - ^war$
-- ^armed conflict$
+- armed conflict
+- ^post.conflict$
 - earthquake
 - ^refugee
 violence:
@@ -290,12 +291,12 @@ parenting:
 family-functioning:
 - family.(function|climat)
 - parent.child.relationship
-- (marital|parental|family).+(conflict|relation)
+- (marital|parental|family|familial).+(conflict|relation)
 - household dysfunction
 - ^intimate partner violence$
 - ^(domestic|family) violence$
 child-conflict:
-- (adolescent|child).+conflict
+- (adolescent|child|dyadic|interpersonal).+conflict
 - (?<!marital )conflict.+(resol|tactic|strateg|communica)
 - ^conflicts?$
 divorce:

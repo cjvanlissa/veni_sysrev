@@ -47,7 +47,9 @@ select_cooc <- function(cooc, q = .95){
   rownames(out) <- rownames(cooc)
   colnames(out) <- colnames(cooc)
   is_zero <- rowSums(out) == 0
-  return(out[!is_zero, !is_zero])
+  out <- out[!is_zero, !is_zero]
+  attr(out, "thres") <- thres
+  return(out)
 }
 
 create_cooc <- function(dtm){

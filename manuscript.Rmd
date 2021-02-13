@@ -705,16 +705,22 @@ which can be rank ordered to identify the most relevant phenomena,
 and term co-occurrence metrics.
 These metrics can be jointly visualized as a network graph,
 thereby "mapping" phenomena relevant to adolescent emotion regulation.
-Note that this study is inductive or exploratory,
-as opposed to deductive or confirmatory research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. Injunction pertains to inferences based purely on statistical data, whereas abduction additionally involves the attribution of observations to explanatory principles.].
+Note that this study is inductive (exploratory),
+as opposed to deductive (confirmatory) research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. Injunction pertains to inferences based purely on statistical data, whereas abduction additionally involves the attribution of observations to explanatory principles.].
+
 <!--The distinction between inductive and deductive research has recently been recast as a "creativity-verification" cycle [@wagenmakersCreativityVerificationCyclePsychological2018].-->
 
 # Methods
 
+As the purpose of inductive research is to inform hypothesis generation,
+this approach affords the researcher with substantial creativity [@wagenmakersCreativityVerificationCyclePsychological2018].
+This means that subjective decisions are made throughout the analysis process.
+To ensure that all such decisions are properly documented,
+we have made all code, data, and the historical record of this project publicly available in an online research repository at [masked]. 
 We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
-to ensure transparency and  reproducibility.
-All analyses are strictly reproducible,
-and the code, data, and historical record of this project are available online at [masked]. 
+to make the analyses strictly reproducible.
+We encourage reuse of the analysis code,
+and secondary analysis of the data.
 
 ## Search strategy
 
@@ -859,7 +865,7 @@ ggplot(df_plot, aes(x= Year, y= Freq))+geom_point() + geom_path(group =1)+
   theme_bw() + scale_y_log10()
 -->
 
-# Analysis 1: Author keyword mapping
+# Analysis 1: Author keywords
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(stringr)
@@ -912,15 +918,13 @@ if(!isTRUE(tools::md5sum("study1_df.RData") == "042c7d894929b0351f804c1a4b5c5002
   number_docs_words <- yaml::read_yaml("study1_number_docs_words.txt")
 }
 
-
-if(run_everything){
-  # Frequency of word by doc
+# Frequency of word by doc
   nounbydoc <- df[, list(freq = .N), by = list(doc_id = doc, term = word_coded)]
   # Set frequency to 1; we're not interpreting word frequency, only occurrence
   nounbydoc$freq <- 1
   
   dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
- 
+  term_freq <- table(colSums(dtm))
   # Continue plotting word frequency ----------------------------------------
   
  
@@ -928,6 +932,13 @@ if(run_everything){
   set.seed(5348)
   dtm_top <- dtm[, select_words(dtm, .975)]
   dtm_top <- dtm_top[rowSums(dtm_top) > 0, ]
+  
+if(run_everything){
+  
+  term_freqtop <- table(colSums(dtm_top))
+  term_freq <- as.data.frame.table(term_freq)
+  term_freq$pruned <- term_freq$Var1 %in% names(term_freqtop)
+  saveRDS(term_freq, "study1_term_freq_dist.yml")
   write_yaml(dim(dtm_top), "study1_dtm_top.yml")
   
   # Wordcloud ---------------------------------------------------------------
@@ -1114,10 +1125,16 @@ if(!isTRUE(tools::md5sum("Study1_lda_dims.txt") == "4e2493d4d618020d4acde61dd786
 }
 
 # Co-occurrence -----------------------------------------------------------
+set.seed(52)
+cooc <- create_cooc(dtm_top)
+tmp <- cooc == 0
+total_cooc <- sum(tmp[lower.tri(tmp)])
+cooc <- select_cooc(cooc, q = .975)
+tmp <- cooc == 0
+total_cooc <- c(total_cooc, sum(tmp[lower.tri(tmp)]))
+
 
 if(run_everything){
-  set.seed(52)
-  cooc <- select_cooc(create_cooc(dtm_top), q = .975)
   write.csv(as.matrix(cooc), "s1_cooc.csv")
   df_plot <- as_cooccurrence(cooc)
   df_plot <- df_plot[!df_plot$term1 == df_plot$term2, ]
@@ -1225,32 +1242,17 @@ names(notingraph) <- cats
 
 lda_dims <- read_yaml("Study1_lda_dims.txt")
 dtm_top <- read_yaml("study1_dtm_top.yml")
+term_freq_dist <- readRDS("study1_term_freq_dist.yml")
 ```
 
 The corpus for this first analysis consisted of author-provided keywords.
-We extracted keywords by document, and applied an exclusion filter of methodological terms and similar non-substantive words.
+We extracted keywords by document,
+and applied an exclusion filter of methodological terms and similar non-substantive words.
 The resulting corpus consisted of `r number_docs_words[1]` documents with `r number_docs_words[2]` unique terms.
 One important step in reviewing the literature is to examine heterogeneity of the corpus;
-to analyze empirically whether there is, for example, a clear divide between psychiatric and developmental texts.
+to determine whether there is, for example, a clear divide between psychiatric and developmental texts.
 To this end, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
-However, as no subcorpora could be identified (see [online supplemental material]()), we proceed with an analysis of the whole sample.
-
-
-<!--## Structural topic modeling
-
-One important step before reviewing the literature is to examine heterogeneity in the corpus;
-for example, whether there is a clear divide between psychiatric and developmental texts.
-To test for heterogeneity, we conducted topic modeling using latent dirichlet allocation [@bleiLatentDirichletAllocation2003].
-This is a clustering method for large sparse matrices.
-We used the term frequency/inverse document frequency (TF-IDF) to select terms
-used frequently in a document, but not used frequently in the corpus,
-which could therefore be more diagnostic of subgroup membership.
-Selection terms with an TF-IDF greater than the median resulted in a corpus of `r lda_dims[1]` documents and `r lda_dims[2]` terms.
-We considered a range from 2-20 topics, evaluating fit based on the BIC, and interpretability based on the entropy of the posterior document/topic probabilities.
-The BICs followed a near-perfect linearly increasing trend, indicating that no subcorpora could be identified.
-Congruently, all entropies were near-zero, which means that the posterior document/topic probabilities were effectively uniformly distributed.
-Thus, no subcorpora could be identified,
-and we proceed with an analysis of the whole sample.-->
+However, as no subcorpora could be identified (see [online supplement](https://github.com/cjvanlissa/veni_sysrev/blob/master/topic_models.md)), we proceed with an analysis of the whole sample.
 
 ## Identifying common terms
 
@@ -1261,19 +1263,20 @@ png("varimps.png", height = 150, width = 200, units = "mm", res= 300)
 eval(p)
 dev.off()
 ```
-To identify what issues are covered in this corpus,
+
+To identify what phenomena are represented in this corpus,
 we examined the terms occurring in the largest number of texts.
-
-Then, we used a dictionary to classify related terms.
-The dictionary describes `r length(dict)` terms using `r length(unlist(dict))`
-regular expression queries.
-After classification, 
-
-The total number of unique terms after dictionary encoding was 
-We modeled word frequency using a negative binomial distribution,
+To classify related terms, we used a dictionary which describes `r length(dict)` terms using `r length(unlist(dict))` regular expression queries.
+After dictionary encoding, the remaining number of unique terms was `r length(unique(df$word_coded))`.
+To reduce the number of terms to a more manageable set,
+we modeled word frequency using a negative binomial distribution,
 and retained those exceeding the $97.5^{th}$ percentile.
-This cut-off criterion is arbitrary, but necessary to reduce the number of terms considered from 5299.
-This resulted in `r dtm_top[2]` terms, which occurred in `r dtm_top[1]` documents.
+This corresponded to terms occurring in at least `r min(as.numeric(term_freq_dist$Var1)[term_freq_dist$pruned])` documents.
+This is a subjective criterion,
+but compared to the common practices of either retaining a fixed number of terms or pruning terms below a fixed frequency [see @benoitQuantedaPackageQuantitative2018],
+it has the advantage of being responsive to the empirical distribution of term frequencies.
+Note that the vast majority of pruned terms (`r term_freq_dist$Freq[1]`) occurred only once in the corpus.
+Pruning resulted in `r dtm_top[2]` remaining terms, which occurred in `r dtm_top[1]` documents.
 The issues covered in this body of literature are visualized in Figure \@ref(fig:varimps).
 
 ```{r varimps, warning=FALSE, message = FALSE, eval = TRUE, results='asis', out.width = "100%", fig.cap="Frequency of terms in Analysis 1 and 2. Transparent circles are constructs represented in theory (Figure 1), dotted lines are constructs absent from the co-occurrence graph."}
@@ -1284,10 +1287,15 @@ knitr::include_graphics("varimps.png")
 
 Next, we computed a term co-occurrence matrix,
 which represents how frequently words occurred within the same document (see Figure \@ref(fig:allnetworks)).
+In total, there were `r total_cooc[1]` co-occurrence relationships.
 To aid interpretability, we again pruned small coefficients using a negative binomial distribution,
 retaining co-occurrences exceeding the $97.5^{th}$ percentile.
+Note that this is a subjective criterion, which corresponded to terms that co-occurred in more than `r attr(cooc, "thres")` documents.
+After pruning, `r total_cooc[2]` co-occurrence relationships remained.
+
 To stimulate further reflection on the role of each construct,
-we manually classified each of the selected terms as either a putative 'Cause', 'Outcome', 'Protective factor', or 'Indicator' of emotion regulation.
+we categorized each of the remaining terms as either a putative 'Cause', 'Outcome', 'Protective factor', or 'Indicator' of emotion regulation,
+following the same procedure we used to classify phenomena discussed in the theoretical literature.
 We stress that this classification is based on our subjective reading of the literature,
 and acknowledge that many of these associations are likely to be bidirectional [e.g., emotion regulation is known to both predict and be predicted by conflict with parents, @vanlissaCostEmpathyParentadolescent2017].
 
@@ -1297,54 +1305,6 @@ library(cowplot)
 fig_svg <- cowplot::ggdraw()+cowplot::draw_image("study1_network1.svg")
 plot(fig_svg)
 ```
-
-## Results
-
-Emotion regulation and associated mental health-related outcomes were foremost among the common terms in the corpus (Figure \@ref(fig:varimps)). 
-Other frequent terms reflect important themes discussed in the theoretical review of the literature;
-for instance, the terms *neural*, *parenting*, and *stress* correspond to themes discussed by  @coe-odessEmergentEmotionsAdolescence2019:
-Neurocognitive development, the role of the parents, and adolescents' increased stress response.
-Importantly, the most common terms also include several concepts not featured prominently in the theoretical review.
-For example, *ADHD/CD* [cf. @braetEmotionRegulationChildren2014], *substance* use [cf. @coe-odessEmergentEmotionsAdolescence2019; @pierrehumbertStrategiesEmotionRegulation2002], and *minority status* [cf. @myersEthnicitySocioeconomicStatusrelated2009; @myersEthnicitySocioeconomicStatusrelated2009] are common in the corpus,
-but featured less prominently in the theoretical review.
-
-Based on the co-occurrence graph (Figure \@ref(fig:allnetworks)),
-emotion regulation is evidently a central construct
-to which most other constructs are directly linked.
-This suggests that our search successfully identified factors relevant for adolescents’ emotion regulation.
-The remaining graph is notably sparse, with few interconnections between terms.
-
-## Discussion
-
-This first analysis used author keywords to map common topics in the literature pertaining to adolescents' emotion regulation.
-The results reflected some of the constructs commonly accepted as relevant in theoretical literature and empirical reviews - particularly those pertaining to neurodevelopment and socialization.
-The most frequently occurring words were classified as potential outcomes of emotion regulation difficulties, and revealed a theme related to mental health.
-This validates the notion that adolescent emotion regulation is implicated in a range of mental health problems, which underlines the importance of this area of research.
-
-In addition to the themes addressed in the theoretical Introduction,
-several novel themes emerge from this analysis. 
-Developmental disorders constitute such a theme, as ADHD/CD and autism are ranked highly.
-Another theme is the role of physical health (sic), also reflected in terms like sleep, sports, and disability status.
-External stressors are another important theme, reflected in bullying, stress, PTSD, abuse, violence, life events, historic events (e.g., earthquakes, war), and parenting stress.
-Structural disadvantage is certainly a factor overlooked in existing theory,
-and is reflected in minority status, disability status, socio-economic status, adoption status, sexual diversity, and the adorementioned developmental disorders, as neuroatypical individuals may also experience such disadvantage.
-These insights illustrate how inductive reviews may complement existing theory and narrative reviews, and can reveal blindspots.<!-- SH: this point/advantage needs to feature more prominently in the introduction!-->
-
-The co-occurrence graph revealed few connections among topics.
-Many constructs were only linked with emotion regulation,
-and there were relatively few interconnections between elements.
-This observation substantiates the prior claim that this literature is somewhat fragmented [@bussTheoriesEmotionalDevelopment2019]. 
-This sparse property of the network explains, in part,
-why some of the most prevalent terms based on term document frequency
-are absent from the co-occurrence graph (see Figure \@ref(fig:varimps)).
-This does not mean that these terms are unimportant.
-Rather, it suggests that they are not yet well-integrated in the broader literature on adolescents' emotion regulation,
-and are therefore prime candidates for future research.
-Several of these excluded constructs indeed represent active ongoing areas of research, including research on *fathers* [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@wangBidirectionalEffectsExpressive2020], *autonomy* [@vrolijkLongitudinalLinkagesFather2020a; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *loneliness* [@spithovenItAllTheir2017].
-<!-- RK: Or could they also suggest that they were relevant in the past, but not any longer? Might it be important to run sensitivity analyses by publication year?
-One recommendation for future research might be to study such important but unembedded constructs
-in conjunction with other more well-established constructs,
-as such an approach might help fill gaps in existing knowledge.-->
 
 # Analysis 2: Abstract text mining
 
@@ -1533,13 +1493,21 @@ number_docs_words2 <- c(docs = length(unique(nounbydoc$doc_id)), words = length(
 
 nounbydoc$freq <- 1
 dtm <- udpipe::document_term_matrix(document_term_frequencies(nounbydoc))
+
+
 topterms <- colSums(dtm)
+term_freq <- table(topterms)
 topterms <- sort(topterms, decreasing = TRUE)
 
 # Select most common terms ------------------------------------------------
 set.seed(720)
 dtm_top <- dtm[, select_words(dtm, .975)]
 dtm_top <- dtm_top[rowSums(dtm_top) > 0, ]
+
+term_freqtop <- table(colSums(dtm_top))
+term_freq <- as.data.frame.table(term_freq)
+term_freq$pruned <- term_freq[[1]] %in% names(term_freqtop)
+write_yaml(term_freq, "study2_term_freq_dist.yml")
 
 if(run_everything){
 
@@ -1626,7 +1594,13 @@ if(run_everything){
 
 # Co-occurrence -----------------------------------------------------------
 set.seed(5646)
+cooc <- create_cooc(dtm_top)
+tmp <- cooc == 0
+total_cooc_2 <- sum(tmp[lower.tri(tmp)])
 cooc <- select_cooc(create_cooc(dtm_top), q = .975)
+tmp <- cooc == 0
+total_cooc_2 <- c(total_cooc_2, sum(tmp[lower.tri(tmp)]))
+
 
 if(run_everything){
   write.csv(as.matrix(cooc), "s2_cooc.csv")
@@ -1728,6 +1702,7 @@ notingraph <- lapply(cats, function(x){
 })
 names(notingraph) <- cats
 lda_dims_2 <- read_yaml("Study2_lda_dims.txt")
+term_freq <- read_yaml("study2_term_freq_dist.yml")
 
 ```
 
@@ -1738,30 +1713,43 @@ typically limited to 5 keywords, some nuance may be lost.
 Abstracts, by contrast, offer greater freedom of expression,
 but present a greater challenge when it
 comes to extracting relevant information.
-To perform feature extraction,
-we first applied the natural language processing technique "part-of-speech tagging" (POS-tagging), which identifies a word's grammatical function within the sentence context.
+It has been shown that retaining nouns and adjectives generally helps derive more interpretable text mining models [@martinMoreEfficientTopic2015].
+For example, nouns help capture terms like "emotion", and adjectives help capture the "mental" in "mental health".
+We therefore applied the natural language processing technique "part-of-speech tagging" (POS-tagging) to identify each word's grammatical function within the sentence context.
 Because our analysis sought to identify phenomena,
-we retained only nouns (to capture terms like "emotion") and adjectives (to capture the "mental" in "mental health").
-Retaining nouns and adjectives generally helps derive more interpretable text mining models [@martinMoreEfficientTopic2015].
-Finally, we used stemming to reduce the retained terms to their root form.
-As in Analysis 1, we tested for heterogeneity using latent dirichlet allocation - but no subcorpora were identified ([see online supplement]()).
 
-## Identifying keywords
+Finally, we used stemming to reduce the retained terms to their root form.
+As in Analysis 1, we tested for heterogeneity using latent dirichlet allocation - but no subcorpora were identified ([see online supplement](https://github.com/cjvanlissa/veni_sysrev/blob/master/topic_models.md)).
+
+## Feature engineering
 
 When conducting text mining analysis on unstructured text data (as opposed to author key words), focusing on individual words out of context can reduce interpretability.
 For instance, our core construct "emotion regulation" is already a bigram.
 To identify more meaningful units of analysis,
-we applied the `textrank` algorithm [@wijffelsTextrankSummarizeText2019], an extention of Google's PageRank [@pageMethodNodeRanking2006], to identify relevant $n$-grams (with $n \leq 3$).
+we applied the `textrank` algorithm [@wijffelsTextrankSummarizeText2019],
+an extension of Google's PageRank [@pageMethodNodeRanking2006],
+to identify relevant $n$-grams (with $n \leq 3$).
+This is sufficient to capture trigrams, like "parent-child conflict",
+but would not capture quardragrams like "parent-child conflict resolution".
 The resulting $n$-grams were merged with the original data.
+
+## Identifying common terms
+
 After applying the dictionary and exclusion filter as explained in Analysis 1,
 the resulting corpus consisted of `r number_docs_words2[1]` documents with `r number_docs_words2[2]` unique words.
-Terms exceeding the $97.5^{th}$ percentile of a negative binomial distribution were retained for analysis.
+Again, we used the $97.5^{th}$ percentile of a negative binomial distribution 
+as a (subjective) threshold for pruning the least common terms,
+which corresponded to terms occurring in more than `r max(as.numeric(term_freq[[1]][!term_freq$pruned]))` documents.
 The identified important keywords are displayed in Figure \@ref(fig:varimps).
 
 ## Mapping the literature
 
-We constructed a term co-occurrence matrix following the procedure described in Analysis 1;
-Figure \@ref(fig:allnetworks) displays the resulting matrix as a force directed graph.
+We constructed a term co-occurrence matrix following the procedure described in Analysis 1.
+In total, there were `r total_cooc_2[1]` co-occurrence relationships.
+We again pruned small coefficients below the $97.5^{th}$ percentile of a negative binomial distribution.
+This is a subjective criterion, which corresponded to terms that co-occurred in more than `r attr(cooc, "thres")` documents.
+After pruning, `r total_cooc[2]` co-occurrence relationships remained.
+Figure \@ref(fig:allnetworks) displays the resulting co-occurrence matrix as a force directed graph.
 
 ```{r study2network, eval = FALSE, out.width = "100%", fig.cap="Study 2 term co-occurrence. Two layouts are presented to aid interpretation. Size of lines and circles represents frequency. Dashed lines represent links not involving dysregulation. Transparent circles indicate constructs also represented in the theory (cf Figure 1)."}
 #knitr::include_graphics("study2_network1.svg")
@@ -1771,6 +1759,17 @@ plot(fig_svg)
 ```
 
 ## Results
+
+In the analysis of author keywords (Analysis 1),
+emotion regulation and associated mental health-related outcomes were foremost among the common terms in the corpus (Figure \@ref(fig:varimps)). 
+Other frequent terms reflect important themes discussed in the theoretical review of the literature;
+for instance, the terms *neural*, *parenting*, and *stress* correspond to themes discussed by  @coe-odessEmergentEmotionsAdolescence2019:
+Neurocognitive development, the role of the parents, and adolescents' increased stress response.
+Importantly, the most common terms also include several concepts not featured prominently in the theoretical review.
+For example, *ADHD/CD* [cf. @braetEmotionRegulationChildren2014], *substance* use [cf. @coe-odessEmergentEmotionsAdolescence2019; @pierrehumbertStrategiesEmotionRegulation2002], and *minority status* [cf. @myersEthnicitySocioeconomicStatusrelated2009; @myersEthnicitySocioeconomicStatusrelated2009] are common in the corpus,
+but featured less prominently in the theoretical review.
+
+<!-- Results 2 -->
 
 ```{r}
 s1 <- read_yaml("s1_words.yml")
@@ -1790,18 +1789,24 @@ orders$diff <- orders$order1-orders$order2
 orders <- orders[order(abs(orders$diff), decreasing = TRUE), ]
 ```
 
-Based on term document frequency, there was substantial agreement between the findings of Analysis 1 and 2;
-$`r oneintwo`\%$ of the most frequent terms identified in the author keywords
+In the analysis of abstracts (Analysis 2),
+emotion regulation and associated mental health-related outcomes were evidently the most common terms.
+There was substantial agreement between the most common terms identified in the analysis of author keywords and abstracts.
+Specifically, $`r oneintwo`\%$ of the most frequent terms identified in the author keywords
 were also present in the abstracts,
 and conversely, $`r twoinone`\%$ of the most frequent terms from the abstracts were present in the keywords.
-In the corpus of abstracts,
-emotion regulation and associated mental health-related outcomes were evidently the most common terms.
-The term *neural* again occurred frequently.
-The term *sex* was more frequent than in Analysis 1,
-suggesting that sex differences are regularly reported in Abstracts.
-The term *parenting*, which ranked highly in the preceding keyword Analysis, was displaced by *mothers* amonst the top-ranking terms.
-This suggests that when the keyword *parenting* is used,
-the abstract will often reveal that this was operationalized in terms of mothering [as noted by @pleckPaternalInvolvementRevised2004].
+There were also some differences;
+for instance, the term *sex* was more frequent than in Analysis 1,
+suggesting that sex differences are regularly reported in Abstracts even if they are not mentioned in the keywords.
+The term *parenting*, which ranked highly in the keyword analysis, was displaced by *mothers* in the analysis of abstracts.
+This reflects Pleck's  [-@pleckPaternalInvolvementRevised2004] observation that parenting is most often operationalized in terms of mothering.
+<!-- end results 2 --> 
+
+According to the term co-occurrence graph of the keyword analysis (Figure \@ref(fig:allnetworks)),
+emotion regulation is evidently a central construct
+to which most other constructs are directly linked.
+This suggests that our search successfully identified factors relevant for adolescents’ emotion regulation.
+The remaining graph is notably sparse, with few interconnections between terms.
 
 ```{r, echo = FALSE}
 categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
@@ -1810,17 +1815,50 @@ connected <- names(connected)[connected > 0]
 connected <- connected[connected %in% categ$name[categ$category == "Cause"]]
 ```
 
-Inspecting the co-occurrence graph for the keyword data,
-we see a much sparser network than in Analysis 1, with a different structure.
-We now see that dysregulation and mental health-related terms form a central axis,
-and that many related terms are connected to this axis, but not always directly to
-dysregulation. Only the terms *neural*, *mothers*, *attachment* and *ptsd* are 
+Compared to the keyword co-occurrence graph,
+the analysis of abstracts revealed a much sparser network, with a different structure.
+In Analysis 2, dysregulation and mental health-related terms formed a central axis.
+Many relevant terms were connected to this axis, but not directly to
+dysregulation (as was the case in Analysis 1). 
+Only the terms *neural*, *mothers*, *attachment* and *ptsd* are 
 connected directly to dysregulation.
+<!--THIS IS NOT IN THE RESULTS FOR ANALYSIS 1 
 Again, many prevalent terms were absent from the co-occurrence graph,
-as they were not strongly related to any other terms (see Figure \@ref(fig:varimps)). 
+as they were not strongly related to any other terms (see Figure \@ref(fig:varimps)). -->
 
 ## Discussion
 
+The present study used a text mining systematic review (TMSR)
+to identify the most relevant phenomena in the literature on adolescent emotion regulation,
+and used co-occurrence graphs to map conceptual associations between these phenomena.
+We conducted a systematic search of the literature,
+and followed similar procedures to analyze author keywords (Analysis 1) and abstracts (Analysis 2) of the resulting corpus.
+
+We considered term frequency to be indicative of a phenomenon's relevance.
+In line with this interpretation, the results of both analyses
+reflected some of the constructs commonly accepted as relevant in theoretical literature and empirical reviews - particularly those pertaining to neurodevelopment and socialization.
+Some of the most frequently occurring terms were classified as potential outcomes of emotion regulation difficulties, and revealed a theme related to mental health.
+This validates the notion that adolescent emotion regulation is implicated in a range of mental health problems [lee, aldao], which underlines the importance of this area of research.
+
+Our analyses of term frequency also identified several novel themes,
+which were underrepresented in the theoretical literature reviewed in the Introduction.
+One such theme pertains to developmental disorders, such as ADHD/CD and autism.
+This theme recurred in both analyses, although its constituent terms were ranked more highly in the analysis of author keywords as compared to the abstracts.
+Another theme revolved around adolescents' physical health (sic), which was also reflected in terms like sleep, sports, and disability status.
+Again, terms related to physical health were ranked more highly in the keyword analysis than in the abstract analysis.
+External stressors were another important theme, reflected in terms like bullying, stress, PTSD, abuse, violence, life events, historic events (e.g., earthquakes, war), parenting stress, and divorce.
+Finally, one emergent theme that appears to be underrepresented in existing theory is structural disadvantage.
+This theme was reflected in terms like minority status and discrimination, disability status, socio-economic status, adoption status, and sexual diversity. 
+The adorementioned developmental disorders are also relevant in this context, as neuroatypical individuals may also experience such disadvantage [@cappadociaBullyingExperiencesChildren2012].
+
+Our analyses of abstracts identified three additional themes not represented in the analysis of keywords.
+The first of these themes revolved around addictive behavior, with indicators *substance use* and *device use*.
+The second theme pertained to identity and moral development, two topics with a common root in theory [@lapsleyMoralIdentityDevelopmental2015]. This theme is also reflected by the terms *values* and *personality*. 
+Finally, sexual development emerged as a theme. Aside from the high-ranking construct (biological) *sex*, this theme was reflected in the terms *puberty*, *sexual diversity*, and *romantic*.
+These insights illustrate how inductive reviews can identify under-theorized areas,
+thereby complementing existing theory and narrative reviews.
+
+<!-- 
 This second analysis focused on the abstracts of the reviewed articles.
 Several themes emerged from the terms newly identified in this analysis,
 relative to the theoretical review.
@@ -1830,9 +1868,30 @@ External stressors are another recurring theme, with indicators including PTSD, 
 Finally, structural disadvantage recurs,
 as reflected in minority status and discrimination, disability status, socio-economic status, adoption status, sexual diversity, and the aforementioned developmental disorders.
 
-A new theme emerging from this analysis is addictive behavior, with highly ranked indicators *substance use* and *device use*.
-Another new theme pertains to identity and moral development, two topics with a common root in theory [@lapsleyMoralIdentityDevelopmental2015]. This theme is also reflected by the terms *values* and *personality*. 
-Finally, sexual development emerges as a theme. Aside from the high-ranking construct (biological) *sex*, this theme is reflected in the terms *puberty*, *sexual diversity*, and *romantic*.
+
+--> 
+
+The co-occurrence graph revealed few connections among topics.
+Many constructs were only linked with emotion regulation,
+and there were relatively few interconnections between elements.
+This observation substantiates the prior claim that this literature is somewhat fragmented [@bussTheoriesEmotionalDevelopment2019]. 
+This sparse property of the network explains, in part,
+why some of the most prevalent terms based on term document frequency
+are absent from the co-occurrence graph (see Figure \@ref(fig:varimps)).
+This does not mean that these terms are unimportant.
+Rather, it suggests that they are not yet well-integrated in the broader literature on adolescents' emotion regulation,
+and are therefore prime candidates for future research.
+Several of these excluded constructs indeed represent active ongoing areas of research, including research on *fathers* [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@wangBidirectionalEffectsExpressive2020], *autonomy* [@vrolijkLongitudinalLinkagesFather2020a; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *loneliness* [@spithovenItAllTheir2017].
+<!-- RK: Or could they also suggest that they were relevant in the past, but not any longer? Might it be important to run sensitivity analyses by publication year?
+One recommendation for future research might be to study such important but unembedded constructs
+in conjunction with other more well-established constructs,
+as such an approach might help fill gaps in existing knowledge.-->
+
+
+
+<!-- Study 2 -->
+
+
 
 We observed a sparser network, with fewer selected terms.
 This is likely an artifact of the unstructured nature of abstracts,
@@ -1856,8 +1915,7 @@ from the term co-occurrence graph.
 
 <!--it is worth noting that many different theories of *emotion* exist, and yet there is relatively little attention for the subtleties of 
 distinct from theories of emotional development, and that there is no one-to-one relationship between theories of emotion (regulation) development and theories of emotion. This issue is beyond the scope of the present study -->
-The present study systematically reviewed the literature,
-and used text-mining to map constructs related to adolescent emotion regulation.
+
 The results of this inductive approach echoed many of the constructs considered
 relevant in the theoretical literature.
 This suggests that the text mining method can indeed be used to map relevant themes in the literature.
@@ -2022,6 +2080,8 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+
 
 
 
