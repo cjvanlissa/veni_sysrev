@@ -3,7 +3,13 @@ title: "Action letter"
 author: "Caspar J. van Lissa"
 date: "2/11/2021"
 output: html_document
+bibliography      : ["veni_sysrev.bib"]
 ---
+
+```{r, include = FALSE}
+library(yaml)
+library(ggplot2)
+```
 
 # Reviewer #1:
 
@@ -15,7 +21,7 @@ output: html_document
 
 ## R1C2 Key words are not provided.
 
-Response: We apologize; the keywords were not retained when converting the manuscript to the required format for ADRR. We have reinstated them.
+Response: We apologize for the oversight; the keywords were not retained when converting the manuscript to the required format for ADRR. We have reinstated them.
 
 ## R1C3 The title is about dysregulation but the first paragraph is all about regulation. The manuscript would be more effective if it were more consistent.
 
@@ -180,6 +186,17 @@ to make the analyses strictly reproducible.
 We encourage reuse of the analysis code,
 and secondary analysis of the data.
 
+4) The revised Limitations section now addresses this issue:
+
+> Of course, the present study also has limitations.
+One limitation is that several subjective decisions were made throughout the analysis process.
+This limitation is inherent to inductive studies, however [e.g., @wagenmakersCreativityVerificationCyclePsychological2018]:
+There are infinite possible ways to conduct exploratory analysis,
+and researchers have considerable creative license in doing so.
+We have attempted to address this limitation by explicitly mentioning important decisions in the manuscript,
+and by making all analysis code and data publicly available,
+so that others may explore the effect of different analysis strategies.
+
 ## R1C14 At the bottom of page 12, it is clear that a decision is made in terms of retaining within a percentile. How do we know if that is the right decision?  There appear to be decisions like this made throughout. Given the reliance on the program, we need to know more.
 
 Response: This is indeed a good example of a subjective decision.
@@ -201,40 +218,167 @@ it has the advantage of being responsive to the empirical distribution of term f
 ## R1C15 Page 13, there is again pruning. Justifications for the cutoff should be noted. There is a manual classification and we are left with no sense of its reliability/validity.
 
 Please see our response to the previous comment.
-Additionally, note that nearly all pruned terms occurred in only one document,
+Additionally, note that the majority of the pruned terms occurred in only one document,
 as can be seen in the plot below.
 Even if the pruning criterion is subjective, it is hard to argue that we should interpret every word that occurred in the corpus.
 Thus, we would argue, some pruning is necessary - and if a better method is available, we would be happy to use that instead.
 
 ```{r}
-df_plot <- as.data.frame(term_freq)
+df_plot <- cbind(as.data.frame(read_yaml("study1_term_freq_dist.yml")), Analysis = "Analysis 1")
+names(df_plot)[1] <- "topterms"
+df_plot <- rbind(df_plot, cbind(as.data.frame(read_yaml("study2_term_freq_dist.yml")), Analysis = "Analysis 2"))
 df_plot <- df_plot[!df_plot$pruned, ]
-ggplot(df_plot, aes(x = topterms, y = Freq)) + geom_bar(stat = "identity") + theme_bw() + labs(x = "Frequency of term", y = "Number of terms")
+df_plot$topterms <- ordered(df_plot$topterms, levels = sort(as.numeric(unique(df_plot$topterms))))
+ggplot(df_plot, aes(x = topterms, y = Freq)) + geom_bar(stat = "identity") + theme_bw() + labs(x = "Frequency of term", y = "Number of terms") + facet_wrap(~Analysis, scales = "free")
 ```
 
 
 ## R1C16 I really think the presentation would be more effective if it did not have results/discussions and then more results/discussions, and then a general discussion. We are not really dealing with different studies.
 
-
+Response: We have attempted to address the Reviewer's comment by writing a single Results and Discussion section, instead of separate sections for each analysis. As this change spans several pages, we do not cite the entire revised section here, but refer to the revised manuscript.
 
 ## R1C17 Page 20, the first full paragraph is a good example of text that is meant to show a contribution when it actually does not. Being the first or one of the first is not a contribution. What is more important is the actual finding. I realize that the focus here is on the method. But, being the first to use a method is not a contribution. What is important to highlight is the findings that come from the method, from the study.
 
+Response: 
+
 ## R1C18 Page 21, the political push for open science is not really a point that is relevant. If the authors wanted to review the actual papers, they could. They just need to identify the papers, download them, and search. Right? At any rate, I would avoid making political statements that, essentially, make the point that others should make their data available so that authors who use this method could use their method. Much of what is said here is not really reading well.
 
-We understand that the Reviewer had interpreted this point as a political push for open science. It was not intended as such, and we have attempted to address this comment by rewriting this section. We have also attempted to clarify the important methodological implications of (lack of) open access for text mining analysis of scientific publications.
-Availability of large datasets is crucial for machine learning approaches. As such, one of the major bottlenecks for more widespread / more in-depth application of text mining to scientific publication is the limited access to full text papers.
+Response: This is an important comment, which we will address in four main points.
 
-1) According to Archambault and colleagues (https://www.science-metrix.com/pdf/SM_EC_OA_Availability_2004-2011.pdf), only 36% of papers in the general social sciences are published in open access journals. In the present corpus, the proportion of papers published in directory of open access journals (DOAJ) was even lower, 10%. The remainder of publications is behind paywalls, thus requiring additional financial resources and manpower to access.
-2) Even for papers that are available under open access licenses, there is no unified API for accessing the text. The reviewer's suggestion that authors can "just [...] identify the papers, download them, and search. Right?" is not scalable. Assuming that it would take only 10 minutes to find, download, and archive the full text, it would have taken 131.35 working days to assemble the corpus for the present study (6305 papers * 10 minutes)/(60 minutes * 8 hours per day). To manually curate a larger dataset, such as CORD-19 (publications about the coronavirus), would take 8333.33 days (400.000+ papers * 10 minutes)/(60 minutes * 8 hours per day).
+First, the Reviewer writes that "the political push for open science is not really a point that is relevant." We agree with this sentiment. Our writing was not intended as such,
+and we have rewritten the offending section to avoid misunderstanding.
+In particular, we have removed the more general term "open science",
+as we are really speaking only of open access publishing.
+
+Second, although the *political* implications of open access publishing are not relevant here,
+its *methodological* implications are.
+In order to conduct meta-scientific research of any kind - be it systematic reviews, meta-analyses, or indeed text-mining - publications must be accessible.
+Open access publishing thus has methodological implications for meta-scientific research,
+and as such, is well within scope of the Limitations section of the present paper.
+<!-- Third, there is little reason for a political push towards open science.
+Adolescent Research Review [is a hybrid open access journal](https://www.springer.com/journal/40894/open-access-publishing),
+and all stakeholders involved in this publication are committed to open science,
+including [our host university](https://www.uu.nl/en/research/open-science),
+the [body that funded this research](https://www.nwo.nl/en/open-science),
+the [Dutch government](https://www.rijksoverheid.nl/documenten/publicaties/2019/01/28/nieuwsgierig-en-betrokken),
+the [European Union](https://ec.europa.eu/info/research-and-innovation/strategy/goals-research-and-innovation-policy/open-science_en),
+and the [APA](https://www.apa.org/pubs/journals/resources/open-science).
+At this stage, open access can be considered a mainstream position,
+but it is still relevant to discuss its implications for meta-research.-->
+
+Third, the Reviewer writes "If the authors wanted to review the actual papers, they could [just] identify the papers, download them, and search. Right?".
+Unfortunately, the approach suggested by the Reviewer is not feasible, for two reasons. 
+
+* The proposed approach is not scalable: Assuming that it would take only 10 minutes to find, download, and archive a full-text publication, it would have taken 131.35 working days to assemble the corpus for the present study (6305 papers * 10 minutes)/(60 minutes * 8 hours per day). To manually curate a larger dataset, such as CORD-19 (publications about the coronavirus), would take 8333.33 days (400.000+ papers * 10 minutes)/(60 minutes * 8 hours per day).
+As we suggest, an API - a programmatic interface for downloading full-text publications - would overcome this bottleneck.
+* It is important to consider that not every scholar has the privilege to simply download papers. Aside from the *cost* of the aforementioned man-hours (which could be addressed by the API we propose), not everyone has comprehensive access to paywalled publications. Thus, such research could only be conducted at the world's most well-funded universities. 
+
+Finally, the Reviewer has apparently misinterpreted our comment about open access publishing as a demand that "others should make their data available so that authors who use this method could use their method".
+This is a simple misunderstanding.
+We are not discussing open data,
+but open access publishing.
+Discussing the benefits of open access publishing for meta-scientific research should not be a contentious or policital topic in a meta-scientific journal [with a hybrid open access policy](https://www.springer.com/journal/40894/open-access-publishing) like Adolescent Research Review.
+
+<!--even for papers that are available under open access licenses, there is no unified API for accessing the text. 
+A
+Such changes would enable meta-scientific research of far greater complexity than the present study.-->
+<!--We believe that this comment is well within the scope of the present paper.
+As an argument by analogy, it is common for cross-sectional studies to call for future longitudinal research.
+Since our method depends on the automated processing of scientific publications,
+factors that would enable researchers to automatically process scientific publications are relevant future directions.
+As such, we believe this comment to be within the scope of the present paper.
+
+-->
+<!--We have attempted to address this comment by rewriting this section.
+
+We have also attempted to clarify the important methodological implications of (lack of) open access for text mining analysis of scientific publications.
+Availability of large datasets is crucial for text mining and other machine learning approaches. As such, one of the major bottlenecks for more widespread / more in-depth application of text mining to scientific publication is the limited access to full text papers.
+
+1) According to Archambault and colleagues (https://www.science-metrix.com/pdf/SM_EC_OA_Availability_2004-2011.pdf), only 36% of papers in the general social sciences are published in open access journals. In the present corpus, the proportion of papers published in directory of open access journals (DOAJ) was even lower, 10%. The remainder of publications is behind paywalls, thus requiring additional financial resources and manpower to access.-->
+
+We have revised this section to avoid giving offense, and to strengthen our argument. The revision now reads:
+
+> One final limitation is that our analysis was limited to keywords and abstracts.
+The primary obstacles to the analysis of full-text publications were limited access to articles behind paywalls,
+and the absence of a standardized Application Programming Interface (API) for the automatic retrieval of articles across publishing outlets.
+<!--As the number of scientific publications on any given topic tends to show exponential increase over time, making it difficult for applied researchers to keep up.
+Meta-scientific analyses of the published literature will likely become increasingly important -->
+Comprehensive access to scientific publications is essential to all meta-scientific research, including classic systematic reviews and meta-analyses (e.g., to avoid bias in summary effect sizes).
+For text mining approaches in particular, the availability of large data sets is crucial.
+<!--Consequently, limited access to full-text publications is a major bottleneck.-->
+One example of a data set suitable for even more complex text mining analyses is a corpus of 400k+ full-text papers on COVID-19 that was made publicly available [@wangCORD19Covid19Open2020].
+Compiling such full-text data sets currently requires substantial manpower and financial resources, thus placing them out of reach for many researchers.
+<!--The authors argued that the sheer volume of available literature made it difficult for individual researchers to remain informed, thus necessitating automated text mining analysis.
+Although our analysis comprised a mere 6305 publications, even this is -->
+<!--As the number of scientific publications tends to grow exponentially across fields [@larsenRateGrowthScientific2010],
+it becomes harder for researchers to remain informed, thus necessitating meta-scientific research.-->
+An increased adoption of open access publishing,
+and the development of a unified API for article retrieval across publishing outlets,
+would facilitate curating full-text data sets.
+These changes would enable more widespread adoption and more informative application of meta-scientific (text mining) analyses.
 
 ## R1C19 in the end, it ends up looking like the authors are "hiding the ball". The real issue is what is actually being added to theory? What are the important findings here? What are the practical findings that emerge from this process that are worth making this type of analysis.  I just end up not convinced here.
 
-Response: (hiding the ball = hiding evidence)
+Response: The Reviewer comes away with the impression that we are "hiding the ball".
+We regret that our writing raises these concerns about a lack of transparency,
+because we have made thorough efforts to ensure that this adheres to best practices for open science. For instance, we have published our data, code, and complete history of this project since its inception in an online repository. To make this abundantly clear, the revised manuscript now reads:
+
+> we have made all code, data, and the historical record of this project publicly available in an online research repository at [masked]. 
+We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
+to make the analyses strictly reproducible.
+We encourage reuse of the analysis code,
+and secondary analysis of the data.
+
+Furthermore, the Reviewer understandably asks "what is actually being added to theory?". The answer is that we are *not* adding to theory in the present paper, but we are *laying the groundwork* for theory construction. Because we did not seek to develop new theory, we had not gone into detail on theory construction methodology in the previous iteration of the manuscript.
+
+We now see that this was a mistake, and that this literature provides necessary context for understanding the purpose of the study.
+We have thus attempted to address this comment by clarifying the relationship between inductive identification of relevant phenomena and formal theory construction:
+
+> There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
+the first step in this endeavor is to identify the relevant *empirical phenomena*,
+defined as stable and general features of the world [@bogenSavingPhenomena1988].
+We propose that systematic reviews are a suitable method for taking this first step,
+based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature.
+
+> The first step in theory construction methodology is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
+We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.s
+
+
+
+
 
 ## R1C20 The conclusion note that the method charts "unknown territories". Sure that is not the case because the study relies on the published studies. 
 
-This is based on a misunderstanding about the level of analysis. We are not charting "unknown territories" with regard to predictors of emotion dysregulation, but with regard to which of those predictors are acknowledged as being relevant in the theoretical / review literature.
+Response: The point is well-taken. We are not charting "unknown territories" at the level of primary research, but we are charting territories underrepresented at the meta-scientific level (i.e., topics rarely addressed in narrative reviews and theory). We have attempted to address this comment by rewriting the section as follows:
+
+> Importantly, our results also draw attention to several relevant phenomena that,
+although well-represented in the empirical literature,
+are under-emphasized in narrative reviews and theory.
 
 ## R1C21 I really get a sense of over-selling. The authors should, again, focus on what is actually found that is useful about the topic. There is an example made of emerging themes and fringes, with the example given the little focus on fathers. That may be true, but there was not really a study needed to show that point, as it is well known that the field focuses on primary caretakers (mothers/women).  The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory.
 
-Our argument is precisely that the method used here identifies themes that 
+Response: We agree that it is important to clearly communicate what is useful about the present study without over-selling.
+To address this point, we have carefully rewritten all claims about novel contributions.
+
+We are not quite sure what to make of the comment that "there was not really a study needed to show that [there is little focus on fathers], as it is well known that the field focuses on primary caretakers (mothers/women)".
+The Reviewer appears to suggest that we conducted this study in order to show that there is little focus on fathers - but this is not the case.
+We have emphasized throughout the manuscript that our study was inductive (data-driven), with no a-priori expectation about the phenomena we might find.
+We have simply reported the relevant phenomena that emerged from our analysis, and fathers are one of those phenomena.
+It seems relevant to discuss this particular finding in the context of prior work that has *argued* that fathers are underrepresented, but based on narrative reviews, not empirical analysis of the published literature.
+
+<!--Although there is indeed increasing awareness that the field focuses on mothers,
+several authors have argued that this practice is out of step with contemporary Western culture, as fathers are expected to take their responsibility as primary caregivers as well.
+There has thus been a call for increased fatherhood research, along with increased funding an research output.-->
+We further think that the example of fatherhood is particularly instructive, especially because, as the Reviewer points out, "it is well known that the field focuses on primary caretakers (mothers/women)".
+The fact that our analysis picks out a specific theme that is known by many researchers to be just outside the mainstream illustrates the method's ability to detect fringe themes in general,
+and serves as an example to illustrate to readers how this analysis may also pick out other themes about which there is less consensus that they are underrepresented.
+
+Finally, the Reviewer points out that "The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory." We have attempted to address this comment by clarifying the intended contribution of the present study (see response to comment R1C4). This specific section has been rewritten as follows:
+
+> Finally, several authors have commented on the lack of an overarching theory tailored specifically to adolescent emotion regulation.
+The first step in theory construction methodology is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
+We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.
+The phenomena identified in the present study might thus serve as a starting point for future theory development.
+Specifically, theorists might revisit existing relevant theory
+and incorporate relevant phenomena as identified in the present analysis.
