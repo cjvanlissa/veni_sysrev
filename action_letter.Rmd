@@ -2,7 +2,7 @@
 title: "Action letter"
 author: "Caspar J. van Lissa"
 date: "2/11/2021"
-output: html_document
+output: bookdown::word_document2
 bibliography      : ["veni_sysrev.bib"]
 ---
 
@@ -11,47 +11,104 @@ library(yaml)
 library(ggplot2)
 ```
 
+Dear Prof. Dr. Levesque,
+	
+Thank you for considering my manuscript for publication in *Adolescent Research Review*. I genuinely appreciate your personal involvement, and the thorough and critical comments you solicited. 
+I have made a good-faith effort to address all comments as thoroughly as possible, which involved major restructuring and rewriting.
+All changes are explained below.
+We did not discuss a deadline, but I implicitly assumed that two months would be acceptable given the amount of work involved and the additional burden placed upon us by the pandemic.
+I hope that you will find the quality of the work to be sufficiently improved.
+
+Yours sincerely,
+
+Caspar
+
 # Reviewer #1:
 
-## R1C1 The abstract is lacking in two regards:
+**Reviewer 1, comment 1:** The abstract is lacking in two regards:
 
-### R1C1a The actual findings are not reported
+**Reviewer 1, comment 1a:**  The actual findings are not reported
 
-### R1C1b it is not clear how the findings integrate te literature.
+**Response:** As requested, we have summarized the findings in the abstract. The
+abstract now reads:
 
-## R1C2 Key words are not provided.
+>   Adolesence is a developmentally sensititve period for emotion regulation
+  with potentially lifelong implications for mental health and well-being.
+  Although substantial empirical research has addressed this topic, the
+  literature is fragmented across subdisciplines, and an overarching
+  theoretical framework is lacking. The first step towards constructing a
+  unifying framework is identifying relevant phenomena. This systematic
+  review of 6305 papers used text mining to identify phenomena relevant to
+  adolescents' emotion regulation. We first established a baseline of
+  relevant phenomena discussed in theory and recent narrative reviews. We
+  then conducted text mining analyses of article keywords and abstracts,
+  examining term frequency as an indicator of relevance and term
+  co-occurrence as an indicator of association. Results reflected themes
+  commonly featured in theory and narrative reviews, such as socialization
+  and neurocognitive development, but also identified undertheorized themes,
+  such as developmental disorders, physical health, external stressors,
+  structural disadvantage, substance use, identity and moral development, and
+  sexual development. This illustrates how text mining systematic reviews
+  (TMSR), a novel approach, may complement narrative reviews. Future
+  theoretical work might seek to integrate these undertheorized themes into
+  an overarching framework, and empirical research might consider them as
+  promising areas for future research, or potential confounders in research
+  on adolescents' emotion regulation.
 
-Response: We apologize for the oversight; the keywords were not retained when converting the manuscript to the required format for ADRR. We have reinstated them.
+**Reviewer 1, comment 1b:**  it is not clear how the findings integrate te literature.
 
-## R1C3 The title is about dysregulation but the first paragraph is all about regulation. The manuscript would be more effective if it were more consistent.
+**Response:** Perhaps this turn of phrase was somewhat unfortunate.
+When discussing the relevance of the study in the abstract, we now simply state:
 
-Response: We agree that greater consistency would improve the clarity of the writing, and have changed the manuscript to use the more general term "emotion regulation" throughout.
+> Future theoretical work might seek to integrate these undertheorized themes into
+  an overarching framework, and empirical research might consider them as
+  promising areas for future research, or potential confounders in research
+  on adolescents' emotion regulation.
 
-## R1C4 The first paragraph [promises] that the results will help unify theory and address limitations of research areas that the author deems in silos. This is a heavy burden to carry.
+**Reviewer 1, comment 2:** Key words are not provided.
 
-Response: We have interpreted this point as an indirect request that we further clarify the intended contribution of the present study. We will address that point below - but first we must clarify that it was not our intention to "promise that our results will help unify theory and address limitations of research areas that the author deams in silos". We have attempted to address this misunderstanding by clarifying that these are not our original claims; these are oft-repeated limitations of the existing literature, and our work is a response to these perceived limitations. We have included three references to support this point. The revision now reads:
+**Response:** We apologize for the oversight; the keywords were not retained when converting the manuscript to the required format for ADRR. We have reinstated them.
 
-> Despite the abundance of empirical work on this issue,
-several authors have pointed out that the literature is somewhat fragmented,
+**Reviewer 1, comment 3:** The title is about dysregulation but the first paragraph is all about regulation. The manuscript would be more effective if it were more consistent.
+
+**Response:** We agree that greater consistency would improve the clarity of the writing, and have changed the manuscript to use the more general term "emotion regulation" throughout.
+
+**Reviewer 1, comment 4:** The first paragraph [promises] that the results will help unify theory and address limitations of research areas that the author deems in silos. This is a heavy burden to carry.
+
+**Response:** It was not our intention to give the impression that "our results will help unify theory and address limitations of research areas that the author deams in silos". 
+
+First of all, the Reviewer credits us for the observations that research areas are "in silos",
+but this is a commonly mentioned limitation of the existing literature.
+To address this issue, and clarify that this is not our original claim, we have included additional references. The revision now reads:
+
+> Despite the abundance of publications in this field,
+several prior theoretical and empirical reviews have argued that the literature is somewhat fragmented,
 because different (sub)disciplines have approached the issue in disparate ways,
 in the absence of consistent terminology and unifying theory 
 [@bussTheoriesEmotionalDevelopment2019; @bariolaChildAdolescentEmotion2011; @stifterEmotionRegulation2019].
 
-Now, to the main point.
+Second of all, the Reviewer's comments indicate that the intended contribution of the present study was insufficiently clear. Our results will not unify theory, but it does lay the foundation for future work that intends to do so, as identification of the relevant empirical phenomena is the first step in theory construction methodology.
 In the revision, we have attempted to clarify the intended contribution of the present study
 as follows:
 
-> There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
-According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
-the first step in this endeavor is to identify the relevant *empirical phenomena*,
+> This has led to recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+Formal methods for theory construction state that the first step in this endeavor is to identify the relevant *empirical phenomena* [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
 defined as stable and general features of the world [@bogenSavingPhenomena1988].
 We propose that systematic reviews are a suitable method for taking this first step,
-based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature. [...] The present paper aims to map the empirical phenomena relevant to adolescent emotion regulation, using text mining systematic review.
+based on the assumption that phenomena considered to be stable and general will be more frequently represented in the published literature.<!-- the frequency with which phenomena occur in the literature is indicative of their relevance.-->
+Traditional narrative reviews have some limitations, however, as they been shown to be marred by small convenience samples, confirmation bias,
+and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008].
+We intend to overcome these limitations by adopting a novel method:
+the text mining systematic review (TMSR).
 
-## R1C5 The entire section on page 3: it is not clear why this is presented. It could be presented in a brief sentence and likely should because it does not really relate to what is reviewed. If it is kept, it should be edited so it relates to the actual review.
+Third of all, the Reviewer's comment indicates that we have raised expectations that we would "address limitations of research areas that the author deams in silos". It is not the case. A systematic review like the present paper is meta-research. Meta-research describes bodies of primary research. It therefore cannot address limitations at the level of primary research. 
+The only limitation that we address is at the meta-research level: The lack of a comprehensive overview of factors relevant to adolescent emotion regulation in prior theory and reviews.
+We have attempted to address this comment by clarifying the intended contribution of the study throughout the manuscript.
+
+**Reviewer 1, comment 5:** The entire section on page 3: it is not clear why this is presented. It could be presented in a brief sentence and likely should because it does not really relate to what is reviewed. If it is kept, it should be edited so it relates to the actual review.
 The paragraph on page 4 may be relevant, but it is not clear how it eventually relates to the study.
 
-Response: These two paragraphs were intended to substantiate the relevance and scope of the present study.
+**Response:** These two paragraphs were intended to substantiate the relevance and scope of the present study.
 Based on the Reviewer's comment, we now see that this was perhaps redundant with the opening paragraphs, which already provided rudimentary justification of the relevance and scope.
 We have thus attempted to address the Reviewer's comment by cutting these paragraphs on pages 3 and 4,
 merging the core arguments with the opening paragraphs.
@@ -74,63 +131,74 @@ life course persistent emotion regulation-related psychopathology
 [see also @aldaoEmotionregulationStrategiesPsychopathology2010;
 @schaferEmotionRegulationStrategies2017].
 Given the prevalence of emotion regulation difficulties in adolescence,
-their implications for mental health
+their implications for mental health<!--and social functioning [@braetEmotionRegulationChildren2014]; @reindlSocializationEmotionRegulation2016]-->
 and downstream cost to society,
-it is important to have a comprehensive understanding of the risk factors that render some adolescents more susceptible to emotional difficulties than others.
+it is important to have a comprehensive overview of the factors associated with adolescents' emotion regulation.
 
-## R1C6 The existing theoretical landscape is presented in a way that is unclear how it really relates to the review.
+**Reviewer 1, comment 6:** The existing theoretical landscape is presented in a way that is unclear how it really relates to the review.
 
-Response: We understand that it is essential to clarify why we present this brief theoretical review before diving into the results of the present study.
+**Response:** We understand that it is essential to clarify why we present this brief theoretical review before diving into the results of the present study.
 In order to address this comment, we now explicitly state why a review of the existing theoretical landscape is relevant to the present systematic review. The revised manuscript reads:
 
-> Although there is a paucity of theories *specific to* adolescent emotion regulation,
-several relevant theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
-In order to contextualize the results of our systematic review,
+> Although it has been argued that there is a paucity of theories *specific to* adolescent emotion regulation,
+many *relevant* theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
+In order to contextualize the results of our systematic review
 and assess to what extent the identified phenomena through text mining mirror or complement existing theory,
-we provide a summary review of the existing theoretical landscape.
+we provide a brief review of the existing theoretical landscape.
 
 
-## R1C8 Figure 1 on page 5: it is not clear why it is there. It should come after the introduction. And, in fact, it should appear after the references and the text should simply have a placeholder for the Figure.  It should be referred to at the end of the introduction (before the current study section).
+**Reviewer 1, comment 7:** Figure 1 on page 5: it is not clear why it is there. It should come after the introduction. And, in fact, it should appear after the references and the text should simply have a placeholder for the Figure.  It should be referred to at the end of the introduction (before the current study section).
 
-Response: As requested by the Reviewer, we have placed the Figure after the References section, retaining only a placeholder in-text. We also refer to the Figure at the end of the Introduction:
+**Response:** As requested by the Reviewer, we have placed the Figure after the References section, retaining only a placeholder in-text. As requested, we also refer to the Figure at the end of the Introduction:
 
-> As can be seen in Figure 1, 
-there are notable parallels between correlates of emotion regulation identified in these
-narrative reviews, and in the preceding theoretical literature.
+> There are notable parallels between phenomena relevant to adolescents' emotion regulation as identified in these
+narrative reviews, and in the preceding theoretical literature, as can be seen in Figure 1.
 
-## R1C9 The figure nicely points to outcomes, indicators, causes and protective factors. That is not clear from the introductory materials.
+**Reviewer 1, comment 8:** The figure nicely points to outcomes, indicators, causes and protective factors. That is not clear from the introductory materials.
 
-Response: In the previous manuscript, we had merged the two Figures from the theoretical Introduction with the two Figures from the Results section in order to facilitate comparisons between the two.
+**Response:** In the previous manuscript, we had merged the two Figures from the theoretical Introduction with the two Figures from the Results section in order to facilitate comparisons between the two.
 We see now that this caused some confusion.
 In order to address this comment, we have separated the Figures from these two sections,
 and we have added the following information about the classification of phenomena:
 
 > In reading the theoretical literature,
-we recorded relevant phenomena,
-and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
-The left panel of Figure \@ref(fig:figbaseline) visually summarizes the phenomena so identified in the theoretical literature in a style similar to our subsequent systematic review,
+we documented relevant phenomena and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
+The left panel of Figure 1 visually summarizes the phenomena discussed in the theoretical literature, using a style similar to our subsequent systematic review,
 in order to facilitate contextualizing our original findings.
 
-## R1C10a The section on theory is not presented in a way that would have it appear as authoritative. It reads more like a hodgpode of theories. 
+**Reviewer 1, comment 9:** The section on theory is not presented in a way that would have it appear as authoritative. It reads more like a hodgpode of theories. 
 
-Response: This is the state of the theoretical landscape: A hodgpodge. Others have pointed out that there is an absence of authoritative theories to guide research. It would be misleading to give readers the impression that there is a clear, authoritative theoretical framework. 
+**Response:** The Reviewer's point is well-taken, and yet one of the main motivations for the present study is the fact that the theoretical landscape *is indeed a bit of a hodgepodge*.
+This has been stressed by several prior reviewers, as pointed out in our response to the Reviewer's 4th comment.
+We feel that any attempt to impose an apparently "authoritative" structure on this messy field would be somewhat misleading, and would undermine the intended contribution of the present study.
+To address the Reviewer's comment, we have substantially edited the theoretical review for increased readability, while explicitly acknowledging the lack of overarching structure.
 
-## R1C10b The section would be stronger if it also gave readers a sense of which theories are deemed important/influential and worth using. There needs to be a sense that the important theories are being examined.
+**Reviewer 1, comment 10:** The section would be stronger if it also gave readers a sense of which theories are deemed important/influential and worth using. There needs to be a sense that the important theories are being examined.
 
-Response: Point out how often these theories are cited, perhaps?
+**Response:** We are happy to do so if there is an objective way to do so, but it's not clear what metric should be used.
+Citation counts are obvious but problematic - they are confounded with publication date (favoring Bronfenbrenner and Sameroff),
+some theories are influential but rarely credited (e.g., polyvagal theory),
+and other theories are published by different authors at approximately the same time (e.g., the maturity gap was described approximately simultaneously by Casey, by Crone, and by Cracco).
+We are open to other suggestions.
 
-## R1C11 The first paragraph on page 9 needs to be edited. It appears too haphazard. (Why use "Finally," as uo were not enumerating.) The problem, just as with the literature review, is that the studies appear presented randomly. One study did this, one did that, and so forth.
+Importantly, as we have argued in the paper, the state of theory in the field is a bit of a "hodgepodge", and much research lacks explicit theoretical foundations.
+The theories that *are* available are limited because they are not uniquely suited to this particular area of research,
+and some are vague but all-encompassing macro-theories (e.g., Bronfenbrenner, Sameroff), and others are concrete and specific, but not embedded in an overarching framework (e.g., Crone, Morris).
+Pending further guidance on how to address this comment,
+we have made an effort to reinforce these points throughout the manuscript.
 
-Response:
+**Reviewer 1, comment 11:** The first paragraph on page 9 needs to be edited. It appears too haphazard. (Why use "Finally," as uo were not enumerating.) The problem, just as with the literature review, is that the studies appear presented randomly. One study did this, one did that, and so forth.
 
-\ToDo
+**Response:** We have rewritten this as requested. We have attempted to clarify that we are not presenting many different studies, but merely summarizing one seminal literature review, and one recent "update" that covers more recent literature in greater detail. We have further organized the phenomena discussed in these two reviews in line with the classification of Bronfenbrenner and Sameroff, introduced in the opening paragraph on relevant theory. We thus begin with phenomena at the individual level, followed by proximal influences (microsystem), followed by distal influences (mesosystem and exosystem).
 
-## R1C12 The fundamental problem with the "The present paper" section is that it really does not do what is needed. It is a plan of analysis. This section should note the research questions and hypotheses.
+**Reviewer 1, comment 12:** The fundamental problem with the "The present paper" section is that it really does not do what is needed. It is a plan of analysis. This section should note the research questions and hypotheses.
 
-Response: We agree with the Reviewer that "The present paper" section was basically a plan of analysis. In the Revision, we have rewritten this section to summarize the study design, link it to the study aims, and state the intended outcomes. 
-Note that this is an inductive (exploratory) study, and as such,
-it does not test any hypotheses.
-We now explicitly clarify this point in "The present paper".
+**Response:** We agree with the Reviewer that "The present paper" section was basically written as a plan of analysis.
+
+To address this comment, we have rewritten this section to be more in line with the APA guidelines,
+by summarizing the study design, linking it to the study aims, and stating the intended outcomes. 
+Note that we cannot honor the Reviewer's request for hypotheses, because this is an inductive (exploratory) study, and as such, it does not test any hypotheses.
+To avoid confusion about this point, we now emphasize the inductive nature of the study throughout the manuscript, including in "The present paper". This section now reads:
 
 > The present paper set out to map the phenomena relevant to adolescent emotion regulation
 using a text mining systematic review (TMSR) of the literature.
@@ -141,65 +209,65 @@ which can be rank ordered to identify the most relevant phenomena,
 and term co-occurrence metrics.
 These metrics can be jointly visualized as a network graph,
 thereby "mapping" phenomena relevant to adolescent emotion regulation.
-Note that this study is inductive or exploratory,
-as opposed to deductive or confirmatory research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. Injunction pertains to inferences based purely on statistical data, whereas abduction additionally involves the attribution of observations to explanatory principles.].
+Note that this study is inductive (exploratory),
+as opposed to deductive (confirmatory) research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961](footnote: Note that aside from induction, the term "abduction" is also used in the methodological literature. We consider injunction to refer to inferences based purely on observations (data). Abduction differs from induction because it additionally involves the attribution of observations to explanatory principles).
 
-## R1C13 By the time I get to eh methods section, including the beginning of this section, I still see a focus on emotion regulation, not emotion dysregulation that appears in the title.
+**Reviewer 1, comment 13:** By the time I get to eh methods section, including the beginning of this section, I still see a focus on emotion regulation, not emotion dysregulation that appears in the title.
 
-Response: We have addressed this comment as requested; see the response to R1C3.
+**Response:** We have addressed this comment as requested; see the response to R1C3.
 
-## R1C13 As I read the materials on pages 11 and 12, I see a heavy reliance on the computerized analytical system to do the research and coding. I think it would be helpful to know what decisions are made by the authors and, if there are any, we should know about reliability checks and, if there are none, that still should be noted.
+**Reviewer 1, comment 14:** As I read the materials on pages 11 and 12, I see a heavy reliance on the computerized analytical system to do the research and coding. I think it would be helpful to know what decisions are made by the authors and, if there are any, we should know about reliability checks and, if there are none, that still should be noted.
 
-Response: This is a crucial comment with far-reaching implications.
+**Response:** This is a crucial comment with far-reaching implications.
 The Reviewer asks what decisions are made by the authors.
-Simply put: All decisions are made by us.
-There are infinitely many ways to conduct exploratory analysis on a single data set,
-and the present paper represents just one possible way.
+The straightforward answer is: all decisions.
+The reason for this is that inductive / exploratory research affords considerable creative license to the researcher [@wagenmakersCreativityVerificationCyclePsychological2018; @degrootMethodologieGrondslagenVan1961].
+This is because the number of ways to conduct exploratory analysis on a single data set are infinite.
+The present paper represents just one possible way.
 The "computerized analytical system", as referred to by the Reviewer,
-is nothing more than an explicit representation of our subjective decisions in analyzing the data,
-represented as code.
+is an explicit representation of our subjective decisions in analyzing the data in the form of code.
 
-The Reviewer asks for reliability checks, also known as a sensitivity analysis or multiverse analysis [@steegenIncreasingTransparencyMultiverse2016].
+The Reviewer further asks for reliability checks, also known as a sensitivity analysis or multiverse analysis [@steegenIncreasingTransparencyMultiverse2016].
 Such reliability checks are only defined, however, in the context of deductive (confirmatory) analysis,
 where they are used to ensure that hypothesis tests / statistical inferences are robust to permutations of the data processing strategy.
-As the present study is inductive (exploratory),
+Reliability checks are undefined in the context of the present study,
+because it is inductive (exploratory),
 no hypotheses are tested nor inferences are drawn,
-and the number of alternative possible analyses is infinite - thus reliability checks are undefined.
+and the number of alternative possible analyses is infinite.
 
 We do emphatically agree with the Reviewer that it is important to be clear about what decisions are made by us.
 
 To address this comment, we have taken the following steps:
 
-1) We have documented the methods in detail in the manuscript, and added online supplemental analyses for more complex analyses that we could not describe in sufficient detail.
+1) We have documented the methods in as much detail as possible in the manuscript, and added new online supplemental analyses for more complex analyses that we could not describe in sufficient detail.
 2) We have made all analysis code and data publicly available in an open access repository.
 This repository also contains the entire historical development of this study,
 so readers can see that our analysis proceeded in a straightforward way. We mention this explicitly in the revised paper.
-3) The revised Methods section now explicitly mentions that these are inductive (exploratory) analyses, and as such, depend on subjective decisions:
+3) Throughout the manuscript, including in the revised Methods section, we now emphasize that these are inductive (exploratory) analyses, and as such, depend on subjective decisions:
 
 > As the purpose of inductive research is to inform hypothesis generation,
 this approach affords the researcher with substantial creativity [@wagenmakersCreativityVerificationCyclePsychological2018].
 This means that subjective decisions are made throughout the analysis process.
 To ensure that all such decisions are properly documented,
-we have made all code, data, and the historical record of this project publicly available in an online research repository at [https://github.com/cjvanlissa/veni_sysrev](https://github.com/cjvanlissa/veni_sysrev). 
+we have made all code, data, and the historical record of this project publicly available in an online research repository at [masked]. 
 We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
-to make the analyses strictly reproducible.
+to make the analyses reproducible.
 We encourage reuse of the analysis code,
 and secondary analysis of the data.
 
 4) The revised Limitations section now addresses this issue:
 
-> Of course, the present study also has limitations.
-One limitation is that several subjective decisions were made throughout the analysis process.
+> One final limitation is that several subjective decisions were made throughout the analysis process.
 This limitation is inherent to inductive studies, however [e.g., @wagenmakersCreativityVerificationCyclePsychological2018]:
 There are infinite possible ways to conduct exploratory analysis,
 and researchers have considerable creative license in doing so.
-We have attempted to address this limitation by explicitly mentioning important decisions in the manuscript,
-and by making all analysis code and data publicly available,
-so that others may explore the effect of different analysis strategies.
+We have attempted to address this limitation by explicitly mentioning important decisions in the manuscript where possible,
+and by making all analysis code and data publicly available in a fully reproducible format [based on @vanlissaWORCSWorkflowOpen2020],
+so that others may explore alternative exploratory analysis strategies.
 
-## R1C14 At the bottom of page 12, it is clear that a decision is made in terms of retaining within a percentile. How do we know if that is the right decision?  There appear to be decisions like this made throughout. Given the reliance on the program, we need to know more.
+**Reviewer 1, comment 15:** At the bottom of page 12, it is clear that a decision is made in terms of retaining within a percentile. How do we know if that is the right decision?  There appear to be decisions like this made throughout. Given the reliance on the program, we need to know more.
 
-Response: This is indeed a good example of a subjective decision.
+**Response:** This is indeed a good example of a subjective decision.
 In our response to the previous comment, we explain that we now explicitly acknowledge each such subjective decision in the revised manuscript.
 In addition to the blanket statement we have added to the Methods section, 
 we now also acknowledge the subjectivity of each decision like this one explicitly in the revised manuscript.
@@ -209,13 +277,14 @@ We had thoroughly scoured the literature for established practice for pruning te
 but most published analyses appear to either retain a fixed number of terms, or drop terms that occur less than a fixed number of times.
 Our selection method has the advantage of taking the distribution of word frequencies into account.
 It is thus more flexible than a fixed cutoff, and still successful in pruning terms that occur only a few times in the corpus.
-We now mention this explicitly in the paper:
+To address this comment, we now mention the fact that this is a subjective decision explicitly in the paper (see excerpt below). We also provide more quantitative information about the thresholds and the cut terms.
 
 > This is a subjective criterion,
 but compared to the common practices of either retaining a fixed number of terms or pruning terms below a fixed frequency [see @benoitQuantedaPackageQuantitative2018],
 it has the advantage of being responsive to the empirical distribution of term frequencies.
+Note that the vast majority of pruned terms occurred only once in the corpus.
 
-## R1C15 Page 13, there is again pruning. Justifications for the cutoff should be noted. There is a manual classification and we are left with no sense of its reliability/validity.
+**Reviewer 1, comment 16:** Page 13, there is again pruning. Justifications for the cutoff should be noted. There is a manual classification and we are left with no sense of its reliability/validity.
 
 Please see our response to the previous comment.
 Additionally, note that the majority of the pruned terms occurred in only one document,
@@ -223,7 +292,7 @@ as can be seen in the plot below.
 Even if the pruning criterion is subjective, it is hard to argue that we should interpret every word that occurred in the corpus.
 Thus, we would argue, some pruning is necessary - and if a better method is available, we would be happy to use that instead.
 
-```{r}
+```{r, echo = FALSE}
 df_plot <- cbind(as.data.frame(read_yaml("study1_term_freq_dist.yml")), Analysis = "Analysis 1")
 names(df_plot)[1] <- "topterms"
 df_plot <- rbind(df_plot, cbind(as.data.frame(read_yaml("study2_term_freq_dist.yml")), Analysis = "Analysis 2"))
@@ -233,17 +302,29 @@ ggplot(df_plot, aes(x = topterms, y = Freq)) + geom_bar(stat = "identity") + the
 ```
 
 
-## R1C16 I really think the presentation would be more effective if it did not have results/discussions and then more results/discussions, and then a general discussion. We are not really dealing with different studies.
+**Reviewer 1, comment 17:** I really think the presentation would be more effective if it did not have results/discussions and then more results/discussions, and then a general discussion. We are not really dealing with different studies.
 
-Response: We have attempted to address the Reviewer's comment by writing a single Results and Discussion section, instead of separate sections for each analysis. As this change spans several pages, we do not cite the entire revised section here, but refer to the revised manuscript.
+**Response:** As requested, we have rewritten these sections as a single Results and Discussion section. As this change spans several pages, we do not cite the entire revised section here, but refer to the revised manuscript.
 
-## R1C17 Page 20, the first full paragraph is a good example of text that is meant to show a contribution when it actually does not. Being the first or one of the first is not a contribution. What is more important is the actual finding. I realize that the focus here is on the method. But, being the first to use a method is not a contribution. What is important to highlight is the findings that come from the method, from the study.
+**Reviewer 1, comment 18:** Page 20, the first full paragraph is a good example of text that is meant to show a contribution when it actually does not. Being the first or one of the first is not a contribution. What is more important is the actual finding. I realize that the focus here is on the method. But, being the first to use a method is not a contribution. What is important to highlight is the findings that come from the method, from the study.
 
-Response: 
+**Response:** Point well taken; we have rewritten the paragraph in line with the Reviewer's suggestions. We do still mention that we are the first to do this - but merely as a statement of fact, not as a contribution. The contributions section now reads:
 
-## R1C18 Page 21, the political push for open science is not really a point that is relevant. If the authors wanted to review the actual papers, they could. They just need to identify the papers, download them, and search. Right? At any rate, I would avoid making political statements that, essentially, make the point that others should make their data available so that authors who use this method could use their method. Much of what is said here is not really reading well.
+> One strength of the present study is that it was more comprehensive than previous reviews of the literature in two respects [cf. @bariolaChildAdolescentEmotion2011; @coe-odessEmergentEmotionsAdolescence2019]:
+We conducted a systematic literature search, and we used text mining to comprehensively map the phenomena relevant to adolescents' emotion regulation.
+<!-- To this end, we applied text mining methods in a systematic review. We used For this purpose, It is also one of the first applications of inductive-->
+Using text mining offers unique advantages compared to narrative reviews [@littellEvidencebasedBiasedQuality2008],
+because it can cover vastly greater corpora than a sentient reader,
+and follows a somewhat more objective, transparent, and reproducible procedure.
+As such, text mining systematic reviews offer an interesting perspective that complements theory and narrative reviews.
+Moreover, text mining systematic reviews offer an inductive approach to identify relevant phenomena in a particular area of research.
+This can serve as the first step towards formal theory construction [@borsboomTheoryConstructionMethodologya].
+Our study was the first to implement this novel approach.
 
-Response: This is an important comment, which we will address in four main points.
+
+**Reviewer 1, comment 19:** Page 21, the political push for open science is not really a point that is relevant. If the authors wanted to review the actual papers, they could. They just need to identify the papers, download them, and search. Right? At any rate, I would avoid making political statements that, essentially, make the point that others should make their data available so that authors who use this method could use their method. Much of what is said here is not really reading well.
+
+**Response:** This is an important comment, which we will address in four main points.
 
 First, the Reviewer writes that "the political push for open science is not really a point that is relevant." We agree with this sentiment. Our writing was not intended as such,
 and we have rewritten the offending section to avoid misunderstanding.
@@ -298,7 +379,7 @@ Availability of large datasets is crucial for text mining and other machine lear
 
 We have revised this section to avoid giving offense, and to strengthen our argument. The revision now reads:
 
-> One final limitation is that our analysis was limited to keywords and abstracts.
+> Another limitation is that our analysis was limited to keywords and abstracts.
 The primary obstacles to the analysis of full-text publications were limited access to articles behind paywalls,
 and the absence of a standardized Application Programming Interface (API) for the automatic retrieval of articles across publishing outlets.
 <!--As the number of scientific publications on any given topic tends to show exponential increase over time, making it difficult for applied researchers to keep up.
@@ -317,10 +398,9 @@ and the development of a unified API for article retrieval across publishing out
 would facilitate curating full-text data sets.
 These changes would enable more widespread adoption and more informative application of meta-scientific (text mining) analyses.
 
-## R1C19 in the end, it ends up looking like the authors are "hiding the ball". The real issue is what is actually being added to theory? What are the important findings here? What are the practical findings that emerge from this process that are worth making this type of analysis.  I just end up not convinced here.
+**Reviewer 1, comment 20:** in the end, it ends up looking like the authors are "hiding the ball". The real issue is what is actually being added to theory? What are the important findings here? What are the practical findings that emerge from this process that are worth making this type of analysis.  I just end up not convinced here.
 
-Response: The Reviewer comes away with the impression that we are "hiding the ball".
-We regret that our writing raises these concerns about a lack of transparency,
+**Response:** We regret that our writing raises these concerns about a lack of transparency,
 because we have made thorough efforts to ensure that this adheres to best practices for open science. For instance, we have published our data, code, and complete history of this project since its inception in an online repository. To make this abundantly clear, the revised manuscript now reads:
 
 > we have made all code, data, and the historical record of this project publicly available in an online research repository at [masked]. 
@@ -334,31 +414,37 @@ Furthermore, the Reviewer understandably asks "what is actually being added to t
 We now see that this was a mistake, and that this literature provides necessary context for understanding the purpose of the study.
 We have thus attempted to address this comment by clarifying the relationship between inductive identification of relevant phenomena and formal theory construction:
 
-> There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
-According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
-the first step in this endeavor is to identify the relevant *empirical phenomena*,
+> This has led to recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+Formal methods for theory construction state that the first step in this endeavor is to identify the relevant *empirical phenomena* [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
 defined as stable and general features of the world [@bogenSavingPhenomena1988].
 We propose that systematic reviews are a suitable method for taking this first step,
-based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature.
+based on the assumption that phenomena considered to be stable and general will be more frequently represented in the published literature.
 
-> The first step in theory construction methodology is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
-We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.s
+> The first step in theory construction methodology (TCM) is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
+We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.
+
+The Reviewer further asks "What are the important findings here?".
+To address this comment, we have added more extensive interpretations of the emerging themes in the Discussion and in the Abstract. For the sake of brevity, we just copy this excerpt from the Abstract to illustrate:
+
+> Results reflected themes
+  commonly featured in theory and narrative reviews, such as socialization
+  and neurocognitive development, but also identified undertheorized themes,
+  such as developmental disorders, physical health, external stressors,
+  structural disadvantage, substance use, identity and moral development, and
+  sexual development. 
 
 
+**Reviewer 1, comment 21:** The conclusion note that the method charts "unknown territories". Sure that is not the case because the study relies on the published studies. 
 
-
-
-## R1C20 The conclusion note that the method charts "unknown territories". Sure that is not the case because the study relies on the published studies. 
-
-Response: The point is well-taken. We are not charting "unknown territories" at the level of primary research, but we are charting territories underrepresented at the meta-scientific level (i.e., topics rarely addressed in narrative reviews and theory). We have attempted to address this comment by rewriting the section as follows:
+**Response:** The point is well-taken. We are not charting "unknown territories" at the level of primary research, but we are charting territories underrepresented at the meta-scientific level (i.e., topics rarely addressed in narrative reviews and theory). We have attempted to address this comment by rewriting the section as follows:
 
 > Importantly, our results also draw attention to several relevant phenomena that,
 although well-represented in the empirical literature,
-are under-emphasized in narrative reviews and theory.
+are under-emphasized in narrative reviews and theory - such as developmental disorders, physical health, external stressors, structural disadvantage, substance use, identity and moral development, and sexual development.
 
-## R1C21 I really get a sense of over-selling. The authors should, again, focus on what is actually found that is useful about the topic. There is an example made of emerging themes and fringes, with the example given the little focus on fathers. That may be true, but there was not really a study needed to show that point, as it is well known that the field focuses on primary caretakers (mothers/women).  The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory.
+**Reviewer 1, comment 22:** I really get a sense of over-selling. The authors should, again, focus on what is actually found that is useful about the topic. There is an example made of emerging themes and fringes, with the example given the little focus on fathers. That may be true, but there was not really a study needed to show that point, as it is well known that the field focuses on primary caretakers (mothers/women).  The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory.
 
-Response: We agree that it is important to clearly communicate what is useful about the present study without over-selling.
+**Response:** We agree that it is important to clearly communicate what is useful about the present study without over-selling.
 To address this point, we have carefully rewritten all claims about novel contributions.
 
 We are not quite sure what to make of the comment that "there was not really a study needed to show that [there is little focus on fathers], as it is well known that the field focuses on primary caretakers (mothers/women)".
@@ -377,8 +463,10 @@ and serves as an example to illustrate to readers how this analysis may also pic
 Finally, the Reviewer points out that "The conclusion ends with noting that others have noted a need for an overarching theory; but that is what is the apparent contribution being made here; the author does not really get to that and address it; there is no sense of a contribution being made to theory." We have attempted to address this comment by clarifying the intended contribution of the present study (see response to comment R1C4). This specific section has been rewritten as follows:
 
 > Finally, several authors have commented on the lack of an overarching theory tailored specifically to adolescent emotion regulation.
-The first step in theory construction methodology is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
+The first step in theory construction methodology (TCM) is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
 We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.
-The phenomena identified in the present study might thus serve as a starting point for future theory development.
-Specifically, theorists might revisit existing relevant theory
-and incorporate relevant phenomena as identified in the present analysis.
+The next step in formal theory construction methodology would be to describe and quantify the nature of the relationship of each phenomenon in relation to adolescent emotion regulation.
+The phenomena identified in the present study might thus serve as a starting point for future theory development,
+and sensitize empirical researchers to potential confounders in research on adolescents' emotion regulation.
+
+## References

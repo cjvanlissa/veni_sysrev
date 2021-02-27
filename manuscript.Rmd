@@ -20,17 +20,28 @@ authornote: |
   
 
 abstract: |
-  Adolesence is a developmentally sensititve period for emotion regulation.
-  Although substantial empirical research has addressed relevant risk factors,
-  the literature is fragmented across subdisciplines, and
-  an integrating framework is lacking.
-  This systematic review of 6305 papers used text mining to map correlates of adolescents’ (ages 
-  10-25) emotion regulation. First, we established a baseline of relevant terms gleaned from 
-  theory and recent narrative reviews. Then, we conducted two text mining analyses to examine 
-  term/document frequency and co-occurrence in author-provided keywords and abstracts. Results 
-  reﬂected constructs commonly featured in theory and narrative reviews, but also identified 
-  underrepresented themes. This research constitutes a first step towards integrating the 
-  literature, and illustrates how text mining systematic reviews (TMSR) may complement narrative reviews.
+  Adolesence is a developmentally sensititve period for emotion regulation
+  with potentially lifelong implications for mental health and well-being.
+  Although substantial empirical research has addressed this topic, the
+  literature is fragmented across subdisciplines, and an overarching
+  theoretical framework is lacking. The first step towards constructing a
+  unifying framework is identifying relevant phenomena. This systematic
+  review of 6305 papers used text mining to identify phenomena relevant to
+  adolescents' emotion regulation. We first established a baseline of
+  relevant phenomena discussed in theory and recent narrative reviews. We
+  then conducted text mining analyses of article keywords and abstracts,
+  examining term frequency as an indicator of relevance and term
+  co-occurrence as an indicator of association. Results reflected themes
+  commonly featured in theory and narrative reviews, such as socialization
+  and neurocognitive development, but also identified undertheorized themes,
+  such as developmental disorders, physical health, external stressors,
+  structural disadvantage, substance use, identity and moral development, and
+  sexual development. This illustrates how text mining systematic reviews
+  (TMSR), a novel approach, may complement narrative reviews. Future
+  theoretical work might seek to integrate these undertheorized themes into
+  an overarching framework, and empirical research might consider them as
+  promising areas for future research, or potential confounders in research
+  on adolescents' emotion regulation.
 keywords          : "emotion regulation, adolescence, systematic review, text mining, machine
 learning"
 wordcount         : "6311"
@@ -90,20 +101,20 @@ life course persistent emotion regulation-related psychopathology
 Given the prevalence of emotion regulation difficulties in adolescence,
 their implications for mental health<!--and social functioning [@braetEmotionRegulationChildren2014]; @reindlSocializationEmotionRegulation2016]-->
 and downstream cost to society,
-it is important to have a comprehensive understanding of the risk factors that render some adolescents more susceptible to emotional difficulties than others.
-Despite the abundance of empirical work on this issue,
-several authors have pointed out that the literature is somewhat fragmented,
+it is important to have a comprehensive overview of the factors associated with adolescents' emotion regulation.
+Of particular interest are potential risk factors that render some youth susceptible to emotion regulation difficulties.
+Despite the abundance of publications in this field,
+several prior theoretical and empirical reviews have argued that the literature is somewhat fragmented,
 because different (sub)disciplines have approached the issue in disparate ways,
 in the absence of consistent terminology and unifying theory 
 [@bussTheoriesEmotionalDevelopment2019; @bariolaChildAdolescentEmotion2011; @stifterEmotionRegulation2019].
 
-There have been recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
-According to formal methods for theory construction [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
-the first step in this endeavor is to identify the relevant *empirical phenomena*,
+This has led to recent calls for the consolidation of empirical insights into overarching theory [e.g., @bussTheoriesEmotionalDevelopment2019]. 
+Formal methods for theory construction state that the first step in this endeavor is to identify the relevant *empirical phenomena* [@borsboomTheoryConstructionMethodologya; @haigExploratoryFactorAnalysis2005],
 defined as stable and general features of the world [@bogenSavingPhenomena1988].
 We propose that systematic reviews are a suitable method for taking this first step,
-based on the assumption that phenomena currently considered to be most stable and general will be more frequently represented in the literature.<!-- the frequency with which phenomena occur in the literature is indicative of their relevance.-->
-However, traditional narrative reviews have been shown to be marred by reliance on small convenience samples of the literature, confirmation bias,
+based on the assumption that phenomena considered to be stable and general will be more frequently represented in the published literature.<!-- the frequency with which phenomena occur in the literature is indicative of their relevance.-->
+Traditional narrative reviews have some limitations, however, as they been shown to be marred by small convenience samples, confirmation bias,
 and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008].
 We intend to overcome these limitations by adopting a novel method:
 the text mining systematic review (TMSR).
@@ -112,12 +123,12 @@ and gleans insights from the literature by means of a more transparent and repro
 <!--Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
 the inherent "fairness" of text mining gives emerging themes a chance to come to the fore.-->
 
-The present paper aims to map the empirical phenomena relevant to adolescent emotion regulation, using text mining systematic review.
+The present paper uses this novel approach to map the empirical phenomena relevant to adolescent emotion regulation.
 This approach considers the frequency with which phenomena occur in the literature to be indicative of their relevance.
 If we additionally assume that the frequency with which phenomena are studied together is indicative of the extent to which researchers believe them to be associated,
-then the co-occurrence of phenomena within publications can be interpreted as a nomological network: a mapping of relationships between phenomena of theoretical relevance [see @alaviAligningTheoryMethodology2018].
-This can serve as a starting point for the formulation of a proto-theory,
-which would additionally involve specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodologya].
+then the co-occurrence of phenomena within publications can be interpreted as a rudimentary nomological network: a mapping of relationships between theoretically relevant phenomena [see @alaviAligningTheoryMethodology2018].
+This network can serve as a starting point for the formulation of a proto-theory,
+which would additionally involve abductive reasoning: specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodologya].
 By mapping the phenomena relevant to adolescent emotion regulation,
 the present work thus lays the groundwork for future theory development.
 
@@ -137,9 +148,9 @@ with recommendations for future theory-generating efforts.
 There have been calls for the  consolidation of these disparate insights into overarching theory would be an important step forward.
 An important first step 
 and intrinsic limitations of narrative reviews prohibit comprehensive coverage of the vast but diffuse literature .-->
-
+<!--
 Recent years have seen the publication of several excellent systematic reviews,
-but these have all been narrative reviews.
+but these have all been narrative reviews.-->
 
  <!-- CJ To fill out gaps, following up on promising constructs and unify heretofore disparate regions of the lit -->
 <!-- SH: this implies that the main contribution of the paper is predominantly methodological is that the case? Is there some primary thesis/argument that will be advanced? It is really important to take a top-down approach to that messaging, beginning here in the first paragraph-->
@@ -327,29 +338,48 @@ knitr::include_graphics("baseline_network.png")
 knitr::include_graphics("networks.png") 
 ```
 
-Although there is a paucity of theories *specific to* adolescent emotion regulation,
-several relevant theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
-In order to contextualize the results of our systematic review,
+Although it has been argued that there is a paucity of theories *specific to* adolescent emotion regulation,
+many *relevant* theories are commonly invoked in empirical work [see  @bussTheoriesEmotionalDevelopment2019].
+In order to contextualize the results of our systematic review
 and assess to what extent the identified phenomena through text mining mirror or complement existing theory,
 we provide a brief review of the existing theoretical landscape.
 Others have published more detailed reviews of theories of emotional development [@bussTheoriesEmotionalDevelopment2019] and emotion regulation in adolescence [@riedigerEmotionRegulationAdolescence2014].
 In reading the theoretical literature,
-we recorded relevant phenomena,
-and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
-The left panel of Figure \@ref(fig:figbaseline) visually summarizes the phenomena so identified in the theoretical literature in a style similar to our subsequent systematic review,
+we documented relevant phenomena and whether these were discussed as putative causes, outcomes, indicators, or protective factors in relation to emotion regulation.
+The left panel of Figure \@ref(fig:figbaseline) visually summarizes the phenomena discussed in the theoretical literature, using a style similar to our subsequent systematic review,
 in order to facilitate contextualizing our original findings.
 <!-- 
 Our text mining analysis of the phenomena empirical literature is best understood against a backdrop of -->
 
+Two of the most general theories invoked to frame developmental research are Bronfenbrenner's bioecological model, and Sameroff's
+transactional model.
+Bronfenbrenner [-@bronfenbrennerBioecologicalModelHuman2007] describes how the `r keyw("environment")`
+shapes individual development.
+At the individual level, every person is imbued with `r keyw("biological")` predispositions,
+and develops over time in interaction with contextual influences.
+The most immediate source of contextual influences is the microsystem,
+composed of people close to the individual.
+Other influences stem from the macrosystem, consisting of `r keyw("political")` and `r keyw("economic")` influences,
+and the exosystem, consisting of `r keyw("cultural")` norms and `r keyw("values")`.
+Sameroff's model [-@sameroffUnifiedTheoryDevelopment2010] is compatible with Bronfenbrenner's work,
+but places a stronger emphasis on development as a product of reciprocal influences between child and environment.
+Sameroff distinguishes between proximal influences, which roughly correspond to the microsystem in Bronfenbrenner's model, and distal influences, which derive from
+structural factors indirectly shaping development, like `r keyw("socio-economic status")`,
+`r keyw("schools")`, and the `r keyw("community")` (macro- and exosystem).
+With increasing age, distal influences gain ground on proximal influences.
+These two theories have a broader scope than most.
+This means that they can be invoked to contextualize any developmental study,
+but lack specificity - a shortcoming that curtails a theory's utility in generating hypotheses.
+We thus turn toward more domain-specific theories.
 
-Among the oldest relevant theories of adolescents' emotional development is Hall's notion of "storm and stress" [see
-@arnettAdolescentStormStress1999]. It describes how `r keyw("hormonal")` changes diminish
-`r keyw("self-control")` and increase `r keyw("reactivity")`, leading to emotion
-dysregulation, `r keyw("conflict with parents")`, and `r keyw("risky behavior")`.
-This notion of diminished self-control and increased emotional reactivity persists in modern theory, but is now considered a normative change that facilitates emotional maturation
-[@croneUnderstandingAdolescencePeriod2012], at the risk of emotional
+Among the oldest domain-specific theories of adolescents' emotional development is Hall's notion of "storm and stress" [see
+@arnettAdolescentStormStress1999].
+It describes how `r keyw("hormonal")` changes diminish `r keyw("self-control")` and increase `r keyw("reactivity")`, which in turn leads to emotion
+regulation difficulties, increased `r keyw("conflict with parents")`, and `r keyw("risky behavior")`.
+Hall's notion of diminished self-control and increased emotional reactivity still persists in modern theory, but is increasingly recast as a normative change that facilitates emotional maturation at the risk of emotional
 disturbance [@arnettAdolescentStormStress1999; @leeAdolescentMentalHealth2014].
-
+[@croneUnderstandingAdolescencePeriod2012] 
+A potential limitation of Hall's notion of storm and stress is that it describes emotion regulation difficulties as a part of normative development, and thus underemphasizes adolescents' diverging destinies [cf. @croneUnderstandingAdolescencePeriod2012].
 <!--SH I am still not sure what the empirical contribution is - can you be more specific with it in this sentence? -->
 <!--Several recent publications have undertaken the
 monumental task of providing a comprehensive overview of theories of emotional
@@ -359,65 +389,65 @@ development [e.g., @bussTheoriesEmotionalDevelopment2019;
 pertaining to emotions in adolescence
 [@coe-odessEmergentEmotionsAdolescence2019].  -->
 
-One example of a normative theory of emotional development in early childhood is presented by Sroufe [-@sroufeEmotionalDevelopmentOrganization1995].
+Sroufe's [-@sroufeEmotionalDevelopmentOrganization1995] theory of normative emotional development focuses on developmental influences to a greater extent.
 Sroufe argues that, as children grow older,
 their increasing `r keyw("self-regulatory")` abilities
 drive a transition from external emotion regulation by `r keyw("primary caregivers")`
-towards autonomous emotion regulation. This theory focuses on two drivers of
-development: `r keyw("social")` and `r keyw("cognitive influences")`. Social influences mainly occur
+towards autonomous emotion regulation.
+This theory focuses on two drivers of
+development: `r keyw("social")` and `r keyw("cognitive influences")`. 
+Social influences mainly occur
 through `r keyw("parental co-regulation")`, `r keyw("parenting behaviors")`, and parent-child
 `r keyw("attachment")`. Cognitive influences occur through the development of the `r keyw("central
 nervous system")` (CNS), `r keyw("cognition")`, and `r keyw("self-regulation")`.
+This theory's relevance for adolescent research may be diminished by its focus on early childhood,
+although there is substantial continuity in developmental influences throughout childhood and adolescence.
+For instance, there is substantial similarity between mothers' and fathers' unique roles in emotional development in childhood [@vanlissaMothersFathersQuantitative2020] and adolescence [@vanlissaRoleFathersMothers2019].
+In terms of level of analysis, the scope of Sroufe's and Hall's theories corresponds approximately to the individual and the microsystem in Bronfenbrenner's ecological model.
+The emphasis on socialization and `r keyw("neurocognitive development")` as two drivers of emotional development, which is evident from both theories,
+is the focus of several theories with a narrower scope.
 
-This emphasis on social influences and `r keyw("neurocognitive development")` is reflected in many theories.
-Some of these focus primarily on neurocognitive development.
-For example, `r keyw("polyvagal theory")` closely links `r keyw("emotional experience")`
-- and regulation - to autonomous nervous system functioning
-[@porgesOrientingDefensiveWorld1995].
-More recently, in their model of social-affective engagement and `r keyw("goal flexibility")`
-<!--. Like other authors 
-[e.g., @caseyBrakingAcceleratingAdolescent2011; @craccoEmotionRegulationChildhood2017],
-Crone and Dahl--> Crone and Dahl [-@croneUnderstandingAdolescencePeriod2012] posited that the developmental 
-asymmetry between `r keyw("motivational")` and inhibitory `r keyw("brain")` circuits gives rise to a
-"maturity gap" in middle adolescence. 
-What distinguishes Crone and Dahl from related writings [e.g., @craccoEmotionRegulationChildhood2017]
-is the emphasis on adolescents' diverging destinies;
-why some youngsters flourish while others languish.
-They argue that adolescents' cognitive engagement is dynamically responsive to
+Among theories focused on socialization, Morris' tripartite model is widely cited in the field [-@morrisRoleFamilyContext2007].
+This theory describes three pathways through which `r keyw("parents")` shape emotion regulation
+development: `r keyw("modeling")`, `r keyw("parenting practices")`, and the
+emotional `r keyw("family climate")`,
+which subsumes attachment and `r keyw("marital relationship")` quality.
+This theory focuses parents, acknowledging unique contributions by `r keyw("mothers")` and `r keyw("fathers")`, but also recognizes the importance of siblings.
+Others in turn have adapted the tripartite model to describe the influence of peers [@reindlSocializationEmotionRegulation2016], thus illustrating its wider usefulness in understanding socialization.
+A more abstract take on socialization is found in @holodynskiDevelopmentEmotionsEmotion2006's
+internalization model of emotional development. 
+This theory describes the role of emotion in `r keyw("communication")`, and the `r keyw("cultural")` symbolic function of emotion.
+
+In research on neurocognitive aspects of adolescents' emotion regulation,
+`r keyw("polyvagal theory")` has been influential [@porgesOrientingDefensiveWorld1995].
+This theory examines `r keyw("emotional experience")` and -regulation in relation to autonomous nervous system functioning, respiratory sinus arrhythmia, and the stress response.
+Although polyvagal theory is relevant for development,
+it does not explicitly address it.
+Among neurocognitive developmental theories,
+there is some consensus that the developmental asymmetry between `r keyw("motivational")`-emotional and inhibitory `r keyw("brain")` circuits gives rise to a "maturity gap" in middle adolescence [@croneUnderstandingAdolescencePeriod2012; @caseyBrakingAcceleratingAdolescent2011; @craccoEmotionRegulationChildhood2017].
+Particularly noteworthy is Crone and Dahl's  model of social-affective engagement and `r keyw("goal flexibility")`.
+According to this model, adolescents' cognitive engagement is dynamically responsive to
 social and motivational `r keyw("goal salience")`.
 This flexibility <!--, on the one hand,-->
 prepares adolescents to <!--effectively engage cognitive systems in novel
 challenging situations in a way that facilitates--> develop mature regulatory
 abilities, but also places them at risk of impulsivity in
-pursuit of `r keyw("peer approval")`. In terms of explanans,
-this theory focuses primarily on cognitive factors
-and the role of peers, with less attention to factors such as parenting.
-This theory is relevant because it focuses on adolescence specifically,
-but only tangentially addresses emotion regulation.
+pursuit of `r keyw("peer approval")`.
+To a greater extent than related writings, Crone and Dahl's model focuses on adolescents diverging destinies;
+why some youngsters flourish while others languish.
+This is important for understanding individual differences in development.
+The relevance of this theory is enhanced by its focus on adolescence,
+but is curtailed because it only tangentially addresses emotion regulation.
+Furthermore, whereas this theory addresses the role of cognitive factors and peers as drivers of development, it devotes less attention to other relevant phenomena, such as parenting [cf. @morrisRoleFamilyContext2007].
+Micro-scale theories as reviewed here are useful in explaining specific phenomena in detail,
+but do not provide a comprehensive understanding of adolescent's emotion regulation.
+To this end, it is important to consider these micro-scale theories in the context of a larger framework of relevant phenomena.
 
-Other theories emphasize socialization to a greater extent,
-such as Morris' tripartite model, which focuses on `r keyw("parents")`'
-role in emotion regulation development [-@morrisRoleFamilyContext2007].
-It describes three pathways through which parents shape emotion regulation
-development: `r keyw("modeling")`, `r keyw("parenting practices")`, and the
-emotional `r keyw("family climate")`,
-which subsumes attachment and `r keyw("marital relationship")` quality.
-Morris emphasizes the relevance of `r keyw("mothers")`, 
-`r keyw("fathers")`, and siblings.
-Others have adapted the tripartite model to describe peers' role in emotion regulation socialization
-[@reindlSocializationEmotionRegulation2016].
-A more abstract take on socialization is found in @holodynskiDevelopmentEmotionsEmotion2006's
-internalization model of emotional development. 
-Hallmarks of this theory are the interplay between emotion and `r keyw("communication")`,
-and the internalization of the `r keyw("cultural")` symbolic function of emotion.
-Several theories thus explain emotion regulation socialization in detail,
-but a potential limitation is that they are not embedded in a larger unifying framework.
 <!--Like Sroufe, Holodynski describes an age graded transition from
 interpersonal to intrapersonal emotion regulation.
 In doing so, Holodynski applies Vygotsky's theory of development to the domain of
 emotion, and presents a detailed integrated model of emotional experience and
 regulation.-->
-
 Theories of the phenomenon of emotion regulation offer insight into
 intra-individual drivers of emotion regulation development.
 Gross' [-@grossHandbookEmotionRegulation2013] influential process model describes the
@@ -433,29 +463,9 @@ Similar to Gross' theory, the "social
 information processing" theory also describes the role of cognitive
 processes and strategies in emotion regulation
 [@lemeriseIntegratedModelEmotion2000].
-One limitation of these theories in the present context is the lack of a developmental component.
+One shortcoming of these theories for understanding adolescents' emotion regulation 
+is the lack of a developmental component.
 
-Finally, given our interest in risk factors that render adolescents susceptible
-to emotional difficulties, we should mention two theories widely invoked to frame research on developmental influences: Bronfenbrenner's bioecological model, and Sameroff's
-transactional model.
-Bronfenbrenner [-@bronfenbrennerBioecologicalModelHuman2007] describes how the `r keyw("environment")`
-shapes individual development.
-Each individual is imbued with `r keyw("biological")` predispositions,
-and develops in interaction with contextual influences.
-These influences range from the microsystem,
-composed of people close to the individual,
-to the macrosystem, consisting of `r keyw("political")` and `r keyw("economic")` influences,
-to the exosystem, consisting of `r keyw("cultural")` norms and `r keyw("values")`.
-Sameroff's model [-@sameroffUnifiedTheoryDevelopment2010] is compatible with Bronfenbrenner's work,
-but focuses more on the interplay between nature and nurture.
-It conceptualizes development as a product of reciprocal influences between child and environment.
-Sameroff distinguishes proximal influences such as parents (the microsystem in Bronfenbrenner's model)
-from distal influences;
-structural factors indirectly shaping development, like `r keyw("socio-economic status")`,
-`r keyw("schools")`, and the `r keyw("community")` (macro- and exosystem).
-With increasing age, distal influences gain ground on proximal influences.
-These theories are broad enough to contextualize any developmental study,
-but lack specificity, which curtails their utility in generating hypotheses.
 <!-- RK: What do you take from these broad perspectives for your RQ?-->
 <!--SH I am not sure what contribution this paragraph ultimately makes - you should consider condensing it substantially to just note that these theories have something to say about emotional development but are not adolescent-specific-->
 <!--Theories like this are particularly relevant to a fine-grained
@@ -508,13 +518,15 @@ and none directly guide contemporary research in the field [see @bussTheoriesEmo
 Finally, existing theories vary widely in scope:
 Some are broad and non-specific; others describe a specific phenomenon in detail,
 but lack a broader perspective.
-It would be beneficial to bridge these levels of analysis.
+Broad theories can be used to frame a wide variety of research,
+and specific theories are more suitable for deductive hypothesis generation.
+To combine the strength of both, it would be beneficial to bridge these levels of analysis.
 In sum, there is a need for more integrative theory formation,
 in order to provide a unified framework that could guide future empirical work.<!--[see @riedigerEmotionRegulationAdolescence2014].
 Inductive analysis of the empirical literature may constitute a first step to this end.-->
 <!--Such a theory should focus on -->
 The present study lays the groundwork for such theory development,
-by providing a text-mining based inductive systematic review of the field.
+by identifying theoretically relevant phenomena based on a text-mining systematic review of the literature.
 
 <!--
 Barriola: What is most
@@ -573,16 +585,17 @@ emotional development)." Buss et al 2019:20
 
 ## Prior narrative reviews
 
-Whereas theory provides a top-down frame of reference,
-literature reviews provide a bottom-up understanding of a phenomenon by aggregating empirical evidence.
+Whereas theory provides a top-down deductive understanding of adolescents' emotion regulation,
+literature reviews synthesize inductive insights emerging from the empirical literature.
 Given the noted absence of a single overarching theory [see @bussTheoriesEmotionalDevelopment2019],
 reviews are especially important,
 as they provide additional
-insight into relevant phenomena in the etiology of adolescents'
-emotion regulation competencies.
+insight into undertheorized relevant phenomena.
 Two recent narrative reviews in particular complement the aforementioned theoretical literature [@coe-odessEmergentEmotionsAdolescence2019; @bariolaChildAdolescentEmotion2011].
-Figure \@ref(fig:allnetworks) visualizes constructs uniquely covered by these narrative reviews,
-relative to the theoretical literature.
+The right panel of Figure \@ref(fig:figbaseline) visualizes constructs uniquely covered by these narrative reviews,
+relative to the preceding theoretical literature.
+This illustrates in what respects these reviews reflect existing theory,
+and in what respects they complement it.
 <!--
 Note that the left panel of Figure \@ref(fig:allnetworks) visually summarizes the correlates of emotion regulation difficulties (labeled: *Dysregulation*) according to our theoretical review.
 The left panel of Figure \@ref(fig:allnetworks) summarizes key constructs covered by the theories reviewed above. 
@@ -590,58 +603,56 @@ In the subsequent text mining analysis, we will distinguish the topics covered i
 This allows us to see in what respects the text mining analysis reflects existing theory,
 and in what respects it complements it.-->
 
-The seminal review by
-@bariolaChildAdolescentEmotion2011 addressed intra-individual factors
-such as temperament, and biological factors like neurocognitive development and
-genes.
-Proximal social influences covered include socialization and modeling by parents, teachers, and peers.
-Finally, distal factors include the role of culture and the
-media.
-Barriola and colleagues made several suggestions for future research,
-calling for a robust theoretical framework to guide future
-research, for research on parents' role beyond early childhood,
-and for additional work on the role of fathers in emotion socialization.
-The latter two topics are now receiving more attention [e.g., see @vanlissaRoleFathersMothers2019;
+The seminal review by @bariolaChildAdolescentEmotion2011 was one of the first to stress the urgent lack of an overarching theoretical framework to guide research in this field.
+Their review addressed relevant phenomena at different levels of analysis. 
+At the individual level, relevant phenomena include temperament and biological factors, like neurocognitive development and genes.
+At the level of proximal influences, the authors discuss socialization and modeling by parents, teachers, and peers.
+Finally, at the level of distal influences, culture and the media are discussed.
+Barriola and colleagues made several important observations about the state of the literature in this field.
+For instance, they emphasized that work on children cannot be straightforwardly extrapolated to the life stage of adolescence.
+They also called for further research on parents' role beyond early childhood, and on fathers' role in emotion socialization -
+a topic that of increasing importance [see @pleckPaternalInvolvementRevised2004].
+Several recent publications have conducted research in line with these recommendations [e.g., see @vanlissaRoleFathersMothers2019;
 @vanlissaMothersFathersQuantitative2020].
 
-A recent review by @coe-odessEmergentEmotionsAdolescence2019 offers a nuanced
-discussion of several issues that complement prior publications.
-This includes the implications of physiological changes,
+As the review by Barriola and colleagues is now a decade old,
+it is worth considering the more recent review by @coe-odessEmergentEmotionsAdolescence2019. 
+This review complements prior work by offering a nuanced discussion of several topics.
+At the individual level, this includes the implications of physiological changes,
 including neurocognitive development and pubertal maturation.
-Conflict with parents is addressed too, which peaks when adolescents become increasingly individuated.
-Such conflict impacts both day-to-day mood swings and dispositional emotion regulation difficulties [see also
-@vanlissaCostEmpathyParentadolescent2017].
-Adolescents also become increasingly oriented towards peers.
-This increases sensitivity to social status and norms,
-along with concomitant increases in peer pressure and risk taking.
-Pubertal development further precipitates sexual and romantic behavior,
+Pubertal development also precipitates sexual and romantic behavior,
 and the intensification of both biological sex differences and gender stereotyped behavior.
+This, in turn, likely modulates proximal influences through peers.
 <!--With regard to the process of emotion regulation,
 Coe-Odess and colleagues discuss the importance
 of strategies, and point out that, in addition to negative emotionality,
 positive emotionality also peaks in adolescence. -->
-Relatedly, the authors describe how hormonal changes intensify the stress response,
-which helps explain adolescents' greater susceptibility to emotion regulation difficulties.
-Finally, <!--going beyond the implications of cognitive development
-discussed in other publications,--> the authors discuss how cognitive development and increased capacity
+The authors further describe how individual hormonal changes intensify the stress response,
+which relates to adolescents' greater susceptibility to emotion regulation difficulties.
+Finally, going beyond the implications of cognitive development
+discussed in other publications, the authors discuss how cognitive development and increased capacity
 for abstract thought relate to identity formation - a key challenge in
 adolescence [@meeusStudyAdolescentIdentity2011] - and to increased emotional
 understanding, and by extension, empathy [see also
 @vanlissaLongitudinalInterplayAffective2014].
+At the level of proximal influences, Coe-Odess and colleagues expand on the role of conflict with parents, which peaks in adolescence as youth become increasingly individuated.
+This is relevant because parent-adolescent conflict has been shown to impact both day-to-day mood swings and dispositional emotion regulation [see @vanlissaCostEmpathyParentadolescent2017].
+Coe-Odess and colleagues further detail the mechanisms by which peers exert proximal influences: Adolescents become increasingly oriented towards peers, which
+increases their sensitivity to social status and norms,
+along with concomitant increases in peer pressure and risk taking.
+This review devotes limited attention to distal influences.
 
-As can be seen in Figure \@ref(fig:allnetworks), 
-there are notable parallels between correlates of emotion regulation identified in these
-narrative reviews, and in the preceding theoretical literature.
+There are notable parallels between phenomena relevant to adolescents' emotion regulation as identified in these
+narrative reviews, and in the preceding theoretical literature, as can be seen in Figure \@ref(fig:figbaseline).
 Nevertheless,
 these literature reviews also touch upon issues that have received little
 attention in theoretical work.
 <!--These include specific individual differences at the biological and psychological level, including genetic predisposition, hormones, pubertal onset, gender, sexuality, temperament, identity, empathy, and stress.
 Further introduced are proximal influences, including the role of media, norms, and social status.-->
-This illustrates that reviews of the empirical literature can contribute additional insight into key factors in adolescents' emotion regulation development.
-An important limitation is that all reviews in this field have been unstructured narrative reviews, which are known to be limited in scope and biased [@littellEvidencebasedBiasedQuality2008].
+This illustrates the general principle that reviews of the empirical literature can contribute inductive insight into relevant phenomena underrepresented in theory.
+An important shortcoming is that all reviews in this field have been unstructured narrative reviews, which are known to be limited in scope and biased [@littellEvidencebasedBiasedQuality2008].
 We seek to complement preceding work by using text mining to conduct a more comprehensive and objective empirical
-literature review, and map the factors associated with adolescent emotion
-regulation.
+literature review, and map the phenomena relevant to adolescent emotion regulation.
 
 <!--Where sentient readers tend to structure their reading of the literature around established ideas,
 text mining has the potential to reveal phenomena and associations missed by narrative reviewers,
@@ -706,7 +717,7 @@ and term co-occurrence metrics.
 These metrics can be jointly visualized as a network graph,
 thereby "mapping" phenomena relevant to adolescent emotion regulation.
 Note that this study is inductive (exploratory),
-as opposed to deductive (confirmatory) research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. Injunction pertains to inferences based purely on statistical data, whereas abduction additionally involves the attribution of observations to explanatory principles.].
+as opposed to deductive (confirmatory) research, and as such does not test any hypotheses [see De Groot's work on the empirical cycle @degrootMethodologieGrondslagenVan1961][^Note that aside from induction, the term "abduction" is also used in the methodological literature. We consider injunction to refer to inferences based purely on observations (data). Abduction differs from induction because it additionally involves the attribution of observations to explanatory principles.].
 
 <!--The distinction between inductive and deductive research has recently been recast as a "creativity-verification" cycle [@wagenmakersCreativityVerificationCyclePsychological2018].-->
 
@@ -718,7 +729,7 @@ This means that subjective decisions are made throughout the analysis process.
 To ensure that all such decisions are properly documented,
 we have made all code, data, and the historical record of this project publicly available in an online research repository at [masked]. 
 We used the Workflow for Open Reproducible Code in Science [WORCS, @vanlissaWORCSWorkflowOpen2020]
-to make the analyses strictly reproducible.
+to make the analyses reproducible.
 We encourage reuse of the analysis code,
 and secondary analysis of the data.
 
@@ -938,7 +949,7 @@ if(run_everything){
   term_freqtop <- table(colSums(dtm_top))
   term_freq <- as.data.frame.table(term_freq)
   term_freq$pruned <- term_freq$Var1 %in% names(term_freqtop)
-  saveRDS(term_freq, "study1_term_freq_dist.yml")
+  write_yaml(term_freq, "study1_term_freq_dist.yml")
   write_yaml(dim(dtm_top), "study1_dtm_top.yml")
   
   # Wordcloud ---------------------------------------------------------------
@@ -1242,7 +1253,7 @@ names(notingraph) <- cats
 
 lda_dims <- read_yaml("Study1_lda_dims.txt")
 dtm_top <- read_yaml("study1_dtm_top.yml")
-term_freq_dist <- readRDS("study1_term_freq_dist.yml")
+term_freq_dist <- read_yaml("study1_term_freq_dist.yml")
 ```
 
 The corpus for this first analysis consisted of author-provided keywords.
@@ -1271,7 +1282,7 @@ After dictionary encoding, the remaining number of unique terms was `r length(un
 To reduce the number of terms to a more manageable set,
 we modeled word frequency using a negative binomial distribution,
 and retained those exceeding the $97.5^{th}$ percentile.
-This corresponded to terms occurring in at least `r min(as.numeric(term_freq_dist$Var1)[term_freq_dist$pruned])` documents.
+This corresponded to terms occurring in at least `r min(as.numeric(term_freq_dist[[1]])[term_freq_dist$pruned])` documents.
 This is a subjective criterion,
 but compared to the common practices of either retaining a fixed number of terms or pruning terms below a fixed frequency [see @benoitQuantedaPackageQuantitative2018],
 it has the advantage of being responsive to the empirical distribution of term frequencies.
@@ -1769,8 +1780,6 @@ Importantly, the most common terms also include several concepts not featured pr
 For example, *ADHD/CD* [cf. @braetEmotionRegulationChildren2014], *substance* use [cf. @coe-odessEmergentEmotionsAdolescence2019; @pierrehumbertStrategiesEmotionRegulation2002], and *minority status* [cf. @myersEthnicitySocioeconomicStatusrelated2009; @myersEthnicitySocioeconomicStatusrelated2009] are common in the corpus,
 but featured less prominently in the theoretical review.
 
-<!-- Results 2 -->
-
 ```{r}
 s1 <- read_yaml("s1_words.yml")
 s2 <- read_yaml("s2_words.yml")
@@ -1800,13 +1809,13 @@ for instance, the term *sex* was more frequent than in Analysis 1,
 suggesting that sex differences are regularly reported in Abstracts even if they are not mentioned in the keywords.
 The term *parenting*, which ranked highly in the keyword analysis, was displaced by *mothers* in the analysis of abstracts.
 This reflects Pleck's  [-@pleckPaternalInvolvementRevised2004] observation that parenting is most often operationalized in terms of mothering.
-<!-- end results 2 --> 
 
-According to the term co-occurrence graph of the keyword analysis (Figure \@ref(fig:allnetworks)),
+<!-- Co-occurrence -->
+With regard to the term co-occurrence analyses, the analysis of  keywords (Analysis 1, see Figure \@ref(fig:allnetworks)) indicated that 
 emotion regulation is evidently a central construct
-to which most other constructs are directly linked.
+to which most other constructs were directly linked.
 This suggests that our search successfully identified factors relevant for adolescents’ emotion regulation.
-The remaining graph is notably sparse, with few interconnections between terms.
+The remaining graph was notably sparse, with few interconnections between terms.
 
 ```{r, echo = FALSE}
 categ <- read.csv("study1_categorization.csv", stringsAsFactors = FALSE)
@@ -1816,12 +1825,11 @@ connected <- connected[connected %in% categ$name[categ$category == "Cause"]]
 ```
 
 Compared to the keyword co-occurrence graph,
-the analysis of abstracts revealed a much sparser network, with a different structure.
-In Analysis 2, dysregulation and mental health-related terms formed a central axis.
+the analysis of abstracts (Analysis 2) revealed an even sparser network. 
+The structure also differed, as emotion regulation and mental health-related terms appeared to form a central axis.
 Many relevant terms were connected to this axis, but not directly to
-dysregulation (as was the case in Analysis 1). 
-Only the terms *neural*, *mothers*, *attachment* and *ptsd* are 
-connected directly to dysregulation.
+emotion regulation (as was the case in Analysis 1). 
+The only terms directly connected to emotion regulation were *neural*, *mothers*, *attachment* and *ptsd*.
 <!--THIS IS NOT IN THE RESULTS FOR ANALYSIS 1 
 Again, many prevalent terms were absent from the co-occurrence graph,
 as they were not strongly related to any other terms (see Figure \@ref(fig:varimps)). -->
@@ -1829,92 +1837,75 @@ as they were not strongly related to any other terms (see Figure \@ref(fig:varim
 ## Discussion
 
 The present study used a text mining systematic review (TMSR)
-to identify the most relevant phenomena in the literature on adolescent emotion regulation,
-and used co-occurrence graphs to map conceptual associations between these phenomena.
-We conducted a systematic search of the literature,
-and followed similar procedures to analyze author keywords (Analysis 1) and abstracts (Analysis 2) of the resulting corpus.
+to identify relevant phenomena in the literature on adolescent emotion regulation,
+and used co-occurrence graphs to map associations among these phenomena.
+We conducted a systematic literature search,
+and developed procedures to analyze the author keywords (Analysis 1) and abstracts (Analysis 2) of the resulting corpus.
 
 We considered term frequency to be indicative of a phenomenon's relevance.
-In line with this interpretation, the results of both analyses
+In line with this assumption, the results of both analyses
 reflected some of the constructs commonly accepted as relevant in theoretical literature and empirical reviews - particularly those pertaining to neurodevelopment and socialization.
-Some of the most frequently occurring terms were classified as potential outcomes of emotion regulation difficulties, and revealed a theme related to mental health.
-This validates the notion that adolescent emotion regulation is implicated in a range of mental health problems [lee, aldao], which underlines the importance of this area of research.
+Furthermore, some of the most frequently occurring terms were mental health-related outcomes that involve emotion regulation difficulties [see @aldaoEmotionregulationStrategiesPsychopathology2010].
+This validates the notion that adolescent emotion regulation is implicated in a range of mental health problems [@leeAdolescentMentalHealth2014],
+and underlines the importance of this area of research.
 
 Our analyses of term frequency also identified several novel themes,
-which were underrepresented in the theoretical literature reviewed in the Introduction.
+which were underrepresented in the theoretical literature and prior systematic reviews.
 One such theme pertains to developmental disorders, such as ADHD/CD and autism.
-This theme recurred in both analyses, although its constituent terms were ranked more highly in the analysis of author keywords as compared to the abstracts.
+This theme recurred in both analyses, although its constituent terms were ranked more highly in the analysis of author keywords as compared to abstracts.
 Another theme revolved around adolescents' physical health (sic), which was also reflected in terms like sleep, sports, and disability status.
-Again, terms related to physical health were ranked more highly in the keyword analysis than in the abstract analysis.
+There thus appears to be substantial empirical work linking emotion regulation and physical health, although this association is underrepresented in theory.
+As with the theme of developmental disorders, terms related to physical health ranked more highly in the keyword analysis than in the abstract analysis.
+This might indicate that a broader vocabulary was used to describe physical health in the abstracts.
 External stressors were another important theme, reflected in terms like bullying, stress, PTSD, abuse, violence, life events, historic events (e.g., earthquakes, war), parenting stress, and divorce.
+Based on our review of the theoretical literature, this indeed appears to be an under-theorized area.
+Conceptually, external stressors most closely align with Bronfenbrenner's notion of the exosystem [@bronfenbrennerBioecologicalModelHuman2007], but to our knowledge, they have rarely been discussed as such in the theoretical literature.
+The impression that external stressors are an undertheorized theme is reinforced by the fact that studies linking adverse life events to adolescent emotion regulation tend to appeal to prior empirical work, but not to a theoretical framework [e.g., @garnefskiNegativeLifeEvents2001; @stikkelbroekAdolescentDepressionNegative2016].
 Finally, one emergent theme that appears to be underrepresented in existing theory is structural disadvantage.
 This theme was reflected in terms like minority status and discrimination, disability status, socio-economic status, adoption status, and sexual diversity. 
-The adorementioned developmental disorders are also relevant in this context, as neuroatypical individuals may also experience such disadvantage [@cappadociaBullyingExperiencesChildren2012].
+The aforementioned developmental disorders are also relevant in this context, as neuroatypical individuals tend to experience social exclusion [@cappadociaBullyingExperiencesChildren2012].
+Future theoretical work might address these shortcomings.
 
 Our analyses of abstracts identified three additional themes not represented in the analysis of keywords.
 The first of these themes revolved around addictive behavior, with indicators *substance use* and *device use*.
-The second theme pertained to identity and moral development, two topics with a common root in theory [@lapsleyMoralIdentityDevelopmental2015]. This theme is also reflected by the terms *values* and *personality*. 
+The second theme pertained to identity and moral development, two topics with a common root in theory [@lapsleyMoralIdentityDevelopmental2015].
+This theme is also reflected by the terms *values* and *personality*. 
 Finally, sexual development emerged as a theme. Aside from the high-ranking construct (biological) *sex*, this theme was reflected in the terms *puberty*, *sexual diversity*, and *romantic*.
 These insights illustrate how inductive reviews can identify under-theorized areas,
 thereby complementing existing theory and narrative reviews.
 
-<!-- 
-This second analysis focused on the abstracts of the reviewed articles.
-Several themes emerged from the terms newly identified in this analysis,
-relative to the theoretical review.
-These themes bear considerable similarity to the results of Analysis 1.
-Developmental disorders and physical health are both recurring themes, but are ranked much lower in the present analysis.
-External stressors are another recurring theme, with indicators including PTSD, bullying, stress, abuse, historic events, and divorce.
-Finally, structural disadvantage recurs,
-as reflected in minority status and discrimination, disability status, socio-economic status, adoption status, sexual diversity, and the aforementioned developmental disorders.
-
-
---> 
-
-The co-occurrence graph revealed few connections among topics.
-Many constructs were only linked with emotion regulation,
-and there were relatively few interconnections between elements.
-This observation substantiates the prior claim that this literature is somewhat fragmented [@bussTheoriesEmotionalDevelopment2019]. 
-This sparse property of the network explains, in part,
-why some of the most prevalent terms based on term document frequency
-are absent from the co-occurrence graph (see Figure \@ref(fig:varimps)).
-This does not mean that these terms are unimportant.
-Rather, it suggests that they are not yet well-integrated in the broader literature on adolescents' emotion regulation,
-and are therefore prime candidates for future research.
-Several of these excluded constructs indeed represent active ongoing areas of research, including research on *fathers* [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@wangBidirectionalEffectsExpressive2020], *autonomy* [@vrolijkLongitudinalLinkagesFather2020a; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *loneliness* [@spithovenItAllTheir2017].
-<!-- RK: Or could they also suggest that they were relevant in the past, but not any longer? Might it be important to run sensitivity analyses by publication year?
-One recommendation for future research might be to study such important but unembedded constructs
-in conjunction with other more well-established constructs,
-as such an approach might help fill gaps in existing knowledge.-->
-
-
-
-<!-- Study 2 -->
-
-
-
-We observed a sparser network, with fewer selected terms.
-This is likely an artifact of the unstructured nature of abstracts,
-which introduces greater noise in the analysis.
-Thus, fewer terms will exceed the detection threshold.
-Nonetheless, the remaining terms displayed substantial consistency with the
-analysis of author keywords.
-This supports the validity of the findings,
-suggesting that automatic keyword extraction from abstracts can identify relevant constructs,
-and may constitute a suitable alternative to author-provided keywords.
-
+With regard to term co-occurrence, most phenomena were directly linked with emotion regulation in the keyword analysis,
+and with a central axis of emotion regulation and its mental health-related outcomes in the abstract analysis.
 The emergence of a "central axis" of dysregulation and mental health-related outcomes
 again suggest that these phenomena are consistently studied together.
 This makes sense, given the central role of emotion dyregulation in the etiology of diverse mental health problems [@leeAdolescentMentalHealth2014].
-This is in contrast to the lack of interconnectivity among other related constructs,
-which once more suggests that the literature is somewhat fragmented.
-This impression is further reinforced by the absence of many frequently occurring terms
-from the term co-occurrence graph.
 
-# General Discussion
+Compared to the keyword analysis, the abstract analysis yielded a sparser network,
+with fewer selected terms.
+This is likely an artifact of the unstructured nature of abstracts,
+which introduces greater noise in the analysis.
+Thus, fewer terms will exceed the detection threshold.
+In line with this interpretation, exploratory analyses indicated that 99% of terms occurred only once in the abstract analysis, compared to only 78% in the keyword analysis.
+Despite the sparser network, there was substantial consistency between the terms retained in both networks.
+This supports the validity of the findings,
+suggesting that automatic keyword extraction from abstracts can identify relevant constructs,
+and may be a suitable alternative to author-provided keywords.
 
-<!--it is worth noting that many different theories of *emotion* exist, and yet there is relatively little attention for the subtleties of 
-distinct from theories of emotional development, and that there is no one-to-one relationship between theories of emotion (regulation) development and theories of emotion. This issue is beyond the scope of the present study -->
+Both analyses revealed relatively few interconnections between phenomena,
+and many of the frequently occurring terms were absent from the co-occurrence graphs due to a lack of connectivity.
+These observations empirically support the prior claim that this literature is somewhat fragmented [@bussTheoriesEmotionalDevelopment2019]. 
+The sparseness of both networks explains, in part,
+why some of the most prevalent terms based on term document frequency
+are absent from the co-occurrence graph (see Figure \@ref(fig:varimps)).
+This does not mean that these terms represent unimportant phenomena.
+Rather, it suggests that they are not well-integrated in the broader literature on adolescents' emotion regulation.
+Such phenomena might be suitable candidates for future research.
+Indeed, several of these excluded constructs represent active ongoing areas of research, including research on *fathers* [@vanlissaRoleFathersMothers2019], *identity* [@campbellFriendsEducationIdentity2019], *friendship* and *social support* [@wangBidirectionalEffectsExpressive2020], *autonomy* [@vrolijkLongitudinalLinkagesFather2020a; @brenningPerceivedMaternalAutonomy2015], *sexual risk* [@brownDepressiveSymptomsPredictor2006], and *loneliness* [@spithovenItAllTheir2017].
+One recommendation for future research might be to study such important but unembedded constructs
+in conjunction with other more well-established constructs,
+as such an approach might help fill gaps in existing knowledge.
+
+## Implications
 
 The results of this inductive approach echoed many of the constructs considered
 relevant in the theoretical literature.
@@ -1946,15 +1937,19 @@ The present study takes a first step towards integrating this diffuse field
 by using a relatively comprehensive and objective method, compared to narrative reviews.
 An important future direction for research might be to jointly investigate disconnected constructs, as the lack of connections in the graph indicates a potential knowledge vacuum.
 
-Our work represents one of the first efforts to comprehensively map the literature on adolescents' emotion regulation [cf. @bariolaChildAdolescentEmotion2011; @coe-odessEmergentEmotionsAdolescence2019].
-It is also one of the first applications of inductive text mining methods in a systematic review.
-Text mining reviews offer some potential advantages when compared to narrative literature reviews [@littellEvidencebasedBiasedQuality2008]:
-They can cover vastly greater corpora than a human reader,
-and follow a somewhat more objective, transparant, and reproducible procedure.
-As such, text mining reviews offer an interesting perspective that complements theory and narrative reviews.
+One strength of the present study is that it was more comprehensive than previous reviews of the literature in two respects [cf. @bariolaChildAdolescentEmotion2011; @coe-odessEmergentEmotionsAdolescence2019]:
+We conducted a systematic literature search, and we used text mining to comprehensively map the phenomena relevant to adolescents' emotion regulation.
+<!-- To this end, we applied text mining methods in a systematic review. We used For this purpose, It is also one of the first applications of inductive-->
+Using text mining offers unique advantages compared to narrative reviews [@littellEvidencebasedBiasedQuality2008],
+because it can cover vastly greater corpora than a sentient reader,
+and follows a somewhat more objective, transparent, and reproducible procedure.
+As such, text mining systematic reviews offer an interesting perspective that complements theory and narrative reviews.
+Moreover, text mining systematic reviews offer an inductive approach to identify relevant phenomena in a particular area of research.
+This can serve as the first step towards formal theory construction [@borsboomTheoryConstructionMethodologya].
+Our study was the first to implement this novel approach.
 
-Of course, the present study also has limitations.
-One key limitation is that the text mining techniques used here
+It should be noted that this method has disadvantages as well.
+The key limitation of the present study is that the text mining techniques used here
 are not able to extract *meaning* from the literature in the way a sentient reader would, an cannot substantively interpret connections between constructs.
 This limitation is best addressed by considering the output of our text mining analysis as a starting point for further inductive thought or a more in-depth reading of a particular subset of the literature.
 Throughout this paper, we have offered our interpretation of the results -
@@ -1968,30 +1963,61 @@ Future research might substantially advance theory formation by applying such me
 falls under the header of "parenting". 
 Furthermore, a human reader would swiftly learn that the term "parenting" has historically been used primarily to represent maternal influences,
 and has increasingly come to represent paternal influence as well. -->
-One final limitation is that our analysis was limited to keywords and abstracts.
-Analysis of full-text papers would undoubtedly yield additional insights.
-Regrettably, paywalls and the lack of a unified API currently prevent such analysis.
-This highlights the importance of open science: 
-With comprehensive open access publishing, we may one day be able to mine the entire published literature for insights.
-The recent release of 100k+ full-text papers on COVID-19 for text mining analysis on <kaggle.com> is proof of concept for this approach.
-
+Another limitation is that our analysis was limited to keywords and abstracts.
+The primary obstacles to the analysis of full-text publications were limited access to articles behind paywalls,
+and the absence of a standardized Application Programming Interface (API) for the automatic retrieval of articles across publishing outlets.
+<!--As the number of scientific publications on any given topic tends to show exponential increase over time, making it difficult for applied researchers to keep up.
+Meta-scientific analyses of the published literature will likely become increasingly important -->
+Comprehensive access to scientific publications is essential to all meta-scientific research, including classic systematic reviews and meta-analyses (e.g., to avoid bias in summary effect sizes).
+For text mining approaches in particular, the availability of large data sets is crucial.
+<!--Consequently, limited access to full-text publications is a major bottleneck.-->
+One example of a data set suitable for even more complex text mining analyses is a corpus of 400k+ full-text papers on COVID-19 that was made publicly available [@wangCORD19Covid19Open2020].
+Compiling such full-text data sets currently requires substantial manpower and financial resources, thus placing them out of reach for many researchers.
+<!--The authors argued that the sheer volume of available literature made it difficult for individual researchers to remain informed, thus necessitating automated text mining analysis.
+Although our analysis comprised a mere 6305 publications, even this is -->
+<!--As the number of scientific publications tends to grow exponentially across fields [@larsenRateGrowthScientific2010],
+it becomes harder for researchers to remain informed, thus necessitating meta-scientific research.-->
+An increased adoption of open access publishing,
+and the development of a unified API for article retrieval across publishing outlets,
+would facilitate curating full-text data sets.
+These changes would enable more widespread adoption and more informative application of meta-scientific (text mining) analyses.
+One final limitation is that several subjective decisions were made throughout the analysis process.
+This limitation is inherent to inductive studies, however [e.g., @wagenmakersCreativityVerificationCyclePsychological2018]:
+There are infinite possible ways to conduct exploratory analysis,
+and researchers have considerable creative license in doing so.
+We have attempted to address this limitation by explicitly mentioning important decisions in the manuscript where possible,
+and by making all analysis code and data publicly available in a fully reproducible format [based on @vanlissaWORCSWorkflowOpen2020],
+so that others may explore alternative exploratory analysis strategies. 
+ 
 To conclude, this paper set out to map the factors associated with adolescents' emotion regulation, based on a systematic review of the literature, and text mining analysis of author keywords and abstracts.
-We provided a map of the literature on adolescents' emotion regulation,
-covering both familiar ground, and charting unknown territories.
-Our results suggested that several key themes are currently underrepresented in theory,
-and that the empirical literature is somewhat fragmented by sub-topic.
-These inductive insights are relevant for the design of new deductive studies which,
-even though grounded in theory,
-might benefit from incorporating additional relevant factors
-to better elucidate the nature of their association with adolescents' emotion regulation.
-Our analysis also identified several factors currently on the fringes of the literature,
-which might represent emerging themes that would benefit from further research [including, for example, the role of fathers @vanlissaMothersFathersQuantitative2020].
-One recommendation for future research might be to study such important but unembedded constructs
-in conjunction with other more well-established constructs,
-to bridge gaps in existing knowledge.
-Several authors have commented on the lack of an overarching theory tailored specifically to adolescent emotion regulation.
-The present work might serve as a starting point for future theory development,
-with the aim of incorporating themes from the empirical literature within the framework of existing relevant theory.
+This map covered familiar phenomena that are well-represented in existing theory,
+such as socialization and neurocognitive factors,
+which speaks to the validity of this approach.
+The structure of the map further reinforced the observation of several previous authors [e.g., @bussTheoriesEmotionalDevelopment2019]
+that the empirical literature is somewhat fragmented by subject area.
+
+Importantly, our results also draw attention to several relevant phenomena that,
+although well-represented in the empirical literature,
+are under-emphasized in narrative reviews and theory - such as developmental disorders, physical health, external stressors, structural disadvantage, substance use, identity and moral development, and sexual development.
+This has several implications for future research.
+First, the major themes identified in our inductive analysis are relevant for the design of empirical studies.
+Even when such designs are grounded in theory,
+they might benefit from additionally considering relevant phenomena as identified in our analysis as potential confounders or contributing causes.
+Second, the phenomena that appear to exist on the fringes of the existing literature according to our analysis might be suitable candidates for further study.
+These phenomena might represent emerging themes in the literature, for example, as is the case for the role of fathers [see @pleckPaternalInvolvementRevised2004; @vanlissaMothersFathersQuantitative2020].
+Future research might focus on these emerging themes in order to better elucidate the nature of their association with adolescents' emotion regulation.
+Moreover, studying these fringe phenomena in conjunction with other more well-established constructs could help embed these important but loosely connected phenomena into the mainstream literature and bridge gaps in existing knowledge.
+
+Finally, several authors have commented on the lack of an overarching theory tailored specifically to adolescent emotion regulation.
+The first step in theory construction methodology (TCM) is to identify relevant phenomena [@borsboomTheoryConstructionMethodologya].
+We have argued that text mining systematic reviews are a relatively comprehensive and objective method for identifying such phenomena, because they can evaluate much larger bodies of literature than sentient readers, and are not biased toward pre-existing ideas.
+The next step in formal theory construction methodology would be to describe and quantify the nature of the relationship of each phenomenon in relation to adolescent emotion regulation.
+The phenomena identified in the present study might thus serve as a starting point for future theory development,
+and sensitize empirical researchers to potential confounders in research on adolescents' emotion regulation.
+
+<!--
+Informally, much can be gained by revisiting existing relevant theory
+and incorporating relevant phenomena as identified in the present analysis.
 
 ```{r mergenetworks}
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")

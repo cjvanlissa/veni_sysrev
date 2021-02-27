@@ -87,6 +87,7 @@ select_fixed_margin <- function(dtm, confidence_boundary = .95, iterations = 100
 }
 
 pretty_words <- function(x){ 
+  out[out == "dysregulation"] <- "Emotion regulation"
   out <- str_to_sentence(gsub("[_-]", " ", x))
   out[out == "Adhd cd"] <- "ADHD/CD"
   out[out == "Ses"] <- "SES"
