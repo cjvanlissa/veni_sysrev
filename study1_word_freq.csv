@@ -1,7 +1,7 @@
 "Word","Frequency"
 "abuse",171
 "academic",69
-"adhd_cd",373
+"adhd_cd",376
 "adjustment",168
 "age",39
 "alexithymia",40
@@ -11,6 +11,7 @@
 "autism",179
 "autonomy",102
 "bullying",195
+"child-conflict",21
 "cognitive",160
 "communication",30
 "culture",23
@@ -25,14 +26,14 @@
 "endocrine",58
 "environment",70
 "externalizing",608
-"family-functioning",104
+"family-functioning",105
 "fathers",32
 "foster",50
 "friend",48
 "genes",66
 "health",216
 "help-seeking",21
-"historic-events",29
+"historic-events",33
 "identity",71
 "internalizing",150
 "life-events",34
@@ -50,7 +51,7 @@
 "parenting",295
 "parents",120
 "peers",64
-"personality",109
+"personality",115
 "polyvagal",96
 "prosocial-behavior",31
 "ptsd",189
@@ -75,7 +76,7 @@
 "social skills",88
 "sports",32
 "strategies",279
-"stress",194
+"stress",203
 "substance",283
 "suicide",118
 "suppression",40

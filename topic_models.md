@@ -24,7 +24,7 @@ We used the term frequency/inverse document frequency (TF-IDF) to select
 terms used frequently in a document, but not used frequently in the
 corpus, which could therefore be more diagnostic of subgroup membership.
 Selection terms with an TF-IDF greater than the median resulted in a
-corpus of 2302 documents and 3118 terms.
+corpus of 2304 documents and 3122 terms.
 
 We considered a range from 2-20 topics, evaluating fit based on the BIC,
 and interpretability based on the entropy of the posterior
@@ -66,6 +66,9 @@ Figure 2: Analysis 1: Entropy values for LDA models with 2-20 clusters.
 </div>
 
 ## Analysis 2: Abstracts
+
+    ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+    ## 0.001065 0.021002 0.034845 0.049616 0.057970 1.176643
 
 The corpus for this second analysis consisted of the abstracts of the
 selected articles. To perform feature extraction, we first applied the
