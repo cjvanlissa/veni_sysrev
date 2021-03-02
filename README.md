@@ -5,7 +5,8 @@ This repository contains the source code for the paper *"Mapping Correlates of A
 ## Where do I start?
 
 You can load this project in RStudio by opening the file called `veni_sysrev.Rproj`.
-To reproduce the published analyses, either open `manuscript.Rmd` in RStudio and press the "Knit" button, or use the command `rmarkdown::render("manuscript.Rmd")`.
+**NOTE:** To reproduce the published analyses, use the command `rmarkdown::render("manuscript.Rmd")`.
+One of the dependencies causes the code to break when trying to Knit the document using the "Knit" button in RStudio.
 Raw data are contained in the `recs/` folder.
 
 ## Project structure
@@ -33,6 +34,9 @@ renv.lock            | Reproducible R environment | Read only
 This project uses the Workflow for Open Reproducible Code in Science (WORCS) to
 ensure transparency and reproducibility. The workflow is designed to meet the
 principles of Open Science throughout a research project. 
+
+To reproduce the published analyses, use the command `rmarkdown::render("manuscript.Rmd")`.
+One of the dependencies causes the code to break when trying to Knit the document using the "Knit" button in RStudio.
 
 To learn how WORCS helps researchers meet the TOP-guidelines and FAIR principles,
 read the preprint at https://osf.io/zcvbs/
