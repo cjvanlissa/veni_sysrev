@@ -61,6 +61,8 @@ vert$Category <- categ$category[match(vert$name, categ$name)]
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")
 vert$color <- cat_cols[vert$Category]
+cat_shapes <- c(Outcome = "square2", Indicator = "circle2", Cause = "tri2", Protective = "quad2")
+vert$shape <- cat_shapes[vert$Category]
 vert$frame.color <- cat_cols[vert$Category]
 #min_size <- (strwidth(vert$name[max(nchar(vert$name))]) + strwidth("oo")) * 100
 vert$size <- scales::rescale(log(vert$size), c(4, 12))
@@ -93,8 +95,11 @@ if(any(!vert$name %in% categ$name)){
 vert$Category <- categ$category[match(vert$name, categ$name)]
 vert$faded <- vert$name %in% df$cat[df$source == "theory"]
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")
+cat_shapes <- c(Outcome = "square2", Indicator = "circle2", Cause = "tri2", Protective = "quad2")
+legend_shapes <- c("circle2" = 21, "square2" = 22, "quad2" = 23, "tri2" = 24)[cat_shapes]
 vert$color <- cat_cols[vert$Category]
 vert$frame.color <- cat_cols[vert$Category]
+vert$shape <- cat_shapes[vert$Category]
 # cat_cols <- c(Outcome = "#E5E5E5", Indicator = "#FFC9AD", Cause = "#FFFF66", Protective = "#E6FF6D")
 vert$color[vert$faded] <- "#FFFFFF"#cat_cols[vert$Category[vert$faded]]
 
@@ -122,17 +127,17 @@ p <- quote({
   plot(g1, edge.curved = 0, layout=l1,
        vertex.label.family = "sans",
        vertex.label.cex = 0.8,
-       vertex.shape = "circle2",
+       #vertex.shape = "circle2",
        #vertex.frame.color = 'gray40',
        vertex.label.color = 'black',      # Color of node names
        vertex.label.font = 1,         # Font of node names
        vertex.frame.width = 2
   )
-  legend(x=-1.1, y=1.1, names(cat_cols), pch=21, col=cat_cols, pt.bg=cat_cols, pt.cex=2, cex=.8, bty="n", ncol=1)
+  legend(x=-1.1, y=1.1, names(cat_cols), pch=legend_shapes, col=cat_cols, pt.bg=cat_cols, pt.cex=1.5, cex=.8, bty="n", ncol=1)
   plot(g2, edge.curved = 0, layout=l2,
        vertex.label.family = "sans",
        vertex.label.cex = 0.8,
-       vertex.shape = "circle2",
+       #vertex.shape = "circle2",
        #vertex.frame.color = 'gray40',
        vertex.label.color = 'black',      # Color of node names
        vertex.label.font = 1,         # Font of node names

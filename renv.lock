@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.0.2",
+    "Version": "4.0.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -85,13 +85,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "d57ac35220b39c591388ab3a080f9cbe"
-    },
-    "MplusAutomation": {
-      "Package": "MplusAutomation",
-      "Version": "0.7-3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2f1cee94cae48edb5f7f5a8af4623f7a"
     },
     "NLP": {
       "Package": "NLP",
@@ -652,13 +645,6 @@
       "Repository": "CRAN",
       "Hash": "7d7f283939f563670a697165b2cf5560"
     },
-    "gsubfn": {
-      "Package": "gsubfn",
-      "Version": "0.7",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "a8ebb0bb0edcf041a7649ee43a0e1735"
-    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.0",
@@ -1002,13 +988,6 @@
       "Repository": "CRAN",
       "Hash": "c4f814b30334e8bc6124647794781a09"
     },
-    "pander": {
-      "Package": "pander",
-      "Version": "0.6.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "121198ce37b5a6b5227edc5a38223da4"
-    },
     "papaja": {
       "Package": "papaja",
       "Version": "0.1.0.9942",
@@ -1173,13 +1152,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "efbbe62da4709f7040a380c702bc7103"
-    },
-    "proto": {
-      "Package": "proto",
-      "Version": "1.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "5cb1623df69ee6102d011c7f78f5791d"
     },
     "ps": {
       "Package": "ps",
@@ -1536,13 +1508,6 @@
       "Repository": "CRAN",
       "Hash": "0829b987b8961fb07f3b1b64a2fbc495"
     },
-    "texreg": {
-      "Package": "texreg",
-      "Version": "1.37.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "91b7c174b407cb9201084aae258b0757"
-    },
     "textrank": {
       "Package": "textrank",
       "Version": "0.3.0",
@@ -1556,18 +1521,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "1c61e4cad000e03b1bd687db16a75926"
-    },
-    "tidySEM": {
-      "Package": "tidySEM",
-      "Version": "0.1.1",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "cjvanlissa",
-      "RemoteRepo": "tidySEM",
-      "RemoteRef": "master",
-      "RemoteSha": "f1df91f867780217a809fec8f77c92cb0826795b",
-      "Hash": "6c36396c6dbb71375a4c420c94a0c79b"
     },
     "tidygraph": {
       "Package": "tidygraph",
@@ -1704,15 +1657,15 @@
     },
     "worcs": {
       "Package": "worcs",
-      "Version": "0.1.6.4",
+      "Version": "0.1.9.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "cjvanlissa",
       "RemoteRepo": "worcs",
       "RemoteRef": "master",
-      "RemoteSha": "aad055c1f874cd65d48429ac9ace25cef1f3b599",
-      "Hash": "01f367e2546f04f7e845d001c7c3a676"
+      "RemoteSha": "a554386f9c44915939f2e610a79744f587a4564a",
+      "Hash": "d98d88a7f80584789365b6a1ab085fa2"
     },
     "wordcloud": {
       "Package": "wordcloud",
