@@ -58,10 +58,12 @@ if(any(!vert$name %in% categ$name)){
 } 
 vert$Category <- categ$category[match(vert$name, categ$name)]
 
+cat_shapes <- c(Outcome = "square2", Indicator = "circle2", Cause = "quad2", Protective = "tri2")
+legend_shapes <- c("circle2" = 21, "square2" = 22, "quad2" = 23, "tri2" = 24)[cat_shapes]
+
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "forestgreen")
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")
 vert$color <- cat_cols[vert$Category]
-cat_shapes <- c(Outcome = "square2", Indicator = "circle2", Cause = "tri2", Protective = "quad2")
 vert$shape <- cat_shapes[vert$Category]
 vert$frame.color <- cat_cols[vert$Category]
 #min_size <- (strwidth(vert$name[max(nchar(vert$name))]) + strwidth("oo")) * 100
@@ -95,8 +97,6 @@ if(any(!vert$name %in% categ$name)){
 vert$Category <- categ$category[match(vert$name, categ$name)]
 vert$faded <- vert$name %in% df$cat[df$source == "theory"]
 cat_cols <- c(Outcome = "gray50", Indicator = "tomato", Cause = "gold", Protective = "olivedrab2")
-cat_shapes <- c(Outcome = "square2", Indicator = "circle2", Cause = "tri2", Protective = "quad2")
-legend_shapes <- c("circle2" = 21, "square2" = 22, "quad2" = 23, "tri2" = 24)[cat_shapes]
 vert$color <- cat_cols[vert$Category]
 vert$frame.color <- cat_cols[vert$Category]
 vert$shape <- cat_shapes[vert$Category]
