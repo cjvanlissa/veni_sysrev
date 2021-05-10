@@ -1,0 +1,913 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%DocumentNeededResources: font ArialMT
+%%+ font Arial-BoldMT
+%%+ font Arial-ItalicMT
+%%+ font Arial-BoldItalicMT
+%%+ font Symbol
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%BoundingBox: 0 0 569 284
+%%EndComments
+%%BeginProlog
+/bp  { gs sRGB gs } def
+% begin .ps.prolog
+/gs  { gsave } bind def
+/gr  { grestore } bind def
+/ep  { showpage gr gr } bind def
+/m   { moveto } bind def
+/l  { rlineto } bind def
+/np  { newpath } bind def
+/cp  { closepath } bind def
+/f   { fill } bind def
+/o   { stroke } bind def
+/c   { newpath 0 360 arc } bind def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
+/p1  { stroke } bind def
+/p2  { gsave bg fill grestore newpath } bind def
+/p3  { gsave bg fill grestore stroke } bind def
+/p6  { gsave bg eofill grestore newpath } bind def
+/p7  { gsave bg eofill grestore stroke } bind def
+/t   { 5 -2 roll moveto gsave rotate
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } bind def
+/ta  { 4 -2 roll moveto gsave rotate show } bind def
+/tb  { 2 -1 roll 0 rmoveto show } bind def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } bind def
+/rgb { setrgbcolor } bind def
+/s   { scalefont setfont } bind def
+% end   .ps.prolog
+/sRGB { [ /CIEBasedABC
+          << /DecodeLMN
+               [ { dup 0.03928 le
+                        {12.92321 div}
+                        {0.055 add 1.055 div 2.4 exp }
+                     ifelse
+                 } bind dup dup
+               ]
+             /MatrixLMN [0.412457 0.212673 0.019334
+                         0.357576 0.715152 0.119192
+                         0.180437 0.072175 0.950301]
+             /WhitePoint [0.9505 1.0 1.0890]
+           >>
+         ] setcolorspace } bind def
+/srgb { setcolor } bind def
+% begin encoding
+/WinAnsiEncoding [
+ /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+ /space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
+ /parenleft /parenright /asterisk /plus /comma /minus /period /slash
+ /zero /one /two /three /four /five /six /seven
+ /eight /nine /colon /semicolon /less /equal /greater /question
+ /at /A /B /C /D /E /F /G
+ /H /I /J /K /L /M /N /O
+ /P /Q /R /S /T /U /V /W
+ /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+ /grave /a /b /c /d /e /f /g
+ /h /i /j /k /l /m /n /o
+ /p /q /r /s /t /u /v /w
+ /x /y /z /braceleft /bar /braceright /asciitilde /.notdef
+ /Euro /.notdef /quotesinglbase /florin /quotedblbase /ellipsis /dagger /daggerdbl
+ /circumflex /perthousand /Scaron /guilsinglleft /OE /.notdef /Zcaron /.notdef
+ /.notdef /quoteleft /quoteright /quotedblleft /quotedblright /bullet /endash /emdash
+ /tilde /trademark /scaron /guilsinglright /oe /.notdef /zcaron /Ydieresis
+ /space /exclamdown /cent /sterling /currency /yen /brokenbar /section
+ /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron
+ /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
+ /cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown
+ /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+ /Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
+ /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
+ /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
+ /agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
+ /egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis
+ /eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
+ /oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis
+]
+ def
+% end encoding
+%%IncludeResource: font ArialMT
+/ArialMT findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding WinAnsiEncoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Arial-BoldMT
+/Arial-BoldMT findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding WinAnsiEncoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Arial-ItalicMT
+/Arial-ItalicMT findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding WinAnsiEncoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Arial-BoldItalicMT
+/Arial-BoldItalicMT findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding WinAnsiEncoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+0.00 0.00 284.40 284.40 cl
+7.20 7.20 277.20 277.20 cl
+0.7020 0.7020 0.7020 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+157.20 44.33 m
+-15.84 93.80 l
+o
+np
+192.70 27.78 m
+-51.34 110.35 l
+o
+np
+71.59 173.36 m
+69.77 -35.23 l
+o
+np
+23.21 149.80 m
+118.15 -11.67 l
+o
+np
+203.53 193.36 m
+-62.17 -55.23 l
+o
+np
+107.40 241.21 m
+33.96 -103.08 l
+o
+np
+86.89 27.45 m
+54.47 110.68 l
+o
+np
+169.60 217.82 m
+-28.24 -79.69 l
+o
+np
+55.66 85.78 m
+85.70 52.35 l
+o
+np
+172.80 70.90 m
+-31.44 67.23 l
+o
+np
+33.40 192.35 m
+107.96 -54.22 l
+o
+np
+239.11 173.04 m
+-97.75 -34.91 l
+o
+np
+201.92 246.69 m
+-60.56 -108.56 l
+o
+np
+59.08 51.73 m
+82.28 86.40 l
+o
+np
+156.67 262.39 m
+-15.31 -124.26 l
+o
+np
+239.10 215.45 m
+-97.74 -77.32 l
+o
+np
+122.84 22.01 m
+18.52 116.12 l
+o
+np
+64.69 127.21 m
+76.67 10.92 l
+o
+np
+88.63 217.24 m
+52.73 -79.11 l
+o
+np
+228.64 84.36 m
+-87.28 53.77 l
+o
+np
+253.10 106.94 m
+-111.74 31.19 l
+o
+np
+113.50 71.33 m
+27.86 66.80 l
+o
+np
+262.39 147.73 m
+-121.03 -9.60 l
+o
+np
+209.09 127.51 m
+-67.73 10.62 l
+o
+np
+128.66 223.12 m
+12.70 -84.99 l
+o
+np
+225.40 48.94 m
+-84.04 89.19 l
+o
+np
+22.01 104.02 m
+119.35 34.11 l
+o
+np
+57.13 218.31 m
+84.23 -80.18 l
+o
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+1.50 setlinewidth
+[] 0 setdash
+np
+ 162.00 44.33 m
+-4.80 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+/bg { 0.4118 0.5451 0.1333 srgb } def
+0.4118 0.5451 0.1333 srgb
+np
+ 197.50 27.78 m
+-7.21 4.16 l
+0 -8.32 l
+cp p3
+/bg { 1 0.3882 0.2784 srgb } def
+1 0.3882 0.2784 srgb
+71.59 173.36 4.81 c p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 28.02 149.80 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+/bg { 0.5490 0.5490 0.5490 srgb } def
+0.5490 0.5490 0.5490 srgb
+201.13 190.95 4.81 4.81 r p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 112.21 241.21 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 91.69 27.45 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+np
+ 174.41 217.82 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.80 l
+cp p3
+np
+ 60.47 85.78 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.81 l
+cp p3
+np
+ 177.60 70.90 m
+-4.80 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+/bg { 0.4118 0.5451 0.1333 srgb } def
+0.4118 0.5451 0.1333 srgb
+np
+ 38.21 192.35 m
+-7.21 4.16 l
+0 -8.32 l
+cp p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 243.91 173.04 m
+-4.80 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+np
+ 206.73 246.69 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.81 l
+cp p3
+np
+ 63.89 51.73 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+/bg { 1 0.3882 0.2784 srgb } def
+1 0.3882 0.2784 srgb
+156.67 262.39 4.81 c p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 243.91 215.45 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 127.65 22.01 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 69.50 127.21 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.81 l
+cp p3
+np
+ 93.44 217.24 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 233.45 84.36 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+/bg { 0.5490 0.5490 0.5490 srgb } def
+0.5490 0.5490 0.5490 srgb
+250.69 104.53 4.81 4.81 r p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 118.31 71.33 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+/bg { 0.4118 0.5451 0.1333 srgb } def
+0.4118 0.5451 0.1333 srgb
+np
+ 267.20 147.73 m
+-7.21 4.17 l
+0 -8.33 l
+cp p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 213.89 127.51 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 133.46 223.12 m
+-4.80 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+/bg { 0.5490 0.5490 0.5490 srgb } def
+0.5490 0.5490 0.5490 srgb
+223.00 46.53 4.81 4.81 r p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 26.82 104.02 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 61.94 218.31 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.80 l
+cp p3
+/bg { 1 0.3882 0.2784 srgb } def
+1 0.3882 0.2784 srgb
+141.36 138.13 4.81 c p3
+0.00 0.00 284.40 284.40 cl
+/Font1 findfont 8 s
+0 0 0 srgb
+157.20 40.97 (Endocrine) .5 0 t
+192.70 24.42 (Self regulation) .5 0 t
+71.59 170.00 (Reactivity) .5 0 t
+23.21 146.44 (Child conflict) .5 0 t
+203.53 190.00 (Risk taking) .5 0 t
+107.40 237.85 (Parents) .5 0 t
+86.89 24.09 (Parenting) .5 0 t
+169.60 214.46 (Autonomy) .5 0 t
+55.66 82.42 (Attachment) .5 0 t
+172.80 67.54 (Nervous system) .5 0 t
+33.40 188.99 (Cognitive) .5 0 t
+239.11 169.68 (Neural) .5 0 t
+201.92 243.33 (Polyvagal) .5 0 t
+59.08 48.37 (Stress) .5 0 t
+156.67 259.03 (Negative emotionality) .5 0 t
+239.10 212.09 (Peers) .5 0 t
+122.84 18.65 (Family functioning) .5 0 t
+64.69 123.85 (Mothers) .5 0 t
+88.63 213.88 (Fathers) .5 0 t
+228.64 81.00 (Siblings) .5 0 t
+253.10 103.58 (Communication) .5 0 t
+113.50 67.97 (Culture) .5 0 t
+262.39 144.37 (Strategies) .5 0 t
+209.09 124.15 (Genes) .5 0 t
+128.66 219.76 (Environment) .5 0 t
+225.40 45.58 (Political) .5 0 t
+22.01 100.66 (SES) .5 0 t
+57.13 214.96 (School) .5 0 t
+141.36 134.77 (Emotion regulation) .5 0 t
+/Font1 findfont 12 s
+9.99 17.21 (a) .5 0 t
+/bg { 0.5490 0.5490 0.5490 srgb } def
+0.5490 0.5490 0.5490 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+2.66 261.46 5.74 5.74 r p3
+/bg { 1 0.3882 0.2784 srgb } def
+1 0.3882 0.2784 srgb
+5.53 254.25 3.24 c p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+0.8039 0.5843 0.0471 srgb
+np
+ 5.53 240.11 m
+4.06 4.06 l
+-4.06 4.06 l
+-4.06 -4.06 l
+cp p3
+/bg { 0.4118 0.5451 0.1333 srgb } def
+0.4118 0.5451 0.1333 srgb
+np
+ 5.53 239.13 m
+4.36 -7.56 l
+-8.72 0 l
+cp p3
+/Font1 findfont 8 s
+0 0 0 srgb
+13.09 259.29 (Outcome) 0 0 t
+13.09 249.21 (Indicator) 0 0 t
+13.09 239.13 (Cause) 0 0 t
+13.09 229.05 (Protective) 0 0 t
+284.40 0.00 568.80 284.40 cl
+0.7020 0.7020 0.7020 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+529.55 89.45 m
+-100.55 53.62 l
+o
+np
+367.37 98.04 m
+61.63 45.03 l
+o
+np
+356.14 232.72 m
+72.86 -89.65 l
+o
+np
+326.65 81.82 m
+102.35 61.25 l
+o
+np
+364.38 143.53 m
+64.62 -0.46 l
+o
+np
+316.87 182.02 m
+112.13 -38.95 l
+o
+np
+331.84 211.67 m
+97.16 -68.60 l
+o
+np
+541.35 177.94 m
+-112.35 -34.87 l
+o
+np
+482.62 204.75 m
+-53.62 -61.68 l
+o
+np
+484.04 68.48 m
+-55.04 74.59 l
+o
+np
+484.15 34.50 m
+-55.15 108.57 l
+o
+np
+516.81 61.33 m
+-87.81 81.74 l
+o
+np
+500.72 170.94 m
+-71.72 -27.87 l
+o
+np
+430.41 22.01 m
+-1.41 121.06 l
+o
+np
+404.74 53.15 m
+24.26 89.92 l
+o
+np
+509.87 133.77 m
+-80.87 9.30 l
+o
+np
+417.21 262.39 m
+11.79 -119.32 l
+o
+np
+437.53 79.48 m
+-8.53 63.59 l
+o
+np
+484.59 106.19 m
+-55.59 36.88 l
+o
+np
+546.79 147.53 m
+-117.79 -4.46 l
+o
+np
+317.88 152.47 m
+111.12 -9.40 l
+o
+np
+395.64 74.78 m
+33.36 68.29 l
+o
+np
+477.66 241.88 m
+-48.66 -98.81 l
+o
+np
+509.47 233.25 m
+-80.47 -90.18 l
+o
+np
+358.26 186.66 m
+70.74 -43.59 l
+o
+np
+452.25 42.94 m
+-23.25 100.13 l
+o
+np
+350.93 59.24 m
+78.07 83.83 l
+o
+np
+453.66 249.63 m
+-24.66 -106.56 l
+o
+np
+389.79 209.59 m
+39.21 -66.52 l
+o
+np
+525.88 205.03 m
+-96.88 -61.96 l
+o
+np
+422.85 231.59 m
+6.15 -88.52 l
+o
+np
+336.91 117.41 m
+92.09 25.66 l
+o
+np
+373.61 36.30 m
+55.39 106.77 l
+o
+np
+544.66 115.65 m
+-115.66 27.42 l
+o
+np
+306.41 120.36 m
+122.59 22.71 l
+o
+np
+383.27 250.88 m
+45.73 -107.81 l
+o
+np
+442.91 200.40 m
+-13.91 -57.33 l
+o
+/bg { 1 1 1 srgb } def
+0.8039 0.5843 0.0471 srgb
+1.50 setlinewidth
+[] 0 setdash
+np
+ 534.36 89.45 m
+-4.81 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+0.4118 0.5451 0.1333 srgb
+np
+ 372.18 98.04 m
+-7.21 4.16 l
+0 -8.32 l
+cp p3
+1 0.3882 0.2784 srgb
+356.14 232.72 4.81 c p3
+0.8039 0.5843 0.0471 srgb
+np
+ 331.46 81.82 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.81 l
+cp p3
+0.5490 0.5490 0.5490 srgb
+361.98 141.13 4.81 4.81 r p3
+0.8039 0.5843 0.0471 srgb
+np
+ 321.68 182.02 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 336.65 211.67 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 546.16 177.94 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 487.43 204.75 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.80 l
+cp p3
+np
+ 488.85 68.48 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+0.4118 0.5451 0.1333 srgb
+np
+ 488.95 34.50 m
+-7.21 4.17 l
+0 -8.33 l
+cp p3
+0.8039 0.5843 0.0471 srgb
+np
+ 521.61 61.33 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 505.53 170.94 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 435.21 22.01 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+1 0.3882 0.2784 srgb
+404.74 53.15 4.81 c p3
+0.8039 0.5843 0.0471 srgb
+np
+ 514.68 133.77 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+np
+ 422.02 262.39 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 442.34 79.48 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 489.40 106.19 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 551.60 147.53 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+0.5490 0.5490 0.5490 srgb
+315.48 150.06 4.81 4.81 r p3
+0.8039 0.5843 0.0471 srgb
+np
+ 400.45 74.78 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+0.4118 0.5451 0.1333 srgb
+np
+ 482.47 241.88 m
+-7.22 4.16 l
+0 -8.33 l
+cp p3
+0.8039 0.5843 0.0471 srgb
+np
+ 514.27 233.25 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+np
+ 363.07 186.66 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+0.5490 0.5490 0.5490 srgb
+449.85 40.53 4.81 4.81 r p3
+0.8039 0.5843 0.0471 srgb
+np
+ 355.73 59.24 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 458.46 249.63 m
+-4.80 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+/bg { 0.8039 0.5843 0.0471 srgb } def
+np
+ 394.60 209.59 m
+-4.81 4.81 l
+-4.80 -4.81 l
+4.80 -4.81 l
+cp p3
+np
+ 530.69 205.03 m
+-4.81 4.80 l
+-4.81 -4.80 l
+4.81 -4.81 l
+cp p3
+np
+ 427.66 231.59 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.80 l
+cp p3
+np
+ 341.72 117.41 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 378.42 36.30 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 549.46 115.65 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 311.22 120.36 m
+-4.81 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+np
+ 388.07 250.88 m
+-4.80 4.81 l
+-4.81 -4.81 l
+4.81 -4.81 l
+cp p3
+/bg { 0.5490 0.5490 0.5490 srgb } def
+0.5490 0.5490 0.5490 srgb
+440.50 197.99 4.81 4.81 r p3
+/bg { 1 0.3882 0.2784 srgb } def
+1 0.3882 0.2784 srgb
+429.00 143.07 4.81 c p3
+/Font1 findfont 8 s
+0 0 0 srgb
+529.55 86.09 (Endocrine) .5 0 t
+367.37 94.68 (Self regulation) .5 0 t
+356.14 229.36 (Reactivity) .5 0 t
+326.65 78.46 (Child conflict) .5 0 t
+364.38 140.17 (Risk taking) .5 0 t
+316.87 178.66 (Parents) .5 0 t
+331.84 208.31 (Parenting) .5 0 t
+541.35 174.58 (Autonomy) .5 0 t
+482.62 201.39 (Attachment) .5 0 t
+484.04 65.12 (Nervous system) .5 0 t
+484.15 31.14 (Cognitive) .5 0 t
+516.81 57.97 (Neural) .5 0 t
+500.72 167.58 (Polyvagal) .5 0 t
+430.41 18.65 (Stress) .5 0 t
+404.74 49.79 (Negative emotionality) .5 0 t
+509.87 130.41 (Peers) .5 0 t
+417.21 259.03 (Family functioning) .5 0 t
+437.53 76.12 (Mothers) .5 0 t
+484.59 102.83 (Fathers) .5 0 t
+546.79 144.17 (Siblings) .5 0 t
+317.88 149.11 (Communication) .5 0 t
+395.64 71.42 (Culture) .5 0 t
+477.66 238.52 (Strategies) .5 0 t
+509.47 229.89 (Genes) .5 0 t
+358.26 183.30 (Environment) .5 0 t
+452.25 39.58 (Political) .5 0 t
+350.93 55.88 (SES) .5 0 t
+453.66 246.27 (School) .5 0 t
+389.79 206.23 (Personality) .5 0 t
+525.88 201.67 (Device use) .5 0 t
+422.85 228.23 (Puberty) .5 0 t
+336.91 114.05 (Status) .5 0 t
+373.61 32.94 (Values) .5 0 t
+544.66 112.29 (Sexuality) .5 0 t
+306.41 117.00 (Sex) .5 0 t
+383.27 247.52 (Identity) .5 0 t
+442.91 197.04 (Empathy) .5 0 t
+429.00 139.71 (Emotion regulation) .5 0 t
+/Font1 findfont 12 s
+294.39 17.21 (b) .5 0 t
+ep
+%%Trailer
+%%Pages: 1
+%%EOF

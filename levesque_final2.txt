@@ -1,0 +1,62 @@
+COMMENTS FOR THE AUTHOR:
+ADRR-D-21-00016R1
+Thank you for sending in your excellent revisions.  I am happy to move forward to production. As we do so, I have very minor edits that I would like for you to make. I am hopeful that you can do these edits, as I see them as rather simple and straightforward.
+
+I would like to note that the journal does not make use of a copy editor; so your manuscript will be published just about as is (with the "typesetter" focusing on formatting changes and citations).
+Please do ensure that you have made all of the corrections before resubmitting. And, if there are some that you do not wish to make, please provide me a list and rationales for not doing so.
+
+Please do ensure that it is ready to move to production. 
+
+Here are the edits:
+Comment: Please do be sure to “unblind” your manuscript, if needed. [I know you did it, it is just a reminder.] Only submit the “clean” copy, the one we will send to production. 
+
+Response: Done.
+
+Comment: Abstract, rather than “papers” use articles or studies Page 3, line 53 of the pdf, use “article” rather than “paper” when referring to your manuscript. Thanks. …please edit throughout.
+
+Response: Done.
+
+Comment: The current study section: if possible, remove the citation as the goal is to have the current study rely solely on the literature review. 
+
+Response: Done.
+
+Comment: Current study section: starting on line 26, rather than use a phrase like “body of literature” state the substantive area of research. 
+
+Response: Done.
+
+Comment: Page 12, line 33: change the font so that it is like the rest of the text. 
+
+Response: Done.
+
+
+Comment: Page 24, line 11 of pdf, as a reminder, do not use “paper”.
+
+Response: Done.
+
+Comment: Line 33 of the pdf, change the semicolon to a comma. Next line, remove the comma before the “or”
+
+Response: Done.
+
+Comment: The only concern I have about the conclusion is that the last half is about implications. The first half only has two sentences reporting findings. Typically, it is best to highlight the findings more so that readers have a firm sense of conclusions. The implications should be about a sentence or so, as the implications should be reviewed in the discussion. In this instance, I realize that a goal is to highlight the method. But, still, please revisit and see what you can do. The focus should be on your study’s findings/conclusions. 
+
+Comment: After the previous round of comments, I tried to rewrite the Conclusion according to the strict outline you provided:
+* Reminding the reader of the topic: "There has been a call for the integration of the empirical literature on adolescent emotion regulation into an overarching framework."
+* The research gap: "The first step towards this end is identifying relevant phenomena in this area of research."
+* How you addressed it: "This article used a text mining systematic review to identify phenomena relevant to adolescents’ emotion regulation based on term frequency, and to map potential associations between phenomena based on term co-occurrence. "
+* What you found...: "The findings echoed several themes featured in the theoretical literature review, such as socialization and neurocognitive factors [...] Importantly, the findings also revealed undertheorized themes, such as developmental disorders, physical health, external stressors, structural disadvantage, substance use, identity, moral, and sexual development."
+* ...and its importance: "which illustrates the validity of this new method for identifying relevant phenomena. [...] This illustrates how text mining systematic reviews may complement narrative reviews."
+* the implications also should include a focus on the understanding of adolescence/early adulthood/emerging adulthood and the contribution to that research: "Several of the identified themes are particularly relevant in adolescence, either because they first emerge in this life phase (e.g., sexual development) or because they relate to age-graded developmental challenges (e.g., identity development). This reinforces the prior observation that general theories of emotion regulation cannot simply be generalized to adolescence, and emphasizes the importance of developing theory specific to adolescence."
+
+And then one concluding sentence.
+
+Although I understand that the resulting paragraph still falls short somehow of your expectations, I respectfully think that rehashing the Results to a greater extent will take the life out of the paragraph, making it hard to read. This is because, in written form, the results are just a list of terms/phenomena. These are best examined by just looking at the network graphs; the written parts of the paper (in my opinion) should be focused on what we can take away from those graphs.
+ 
+
+Previous comment:
+Conclusion Begin by (briefly) reminding the reader of the topic, the research gap, and how you addressed it. Then go to what you found and its importance.  Be sure to state your findings very clearly. The implications can focus on many aspects of the study, such as the practice implications (briefly). But, for us, the implications also should include a focus on the understanding of adolescence/early adulthood/emerging adulthood and the contribution to that research.  The bulk of the paragraph, though, should be focused on the key findings. Do try to have it be just one strong paragraph.
+
+Comment: Page 25, delete the materials as they should appear only in the acknowledgment page that is uploaded separately (contrary to the journal’s website that I simply cannot get the publisher to edit).
+
+Response: Done.
+
+Comment: Otherwise, that is it. All looks ready to go. 

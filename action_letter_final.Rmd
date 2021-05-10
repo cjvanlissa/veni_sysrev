@@ -1,0 +1,150 @@
+---
+title: "Action letter"
+author: "Caspar J. van Lissa"
+date: "4/6/2021"
+output: bookdown::word_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Comment 1:** _Please do be sure to “unblind” your manuscript, if needed._
+
+**Response:** I have done as requested.
+
+**Comment 2:** _Title: Please capitalize the first letters of key words (look at a few articles in the journal or check with the APA manual).  Ensure that it is the same every time you enter it into the editorial manager. It should appear the same ever time it appears in the pdf that you approve. Also, do not use bold. …. Well, given where we are with the manuscript, I might as well give you exactly what I need to have you upload: Mapping Correlates of Adolescent Emotion Dysregulation: A Text-mining Systematic Review_
+
+**Comment 3:** _Page 1, remove this at the bottom: Word count: 6776_
+
+**Response:** I have done as requested.
+
+**Comment 4:** _THROUGHOUT: use “toward” rather than “towards”_
+
+**Response:** I have done as requested.
+
+**Comment 5:** _In the abstract and throughout: Remove the use of the first person (we, our). [I note this in case you use it in your revision.]_
+
+**Response:** This has been done.
+
+**Comment 6:** _THROUGHOUT: use youth instead of youths. We consider youth plural. Thanks. [I note this in case you use it in your revisions.]_
+
+**Response:** I don't believe I made this mistake. I did find one instance of "youth".
+
+**Comment 7:** _Abstract, line 24 of the pdf, change “papers” to this: studies Abstract, avoided stilted language. Begin sentence with The results rather than Results. _
+
+**Response:** Respectfully, I do not understand the first comment. I have changed "Results" to "The results". Please let me know if further action needs to be taken here.
+
+**Comment 8:** _Abstract, line 43 of the pdf,  replace “This” with something more specific, perhaps something like: The findings illustrate …_
+
+**Response:** I have done as requested.
+
+**Comment 9:** _Abstract: remove this: (TMSR)_
+
+**Response:** I have done as requested.
+
+**Comment 10:** _Page 2, at the top, remove the title and insert this level 1 heading: Introduction These are the typical headings that typesetters will be able to work with:_
+
+**Response:** I have done as requested.
+
+**Comment 11:** _Level 1: Centered, Bold, Upper and Lower Case Level 2: Flush Left, Bold, Upper and Lower Case Level 3: Flush left, bold, Initial cap/lower case, period. Run in text Level 4: Flush left, bold italic, Initial cap/lower case, period. Run in text Level 5 Paragraph indent, nobold italic, Initial cap/lower case, period. Run in text_
+
+**Response:** I have done as requested.
+
+**Comment 12:** _As a reminder, you need at least two subheadings if you are going to have one._
+
+**Response:** I have removed the offending subheading; it was not essential.
+
+**Comment 13:** _Throughout, please avoid string (and even most double) citations. If your cite is important, you should have more text to go with it; no need for redundancy if it can be avoided. Also avoid dated citations unless it is a classic or central to your arguments. I know that this will be a challenge for you as you are trying to give readers a sense of the field. Please rest assured that I am ok with the overall number of citations (I have no issue with that), it is when you cite multiple citations for the same proposition. A way around this issue is to increase specificity in what you present, and then cite to the appropriate sources. Or, of course, simply deleting some citations also would work. [Generally, do avoid citations from the last century.] Please do see what you can do in this regard._
+
+**Response:** I have removed string citations throughout. In some cases, I have left only essential references; in other cases I have split up the string and explicated the specific contribution of each reference. The only remaining exception is a situation where I specifically refer to two systematic reviews, and must thus cite them both.
+
+**Comment 14:** _Another consideration, depending on how you edit this draft: Have the author names in parentheses.  Just state the proposition and have the cite at the end of it; we do not want to focus readers on the names of authors.  [The exception to that could be when you refer to someone’s theory that needs to have the author’s name.  Otherwise, authors should remain in the back ground.]  Avoid name-dropping. Studies should be evaluated on their merit, not who did them._
+
+**Response:** I have done as requested throughout the manuscript.
+
+**Comment 15:** _I need a different introductory paragraph. This is what I now ask of authors: I need an introductory paragraph that begins by noting the topic, its importance, the research gap, and a general statement about how you will address the research gap.  That is, the first paragraph works best with a closing sentence that begins with something like: This study…..   Then, in the paragraphs that follow, we’d expect to have you go straight to reviewing the relevant research.   Try to keep the introductory paragraph to the introductory literature review to one full paragraph that really gets to the point. [One strong paragraph is preferred; do two only if you absolutely  have to. …. Save specifics and nuances for the literature review. Here, you are just introducing the topic. Clear?]_
+
+**Response:** I have done as requested. Note that I deviate from the recommended structure in one respect: As the previous Reviewer's comments emphasized the importance of clarifying the rationale behind the methods used, I have retained the newly written paragraph explaining the approach after the opening paragraph. The structure is thus:
+1) Topic
+2) Importance
+3) Research gap
+4) How you will address the research gap
+5) (New paragraph) Rationale behind the method
+This seems like an appropriate structure for a substantive paper that also introduces a methodological innovation - but please let me know if you feel differently.
+
+**Comment 16:** _Also regarding the introductory paragraph, avoid tangents.  As an example, the first sentence of the first paragraph is not needed. In fact, much of the first paragraph could be trimmed to one sentence.  Several of the other introductory paragraphs also can go, or be integrated later. Again, you are just introducing here. _
+
+**Response:** In rewriting the introductory paragraph as requested in the previous comment, I have made sure to avoid tangents.
+
+**Comment 17:** _Page 4, use a more specific heading than “Existing theoretical landscape”. [...] So, given that, the heading should be something like: Theoretical Approaches to Emotional Regulation.  It should be a level 2 heading. _
+
+**Response:** I have done as requested.
+
+**Comment 18:** _Also, in the section below it, you have too much tangential information. Just present the relevant theories that are influencing research at this point in time. Just describe the theories as they are, focus on those that relate directly to emotional regulation. We don’t need history or to know much about where they come from. Just describe the theories as they relate to the issue at hand. _
+
+**Response:** I have tried to make the requested cuts throughout the theory section. Note that the previous Reviewer had asked me to provide more of an "authoritative" narrative in this section. To do so, I have contextualized the micro-level theories within the macro frameworks like Bronfenbrenner's and Sameroff's models. I assumed that this is not what you mean by "tangential information", and left these additions intact.
+
+**Comment 19:** _There should not be a need for the first subheading on page 8 (plus, you would have needed two at the same level). The theory section should end up shorter. _
+
+**Response:** I have removed this subheader, as requested.
+
+**Comment 20:** _Page 8, the new section beginning on line 48: the topic sentence of the paragraph should be about the paragraph; remove the first part that focuses on  the part before._
+
+**Response:** I have done as requested.
+
+**Comment 21:** _Right before that section, you have something about “The present study lays…”.  I need you to remove sentences like that. What the present study does should be presented in the current study section, it should not be interspersed in the literature review introducing the study.  The literature review does just that, review. It should lead to the research questions/hypotheses; it is just laying a foundation._
+
+**Response:** I have moved this sentence to "The Current Study" section as requested.
+
+**Comment 22:** _Page 10, center the heading, and have it read like this: The Current Study_
+
+**Response:** I have done as requested.
+
+**Comment 23:** _I need an edit to this section. The current study section should briefly note the research gap, note aims/expectations/hypotheses/research questions and briefly remind readers of the rationales for them. The rationales should be obvious from the literature review above it (you should not introduce new research/cites in this section)._
+
+**Response:** I have rewritten "The Current Study" according to these specifications.
+
+**Comment 24:** _Ironically, the first  sentence or so of the Methods section is what should be in the current study section._
+
+**Response:** This sentence has been moved to "The Current Study".
+
+
+**Comment 25:** _Page 12, line 46, this should not be a level 1 heading._
+
+**Response:** I have changed it to level 2.
+
+**Comment 26:** _These are the level 1 headings that we need to have: Abstract Introduction Current Study Methods Results Discussion Conclusion Acknowledgments_
+
+**Response:** All these headers are now present.
+
+**Comment 27:** _Page 17, I need a different introductory paragraph to the discussion._
+The first paragraph of the discussion should start more broadly and give readers a good sense of the issues that need to be addressed in this area, as well as highlight the complexities/questions involved and GENERALLY how you addressed them (such as in one sentence at the end of the paragraph).  Assume, for example, that readers have skipped much of your study and jumped straight to the discussion section. In the sentences after that, present what you found and the importance of your contribution (and limitations and so forth). I apologize for this journal style edit.
+
+**Response:** I have rewritten the introductory paragraph and remainder of the Discussion as requested. 
+
+**Comment 28:** _Page 23, line 29, you should not have a paragraph that begins with “To conclude….”and then follow that with two more paragraphs. Conclusions should conclude, should be the last word._
+
+**Response:** Thank you, good point. I have removed this in rewriting the Discussion and Conclusion.
+
+**Comment 29:** _Conclusion: do not start with “In sum,” It should stand on its own. Much of what you have in the conclusion is implications. I need it more conclusory._
+
+**Response:** I have removed this turn of phrase and rewritten the Discussion and Conclusion. Implications are now in a separate subsection, and the Conclusion is more conclusory.
+
+Comments: Your current conclusion has much in it that should be in the discussion. 
+Here is what I typically tell authors regarding what I need in the conclusion. 
+Insert this level 1 heading before it: Conclusion Begin by (briefly) reminding the reader of the topic, the research gap, and how you addressed it. Then go to what you found and its importance.  Be sure to state your findings very clearly. The implications can focus on many aspects of the study, such as the practice implications (briefly). But, for us, the implications also should include a focus on the understanding of adolescence/early adulthood/emerging adulthood and the contribution to that research.  The bulk of the paragraph, though, should be focused on the key findings. Do try to have it be just one strong paragraph.
+
+**Response:** I have restructured the Conclusion according to these specifications. The previous conclusion has been merged with the Discussion; there was much redundancy. Thank you for spotting this.
+
+**Comment 30:** _Page 23, line 50 of the pdf: delete the sentence._
+
+**Response:** I have done as requested.<!--In restructuring the Conclusion, this sentence has been removed and spliced into the Discussion.I have not deleted this sentence; I'm not unwilling, but I don't understand why you want me to do so. This line, and line 34 on the same page, were added to address a comment by the previous Reviewer, who asked to clarify "What are the important findings" in the Discussion. I mention "familiar" themes emerging from the findings on line 34, and "novel" findings on line 50. It seems to me that I should either not discuss any of the findings at all, or discuss both familiar and novel findings - but that it would be counterintuitive for a paper that set out to identify under-theorized themes to discuss only familiar findings and not novel ones.-->
+
+**Comment 31:** _You have figures with color.   I would like to note at this point that when we get to proof stage, and I sure hope we get to that stage, you will be asked to pay more for the use of color. Please be sure to read that very carefully. It is NOT asking you to pay more for what will be electronic copies; it asks you to pay more for the actual print copies. Just decline to pay for the print copies.  I note this because authors often misread and then try to edit their text so they do not need to pay a hefty sum of money. There is no need for that. Just read it carefully. Of course, if you wish to pay, then that is up to you. _
+
+**Response:** Understood, will do. I've also adapted the plots so they will still be intelligible when printed in grayscale, or when viewed by the color-blind.
+
+**Comment 32:** _You acknowledgment page (the one to be uploaded separately) needs to report more information._
+
+**Response:** I have included all requested information.
